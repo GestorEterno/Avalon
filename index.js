@@ -2,7 +2,7 @@
 // INDEX JS - AVALON CREATORS
 // -----------------------------
 
-// ✅ 1️⃣ Animación de fade-in al hacer scroll
+// Animación de fade-in al hacer scroll
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
 
