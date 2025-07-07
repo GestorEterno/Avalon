@@ -1,11 +1,11 @@
 /* -----------------------------
    NAVBAR CSS - AVALON CREATORS
-   Paleta: Rojo + Gris + Plata
+   Ajustado: Rojo elegante, menos neon
 ------------------------------ */
 
-/* Fuente base */
+/* Reset tipografía base */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
 }
 
@@ -25,11 +25,9 @@ body {
 
 /* Logo estilizado */
 .logo {
-  font-family: system-ui, sans-serif;
   font-size: 2rem;
   font-weight: 900;
   color: #FF0033;
-  text-shadow: 0 0 8px rgba(255, 0, 51, 0.8);
   text-transform: uppercase;
   margin: 0;
   cursor: pointer;
