@@ -2,10 +2,11 @@
 // INDEX JS - AVALON CREATORS
 // -----------------------------
 
-// Animación de fade-in al hacer scroll
 document.addEventListener('DOMContentLoaded', () => {
+  // Selecciona todas las secciones con clase "section"
   const sections = document.querySelectorAll('.section');
 
+  // Crea el observer para animar cuando entren al viewport
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
