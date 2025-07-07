@@ -2,7 +2,7 @@
 // NAVBAR JS - AVALON
 // -----------------------------
 
-// Scroll suave para los enlaces internos
+// Scroll suave para enlaces internos
 document.querySelectorAll('.nav-item a').forEach(link => {
   link.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
@@ -11,7 +11,7 @@ document.querySelectorAll('.nav-item a').forEach(link => {
       const targetSection = document.querySelector(href);
       if (targetSection) {
         window.scrollTo({
-          top: targetSection.offsetTop - 60, // Ajusta altura del navbar fijo
+          top: targetSection.offsetTop - 80,  // Ajustar según la altura del navbar
           behavior: 'smooth'
         });
       }
@@ -19,10 +19,7 @@ document.querySelectorAll('.nav-item a').forEach(link => {
   });
 });
 
-// Redirigir al index al hacer clic en el logo
-const logo = document.querySelector('.logo');
-if (logo) {
-  logo.addEventListener('click', () => {
-    window.location.href = 'index.html';
-  });
-}
+// Logo lleva a index
+document.querySelector('.logo').addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
