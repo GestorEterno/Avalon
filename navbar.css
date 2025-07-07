@@ -1,6 +1,6 @@
 /* -----------------------------
    NAVBAR.CSS - Avalon Creators
-   Diseño minimalista y responsive
+   Compacto, ancho completo, sin altura excesiva
 ------------------------------ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
@@ -16,56 +16,59 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 72px; /* Ajustado para el navbar fijo */
+  padding-top: 64px; /* altura ajustada al navbar fijo más bajo */
   background-color: #fff;
 }
 
-/* NAVBAR CONTAINER centrado y ajustado */
+/* NAVBAR CONTAINER - full width pero bajo */
 .navbar {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
   z-index: 1000;
 }
 
-/* LOGO destacado */
+/* LOGO - Grande pero no rompe */
 .logo {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.3s ease;
   white-space: nowrap;
+  transition: color 0.3s ease;
 }
 
 .logo:hover {
   color: #cc0029;
 }
 
-/* NAVBAR RIGHT - menú alineado */
+/* NAVBAR RIGHT - Menú alineado a la derecha */
 .navbar-right {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-/* MENU LIST */
+/* NAV MENU */
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
 }
 
+/* NAV ITEMS mejorados */
 .nav-item a {
   color: #222222;
   text-decoration: none;
@@ -75,6 +78,7 @@ body {
   padding: 4px 6px;
   transition: color 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-item a::after {
@@ -96,37 +100,41 @@ body {
   width: 100%;
 }
 
-/* RESPONSIVE MOBILE */
+/* RESPONSIVE MOBILE - Compacto sin altura excesiva */
 @media (max-width: 768px) {
   body {
-    padding-top: 100px;
+    padding-top: 72px;
   }
 
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
   }
 
   .logo {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    flex-basis: 100%;
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .navbar-right {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .nav-menu {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75rem;
-    align-items: center;
     width: 100%;
   }
 
   .nav-item a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
