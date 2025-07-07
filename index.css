@@ -1,10 +1,10 @@
 /* -----------------------------
-   INDEX CSS - Avalon Creators
-   Estilo refinado y profesional
+   INDEX.CSS - Avalon Creators
+   Fondo blanco, estilo profesional
 ------------------------------ */
 
 /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
 /* Base tipografía y smoothing */
 html {
@@ -14,20 +14,19 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #121212;
-  color: #cccccc;
+  background-color: #ffffff;
+  color: #222222;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-/* Secciones base */
+/* Secciones generales */
 .section {
-  padding: 80px 5vw;
+  padding: 100px 5vw;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .section.visible {
@@ -41,163 +40,155 @@ body {
   text-align: center;
 }
 
-/* Tipografía títulos */
+/* Tipografía general */
 h1, h2, h3 {
-  color: #FF0033;
-  text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 1.5px;
   margin-bottom: 20px;
+  color: #FF0033;
+  text-transform: uppercase;
 }
 
 p {
-  font-size: 1.05rem;
   line-height: 1.6;
-  color: #dddddd;
   margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: #444444;
 }
 
-/* HERO */
+/* HERO SECTION */
 .hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 75vh;
-  background: linear-gradient(135deg, #2a0000 0%, #000000 100%);
+  background: #ffffff;
+  padding-top: 150px;
+  padding-bottom: 100px;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 12px;
+  font-size: 3rem;
+  margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  max-width: 680px;
-  color: #eeeeee;
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #333333;
 }
 
-/* BOTÓN CTA */
+/* CTA BUTTON */
 .cta-button {
-  margin-top: 25px;
-  padding: 12px 28px;
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
   background-color: #FF0033;
   color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .cta-button:hover {
   background-color: #cc0029;
-  box-shadow: 0 0 10px rgba(255, 0, 51, 0.3);
+  box-shadow: 0 4px 10px rgba(255, 0, 51, 0.2);
+  color: #ffffff;
 }
 
 /* MANIFIESTO */
 .manifesto {
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
 }
 
 /* SERVICIOS */
 .servicios {
-  background-color: #131313;
-}
-
-.servicios h2 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-  color: #FF0033;
-  text-transform: uppercase;
-  font-weight: 800;
+  background-color: #ffffff;
 }
 
 .service-list {
   list-style: none;
+  padding: 0;
+  margin: 40px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 40px 0;
-  padding: 0;
+  gap: 2rem;
 }
 
 .service-list li {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
 
 .service-list li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(255, 0, 51, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .service-list h3 {
-  color: #FF0033;
-  font-size: 1.2rem;
   margin-top: 0;
-  margin-bottom: 10px;
-  font-weight: 600;
+  font-size: 1.2rem;
+  color: #FF0033;
 }
 
 .service-list p {
   font-size: 0.95rem;
-  color: #cccccc;
+  color: #444444;
   line-height: 1.5;
 }
 
 /* CTA debajo del grid */
 .service-cta {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 /* COMO TRABAJAMOS */
 .como-trabajamos {
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
 }
 
 .como-trabajamos ol {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding-left: 20px;
-  color: #cccccc;
+  color: #444444;
+  line-height: 1.8;
   font-size: 1.05rem;
-  line-height: 1.7;
   text-align: left;
 }
 
 .como-trabajamos li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .como-trabajamos li::marker {
   color: #FF0033;
+  font-weight: bold;
 }
 
 /* CTA FINAL */
 .cta-final {
-  background: linear-gradient(135deg, #2a0000 0%, #000000 100%);
+  background-color: #ffffff;
 }
 
 .cta-final p {
-  font-size: 1.1rem;
-  color: #dddddd;
+  font-size: 1.2rem;
+  color: #444444;
 }
 
 /* FOOTER */
 .footer {
-  background-color: #0a0a0a;
+  background-color: #f2f2f2;
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
-  color: #777;
+  color: #777777;
 }
 
 /* Responsive */
@@ -211,7 +202,7 @@ p {
   }
 
   .section {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .service-list {
