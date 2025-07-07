@@ -7,21 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!navbarContainer) return;
       navbarContainer.innerHTML = data;
 
-      // Aplicar tema guardado (claro por defecto)
-      if (localStorage.getItem("tema") === "oscuro") {
+      // Oscuro por defecto (si no hay nada guardado)
+      const temaGuardado = localStorage.getItem("tema");
+      if (temaGuardado === "claro") {
+        document.body.classList.remove("dark-mode");
+      } else {
         document.body.classList.add("dark-mode");
       }
 
-      // Botón para cambiar tema con animación de flash eléctrico
+      // Botón para cambiar tema (logo)
       const themeToggle = document.getElementById("themeToggle");
       if (themeToggle) {
         themeToggle.addEventListener("click", () => {
-          // Activar overlay de transición
           const transitionOverlay = document.getElementById("theme-transition");
           if (transitionOverlay) {
             transitionOverlay.classList.add("active");
 
-            // Cambiar tema mientras se ve el flash
             setTimeout(() => {
               document.body.classList.toggle("dark-mode");
               localStorage.setItem(
@@ -30,12 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
               );
             }, 150);
 
-            // Quitar overlay después de la animación
             setTimeout(() => {
               transitionOverlay.classList.remove("active");
             }, 500);
           } else {
-            // Fallback sin animación si no existe el overlay
             document.body.classList.toggle("dark-mode");
             localStorage.setItem(
               "tema",
