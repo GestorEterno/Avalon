@@ -1,9 +1,15 @@
+/* -------------------------------
+   NAVBAR.CSS - Avalon Creators
+   Claro por defecto / Oscuro al toggle
+-------------------------------- */
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* NAVBAR CONTAINER */
 .navbar {
   width: 100%;
   display: flex;
@@ -15,6 +21,7 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* LOGO BUTTON */
 .logo {
   background: none;
   border: none;
@@ -30,6 +37,7 @@ body {
   color: #cc0029;
 }
 
+/* MENU LIST */
 .navbar-right .nav-menu {
   list-style: none;
   display: flex;
@@ -45,6 +53,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   position: relative;
+  transition: color 0.3s;
 }
 
 .nav-item a::after {
@@ -58,11 +67,20 @@ body {
   transition: width 0.3s;
 }
 
+.nav-item a:hover {
+  color: #FF0033;
+}
+
 .nav-item a:hover::after {
   width: 100%;
 }
 
-/* DARK MODE */
+/* DARK MODE STYLES */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
 body.dark-mode .navbar {
   background-color: #121212;
   color: #f1f1f1;
