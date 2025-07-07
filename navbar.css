@@ -1,6 +1,6 @@
 /* -----------------------------
    NAVBAR CSS - Avalon Creators
-   Fondo blanco premium, FIXED
+   Totalmente responsive, flexible
 ------------------------------ */
 
 /* Import Google Font */
@@ -17,14 +17,13 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Navbar contenedor */
+/* Navbar container */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
   background-color: #ffffff;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   position: fixed;
@@ -41,7 +40,6 @@ body {
   text-transform: uppercase;
   margin: 0;
   cursor: pointer;
-  white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
@@ -50,27 +48,28 @@ body {
   color: #cc0029;
 }
 
-/* Navbar right (menu) */
+/* Navbar right */
 .navbar-right {
+  flex-grow: 1;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: flex-end;
+  overflow: hidden;
 }
 
-/* Menu */
+/* Nav menu */
 .nav-menu {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-/* Items */
+/* Nav items */
 .nav-item a {
-  display: inline-block;
+  display: block;
   color: #222222;
   text-decoration: none;
   font-size: 1rem;
@@ -79,10 +78,13 @@ body {
   padding: 4px 6px;
   cursor: pointer;
   transition: color 0.3s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 100px;
 }
 
-/* Subrayado hover elegante */
+/* Underline hover */
 .nav-item a::after {
   content: "";
   display: block;
@@ -100,17 +102,18 @@ body {
   width: 100%;
 }
 
-/* Responsive */
+/* Responsive mobile */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
 
   .navbar-right {
     width: 100%;
     margin-top: 0.5rem;
+    justify-content: flex-start;
   }
 
   .nav-menu {
@@ -121,7 +124,7 @@ body {
 
   .nav-item a {
     font-size: 0.95rem;
-    padding: 4px 0;
+    max-width: none;
   }
 
   .logo {
