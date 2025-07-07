@@ -1,33 +1,45 @@
 /* ---------------------------------------
-   INDEX.CSS - Avalon Creators (Ajustado)
-   Fondo blanco, profesional y compacto
+   INDEX.CSS - Avalon Creators
+   Claro / Oscuro, limpio y consistente
 --------------------------------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ROOT THEME VARIABLES */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-muted: #666666;
+  --color-brand: #FF0033;
+  --color-brand-dark: #cc0029;
+  --color-bg-light: #f9f9f9;
+  --shadow-soft: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* DARK MODE OVERRIDE */
+body.light-mode {
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-bg-light: #f9f9f9;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #222222;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* SECTIONS BASE */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* BASE SECTIONS */
 .section {
   padding: 80px 1.5rem;
   opacity: 0;
@@ -40,7 +52,6 @@ body {
   transform: translateY(0);
 }
 
-/* CONTENT CONTAINER */
 .content {
   max-width: 1200px;
   width: 100%;
@@ -54,7 +65,7 @@ h1, h2, h3 {
   font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 20px;
-  color: #FF0033;
+  color: var(--color-brand);
   text-transform: uppercase;
 }
 
@@ -62,12 +73,12 @@ p {
   line-height: 1.6;
   margin-bottom: 20px;
   font-size: 1.05rem;
-  color: #444444;
+  color: var(--color-muted);
 }
 
-/* HERO SECTION ajustada */
+/* HERO SECTION */
 .hero {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   padding-top: 64px;
   padding-bottom: 40px;
 }
@@ -81,7 +92,7 @@ p {
   font-size: 1.25rem;
   max-width: 700px;
   margin: 0 auto;
-  color: #333333;
+  color: var(--color-muted);
 }
 
 /* CTA BUTTON */
@@ -89,7 +100,7 @@ p {
   display: inline-block;
   margin-top: 30px;
   padding: 12px 30px;
-  background-color: #FF0033;
+  background-color: var(--color-brand);
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -101,19 +112,19 @@ p {
 }
 
 .cta-button:hover {
-  background-color: #cc0029;
+  background-color: var(--color-brand-dark);
   box-shadow: 0 4px 10px rgba(255, 0, 51, 0.2);
   color: #ffffff;
 }
 
 /* MANIFIESTO */
 .manifesto {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-light);
 }
 
 /* SERVICIOS */
 .servicios {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
 }
 
 .service-list {
@@ -126,11 +137,11 @@ p {
 }
 
 .service-list li {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   border: 1px solid #eaeaea;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
@@ -143,12 +154,12 @@ p {
 .service-list h3 {
   margin-top: 0;
   font-size: 1.2rem;
-  color: #FF0033;
+  color: var(--color-brand);
 }
 
 .service-list p {
   font-size: 0.95rem;
-  color: #444444;
+  color: var(--color-muted);
   line-height: 1.5;
 }
 
@@ -159,14 +170,14 @@ p {
 
 /* COMO TRABAJAMOS */
 .como-trabajamos {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-light);
 }
 
 .como-trabajamos ol {
   max-width: 800px;
   margin: 0 auto;
   padding-left: 20px;
-  color: #444444;
+  color: var(--color-muted);
   line-height: 1.8;
   font-size: 1.05rem;
   text-align: left;
@@ -177,18 +188,18 @@ p {
 }
 
 .como-trabajamos li::marker {
-  color: #FF0033;
+  color: var(--color-brand);
   font-weight: bold;
 }
 
 /* CTA FINAL */
 .cta-final {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
 }
 
 .cta-final p {
   font-size: 1.2rem;
-  color: #444444;
+  color: var(--color-muted);
 }
 
 /* FOOTER */
