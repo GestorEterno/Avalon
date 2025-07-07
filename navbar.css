@@ -1,5 +1,5 @@
 /* -----------------------------
-   NAVBAR.CSS - Avalon Creators (Compacto y Centrado)
+   NAVBAR.CSS - Avalon Creators (Logo Grande Centrado)
    Rediseñado: 100% responsive y sin cortes
 ------------------------------ */
 
@@ -16,7 +16,7 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 64px; /* Ajustado a altura más compacta del navbar */
+  padding-top: 70px; /* Ajustado a altura más compacta del navbar */
 }
 
 /* NAVBAR CONTAINER compacto */
@@ -36,9 +36,9 @@ body {
   z-index: 1000;
 }
 
-/* LOGO */
+/* LOGO más grande */
 .logo {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
@@ -122,11 +122,11 @@ body {
   }
 
   .nav-item a {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 800;
   }
 
   .logo {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
 }
