@@ -1,31 +1,37 @@
 /* ---------------------------------------
    INDEX.CSS - Avalon Creators
-   Tema claro/oscuro + Secciones nuevas
-   + Overlay Hero + Flash de transición
+   Tema claro/oscuro completo
 --------------------------------------- */
 
-/* Variables de color */
+/* ===========================
+   Variables de Color
+=========================== */
 :root {
   --color-brand: #FF0033;
   --color-brand-dark: #cc0029;
+
   --color-bg: #ffffff;
+  --color-bg-light: #f9f9f9;
   --color-text: #222222;
   --color-muted: #666666;
+  --color-border: #eaeaea;
+
   --color-overlay: rgba(255, 0, 51, 0.05);
 }
 
-/* DARK MODE */
 body.dark-mode {
   --color-bg: #121212;
+  --color-bg-light: #1a1a1a;
   --color-text: #f1f1f1;
   --color-muted: #cccccc;
+  --color-border: #333333;
+
   --color-overlay: rgba(255, 0, 51, 0.15);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  transition: background-color 0.3s, color 0.3s;
 }
 
-/* RESET */
+/* ===========================
+   RESET
+=========================== */
 *,
 *::before,
 *::after {
@@ -39,11 +45,23 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* SECTIONS */
+/* ===========================
+   SECTIONS
+=========================== */
 .section {
   padding: 80px 1.5rem;
+  background-color: var(--color-bg);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .content {
@@ -53,7 +71,9 @@ body {
   padding: 0 1rem;
 }
 
-/* TYPOGRAPHY */
+/* ===========================
+   TYPOGRAPHY
+=========================== */
 h1, h2, h3 {
   font-weight: 800;
   text-transform: uppercase;
@@ -69,13 +89,15 @@ p {
   margin-bottom: 20px;
 }
 
-/* HERO with overlay */
+/* ===========================
+   HERO
+=========================== */
 .hero {
   position: relative;
-  background-color: var(--color-bg);
   padding-top: 64px;
   padding-bottom: 40px;
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .hero-overlay {
@@ -104,7 +126,9 @@ p {
   margin: 0 auto;
 }
 
-/* CTA BUTTON */
+/* ===========================
+   CTA BUTTON
+=========================== */
 .cta-button {
   display: inline-block;
   margin-top: 30px;
@@ -125,45 +149,32 @@ p {
   box-shadow: 0 4px 10px rgba(255, 0, 51, 0.2);
 }
 
-/* PROBLEMA DEL CREADOR */
-.problema-creador {
-  background-color: var(--color-bg);
-}
-
-/* NUESTRA SOLUCIÓN */
-.nuestra-solucion {
-  background-color: #f9f9f9;
-}
-
-/* BENEFICIOS */
+/* ===========================
+   PROBLEMA, SOLUCIÓN, BENEFICIOS
+=========================== */
+.problema-creador,
+.nuestra-solucion,
 .beneficios {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-light);
 }
 
 .benefit-list {
   list-style: none;
   max-width: 800px;
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 0;
   text-align: left;
 }
 
 .benefit-list li {
   margin-bottom: 15px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--color-text);
-  padding-left: 1.5rem;
-  position: relative;
 }
 
-.benefit-list li::before {
-  content: '✔';
-  color: var(--color-brand);
-  position: absolute;
-  left: 0;
-}
-
-/* SERVICIOS */
+/* ===========================
+   SERVICIOS
+=========================== */
 .servicios {
   background-color: var(--color-bg);
 }
@@ -179,7 +190,7 @@ p {
 
 .service-list li {
   background-color: var(--color-bg);
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--color-border);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -204,14 +215,15 @@ p {
   line-height: 1.5;
 }
 
-/* CTA debajo del grid */
 .service-cta {
   margin-top: 40px;
 }
 
-/* PROCESO AVALON */
+/* ===========================
+   COMO TRABAJAMOS
+=========================== */
 .como-trabajamos {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-light);
 }
 
 .como-trabajamos ol {
@@ -233,30 +245,32 @@ p {
   font-weight: bold;
 }
 
-/* TESTIMONIOS */
+/* ===========================
+   TESTIMONIOS
+=========================== */
 .testimonios {
   background-color: var(--color-bg);
 }
 
 .testimonial-list {
-  max-width: 1000px;
-  margin: 40px auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-top: 40px;
 }
 
 .testimonial {
-  border: 1px solid #eaeaea;
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
   padding: 20px;
   border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   text-align: left;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial:hover {
+  transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
@@ -267,39 +281,35 @@ p {
 }
 
 .testimonial span {
-  font-size: 0.9rem;
-  color: var(--color-brand);
   font-weight: 700;
+  color: var(--color-text);
 }
 
-/* AUTORIDAD / NÚMEROS */
+/* ===========================
+   AUTORIDAD
+=========================== */
 .autoridad {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg-light);
 }
 
 .stats-list {
   list-style: none;
   max-width: 800px;
-  margin: 40px auto;
+  margin: 40px auto 0;
   padding: 0;
+  text-align: center;
 }
 
 .stats-list li {
-  font-size: 1.2rem;
   margin-bottom: 15px;
+  font-size: 1.2rem;
   color: var(--color-text);
-  position: relative;
-  padding-left: 1.5rem;
+  font-weight: 700;
 }
 
-.stats-list li::before {
-  content: '★';
-  color: var(--color-brand);
-  position: absolute;
-  left: 0;
-}
-
-/* CTA FINAL */
+/* ===========================
+   CTA FINAL
+=========================== */
 .cta-final {
   background-color: var(--color-bg);
 }
@@ -309,16 +319,20 @@ p {
   color: var(--color-muted);
 }
 
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 .footer {
-  background-color: #f2f2f2;
+  background-color: var(--color-bg-light);
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
-  color: #777;
+  color: var(--color-muted);
 }
 
-/* THEME TRANSITION FLASH */
+/* ===========================
+   THEME TRANSITION FLASH
+=========================== */
 #theme-transition {
   position: fixed;
   top: 0;
@@ -341,7 +355,9 @@ p {
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* RESPONSIVE */
+/* ===========================
+   RESPONSIVE
+=========================== */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
@@ -355,8 +371,7 @@ p {
     padding: 64px 1rem;
   }
 
-  .service-list,
-  .testimonial-list {
+  .service-list {
     grid-template-columns: 1fr;
   }
 }
