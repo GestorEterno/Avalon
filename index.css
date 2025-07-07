@@ -1,12 +1,10 @@
 /* ---------------------------------------
-   INDEX.CSS - Avalon Creators
-   Fondo blanco, 100% profesional
+   INDEX.CSS - Avalon Creators (Ajustado)
+   Fondo blanco, profesional y compacto
 --------------------------------------- */
 
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-/* RESET GLOBAL */
 *,
 *::before,
 *::after {
@@ -31,7 +29,7 @@ body {
 
 /* SECTIONS BASE */
 .section {
-  padding: 100px 1.5rem;
+  padding: 80px 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -67,11 +65,11 @@ p {
   color: #444444;
 }
 
-/* HERO SECTION */
+/* HERO SECTION ajustada */
 .hero {
   background-color: #ffffff;
-  padding-top: 150px;
-  padding-bottom: 100px;
+  padding-top: 64px;
+  padding-bottom: 40px;
 }
 
 .hero h1 {
@@ -213,7 +211,7 @@ p {
   }
 
   .section {
-    padding: 80px 1rem;
+    padding: 64px 1rem;
   }
 
   .service-list {
