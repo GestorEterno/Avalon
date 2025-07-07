@@ -1,45 +1,48 @@
 /* -----------------------------
-   NAVBAR CSS - Avalon Creators
-   Totalmente responsive, flexible
+   NAVBAR.CSS - Avalon Creators
+   Rediseñado: 100% responsive y sin cortes
 ------------------------------ */
 
-/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-/* Base y smoothing */
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
+  margin: 0;
 }
 
-/* Navbar container */
+/* NAVBAR CONTAINER */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  flex-wrap: wrap;
+  width: 100%;
   padding: 1rem 2rem;
+  background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
   z-index: 1000;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
   font-size: 2rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
-  margin: 0;
   cursor: pointer;
+  white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
@@ -48,7 +51,7 @@ body {
   color: #cc0029;
 }
 
-/* Navbar right */
+/* NAVBAR RIGHT */
 .navbar-right {
   flex-grow: 1;
   display: flex;
@@ -56,18 +59,17 @@ body {
   overflow: hidden;
 }
 
-/* Nav menu */
+/* MENU */
 .nav-menu {
-  list-style: none;
   display: flex;
-  flex-wrap: nowrap;
+  list-style: none;
   gap: 1rem;
-  margin: 0;
+  flex-wrap: wrap;
   padding: 0;
-  overflow: hidden;
+  margin: 0;
 }
 
-/* Nav items */
+/* NAV ITEMS */
 .nav-item a {
   display: block;
   color: #222222;
@@ -75,16 +77,12 @@ body {
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 4px 6px;
-  cursor: pointer;
+  padding: 6px 8px;
   transition: color 0.3s ease;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 100px;
 }
 
-/* Underline hover */
+/* SUBRAYADO EN HOVER */
 .nav-item a::after {
   content: "";
   display: block;
@@ -102,12 +100,11 @@ body {
   width: 100%;
 }
 
-/* Responsive mobile */
+/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem 1.5rem;
   }
 
   .navbar-right {
@@ -123,8 +120,7 @@ body {
   }
 
   .nav-item a {
-    font-size: 0.95rem;
-    max-width: none;
+    font-size: 1rem;
   }
 
   .logo {
