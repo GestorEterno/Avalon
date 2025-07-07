@@ -1,60 +1,52 @@
 /* ---------------------------------------
    INDEX.CSS - Avalon Creators
-   Claro / Oscuro, limpio y consistente
+   Tema claro/oscuro + Overlay Hero
 --------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
-
-/* ROOT THEME VARIABLES */
+/* Variables de color */
 :root {
+  --color-brand: #FF0033;
+  --color-brand-dark: #cc0029;
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-muted: #666666;
-  --color-brand: #FF0033;
-  --color-brand-dark: #cc0029;
-  --color-bg-light: #f9f9f9;
-  --shadow-soft: 0 2px 5px rgba(0,0,0,0.05);
+  --color-overlay: rgba(255, 0, 51, 0.05);
 }
 
-/* DARK MODE OVERRIDE */
-body.light-mode {
-  --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-bg-light: #f9f9f9;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+/* DARK MODE */
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #f1f1f1;
+  --color-muted: #cccccc;
+  --color-overlay: rgba(255, 0, 51, 0.15);
   background-color: var(--color-bg);
   color: var(--color-text);
-  overflow-x: hidden;
-  scroll-behavior: smooth;
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* GLOBAL RESET */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* BASE SECTIONS */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+/* SECTIONS */
 .section {
   padding: 80px 1.5rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .content {
   max-width: 1200px;
-  width: 100%;
   margin: 0 auto;
   text-align: center;
   padding: 0 1rem;
@@ -63,24 +55,41 @@ body {
 /* TYPOGRAPHY */
 h1, h2, h3 {
   font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  color: var(--color-brand);
   text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 p {
   line-height: 1.6;
-  margin-bottom: 20px;
-  font-size: 1.05rem;
   color: var(--color-muted);
+  font-size: 1.05rem;
+  margin-bottom: 20px;
 }
 
-/* HERO SECTION */
+/* HERO with overlay */
 .hero {
+  position: relative;
   background-color: var(--color-bg);
   padding-top: 64px;
   padding-bottom: 40px;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-overlay);
+  z-index: 0;
+}
+
+.hero .content {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -92,7 +101,6 @@ p {
   font-size: 1.25rem;
   max-width: 700px;
   margin: 0 auto;
-  color: var(--color-muted);
 }
 
 /* CTA BUTTON */
@@ -114,12 +122,11 @@ p {
 .cta-button:hover {
   background-color: var(--color-brand-dark);
   box-shadow: 0 4px 10px rgba(255, 0, 51, 0.2);
-  color: #ffffff;
 }
 
 /* MANIFIESTO */
 .manifesto {
-  background-color: var(--color-bg-light);
+  background-color: var(--color-bg);
 }
 
 /* SERVICIOS */
@@ -141,7 +148,7 @@ p {
   border: 1px solid #eaeaea;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
@@ -170,7 +177,7 @@ p {
 
 /* COMO TRABAJAMOS */
 .como-trabajamos {
-  background-color: var(--color-bg-light);
+  background-color: var(--color-bg);
 }
 
 .como-trabajamos ol {
@@ -208,7 +215,7 @@ p {
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
-  color: #777777;
+  color: #777;
 }
 
 /* RESPONSIVE */
