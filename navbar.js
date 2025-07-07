@@ -12,15 +12,36 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add("dark-mode");
       }
 
-      // Botón para cambiar tema
+      // Botón para cambiar tema con animación de flash eléctrico
       const themeToggle = document.getElementById("themeToggle");
       if (themeToggle) {
         themeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-          localStorage.setItem(
-            "tema",
-            document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
-          );
+          // Activar overlay de transición
+          const transitionOverlay = document.getElementById("theme-transition");
+          if (transitionOverlay) {
+            transitionOverlay.classList.add("active");
+
+            // Cambiar tema mientras se ve el flash
+            setTimeout(() => {
+              document.body.classList.toggle("dark-mode");
+              localStorage.setItem(
+                "tema",
+                document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
+              );
+            }, 150);
+
+            // Quitar overlay después de la animación
+            setTimeout(() => {
+              transitionOverlay.classList.remove("active");
+            }, 500);
+          } else {
+            // Fallback sin animación si no existe el overlay
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem(
+              "tema",
+              document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
+            );
+          }
         });
       }
     })
