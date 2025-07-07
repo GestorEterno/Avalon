@@ -1,5 +1,5 @@
 /* -----------------------------
-   NAVBAR.CSS - Avalon Creators (Actualizado)
+   NAVBAR.CSS - Avalon Creators (Compacto y Centrado)
    Rediseñado: 100% responsive y sin cortes
 ------------------------------ */
 
@@ -16,17 +16,17 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 80px; /* Previene que el navbar fijo tape el contenido */
+  padding-top: 64px; /* Ajustado a altura más compacta del navbar */
 }
 
-/* NAVBAR CONTAINER */
+/* NAVBAR CONTAINER compacto */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -38,7 +38,7 @@ body {
 
 /* LOGO */
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
@@ -78,7 +78,7 @@ body {
   font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 6px 8px;
+  padding: 4px 6px;
   transition: color 0.3s ease;
   white-space: nowrap;
 }
@@ -101,31 +101,32 @@ body {
   width: 100%;
 }
 
-/* RESPONSIVE MOBILE mejorado */
+/* RESPONSIVE MOBILE mejorado y centrado */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .navbar-right {
     width: 100%;
-    margin-top: 0.5rem;
-    justify-content: flex-start;
+    margin-top: 0.25rem;
+    justify-content: center;
   }
 
   .nav-menu {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
     width: 100%;
+    align-items: center;
   }
 
   .nav-item a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
   }
 
   .logo {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
