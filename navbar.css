@@ -1,30 +1,9 @@
-/* -----------------------------
-   NAVBAR.CSS - Avalon Creators (Logo Grande Centrado)
-   Rediseñado: 100% responsive y sin cortes
------------------------------- */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  margin: 0;
-  padding-top: 70px; /* Ajustado a altura más compacta del navbar */
-}
-
 /* NAVBAR CONTAINER compacto */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
   padding: 0.5rem 1rem;
   background-color: #ffffff;
@@ -36,7 +15,7 @@ body {
   z-index: 1000;
 }
 
-/* LOGO más grande */
+/* LOGO más grande y controlado */
 .logo {
   font-size: 2.2rem;
   font-weight: 900;
@@ -45,60 +24,15 @@ body {
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: color 0.3s ease;
+  text-align: center;
 }
 
 .logo:hover {
   color: #cc0029;
-}
-
-/* NAVBAR RIGHT */
-.navbar-right {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
-  overflow: hidden;
-}
-
-/* MENU */
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
-
-/* NAV ITEMS mejorados */
-.nav-item a {
-  display: block;
-  color: #222222;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 4px 6px;
-  transition: color 0.3s ease;
-  white-space: nowrap;
-}
-
-/* SUBRAYADO EN HOVER */
-.nav-item a::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 0;
-  background-color: #FF0033;
-  transition: width 0.3s ease;
-}
-
-.nav-item a:hover {
-  color: #FF0033;
-}
-
-.nav-item a:hover::after {
-  width: 100%;
 }
 
 /* RESPONSIVE MOBILE mejorado y centrado */
@@ -108,8 +42,13 @@ body {
     align-items: center;
   }
 
+  .logo,
   .navbar-right {
     width: 100%;
+    text-align: center;
+  }
+
+  .navbar-right {
     margin-top: 0.25rem;
     justify-content: center;
   }
