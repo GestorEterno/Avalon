@@ -1,12 +1,20 @@
-/* -----------------------------
+/* ---------------------------------------
    INDEX.CSS - Avalon Creators
-   Fondo blanco, estilo profesional
------------------------------- */
+   Fondo blanco, 100% profesional
+--------------------------------------- */
 
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-/* Base tipografía y smoothing */
+/* RESET GLOBAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,13 +29,12 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Secciones generales */
+/* SECTIONS BASE */
 .section {
-  padding: 100px 2rem;
+  padding: 100px 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-  box-sizing: border-box;
 }
 
 .section.visible {
@@ -35,16 +42,19 @@ body {
   transform: translateY(0);
 }
 
+/* CONTENT CONTAINER */
 .content {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
+  padding: 0 1rem;
 }
 
-/* Tipografía general */
+/* TYPOGRAPHY */
 h1, h2, h3 {
   font-weight: 800;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   margin-bottom: 20px;
   color: #FF0033;
   text-transform: uppercase;
@@ -59,7 +69,7 @@ p {
 
 /* HERO SECTION */
 .hero {
-  background: #ffffff;
+  background-color: #ffffff;
   padding-top: 150px;
   padding-bottom: 100px;
 }
@@ -192,7 +202,7 @@ p {
   color: #777777;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.2rem;
@@ -203,7 +213,7 @@ p {
   }
 
   .section {
-    padding: 80px 20px;
+    padding: 80px 1rem;
   }
 
   .service-list {
