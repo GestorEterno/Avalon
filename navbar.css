@@ -1,7 +1,7 @@
-/* -----------------------------
-   NAVBAR.CSS - Avalon Creators (Ajustado de altura)
-   Diseño full-width pero de altura mínima
------------------------------- */
+/* -----------------------------------
+   NAVBAR.CSS - Avalon Creators
+   Diseño full-width y bajo (alineado)
+----------------------------------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
 
@@ -14,17 +14,17 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 56px;
+  padding-top: 56px; /* Altura real del navbar fijo */
   background-color: #fff;
 }
 
-/* NAVBAR FULL WIDTH - ALTURA MINIMA */
+/* NAVBAR FULL WIDTH PERO BAJO Y ALINEADO */
 .navbar {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: center;        /* Clave: centra verticalmente logo y menú */
   justify-content: space-between;
-  padding: 0.25rem 1rem;
+  padding: 0.4rem 1rem;       /* Padding vertical mínimo */
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -32,39 +32,43 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  flex-wrap: nowrap;
 }
 
-/* LOGO AJUSTADO */
+/* LOGO DESTACADO PERO ALINEADO */
 .logo {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.3s ease;
+  line-height: 1;             /* Clave: iguala altura de línea al contenido */
 }
 
 .logo:hover {
   color: #cc0029;
 }
 
-/* MENU DERECHA */
+/* MENÚ DERECHO ALINEADO */
 .navbar-right {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
   flex-wrap: nowrap;
 }
 
+/* LISTA DEL MENÚ */
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 0.5rem;
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
+  flex-wrap: nowrap;
 }
 
+/* LINKS DEL MENÚ */
 .nav-item a {
   color: #222222;
   text-decoration: none;
@@ -75,6 +79,7 @@ body {
   transition: color 0.3s ease;
   white-space: nowrap;
   position: relative;
+  line-height: 1;              /* Alinea el texto verticalmente con el logo */
 }
 
 .nav-item a::after {
@@ -96,24 +101,34 @@ body {
   width: 100%;
 }
 
-/* MOBILE - AJUSTADO */
+/* RESPONSIVE - SIN COLUMNAS, SOLO WRAP SI ES MUY CHICO */
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
   }
 
   .navbar {
-    padding: 0.25rem 0.75rem;
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 0.4rem 0.75rem;
+    flex-wrap: wrap;          /* Permite wrap solo si no cabe */
+    justify-content: center;
+  }
+
+  .navbar-right {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .logo {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    flex-basis: auto;
+    text-align: center;
   }
 
   .nav-menu {
-    gap: 0.4rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .nav-item a {
