@@ -5,7 +5,7 @@
 /* Fuente base y fondo */
 body {
   margin: 0;
-  padding-top: 80px; /* Deja espacio para el navbar fijo */
+  padding-top: 80px;
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #121212;
   color: #f1f1f1;
@@ -29,7 +29,7 @@ body {
 }
 
 /* Títulos */
-h1, h2 {
+h1, h2, h3 {
   color: #00f0ff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -42,7 +42,7 @@ p {
   line-height: 1.6;
   max-width: 800px;
   margin-bottom: 20px;
-  color: #dddddd;
+  color: #cccccc;
   font-size: 1.1rem;
 }
 
@@ -55,6 +55,7 @@ p {
   text-align: center;
   height: 90vh;
   background: linear-gradient(135deg, #000814 0%, #001d3d 100%);
+  box-shadow: inset 0 0 50px #00f0ff44;
 }
 
 .hero h1 {
@@ -69,7 +70,7 @@ p {
   color: #cccccc;
 }
 
-/* Botón principal (CTA) */
+/* CTA Button */
 .cta-button {
   display: inline-block;
   margin-top: 30px;
@@ -91,12 +92,91 @@ p {
   color: #000;
 }
 
-/* Sobre Nosotros */
-.sobre {
+/* MANIFIESTO / VISION */
+.manifesto {
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.manifesto p {
+  font-size: 1.2rem;
+  color: #dddddd;
+}
+
+/* SERVICIOS */
+.servicios {
+  background-color: #121212;
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-list li {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
+}
+
+.service-list h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #00f0ff;
+}
+
+.service-list p {
+  color: #cccccc;
+}
+
+/* COMO TRABAJAMOS */
+.como-trabajamos {
   background-color: #1a1a1a;
 }
 
-/* Footer */
+.como-trabajamos ol {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 20px;
+  color: #cccccc;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.como-trabajamos li {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.como-trabajamos li::marker {
+  color: #00f0ff;
+  font-weight: bold;
+}
+
+/* CTA FINAL */
+.cta-final {
+  background: linear-gradient(135deg, #000814 0%, #001d3d 100%);
+  text-align: center;
+  box-shadow: inset 0 0 50px #00f0ff44;
+}
+
+.cta-final p {
+  font-size: 1.2rem;
+  color: #dddddd;
+}
+
+/* FOOTER */
 .footer {
   background-color: #0a0a0a;
   text-align: center;
@@ -117,5 +197,9 @@ p {
 
   .section {
     padding: 80px 15px;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
   }
 }
