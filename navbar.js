@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Cargar el navbar desde navbar.html
   fetch("navbar.html")
     .then(response => response.text())
     .then(data => {
@@ -6,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!navbarContainer) return;
       navbarContainer.innerHTML = data;
 
-      // Aplicar tema guardado
+      // Aplicar tema guardado (claro por defecto)
       if (localStorage.getItem("tema") === "oscuro") {
         document.body.classList.add("dark-mode");
       }
@@ -16,7 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (themeToggle) {
         themeToggle.addEventListener("click", () => {
           document.body.classList.toggle("dark-mode");
-          localStorage.setItem("tema",
+          localStorage.setItem(
+            "tema",
             document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
           );
         });
