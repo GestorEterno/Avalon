@@ -3,10 +3,10 @@
 // -----------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Selecciona todas las secciones con clase "section"
+  // Selecciona todas las secciones que queremos animar
   const sections = document.querySelectorAll('.section');
 
-  // Crea el observer para animar cuando entren al viewport
+  // Intersection Observer para activar animación cuando entren en el viewport
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
