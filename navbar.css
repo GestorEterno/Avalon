@@ -1,13 +1,11 @@
 /* -----------------------------
-   NAVBAR.CSS - Avalon Creators
-   Diseño bajo y ancho completo
+   NAVBAR.CSS - Avalon Creators (Ajustado de altura)
+   Diseño full-width pero de altura mínima
 ------------------------------ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,16 +14,17 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 56px; /* Ajusta a la altura real del navbar */
+  padding-top: 56px;
+  background-color: #fff;
 }
 
-/* NAVBAR FULL WIDTH pero BAJO */
+/* NAVBAR FULL WIDTH - ALTURA MINIMA */
 .navbar {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 1rem;
+  padding: 0.25rem 1rem;
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -33,12 +32,12 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  flex-wrap: wrap; /* Permitir wrap SOLO si la pantalla es muy chica */
+  flex-wrap: nowrap;
 }
 
-/* LOGO GRANDE PERO AJUSTADO */
+/* LOGO AJUSTADO */
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
   color: #FF0033;
   text-transform: uppercase;
@@ -51,18 +50,17 @@ body {
   color: #cc0029;
 }
 
-/* MENU */
+/* MENU DERECHA */
 .navbar-right {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 0;
   margin: 0;
 }
@@ -73,7 +71,7 @@ body {
   font-size: 1rem;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 4px 6px;
+  padding: 2px 4px;
   transition: color 0.3s ease;
   white-space: nowrap;
   position: relative;
@@ -98,23 +96,24 @@ body {
   width: 100%;
 }
 
-/* RESPONSIVE - MANTENER UNA SOLA FILA SIEMPRE */
+/* MOBILE - AJUSTADO */
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
   }
 
   .navbar {
-    padding: 0.4rem 0.75rem;
+    padding: 0.25rem 0.75rem;
+    flex-direction: row;
     justify-content: space-between;
   }
 
   .logo {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .nav-menu {
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .nav-item a {
