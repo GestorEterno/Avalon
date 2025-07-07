@@ -12,8 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const observer = new IntersectionObserver(showSection, {
-    threshold: 0.1
+    threshold: 0.15
   });
 
   sections.forEach(section => observer.observe(section));
+
+  // Fade-in inicial para hero si está en viewport
+  const hero = document.querySelector('.hero');
+  if (hero) hero.classList.add('visible');
 });
