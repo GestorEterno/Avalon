@@ -1,13 +1,18 @@
 /* -----------------------------
    INDEX CSS - Avalon Creators
-   Estilo: Prolijo, refinado, menos intenso
+   Estilo refinado y profesional
 ------------------------------ */
 
-* {
-  box-sizing: border-box;
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* Base tipografía y smoothing */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, sans-serif;
@@ -36,7 +41,7 @@ html, body {
   text-align: center;
 }
 
-/* Tipografía */
+/* Tipografía títulos */
 h1, h2, h3 {
   color: #FF0033;
   text-transform: uppercase;
@@ -104,6 +109,14 @@ p {
   background-color: #131313;
 }
 
+.servicios h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #FF0033;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
 .service-list {
   list-style: none;
   display: grid;
@@ -118,22 +131,26 @@ p {
   padding: 20px;
   border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
 }
 
 .service-list li:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(255, 0, 51, 0.1);
+  box-shadow: 0 4px 16px rgba(255, 0, 51, 0.15);
 }
 
 .service-list h3 {
   color: #FF0033;
   font-size: 1.2rem;
   margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .service-list p {
   font-size: 0.95rem;
   color: #cccccc;
+  line-height: 1.5;
 }
 
 /* CTA debajo del grid */
