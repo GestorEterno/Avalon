@@ -1,11 +1,13 @@
 /* -----------------------------
    NAVBAR.CSS - Avalon Creators
-   Diseño alineado al 100% y compacto
+   Estilo compacto, alineado y 100% funcional
 ------------------------------ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -14,34 +16,26 @@
 body {
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
-  padding-top: 64px; /* Ajustado a navbar fijo */
-  background-color: #fff;
 }
 
-/* NAVBAR FULL WIDTH Y BAJO */
+/* NAVBAR CONTAINER */
 .navbar {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
 
-/* FORZAR ALINEACIÓN INTERNA */
-.navbar-left,
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-/* LOGO AJUSTADO Y ALINEADO */
+/* LOGO */
 .logo {
   font-size: 2rem;
   font-weight: 900;
@@ -49,51 +43,63 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: color 0.3s ease;
-  line-height: 1; /* Evita crecer en altura */
+  line-height: 1;
   display: flex;
-  align-items: center; /* Centrado vertical interno */
+  align-items: center;
 }
 
 .logo:hover {
   color: #cc0029;
 }
 
-/* MENU DERECHA */
+/* NAVBAR RIGHT */
+.navbar-right {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* MENU */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 1rem;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
   align-items: center;
 }
 
-/* LINKS DEL MENÚ */
+/* NAV ITEMS */
 .nav-item a {
+  display: flex;
+  align-items: center;
   color: #222222;
   text-decoration: none;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
-  padding: 2px 4px;
+  padding: 6px 8px;
   transition: color 0.3s ease;
   white-space: nowrap;
-  position: relative;
   line-height: 1;
-  display: flex;
-  align-items: center;
+  position: relative;
 }
 
 .nav-item a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
+  content: "";
+  display: block;
   height: 2px;
+  width: 0;
   background-color: #FF0033;
   transition: width 0.3s ease;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
 }
 
 .nav-item a:hover {
@@ -106,33 +112,30 @@ body {
 
 /* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
-  body {
-    padding-top: 64px;
-  }
-
   .navbar {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
   }
 
-  .navbar-left,
   .navbar-right {
-    flex-basis: 100%;
-    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .nav-item a {
+    font-size: 1rem;
   }
 
   .logo {
     font-size: 1.8rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .nav-menu {
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-item a {
-    font-size: 0.95rem;
   }
 }
