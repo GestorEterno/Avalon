@@ -10,6 +10,7 @@ body {
   background-color: #121212;
   color: #f1f1f1;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 /* Secciones generales */
@@ -28,7 +29,7 @@ body {
 }
 
 /* Títulos */
-h1, h2, h3 {
+h1, h2 {
   color: #00f0ff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -95,47 +96,6 @@ p {
   background-color: #1a1a1a;
 }
 
-/* Servicios */
-.servicios {
-  background-color: #121212;
-}
-
-.service-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 2rem;
-}
-
-.service-list li {
-  background-color: #1e1e1e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.service-list li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
-}
-
-.service-list h3 {
-  margin-top: 0;
-  font-size: 1.6rem;
-  color: #00f0ff;
-}
-
-.service-list p {
-  color: #cccccc;
-}
-
-/* Contacto */
-.contacto {
-  background-color: #1a1a1a;
-}
-
 /* Footer */
 .footer {
   background-color: #0a0a0a;
@@ -157,9 +117,5 @@ p {
 
   .section {
     padding: 80px 15px;
-  }
-
-  .service-list {
-    grid-template-columns: 1fr;
   }
 }
