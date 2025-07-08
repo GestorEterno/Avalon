@@ -134,7 +134,7 @@ p {
 =========================== */
 .servicios-detalle {
   background-color: var(--color-bg);
-  border-top: 4px solid var(--color-brand);
+  /* Línea roja superior removida */
 }
 
 .servicios-lista {
@@ -146,12 +146,11 @@ p {
 
 .servicio-item {
   margin-bottom: 60px;
-  border-bottom: 1px solid rgba(255,0,51,0.15);
   padding-bottom: 40px;
+  /* Línea divisoria inferior removida */
 }
 
 .servicio-item:last-child {
-  border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -171,7 +170,7 @@ p {
 }
 
 /* ===========================
-   FOOTER (igual al index)
+   FOOTER (idéntico al index)
 =========================== */
 .footer {
   position: relative;
