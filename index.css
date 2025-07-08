@@ -329,9 +329,26 @@ p {
 /* ===========================
    CTA FINAL
 =========================== */
+.cta-final {
+  position: relative; /* Necesario para que ::before funcione */
+  background-color: var(--color-bg);
+  border-top: 4px solid var(--color-brand);
+}
+
+.cta-final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255,0,51,0.08), rgba(255,0,51,0));
+  pointer-events: none;
+  z-index: 0;
+}
+
 .cta-final p {
   font-size: 1.2rem;
   color: var(--color-muted);
+  position: relative; /* Asegura que el texto esté por encima del ::before */
+  z-index: 1;
 }
 
 /* ===========================
