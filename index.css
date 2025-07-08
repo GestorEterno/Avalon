@@ -1,4 +1,18 @@
 /* ===========================
+   VARIABLES (asegúrate de tenerlas)
+=========================== */
+/*
+:root {
+  --color-bg: #ffffff;
+  --color-bg-light: #f9f9f9;
+  --color-text: #222222;
+  --color-muted: #555555;
+  --color-brand: #FF0033;
+  --color-border: #e0e0e0;
+}
+*/
+
+/* ===========================
    RESET & BASE
 =========================== */
 *,
@@ -27,8 +41,16 @@ body {
 =========================== */
 .section {
   padding: 80px 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
   background-color: var(--color-bg);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .content {
@@ -63,13 +85,14 @@ p {
   position: relative;
   padding-top: 64px;
   padding-bottom: 60px;
+  background-color: var(--color-bg);
 }
 
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255,0,51,0.04), rgba(255,0,51,0));
+  background: linear-gradient(to bottom, rgba(255,0,51,0.05), rgba(255,0,51,0));
   pointer-events: none;
 }
 
@@ -113,8 +136,10 @@ p {
 =========================== */
 .problema-creador,
 .nuestra-solucion,
-.beneficios {
-  background-color: var(--color-bg);
+.beneficios,
+.como-trabajamos {
+  background-color: rgba(255, 0, 51, 0.01); /* Tinte MUY leve para separar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
 }
 
 .problema-creador .content p,
@@ -169,7 +194,7 @@ p {
 
 .service-list li {
   background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 0, 51, 0.08);
   padding: 16px 18px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
@@ -204,10 +229,6 @@ p {
 /* ===========================
    COMO TRABAJAMOS
 =========================== */
-.como-trabajamos {
-  background-color: var(--color-bg);
-}
-
 .como-trabajamos .content {
   max-width: 800px;
   margin: 0 auto;
@@ -276,7 +297,7 @@ p {
   padding: 20px;
   font-size: 0.9rem;
   color: var(--color-muted);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255, 0, 51, 0.08);
 }
 
 /* ===========================
