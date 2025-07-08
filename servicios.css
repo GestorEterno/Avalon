@@ -1,5 +1,5 @@
 /* ===========================
-   BASE & RESET
+   RESET Y BASE
 =========================== */
 *,
 *::before,
@@ -152,7 +152,7 @@ p {
 }
 
 /* ===========================
-   CTA BUTTON (OPTIONAL)
+   CTA BUTTON (OPCIONAL)
 =========================== */
 .cta-button {
   display: inline-block;
