@@ -158,6 +158,13 @@ p {
   background-color: var(--color-bg-light);
 }
 
+.problema-creador .content p {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
+}
+
 .benefit-list {
   list-style: none;
   max-width: 800px;
@@ -170,13 +177,6 @@ p {
   margin-bottom: 15px;
   font-size: 1.05rem;
   color: var(--color-text);
-}
-
-.problema-creador .content p {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.6;
 }
 
 /* ===========================
