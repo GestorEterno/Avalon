@@ -1,16 +1,16 @@
 // servicios.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Selecciona todos los bloques de servicio
+  // Seleccionar todos los bloques de servicio
   const bloques = document.querySelectorAll('.servicio-bloque');
 
-  // Configura el IntersectionObserver
+  // Configurar el IntersectionObserver
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Añade la clase 'visible' para activar la animación
+        // Agregar la clase 'visible' para activar la animación
         entry.target.classList.add('visible');
-        // Deja de observar este elemento (animación solo 1 vez)
+        // Dejar de observar este elemento (animación solo 1 vez)
         observer.unobserve(entry.target);
       }
     });
@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     threshold: 0.1 // Dispara cuando al menos el 10% es visible
   });
 
-  // Observa cada bloque
+  // Observar cada bloque
   bloques.forEach(bloque => observer.observe(bloque));
 });
