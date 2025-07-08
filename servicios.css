@@ -17,38 +17,49 @@ body {
 }
 
 /* ===========================
+   SECTION + CONTENT (Consistente con index.css)
+=========================== */
+.section {
+  padding: 80px 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* ===========================
    HEADINGS & TEXT
 =========================== */
 h1, h2, h3 {
-  color: var(--color-brand, #ff0033);
   font-weight: 800;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   margin-bottom: 20px;
+  text-transform: uppercase;
+  color: var(--color-brand, #ff0033);
 }
 
 p {
-  color: var(--color-muted, #555);
-  font-size: 1.05rem;
+  line-height: 1.65;
   margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: var(--color-muted, #555);
 }
 
 /* ===========================
-   PAGE CONTAINER
-=========================== */
-.servicios-pagina {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* ===========================
-   HEADER
+   ENCABEZADO Y INTRO
 =========================== */
 .servicios-header {
-  text-align: center;
   margin-bottom: 60px;
 }
 
@@ -61,16 +72,11 @@ p {
   max-width: 800px;
   margin: 0 auto;
   font-size: 1.2rem;
-  color: var(--color-muted, #555);
 }
 
-/* ===========================
-   INTRO
-=========================== */
 .servicios-intro {
   max-width: 900px;
   margin: 0 auto 50px;
-  text-align: center;
 }
 
 .servicios-intro p {
@@ -91,26 +97,28 @@ p {
 .servicio-bloque {
   position: relative;
   background-color: var(--color-card, #fff);
-  border: 2px solid rgba(255,0,51,0.15);
+  border: 1.5px solid rgba(255,0,51,0.15);
   border-radius: 16px;
   padding: 32px 24px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  background-image: radial-gradient(circle at top, rgba(255,0,51,0.02), transparent 80%);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.8s ease;
   opacity: 0;
   transform: translateY(30px);
+  text-align: left;
 }
 
 .servicio-bloque h2 {
   font-size: 1.8rem;
   margin-bottom: 16px;
-  color: var(--color-brand, #ff0033);
 }
 
 .servicio-bloque p {
   font-size: 1.05rem;
   color: var(--color-muted, #555);
   margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .servicio-bloque:hover {
@@ -128,7 +136,7 @@ p {
 }
 
 /* ===========================
-   LIGHT EFFECTS
+   LIGHT EFFECTS (Consistentes con index)
 =========================== */
 .servicio-luz-superior,
 .servicio-luz-inferior {
@@ -152,7 +160,7 @@ p {
 }
 
 /* ===========================
-   CTA BUTTON (OPCIONAL)
+   CTA BUTTON
 =========================== */
 .cta-button {
   display: inline-block;
@@ -167,6 +175,7 @@ p {
   font-weight: 700;
   transition: background-color 0.3s, box-shadow 0.3s;
   text-align: center;
+  cursor: pointer;
 }
 
 .cta-button:hover {
