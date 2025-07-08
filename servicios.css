@@ -134,7 +134,7 @@ p {
 =========================== */
 .servicios-detalle {
   background-color: var(--color-bg);
-  /* border-top eliminado */
+  /* border-top: eliminado completamente */
 }
 
 .servicios-lista {
@@ -170,7 +170,7 @@ p {
 }
 
 /* ===========================
-   FOOTER (final sin línea roja gruesa)
+   FOOTER (sin línea roja gruesa)
 =========================== */
 .footer {
   position: relative;
@@ -180,6 +180,7 @@ p {
   font-size: 0.9rem;
   color: var(--color-muted);
   overflow: hidden;
+  /* border-top eliminado completamente */
 }
 
 .footer::before {
