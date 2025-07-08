@@ -18,7 +18,6 @@ body {
 
 /* ===========================
    SECTION + CONTENT
-   (Consistente con index.css)
 =========================== */
 .section {
   padding: 80px 1.5rem;
@@ -36,7 +35,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  text-align: center;
 }
 
 /* ===========================
@@ -62,6 +60,7 @@ p {
 =========================== */
 .servicios-header {
   margin-bottom: 60px;
+  text-align: center;
 }
 
 .servicios-header h1 {
@@ -79,6 +78,7 @@ p {
 .servicios-intro {
   max-width: 900px;
   margin: 0 auto 50px;
+  text-align: center;
 }
 
 .servicios-intro p {
@@ -109,6 +109,8 @@ p {
   opacity: 0;
   transform: translateY(30px);
   text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .servicio-bloque h2 {
@@ -194,6 +196,7 @@ p {
 
   .servicio-bloque {
     padding: 24px 16px;
+    max-width: 100%;
   }
 
   .servicio-bloque h2 {
