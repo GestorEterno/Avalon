@@ -215,15 +215,12 @@ p {
 .service-list li {
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
-  padding: 16px 18px;
+  padding: 14px 16px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 220px;
+  display: block; /* ya no usa flex que forzaba estiramiento */
 }
 
 .service-list li:hover {
