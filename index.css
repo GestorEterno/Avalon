@@ -134,7 +134,7 @@ p {
 }
 
 /* ===========================
-   DIVISIONES ROJAS FACHERAS
+   DIVISIONES ROJAS
 =========================== */
 .nuestra-solucion,
 .beneficios,
@@ -143,6 +143,28 @@ p {
 .cta-final {
   background-color: var(--color-bg);
   border-top: 2px solid var(--color-brand);
+}
+
+/* LÍNEA ROJA DEBAJO DE TITULOS CLAVE */
+.nuestra-solucion h2,
+.beneficios h2,
+.servicios h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.nuestra-solucion h2::after,
+.beneficios h2::after,
+.servicios h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  background-color: var(--color-brand);
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 /* ===========================
@@ -196,7 +218,7 @@ p {
 }
 
 .service-list li {
-  background-color: var(--color-bg);
+  background-color: var(--color-card);
   border: 1px solid rgba(255, 0, 51, 0.08);
   padding: 16px 18px;
   border-radius: 12px;
