@@ -343,31 +343,25 @@ p {
    FOOTER
 =========================== */
 .footer {
-  position: relative; /* necesario para que ::before se posicione sobre el footer */
+  position: relative; /* Necesario para que el ::before funcione */
   background-color: var(--color-bg-light);
   text-align: center;
   padding: 20px;
-  font-size: 0.9rem;
-  color: var(--color-muted);
+@@ -363,6 +352,20 @@ p {
   border-top: 4px solid var(--color-brand);
-  overflow: visible; /* permite que el gradiente se dibuje hacia arriba */
 }
 
 .footer::before {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 500px; /* altura grande para que el efecto suba mucho */
-  background: linear-gradient(to top, rgba(255,0,51,0.15), rgba(255,0,51,0));
+  inset: 0;
+  background: linear-gradient(to top, rgba(255,0,51,0.08), rgba(255,0,51,0));
   pointer-events: none;
   z-index: 0;
-  transform: translateY(-400px); /* desplaza el gradiente hacia arriba SIN empujar el layout */
 }
 
 .footer p {
-  position: relative; /* asegura que el texto esté sobre la luz */
+  position: relative; /* Asegura que el texto esté sobre la luz */
   z-index: 1;
 }
 
