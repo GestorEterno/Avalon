@@ -199,50 +199,55 @@ p {
 =========================== */
 .servicios {
   background-color: var(--color-bg);
-  padding: 80px 1.5rem;
+  padding: 60px 1.5rem;
 }
 
 .service-list {
   list-style: none;
   padding: 0;
-  margin: 50px auto;
+  margin: 40px auto;
   max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .service-list li {
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
-  padding: 24px 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  padding: 16px 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 220px;
 }
 
 .service-list li:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 .service-list h3 {
   margin-top: 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--color-brand);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 
 .service-list p {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--color-muted);
-  line-height: 1.6;
+  line-height: 1.5;
+  flex-grow: 1;
 }
 
 .service-cta {
-  margin-top: 50px;
+  margin-top: 40px;
   text-align: center;
 }
 
