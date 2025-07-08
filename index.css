@@ -27,8 +27,6 @@ body {
 =========================== */
 .section {
   padding: 80px 1.5rem;
-  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
-  background-color: var(--color-bg);
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -65,14 +63,13 @@ p {
 }
 
 /* ===========================
-   HERO
+   HERO + PROBLEMA → FONDO NEGRO
 =========================== */
-.hero {
-  position: relative;
-  padding-top: 64px;
-  padding-bottom: 60px;
-  background-color: var(--color-bg);
-  overflow: hidden;
+.hero,
+.problema-creador {
+  background-color: #111;
+  color: #f0f0f0;
+  border-bottom: none;
 }
 
 .hero::before {
@@ -87,24 +84,30 @@ p {
   font-size: 3rem;
   margin-bottom: 15px;
   color: var(--color-brand);
-  text-shadow: 0 0 5px rgba(255, 0, 51, 0.5), 0 0 10px rgba(255, 0, 51, 0.3);
-  animation: neon-flicker 1.5s infinite alternate;
-}
-
-@keyframes neon-flicker {
-  from {
-    text-shadow: 0 0 5px rgba(255, 0, 51, 0.5), 0 0 10px rgba(255, 0, 51, 0.3);
-  }
-  to {
-    text-shadow: 0 0 10px rgba(255, 0, 51, 0.8), 0 0 20px rgba(255, 0, 51, 0.5);
-  }
+  text-shadow: none;
 }
 
 .hero p {
   font-size: 1.25rem;
   max-width: 700px;
   margin: 0 auto;
-  color: var(--color-text);
+  color: #e0e0e0;
+}
+
+.problema-creador h2 {
+  color: var(--color-brand);
+}
+
+.problema-creador p,
+.problema-creador strong {
+  color: #e0e0e0;
+}
+
+.problema-creador .content p {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* ===========================
@@ -131,47 +134,26 @@ p {
 }
 
 /* ===========================
-   PROBLEMA DE SER CREADOR HOY
-=========================== */
-.problema-creador {
-  background-color: #111;
-  color: #f0f0f0;
-}
-
-.problema-creador h2 {
-  color: var(--color-brand);
-}
-
-.problema-creador p,
-.problema-creador strong {
-  color: #e0e0e0;
-}
-
-.problema-creador .content p {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.6;
-}
-
-/* ===========================
-   SOLUCIÓN Y BENEFICIOS
+   SOLUCIÓN, BENEFICIOS, COMO TRABAJAMOS
 =========================== */
 .nuestra-solucion,
 .beneficios,
 .como-trabajamos {
-  background-color: rgba(255, 0, 51, 0.015);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  background-color: var(--color-bg);
+  border-top: 1px solid rgba(255, 0, 51, 0.08);
+  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
 }
 
 .nuestra-solucion .content p,
-.beneficios .content p {
+.beneficios .content p,
+.como-trabajamos .content p {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
   line-height: 1.6;
 }
 
+/* BENEFIT LIST */
 .benefit-list {
   list-style: none;
   max-width: 800px;
@@ -201,6 +183,8 @@ p {
 =========================== */
 .servicios {
   background-color: var(--color-bg);
+  border-top: 1px solid rgba(255, 0, 51, 0.08);
+  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
 }
 
 .service-list {
@@ -302,6 +286,7 @@ p {
 =========================== */
 .cta-final {
   background-color: var(--color-bg);
+  border-top: 1px solid rgba(255, 0, 51, 0.08);
 }
 
 .cta-final p {
