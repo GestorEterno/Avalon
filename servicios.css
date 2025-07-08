@@ -1,12 +1,13 @@
 /* ===========================
-   BASE Y VARIABLES
+   VARIABLES
 =========================== */
 :root {
   --color-brand: #ff0033;
   --color-bg: #ffffff;
   --color-text: #222222;
   --color-muted: #555555;
-  --color-card: #ffffff;
+  --color-title: var(--color-brand);
+  --color-footer-bg: #f9f9f9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,7 +15,8 @@
     --color-bg: #121212;
     --color-text: #ffffff;
     --color-muted: #cccccc;
-    --color-card: #1e1e1e;
+    --color-title: #ffffff;
+    --color-footer-bg: #1a1a1a;
   }
 }
 
@@ -59,7 +61,25 @@ body {
 }
 
 /* ===========================
-   HERO (igual al index)
+   HEADINGS & TEXT
+=========================== */
+h1, h2, h3 {
+  color: var(--color-title);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   HERO (idéntico al index)
 =========================== */
 .hero {
   position: relative;
@@ -80,9 +100,6 @@ body {
   position: relative;
   font-size: 2.6rem;
   margin-bottom: 16px;
-  color: var(--color-brand);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   z-index: 1;
 }
 
@@ -91,8 +108,8 @@ body {
   max-width: 800px;
   margin: 0 auto;
   font-size: 1.2rem;
-  color: var(--color-muted);
   line-height: 1.65;
+  color: var(--color-muted);
   z-index: 1;
 }
 
@@ -142,16 +159,15 @@ body {
 .servicio-item h2 {
   font-size: 1.8rem;
   margin-bottom: 16px;
-  color: var(--color-brand);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .servicio-item p {
   font-size: 1.05rem;
-  color: var(--color-text);
   line-height: 1.7;
   margin-bottom: 16px;
+  color: var(--color-text);
 }
 
 /* ===========================
@@ -159,7 +175,7 @@ body {
 =========================== */
 .footer {
   position: relative;
-  background-color: var(--color-bg-light, #f9f9f9);
+  background-color: var(--color-footer-bg);
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
