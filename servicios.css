@@ -17,7 +17,8 @@ body {
 }
 
 /* ===========================
-   SECTION + CONTENT (Consistente con index.css)
+   SECTION + CONTENT
+   (Consistente con index.css)
 =========================== */
 .section {
   padding: 80px 1.5rem;
@@ -57,7 +58,7 @@ p {
 }
 
 /* ===========================
-   ENCABEZADO Y INTRO
+   HEADER & INTRO
 =========================== */
 .servicios-header {
   margin-bottom: 60px;
@@ -72,6 +73,7 @@ p {
   max-width: 800px;
   margin: 0 auto;
   font-size: 1.2rem;
+  color: var(--color-muted, #555);
 }
 
 .servicios-intro {
@@ -97,7 +99,7 @@ p {
 .servicio-bloque {
   position: relative;
   background-color: var(--color-card, #fff);
-  border: 1.5px solid rgba(255,0,51,0.15);
+  border: 2px solid rgba(255, 0, 51, 0.12);
   border-radius: 16px;
   padding: 32px 24px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
@@ -136,11 +138,10 @@ p {
 }
 
 /* ===========================
-   LIGHT EFFECTS (Consistentes con index)
+   LIGHT EFFECTS
 =========================== */
 .servicio-luz-superior,
 .servicio-luz-inferior {
-  content: '';
   position: absolute;
   left: 0;
   right: 0;
