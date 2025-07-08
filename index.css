@@ -23,7 +23,7 @@ body {
 }
 
 /* ===========================
-   SECTION BASE
+   SECTION BASE + ANIMATION
 =========================== */
 .section {
   padding: 80px 1.5rem;
@@ -63,13 +63,14 @@ p {
 }
 
 /* ===========================
-   HERO + PROBLEMA → FONDO NEGRO
+   HERO & PROBLEMA
 =========================== */
 .hero,
 .problema-creador {
-  background-color: #111;
-  color: #f0f0f0;
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
   border-bottom: none;
+  position: relative;
 }
 
 .hero::before {
@@ -84,14 +85,13 @@ p {
   font-size: 3rem;
   margin-bottom: 15px;
   color: var(--color-brand);
-  text-shadow: none;
 }
 
 .hero p {
   font-size: 1.25rem;
   max-width: 700px;
   margin: 0 auto;
-  color: #e0e0e0;
+  color: var(--color-hero-text);
 }
 
 .problema-creador h2 {
@@ -100,7 +100,7 @@ p {
 
 .problema-creador p,
 .problema-creador strong {
-  color: #e0e0e0;
+  color: var(--color-hero-text);
 }
 
 .problema-creador .content p {
@@ -134,16 +134,20 @@ p {
 }
 
 /* ===========================
-   SOLUCIÓN, BENEFICIOS, COMO TRABAJAMOS
+   DIVISIONES ROJAS FACHERAS
 =========================== */
 .nuestra-solucion,
 .beneficios,
-.como-trabajamos {
+.servicios,
+.como-trabajamos,
+.cta-final {
   background-color: var(--color-bg);
-  border-top: 1px solid rgba(255, 0, 51, 0.08);
-  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
+  border-top: 2px solid var(--color-brand);
 }
 
+/* ===========================
+   SOLUCIÓN, BENEFICIOS
+=========================== */
 .nuestra-solucion .content p,
 .beneficios .content p,
 .como-trabajamos .content p {
@@ -181,12 +185,6 @@ p {
 /* ===========================
    SERVICIOS
 =========================== */
-.servicios {
-  background-color: var(--color-bg);
-  border-top: 1px solid rgba(255, 0, 51, 0.08);
-  border-bottom: 1px solid rgba(255, 0, 51, 0.08);
-}
-
 .service-list {
   list-style: none;
   padding: 0;
@@ -284,11 +282,6 @@ p {
 /* ===========================
    CTA FINAL
 =========================== */
-.cta-final {
-  background-color: var(--color-bg);
-  border-top: 1px solid rgba(255, 0, 51, 0.08);
-}
-
 .cta-final p {
   font-size: 1.2rem;
   color: var(--color-muted);
@@ -303,7 +296,7 @@ p {
   padding: 20px;
   font-size: 0.9rem;
   color: var(--color-muted);
-  border-top: 1px solid rgba(255, 0, 51, 0.08);
+  border-top: 2px solid var(--color-brand);
 }
 
 /* ===========================
