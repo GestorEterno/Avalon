@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.1 // Dispara cuando al menos el 10% es visible
+    threshold: 0.15 // Igual al index para consistencia
   });
 
   // Observar cada bloque
