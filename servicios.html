@@ -9,9 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
 
   <!-- Estilos -->
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="index.css" />
   <link rel="stylesheet" href="servicios.css" />
 </head>
 <body>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
 
   <!-- Luz superior -->
   <div class="servicio-luz-superior"></div>
@@ -115,7 +120,12 @@
   <!-- Luz inferior -->
   <div class="servicio-luz-inferior"></div>
 
+  <!-- Overlay para transición de tema -->
+  <div id="theme-transition"></div>
+
   <!-- Scripts -->
+  <script src="navbar.js"></script>
+  <script src="index.js"></script>
   <script src="servicios.js"></script>
 </body>
 </html>
