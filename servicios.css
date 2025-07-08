@@ -180,6 +180,7 @@ p {
   font-size: 0.9rem;
   color: var(--color-muted);
   overflow: hidden;
+  border-top: none !important; /* Elimina la línea roja gruesa heredada de index.css */
 }
 
 .footer::before {
