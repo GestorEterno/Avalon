@@ -1,15 +1,24 @@
 /* ===========================
-   BASE
+   BASE & RESET
 =========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: var(--color-bg, #ffffff);
   color: var(--color-text, #222);
   line-height: 1.65;
-  margin: 0;
-  padding: 0;
 }
 
+/* ===========================
+   HEADINGS & TEXT
+=========================== */
 h1, h2, h3 {
   color: var(--color-brand, #ff0033);
   font-weight: 800;
@@ -32,6 +41,7 @@ p {
   margin: 0 auto;
   padding: 60px 20px;
   position: relative;
+  overflow: hidden;
 }
 
 /* ===========================
@@ -51,6 +61,7 @@ p {
   max-width: 800px;
   margin: 0 auto;
   font-size: 1.2rem;
+  color: var(--color-muted, #555);
 }
 
 /* ===========================
@@ -74,7 +85,7 @@ p {
 .servicios-detalle {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 50px;
 }
 
 .servicio-bloque {
@@ -85,13 +96,9 @@ p {
   padding: 32px 24px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.servicio-bloque:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  border-color: rgba(255, 0, 51, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.8s ease;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .servicio-bloque h2 {
@@ -106,8 +113,22 @@ p {
   margin-bottom: 16px;
 }
 
+.servicio-bloque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: rgba(255, 0, 51, 0.3);
+}
+
 /* ===========================
-   LIGHT EFFECTS (HERO/FOOTER STYLE)
+   ANIMACION AL SCROLL
+=========================== */
+.servicio-bloque.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   LIGHT EFFECTS
 =========================== */
 .servicio-luz-superior,
 .servicio-luz-inferior {
@@ -160,15 +181,19 @@ p {
   .servicios-header h1 {
     font-size: 2.2rem;
   }
+
   .servicio-bloque {
     padding: 24px 16px;
   }
+
   .servicio-bloque h2 {
     font-size: 1.6rem;
   }
+
   .servicios-intro p {
     font-size: 1rem;
   }
+
   p {
     font-size: 1rem;
   }
