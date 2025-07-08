@@ -244,31 +244,33 @@ p {
 
 .service-list li {
   background-color: var(--color-card);
-  border: 1px solid rgba(255, 0, 51, 0.08);
-  padding: 16px 18px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1.5px solid rgba(255, 0, 51, 0.15); /* borde más definido */
+  padding: 20px 22px;
+  border-radius: 16px; /* esquinas más suaves */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06); /* sombra más amplia */
+  background-image: radial-gradient(circle at top, rgba(255,0,51,0.02), transparent 80%); /* sutil luz interior */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   text-align: left;
 }
 
 .service-list li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12); /* sombra más elevada */
+  border-color: rgba(255, 0, 51, 0.3); /* borde más vivo en hover */
 }
 
 .service-list h3 {
   margin-top: 0;
   font-size: 1.3rem;
   color: var(--color-brand);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   line-height: 1.2;
 }
 
 .service-list p {
   font-size: 1rem;
   color: var(--color-muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .service-cta {
