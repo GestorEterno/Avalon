@@ -158,7 +158,9 @@ p {
   background-color: var(--color-bg-light);
 }
 
-.problema-creador .content p {
+/* Control de ancho y centrado del texto */
+.problema-creador .content p,
+.nuestra-solucion .content p {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
