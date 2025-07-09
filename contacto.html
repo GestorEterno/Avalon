@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto - Avalon Creators</title>
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="navbar.css" />
-  <link rel="stylesheet" href="servicios.css" />
-</head>
-<body>
-  <!-- NAVBAR DINÁMICO - -->
-  <div id="navbar"></div>
+<!-- OVERLAY FLASH PARA CAMBIO DE TEMA -->
+<div id="theme-transition"></div>
 
-  <!-- OVERLAY FLASH PARA CAMBIO DE TEMA -->
-  <div id="theme-transition"></div>
-
-  <!-- SECCIÓN CONTACTO -->
+<!-- CONTENIDO PRINCIPAL -->
+<main>
   <section class="section contacto">
     <div class="content">
       <h1>¡Formá parte de Avalon Creators!</h1>
@@ -44,22 +31,4 @@
       <div id="formStatus"></div>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2025 Avalon Creators. Todos los derechos reservados.</p>
-  </footer>
-
-  <!-- EMAILJS -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("YOUR_PUBLIC_KEY");
-    })();
-  </script>
-
-  <!-- NAVBAR Y CONTACTO -->
-  <script src="navbar.js"></script>
-  <script src="contacto.js"></script>
-</body>
-</html>
+</main>
