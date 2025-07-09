@@ -1,8 +1,3 @@
-// -----------------------------
-// NAVBAR JS - AVALON CREATORS
-// -----------------------------
-
-// Scroll suave para todos los enlaces de navegación internos
 document.querySelectorAll('.nav-item a').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
@@ -10,7 +5,7 @@ document.querySelectorAll('.nav-item a').forEach(link => {
     const targetSection = document.querySelector(targetId);
     if (targetSection) {
       window.scrollTo({
-        top: targetSection.offsetTop - 60, // Compensar altura del navbar fijo
+        top: targetSection.offsetTop - 60,
         behavior: 'smooth'
       });
     }
