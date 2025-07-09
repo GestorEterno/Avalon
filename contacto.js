@@ -9,6 +9,23 @@ if (temaGuardado === 'oscuro') {
 }
 
 // ==============================
+// Animación al hacer scroll - Intersection Observer
+// ==============================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+document.querySelectorAll('.section').forEach(section => {
+  observer.observe(section);
+});
+
+// ==============================
 // Manejo del formulario con EmailJS
 // ==============================
 document.addEventListener('DOMContentLoaded', () => {
