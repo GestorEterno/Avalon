@@ -1,14 +1,4 @@
 // ==============================
-// Aplicar tema guardado al cargar
-// ==============================
-const temaGuardado = localStorage.getItem('tema');
-if (temaGuardado === 'oscuro') {
-  document.body.classList.add('dark-mode');
-} else {
-  document.body.classList.remove('dark-mode');
-}
-
-// ==============================
 // Animación al hacer scroll
 // ==============================
 const observer = new IntersectionObserver((entries) => {
@@ -49,12 +39,5 @@ document.addEventListener('click', (e) => {
     setTimeout(() => {
       overlay.classList.remove('active');
     }, 500);
-  } else {
-    // fallback sin overlay
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem(
-      'tema',
-      document.body.classList.contains('dark-mode') ? 'oscuro' : 'claro'
-    );
   }
 });
