@@ -7,7 +7,6 @@
   --color-text: #222222;
   --color-muted: #555555;
   --color-title: var(--color-brand);
-  --color-footer-bg: #f9f9f9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,7 +15,6 @@
     --color-text: #ffffff;
     --color-muted: #cccccc;
     --color-title: #ffffff;
-    --color-footer-bg: #1a1a1a;
   }
 }
 
@@ -170,17 +168,17 @@ p {
 }
 
 /* ===========================
-   FOOTER (sin línea roja)
+   FOOTER
 =========================== */
 .footer {
   position: relative;
-  background-color: var(--color-footer-bg);
+  background-color: var(--color-bg);
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
   color: var(--color-muted);
   overflow: hidden;
-  border-top: none !important; /* Elimina la línea roja gruesa heredada de index.css */
+  border-top: none !important; /* Eliminamos la línea roja gruesa heredada del index */
 }
 
 .footer::before {
