@@ -1,0 +1,128 @@
+/* ===========================
+   VARIABLES GLOBALES
+=========================== */
+:root {
+  --color-brand: #ff0033;
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-muted: #555555;
+  --color-title: var(--color-brand);
+}
+
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #ffffff;
+  --color-muted: #cccccc;
+  --color-title: #ffffff;
+}
+
+/* ===========================
+   SECCIÓN CONTACTO
+=========================== */
+
+.contacto {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 80px 1.5rem;
+  text-align: center;
+}
+
+.contacto h1 {
+  font-size: 2.5rem;
+  color: var(--color-title);
+  margin-bottom: 1rem;
+}
+
+.contacto p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===========================
+   FORMULARIO CONTACTO
+=========================== */
+
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--color-bg);
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-muted);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 2px rgba(255, 0, 51, 0.2);
+  outline: none;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ===========================
+   BOTÓN
+=========================== */
+
+.contact-form button {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-brand);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.contact-form button:hover {
+  background-color: #cc0029;
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   MENSAJE DE ESTADO
+=========================== */
+
+#formStatus {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 600px) {
+  .contacto h1 {
+    font-size: 2rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem 1rem;
+  }
+}

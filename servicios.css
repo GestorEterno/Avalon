@@ -1,0 +1,251 @@
+/* ===========================
+   VARIABLES
+=========================== */
+:root {
+  --color-brand: #ff0033;
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-muted: #555555;
+  --color-title: var(--color-brand);
+}
+
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #ffffff;
+  --color-muted: #cccccc;
+  --color-title: #ffffff;
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+/* ===========================
+   SECTION BASE
+=========================== */
+.section {
+  position: relative;
+  padding: 80px 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===========================
+   HEADINGS & TEXT
+=========================== */
+h1, h2, h3 {
+  color: var(--color-title);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  position: relative;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,0,51,0.08), rgba(255,0,51,0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1 {
+  position: relative;
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.hero p {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+  z-index: 1;
+}
+
+/* ===========================
+   INTRO
+=========================== */
+.servicios-intro {
+  background-color: var(--color-bg);
+  text-align: center;
+}
+
+.servicios-intro p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+/* ===========================
+   DETALLE DE SERVICIOS
+=========================== */
+.servicios-detalle {
+  background-color: var(--color-bg);
+}
+
+.servicios-lista {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 0;
+  text-align: left;
+}
+
+.servicio-item {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,0,51,0.15);
+}
+
+.servicio-item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.servicio-item h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.servicio-item p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+/* ===========================
+   BOTÓN CONTACTO
+=========================== */
+
+.contacto-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  background: transparent;
+  border: none;
+  color: #fff;  /* blanco SIEMPRE */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: var(--color-brand);
+  box-shadow: 0 4px 12px rgba(255,0,51,0.2);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  position: relative;
+  background-color: var(--color-bg);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  overflow: hidden;
+  border-top: none !important; /* Eliminamos la línea roja gruesa heredada del index */
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255,0,51,0.08), rgba(255,0,51,0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer p {
+  position: relative;
+  z-index: 1;
+  color: var(--color-muted);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p,
+  .servicios-intro p {
+    font-size: 1rem;
+  }
+
+  .servicio-item h2 {
+    font-size: 1.5rem;
+  }
+
+  .servicio-item p {
+    font-size: 1rem;
+  }
+}
