@@ -1,5 +1,5 @@
 // ==============================
-// Animación al hacer scroll
+// Animación al hacer scroll -
 // ==============================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
