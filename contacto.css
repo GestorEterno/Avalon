@@ -21,7 +21,7 @@ body.dark-mode {
 =========================== */
 
 .contacto {
-    background-color: var(--color-bg); /* Fondo similar al del hero */
+    background-color: var(--color-hero-bg); /* Fondo igual al del hero */
     color: var(--color-text);
     padding: 80px 1.5rem;
     text-align: center;
@@ -33,9 +33,9 @@ body.dark-mode {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(255, 0, 51, 0.1), rgba(255, 0, 51, 0)); /* Gradiente más suave que el anterior */
+    background: linear-gradient(to bottom, rgba(255, 0, 51, 0.08), rgba(255, 0, 51, 0)); /* Gradiente igual al del hero */
     pointer-events: none;
-    z-index: -1;
+    z-index: -1; /* Asegura que el gradiente quede detrás del contenido */
 }
 
 .contacto h1 {
