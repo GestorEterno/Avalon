@@ -29,23 +29,31 @@
           Queremos ayudarte a crecer con tu contenido.
         </p>
 
+        <!-- FORMULARIO DE CONTACTO -->
         <form id="contactForm" class="contact-form">
+          <!-- Nombre -->
           <input type="text" name="nombre" placeholder="Tu Nombre o Alias" required>
+
+          <!-- Email -->
           <input type="email" name="email" placeholder="Tu Email" required>
 
+          <!-- Tipo de contenido -->
           <select name="tipo" required>
             <option value="">Seleccioná tu tipo de contenido</option>
-            <option value="">Entretenimiento</option>
-            <option value="">Educación</option>
-            <option value="Música">Gaming</option>
-            <option value="Arte">Vlogs</option>
+            <option value="Entretenimiento">Entretenimiento</option>
+            <option value="Educación">Educación</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Arte">Arte</option>
             <option value="Otro">Otro</option>
           </select>
 
+          <!-- Redes sociales -->
           <input type="url" name="redes" placeholder="Link a tus redes / canal">
 
+          <!-- Mensaje -->
           <textarea name="mensaje" placeholder="Contanos sobre tu contenido o propuesta" required></textarea>
 
+          <!-- Botón de envío -->
           <button type="submit">Enviar Solicitud</button>
         </form>
 
