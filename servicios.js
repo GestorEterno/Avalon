@@ -1,8 +1,8 @@
 // ==============================
 // Animación al hacer scroll
 // ==============================
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     }
@@ -19,8 +19,8 @@ document.querySelectorAll('.section').forEach(section => {
 // Carga dinámica del navbar
 // ==============================
 fetch('navbar.html')
-  .then(res => res.text())
+  .then(response => response.text())
   .then(data => {
     document.getElementById('navbar').innerHTML = data;
   })
-  .catch(err => console.error('Error cargando navbar:', err));
+  .catch(error => console.error('Error cargando el navbar:', error));
