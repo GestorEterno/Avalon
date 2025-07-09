@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     status.textContent = "⏳ Enviando solicitud...";
     status.style.color = "var(--color-muted)";
 
-    emailjs.sendForm('service_zitfjwc', 'template_w9rqfe6', this)
+    // Cambiar Service ID y Template ID a los correctos
+    emailjs.sendForm('service_xnz52t8', 'template_o0xed43', this)
       .then(() => {
         status.textContent = "✅ ¡Solicitud enviada con éxito! Te contactaremos pronto.";
         status.style.color = "var(--color-brand)";
