@@ -9,13 +9,11 @@
   --color-title: var(--color-brand);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #121212;
-    --color-text: #ffffff;
-    --color-muted: #cccccc;
-    --color-title: #ffffff;
-  }
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #ffffff;
+  --color-muted: #cccccc;
+  --color-title: #ffffff;
 }
 
 /* ===========================
