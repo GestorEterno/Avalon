@@ -1,0 +1,238 @@
+/* ---------------------------------------
+   INDEX.CSS - Avalon Creators
+   Tema claro/oscuro + Overlay Hero
+--------------------------------------- */
+
+/* Variables de color */
+:root {
+  --color-brand: #FF0033;
+  --color-brand-dark: #cc0029;
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-muted: #666666;
+  --color-overlay: rgba(255, 0, 51, 0.05);
+}
+
+/* DARK MODE */
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #f1f1f1;
+  --color-muted: #cccccc;
+  --color-overlay: rgba(255, 0, 51, 0.15);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 1.5rem;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3 {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
+/* HERO with overlay */
+.hero {
+  position: relative;
+  background-color: var(--color-bg);
+  padding-top: 64px;
+  padding-bottom: 40px;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-overlay);
+  z-index: 0;
+}
+
+.hero .content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* CTA BUTTON */
+.cta-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  background-color: var(--color-brand);
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: var(--color-brand-dark);
+  box-shadow: 0 4px 10px rgba(255, 0, 51, 0.2);
+}
+
+/* MANIFIESTO */
+.manifesto {
+  background-color: var(--color-bg);
+}
+
+/* SERVICIOS */
+.servicios {
+  background-color: var(--color-bg);
+}
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service-list li {
+  background-color: var(--color-bg);
+  border: 1px solid #eaeaea;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.service-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.service-list h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: var(--color-brand);
+}
+
+.service-list p {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* CTA debajo del grid */
+.service-cta {
+  margin-top: 40px;
+}
+
+/* COMO TRABAJAMOS */
+.como-trabajamos {
+  background-color: var(--color-bg);
+}
+
+.como-trabajamos ol {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 20px;
+  color: var(--color-muted);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  text-align: left;
+}
+
+.como-trabajamos li {
+  margin-bottom: 12px;
+}
+
+.como-trabajamos li::marker {
+  color: var(--color-brand);
+  font-weight: bold;
+}
+
+/* CTA FINAL */
+.cta-final {
+  background-color: var(--color-bg);
+}
+
+.cta-final p {
+  font-size: 1.2rem;
+  color: var(--color-muted);
+}
+
+/* FOOTER */
+.footer {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 64px 1rem;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+}
