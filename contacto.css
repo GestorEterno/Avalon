@@ -19,21 +19,23 @@ body.dark-mode {
 /* ===========================
    SECCIÓN CONTACTO
 =========================== */
+
 .contacto {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg); /* Fondo similar al del hero */
     color: var(--color-text);
     padding: 80px 1.5rem;
     text-align: center;
     position: relative; /* Necesario para que el pseudo-elemento funcione */
 }
 
+/* Gradiente de luz igual al hero */
 .contacto::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(255, 0, 51, 0.08), rgba(255, 0, 51, 0)); /* Gradiente igual al del hero */
+    background: linear-gradient(to bottom, rgba(255, 0, 51, 0.1), rgba(255, 0, 51, 0)); /* Gradiente más suave que el anterior */
     pointer-events: none;
-    z-index: -1; /* Asegura que el gradiente quede detrás del contenido */
+    z-index: -1;
 }
 
 .contacto h1 {
