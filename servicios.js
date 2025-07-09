@@ -14,13 +14,3 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.section').forEach(section => {
   observer.observe(section);
 });
-
-// ==============================
-// Carga dinámica del navbar
-// ==============================
-fetch('navbar.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('navbar').innerHTML = data;
-  })
-  .catch(error => console.error('Error cargando el navbar:', error));
