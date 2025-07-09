@@ -1,5 +1,5 @@
 // ==============================
-// Animación al hacer scroll -
+// Animación al hacer scroll
 // ==============================
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -13,4 +13,38 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.section').forEach(section => {
   observer.observe(section);
+});
+
+// ==============================
+// Evento delegado para cambio de tema con flash
+// ==============================
+document.addEventListener('click', (e) => {
+  const toggle = e.target.closest('#themeToggle');
+  if (!toggle) return;
+
+  e.preventDefault();
+
+  const overlay = document.getElementById('theme-transition');
+  if (overlay) {
+    overlay.classList.add('active');
+
+    setTimeout(() => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem(
+        'tema',
+        document.body.classList.contains('dark-mode') ? 'oscuro' : 'claro'
+      );
+    }, 150);
+
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 500);
+  } else {
+    // fallback: cambia sin flash
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem(
+      'tema',
+      document.body.classList.contains('dark-mode') ? 'oscuro' : 'claro'
+    );
+  }
 });
