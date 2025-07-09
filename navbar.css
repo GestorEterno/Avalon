@@ -1,0 +1,82 @@
+/* -----------------------------
+   NAVBAR CSS - AVALON CREATORS -
+------------------------------ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #00ffff;
+  transition: width 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: #00ffff;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+  }
+}
