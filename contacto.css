@@ -39,7 +39,7 @@ body.dark-mode {
 }
 
 .contacto h1 {
-    font-size: 2.5rem;
+    font-size: 3rem; /* Igual tamaño de texto que el del hero */
     color: var(--color-brand); /* Rojo fuerte como en el hero */
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -51,8 +51,8 @@ body.dark-mode {
     max-width: 700px;
     margin: 0 auto 2rem;
     color: var(--color-text); /* Gris oscuro como en el hero */
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.25rem; /* Tamaño de texto más grande, igual que en el hero */
+    line-height: 1.65;
 }
 
 /* ===========================
