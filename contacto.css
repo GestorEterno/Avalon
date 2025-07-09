@@ -32,9 +32,9 @@ body.dark-mode {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(255,0,51,0.08), rgba(255,0,51,0));
+    background: linear-gradient(to bottom, rgba(255,0,51,0.05), rgba(255,0,51,0)); /* Menos opacidad */
     pointer-events: none;
-    z-index: -1;  /* Asegura que esté por detrás del contenido */
+    z-index: -1;
 }
 
 .contacto h1 {
