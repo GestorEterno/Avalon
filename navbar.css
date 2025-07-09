@@ -9,7 +9,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* NAVBAR CONTAINER */
+/* NAVBAR */
 .navbar {
   width: 100%;
   background-color: #ffffff;
@@ -46,15 +46,15 @@ body {
 
 /* HAMBURGER BUTTON */
 .hamburger {
+  display: none;
   font-size: 2rem;
   background: none;
   border: none;
   color: #FF0033;
   cursor: pointer;
-  display: none; /* hidden on desktop */
 }
 
-/* MENU LIST */
+/* NAV MENU (desktop default) */
 .nav-menu {
   list-style: none;
   display: flex;
@@ -121,9 +121,9 @@ body.dark-mode .nav-item a::after {
   background-color: #FF0033;
 }
 
-/* -------------------------------
+/* ---------------------------------
    MOBILE RESPONSIVE
--------------------------------- */
+--------------------------------- */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -131,8 +131,6 @@ body.dark-mode .nav-item a::after {
 
   .nav-menu {
     flex-direction: column;
-    gap: 0;
-    padding: 0;
     background-color: inherit;
     max-height: 0;
     overflow: hidden;
@@ -140,7 +138,7 @@ body.dark-mode .nav-item a::after {
   }
 
   .nav-menu.active {
-    max-height: 500px; /* adjust as needed */
+    max-height: 500px;
   }
 
   .nav-item a {
