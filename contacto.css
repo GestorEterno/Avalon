@@ -113,7 +113,7 @@ body.dark-mode {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: transparent;
-  border: 2px solid var(--color-brand);
+  border: none;
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -121,11 +121,11 @@ body.dark-mode {
   font-size: 1rem;
   cursor: pointer;
 
-  /* Color de texto por tema */
+  /* Color del texto en reposo: rojo marca */
   color: var(--color-brand);
 
   /* Transiciones suaves */
-  transition: background-color 0.3s, box-shadow 0.3s, color 0.8s, transform 0.2s;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 /* Hover efecto */
