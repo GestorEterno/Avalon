@@ -1,13 +1,77 @@
 /* ===========================
-   SECCIÓN CONTACTO (HERO)
+   RESET & BASE (igual que index)
+=========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* ===========================
+   SECTION BASE + ANIMATION
+=========================== */
+.section {
+  padding: 80px 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* ===========================
+   TYPOGRAPHY (igual que index)
+=========================== */
+h1, h2, h3 {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+p {
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+/* ===========================
+   CONTACTO SECTION (HERO-STYLE)
 =========================== */
 .contacto {
   background-color: var(--color-hero-bg);
   color: var(--color-hero-text);
   position: relative;
+  overflow: hidden;
   text-align: center;
   padding: 80px 1.5rem;
-  overflow: hidden;
 }
 
 .contacto::before {
@@ -78,7 +142,7 @@
 }
 
 /* ===========================
-   BOTÓN
+   BOTÓN CONTACTO
 =========================== */
 .contact-form button {
   padding: 0.75rem 1rem;
@@ -100,7 +164,7 @@
    RESPONSIVE
 =========================== */
 @media (max-width: 768px) {
-  .contacto {
+  .section {
     padding: 64px 1rem;
   }
 
