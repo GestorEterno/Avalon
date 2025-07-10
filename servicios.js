@@ -1,14 +1,15 @@
 // ==============================
-// Aplicar tema guardado al cargar (inmediato)
-const temaGuardado = localStorage.getItem('tema');
-if (temaGuardado === 'oscuro') {
-  document.body.classList.add('dark-mode');
+// 1️⃣ Aplicar tema guardado inmediatamente al cargar
+const temaGuardado = localStorage.getItem("tema");
+if (temaGuardado === "oscuro") {
+  document.body.classList.add("dark-mode");
 } else {
-  document.body.classList.remove('dark-mode');
+  document.body.classList.remove("dark-mode");
 }
 
+// ==============================
+// 2️⃣ Luego cargar el navbar dinámicamente
 (function () {
-  // Cargar el navbar desde navbar.html
   fetch("navbar.html")
     .then(response => response.text())
     .then(data => {
@@ -17,7 +18,7 @@ if (temaGuardado === 'oscuro') {
 
       navbarContainer.innerHTML = data;
 
-      // Agregar event listener al botón de cambio de tema
+      // Listener del botón de cambiar tema (ahora sí existe)
       requestAnimationFrame(() => {
         const themeToggle = document.getElementById("themeToggle");
         if (themeToggle) {
