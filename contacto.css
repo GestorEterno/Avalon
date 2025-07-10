@@ -1,66 +1,39 @@
 /* ===========================
-   VARIABLES GLOBALES
-=========================== */
-:root {
-  --color-brand: #ff0033;
-  --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-muted: #555555;
-  --color-title: var(--color-brand);
-  --color-titulo-contacto: #000000; /* Negro en modo claro */
-}
-
-body.dark-mode {
-  --color-bg: #121212;
-  --color-text: #ffffff;
-  --color-muted: #cccccc;
-  --color-title: #ffffff;
-  --color-titulo-contacto: #ffffff; /* Blanco en modo oscuro */
-}
-
-
-/* ===========================
    SECCIÓN CONTACTO
 =========================== */
 
 .contacto {
-    background-color: var(--color-hero-bg); /* Fondo igual al del hero */
-    color: var(--color-text);
-    padding: 80px 1.5rem;
-    text-align: center;
-    position: relative; /* Necesario para que el pseudo-elemento funcione */
+  background-color: var(--color-hero-bg); /* Mismo fondo que el hero */
+  color: var(--color-hero-text);
+  padding: 80px 1.5rem;
+  text-align: center;
+  position: relative;
 }
 
-/* Gradiente de luz igual al hero */
 .contacto::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 0, 51, 0.08) 0%,
-        rgba(255, 0, 51, 0.04) 15%,
-        rgba(255, 0, 51, 0) 25%
-    );
-    pointer-events: none;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 0, 51, 0.08), rgba(255, 0, 51, 0));
+  pointer-events: none;
+  z-index: -1;
 }
 
 .contacto h1 {
-    font-size: 3rem;
-    color: var(--color-titulo-contacto);
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--color-brand); /* Igual que index y servicios */
 }
 
 .contacto p {
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    color: var(--color-text); /* Gris oscuro como en el hero */
-    font-size: 1.25rem; /* Tamaño de texto más grande, igual que en el hero */
-    line-height: 1.65;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: var(--color-hero-text); /* Consistencia visual */
 }
 
 /* ===========================
