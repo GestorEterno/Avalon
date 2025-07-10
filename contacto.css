@@ -1,13 +1,77 @@
 /* ===========================
-   SECCIÓN CONTACTO
+   RESET & BASE
 =========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-.contacto {
-  background-color: var(--color-hero-bg); /* Mismo fondo que el hero */
-  color: var(--color-hero-text);
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* ===========================
+   SECTION BASE + ANIMATION
+=========================== */
+.section {
   padding: 80px 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
   text-align: center;
+}
+
+/* ===========================
+   TYPOGRAPHY
+=========================== */
+h1, h2, h3 {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+p {
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+/* ===========================
+   SECCIÓN CONTACTO (HERO)
+=========================== */
+.contacto {
+  background-color: var(--color-hero-bg);
+  color: var(--color-hero-text);
   position: relative;
+  text-align: center;
+  padding: 80px 1.5rem;
+  overflow: hidden;
 }
 
 .contacto::before {
@@ -21,36 +85,32 @@
 
 .contacto h1 {
   font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
   margin-bottom: 1rem;
-  text-transform: uppercase;
-  color: var(--color-brand); /* Igual que index y servicios */
+  color: var(--color-brand);
 }
 
 .contacto p {
   max-width: 700px;
   margin: 0 auto 2rem;
   font-size: 1.25rem;
+  color: var(--color-hero-text);
   line-height: 1.65;
-  color: var(--color-hero-text); /* Consistencia visual */
 }
 
 /* ===========================
    FORMULARIO CONTACTO
 =========================== */
-
 .contact-form {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background-color: var(--color-bg);
-  padding: 2rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-form input,
@@ -81,7 +141,6 @@
 /* ===========================
    BOTÓN
 =========================== */
-
 .contact-form button {
   padding: 0.75rem 1rem;
   background-color: var(--color-brand);
@@ -99,22 +158,19 @@
 }
 
 /* ===========================
-   MENSAJE DE ESTADO
-=========================== */
-
-#formStatus {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  color: var(--color-text);
-}
-
-/* ===========================
    RESPONSIVE
 =========================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 1rem;
+  }
 
-@media (max-width: 600px) {
   .contacto h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .contacto p {
+    font-size: 1rem;
   }
 
   .contact-form {
