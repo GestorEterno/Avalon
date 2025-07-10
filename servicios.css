@@ -7,7 +7,9 @@
   --color-text: #222222;
   --color-muted: #555555;
   --color-title: var(--color-brand);
-  --color-titulo-servicios: #000000; /* NEGRO en modo claro */
+  --color-titulo-servicios: #000000;
+  --color-hero-bg: #ffffff;
+  --color-hero-text: #222222;
 }
 
 body.dark-mode {
@@ -15,7 +17,9 @@ body.dark-mode {
   --color-text: #ffffff;
   --color-muted: #cccccc;
   --color-title: #ffffff;
-  --color-titulo-servicios: #ffffff; /* BLANCO en modo oscuro */
+  --color-titulo-servicios: #ffffff;
+  --color-hero-bg: #121212;
+  --color-hero-text: #ffffff;
 }
 
 /* ===========================
