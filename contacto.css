@@ -1,15 +1,3 @@
-d
-+3
--3
-lines changed
-Search within code
- 
-‎contacto.css
-+3
--3
-Lines changed: 3 additions & 3 deletions
-Original file line number	Diff line number	Diff line change
-@@ -1,161 +1,161 @@
 /* ===========================
    VARIABLES GLOBALES
 =========================== */
@@ -125,7 +113,6 @@ body.dark-mode {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: transparent;
-  border: 2px solid var(--color-brand);
   border: none;
   border-radius: 8px;
   text-transform: uppercase;
@@ -134,13 +121,17 @@ body.dark-mode {
   font-size: 1rem;
   cursor: pointer;
 
-  /* Color de texto por tema */
-  /* Color del texto en reposo: rojo marca */
-  color: var(--color-brand);
-
   /* Transiciones suaves */
-  transition: background-color 0.3s, box-shadow 0.3s, color 0.8s, transform 0.2s;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  transition: background-color 0.3s, color 0.8s, box-shadow 0.3s, transform 0.2s;
+}
+
+/* Color del texto en reposo según tema */
+body.dark-mode .contact-form button {
+  color: #fff;
+}
+
+body:not(.dark-mode) .contact-form button {
+  color: #000;
 }
 
 /* Hover efecto */
