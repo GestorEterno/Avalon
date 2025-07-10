@@ -131,7 +131,7 @@ body:not(.dark-mode) .cta-button {
   cursor: pointer;
 
   /* Transiciones suaves, incluido color del texto */
-  transition: background-color 0.3s, box-shadow 0.3s, color 1.2s;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.8s;
   text-align: center;
 }
 
