@@ -62,6 +62,11 @@ p {
   color: var(--color-muted);
 }
 
+/* Ajuste solo para el botón en tema claro */
+body:not(.dark-mode) .cta-button {
+  color: #000;
+}
+
 /* ===========================
    HERO & PROBLEMA
 =========================== */
