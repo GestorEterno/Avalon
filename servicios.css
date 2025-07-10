@@ -184,7 +184,6 @@ p {
 
   /* Transiciones suaves, incluido color del texto */
   transition: background-color 0.3s, box-shadow 0.3s, color 0.8s;
-  text-align: center;
 }
 
 /* Hover efecto */
