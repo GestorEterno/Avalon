@@ -1,28 +1,4 @@
 /* ===========================
-   VARIABLES
-=========================== */
-:root {
-  --color-brand: #ff0033;
-  --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-muted: #555555;
-  --color-title: var(--color-brand);
-  --color-titulo-servicios: #000000;
-  --color-hero-bg: #ffffff;
-  --color-hero-text: #222222;
-}
-
-body.dark-mode {
-  --color-bg: #121212;
-  --color-text: #ffffff;
-  --color-muted: #cccccc;
-  --color-title: #ffffff;
-  --color-titulo-servicios: #ffffff;
-  --color-hero-bg: #121212;
-  --color-hero-text: #ffffff;
-}
-
-/* ===========================
    RESET & BASE
 =========================== */
 *,
