@@ -123,19 +123,31 @@ body:not(.dark-mode) .cta-button {
   margin-top: 30px;
   padding: 12px 30px;
   background-color: var(--color-brand);
-  color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 700;
-  transition: background-color 0.3s, box-shadow 0.3s;
   cursor: pointer;
+
+  /* Transiciones suaves, incluido color del texto */
+  transition: background-color 0.3s, box-shadow 0.3s, color 1.2s;
+  text-align: center;
 }
 
+/* Hover efecto */
 .cta-button:hover {
   background-color: #cc0029;
   box-shadow: 0 4px 12px rgba(255,0,51,0.2);
+}
+
+/* Color de texto según tema */
+body.dark-mode .cta-button {
+  color: #fff;
+}
+
+body:not(.dark-mode) .cta-button {
+  color: #000;
 }
 
 /* ===========================
