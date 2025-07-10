@@ -7,6 +7,7 @@
   --color-text: #222222;
   --color-muted: #555555;
   --color-title: var(--color-brand);
+  --color-titulo-servicios: #000000; /* NEGRO en modo claro */
 }
 
 body.dark-mode {
@@ -14,6 +15,7 @@ body.dark-mode {
   --color-text: #ffffff;
   --color-muted: #cccccc;
   --color-title: #ffffff;
+  --color-titulo-servicios: #ffffff; /* BLANCO en modo oscuro */
 }
 
 /* ===========================
@@ -74,6 +76,15 @@ p {
   margin-bottom: 20px;
 }
 
+.servicios-hero h1 {
+  color: var(--color-titulo-servicios);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
 /* ===========================
    HERO
 =========================== */
@@ -87,7 +98,12 @@ p {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255,0,51,0.08), rgba(255,0,51,0));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 0, 51, 0.08) 0%,
+    rgba(255, 0, 51, 0.04) 15%,
+    rgba(255, 0, 51, 0) 25%
+  );
   pointer-events: none;
   z-index: 0;
 }
