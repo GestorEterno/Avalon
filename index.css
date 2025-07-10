@@ -62,6 +62,10 @@ p {
   color: var(--color-muted);
 }
 
+:root {
+  --color-brand: #ff0033;
+}
+
 /* ===========================
    HERO & PROBLEMA
 =========================== */
