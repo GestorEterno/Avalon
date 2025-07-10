@@ -1,3 +1,12 @@
+// ==============================
+// Aplicar tema guardado al cargar (inmediato)
+const temaGuardado = localStorage.getItem('tema');
+if (temaGuardado === 'oscuro') {
+  document.body.classList.add('dark-mode');
+} else {
+  document.body.classList.remove('dark-mode');
+}
+
 (function () {
   // Cargar el navbar desde navbar.html
   fetch("navbar.html")
@@ -8,17 +17,8 @@
 
       navbarContainer.innerHTML = data;
 
-      // Esperar a que el DOM del navbar esté listo
+      // Agregar event listener al botón de cambio de tema
       requestAnimationFrame(() => {
-        // Aplicar tema desde localStorage
-        const temaGuardado = localStorage.getItem("tema");
-        if (temaGuardado === "claro") {
-          document.body.classList.remove("dark-mode");
-        } else {
-          document.body.classList.add("dark-mode");
-        }
-
-        // Agregar event listener al logo
         const themeToggle = document.getElementById("themeToggle");
         if (themeToggle) {
           themeToggle.addEventListener("click", (e) => {
