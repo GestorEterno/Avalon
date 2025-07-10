@@ -7,17 +7,7 @@
   --color-text: #222222;
   --color-muted: #555555;
   --color-title: var(--color-brand);
-}
-
-:root {
-  --color-destacado: #000000; /* negro para modo claro */
-}
-body.dark-mode {
-  --color-destacado: #ffffff; /* blanco para modo oscuro */
-}
-
-.resaltado-tema {
-  color: var(--color-destacado);
+  --color-titulo-contacto: #000000; /* Negro en modo claro */
 }
 
 body.dark-mode {
@@ -25,7 +15,9 @@ body.dark-mode {
   --color-text: #ffffff;
   --color-muted: #cccccc;
   --color-title: #ffffff;
+  --color-titulo-contacto: #ffffff; /* Blanco en modo oscuro */
 }
+
 
 /* ===========================
    SECCIÓN CONTACTO
@@ -55,12 +47,12 @@ body.dark-mode {
 }
 
 .contacto h1 {
-    font-size: 3rem; /* Igual tamaño de texto que el del hero */
-    color: var(--color-brand); /* Rojo fuerte como en el hero */
+    font-size: 3rem;
+    color: var(--color-titulo-contacto);
     font-weight: 800;
     letter-spacing: 0.5px;
     margin-bottom: 1rem;
-    text-transform: uppercase; /* Igual que el hero */
+    text-transform: uppercase;
 }
 
 .contacto p {
