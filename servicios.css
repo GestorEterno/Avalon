@@ -62,11 +62,6 @@ p {
   color: var(--color-muted);
 }
 
-/* Ajuste solo para el botón en tema claro */
-body:not(.dark-mode) .cta-button {
-  color: #000;
-}
-
 /* ===========================
    SERVICIOS HERO HEADING
 =========================== */
@@ -173,13 +168,8 @@ body:not(.dark-mode) .cta-button {
 }
 
 /* ===========================
-   BOTÓN CONTACTO
+   BOTÓN CTA CON TEMA CLARO/OSCURO Y TRANSICIÓN SUAVE
 =========================== */
-
-.contacto-cta {
-  text-align: center;
-  margin-top: 40px;
-}
 
 .cta-button {
   display: inline-block;
@@ -187,19 +177,27 @@ body:not(.dark-mode) .cta-button {
   padding: 12px 30px;
   background: transparent;
   border: none;
-  color: #fff;  /* blanco SIEMPRE */
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 700;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, color 1s;
   cursor: pointer;
 }
 
 .cta-button:hover {
   background-color: var(--color-brand);
   box-shadow: 0 4px 12px rgba(255,0,51,0.2);
+}
+
+/* Color del texto según tema */
+body.dark-mode .cta-button {
+  color: #fff;
+}
+
+body:not(.dark-mode) .cta-button {
+  color: #000;
 }
 
 /* ===========================
