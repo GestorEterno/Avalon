@@ -112,34 +112,28 @@ body.dark-mode {
 .contact-form button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: var(--color-brand);
-  border: none;
+  background: transparent;
+  border: 2px solid var(--color-brand);
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  color: #fff;
+
+  /* Color de texto por tema */
+  color: var(--color-brand);
 
   /* Transiciones suaves */
-  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s, color 0.8s;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.8s, transform 0.2s;
 }
 
 /* Hover efecto */
 .contact-form button:hover {
-  background-color: #cc0029;
+  background-color: var(--color-brand);
+  color: #fff;
   box-shadow: 0 4px 12px rgba(255,0,51,0.2);
   transform: translateY(-1px);
-}
-
-/* Color de texto según tema */
-body.dark-mode .contact-form button {
-  color: #fff;
-}
-
-body:not(.dark-mode) .contact-form button {
-  color: #000;
 }
 
 /* ===========================
