@@ -168,6 +168,14 @@ p {
 }
 
 /* ===========================
+   CONTENEDOR DEL BOTÓN
+=========================== */
+.contacto-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ===========================
    CTA BUTTON
 =========================== */
 .cta-button {
