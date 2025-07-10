@@ -1,26 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Cargar el navbar desde navbar.html
+  // ✅ 1️⃣ APLICAR dark-mode ANTES DEL FETCH
+  if (localStorage.getItem("tema") === "oscuro") {
+    document.body.classList.add("dark-mode");
+  }
+
+  // ✅ 2️⃣ LUEGO HACER EL FETCH DEL NAVBAR
   fetch("navbar.html")
-    .then(response => response.text())
+    .then(res => res.text())
     .then(data => {
-      const navbarContainer = document.getElementById("navbar");
-      if (!navbarContainer) return;
-      navbarContainer.innerHTML = data;
+      document.getElementById("navbar").innerHTML = data;
 
-      // Aplicar tema guardado (claro por defecto)
-      if (localStorage.getItem("tema") === "oscuro") {
-        document.body.classList.add("dark-mode");
-      }
-
-      // Botón para cambiar tema
+      // ✅ 3️⃣ Activar el botón toggle (overlay incluido)
       const themeToggle = document.getElementById("themeToggle");
       if (themeToggle) {
         themeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-          localStorage.setItem(
-            "tema",
-            document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
-          );
+          const overlay = document.getElementById("theme-transition");
+          if (overlay) {
+            overlay.classList.add("active");
+
+            setTimeout(() => {
+              document.body.classList.toggle("dark-mode");
+              localStorage.setItem(
+                "tema",
+                document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
+              );
+            }, 150);
+
+            setTimeout(() => {
+              overlay.classList.remove("active");
+            }, 500);
+          } else {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem(
+              "tema",
+              document.body.classList.contains("dark-mode") ? "oscuro" : "claro"
+            );
+          }
         });
       }
     })
