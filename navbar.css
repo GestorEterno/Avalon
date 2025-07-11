@@ -39,6 +39,12 @@ body {
   color: #cc0029;
 }
 
+/* Remove tap highlight on mobile for the logo button */
+.logo {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}
+
 /* MENU LIST */
 .navbar-right .nav-menu {
   list-style: none;
