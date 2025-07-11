@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ 1️⃣ Aplicar dark-mode antes del fetch
-  if (localStorage.getItem("tema") === "oscuro") {
+  // ✅ 1️⃣ Aplicar dark-mode por defecto si no hay nada en localStorage
+  let tema = localStorage.getItem("tema");
+  if (!tema) {
+    // Valor por defecto
+    tema = "oscuro";
+    localStorage.setItem("tema", tema);
+  }
+  if (tema === "oscuro") {
     document.body.classList.add("dark-mode");
   }
 
