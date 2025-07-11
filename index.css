@@ -73,18 +73,6 @@ a, button {
   tap-highlight-color: transparent; /* estándar, por si acaso */
 }
 
-.check-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-  margin-right: 0.4em;
-  color: #000;
-}
-
-body.dark-mode .check-icon {
-  color: #fff;
-}
-
 /* ===========================
    HERO & PROBLEMA
 =========================== */
