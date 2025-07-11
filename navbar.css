@@ -20,6 +20,8 @@ body {
   color: #222222;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 1000;
 }
 
 /* LOGO BUTTON */
@@ -104,35 +106,54 @@ body.dark-mode .nav-item a::after {
 .hamburger {
   background: none;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
   display: none;
+  padding: 0.25rem;
+  color: #FF0033;
+  transition: color 0.3s;
+}
+
+.hamburger svg {
+  width: 28px;
+  height: 28px;
+}
+
+.hamburger:hover {
+  color: #cc0029;
 }
 
 /* MOBILE MENU */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
-    color: #FF0033;
   }
 
   .nav-menu {
     position: absolute;
-    top: 4rem;
-    right: 1.5rem;
-    background-color: #fff;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
   }
 
   .nav-menu.show {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   body.dark-mode .nav-menu {
     background-color: #121212;
+  }
+
+  body.dark-mode .hamburger {
+    color: #FF0033;
   }
 }
