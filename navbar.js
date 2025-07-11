@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ 1️⃣ APLICAR dark-mode ANTES DEL FETCH
+  // ✅ 1️⃣ Aplicar dark-mode antes del fetch
   if (localStorage.getItem("tema") === "oscuro") {
     document.body.classList.add("dark-mode");
   }
 
-  // ✅ 2️⃣ LUEGO HACER EL FETCH DEL NAVBAR
+  // ✅ 2️⃣ Luego hacer el fetch del navbar
   fetch("navbar.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("navbar").innerHTML = data;
 
-      // ✅ 3️⃣ Activar el botón toggle (overlay incluido)
+      // ✅ 3️⃣ Activar el botón de dark-mode (con overlay opcional)
       const themeToggle = document.getElementById("themeToggle");
       if (themeToggle) {
         themeToggle.addEventListener("click", () => {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // ✅ 4️⃣ Activar el botón hamburguesa
+      // ✅ 4️⃣ Activar el botón hamburguesa (abrir/cerrar menú en mobile)
       const hamburger = document.getElementById("hamburger");
       const navMenu = document.getElementById("navMenu");
 
