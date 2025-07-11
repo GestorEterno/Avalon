@@ -67,6 +67,10 @@ body:not(.dark-mode) .cta-button {
   color: #000;
 }
 
+.nuestra-solucion h2 + p {
+  margin-top: -10px;
+}
+
 /* ===========================
    HERO & PROBLEMA
 =========================== */
