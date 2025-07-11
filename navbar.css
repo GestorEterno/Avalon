@@ -39,10 +39,10 @@ body {
   color: #cc0029;
 }
 
-/* Remove tap highlight on mobile for the logo button */
-.logo {
+/* ❌ Remove mobile tap highlight globally */
+a, button {
   -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
+  tap-highlight-color: transparent; /* estándar, por si acaso */
 }
 
 /* MENU LIST */
