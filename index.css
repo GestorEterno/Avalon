@@ -197,14 +197,6 @@ body:not(.dark-mode) .cta-button {
   position: relative;
 }
 
-.benefit-list li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--color-brand);
-  font-weight: bold;
-}
-
 /* ===========================
    SERVICIOS
 =========================== */
