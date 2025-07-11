@@ -138,20 +138,18 @@ body.dark-mode .nav-item a::after {
     top: 100%;
     right: 0;
     left: auto;
-    width: 320px;                   /* Más largo */
-    max-height: 90vh;               /* Más alto si necesitás scroll */
-    overflow-y: auto;               /* Scroll si se pasa */
+    width: 220px;                   /* 🔻 menos ancho */
     background-color: #ffffff;
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1rem;
-    border-radius: 0;                /* Cuadro puro */
-    border: 2px solid #FF0033;       /* Borde “neón” de tu color */
-    box-shadow: 0 0 12px #FF0033;    /* Brillo neón */
+    gap: 0.3rem;                    /* 🔻 menos espacio entre ítems */
+    padding: 0.75rem;
+    border-radius: 0;
+    border: 2px solid #FF0033;
+    box-shadow: 0 0 10px #FF0033;
     display: none;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .nav-menu.show {
@@ -167,9 +165,9 @@ body.dark-mode .nav-item a::after {
   .nav-menu .nav-item a {
     display: block;
     width: 100%;
-    padding: 0.85rem 1.25rem;      /* Más aire para palabras largas */
-    text-align: left;              /* Mejor para listas largas */
-    font-size: 1.05rem;
+    padding: 0.5rem 0.75rem;        /* 🔻 menos padding vertical */
+    text-align: left;
+    font-size: 0.95rem;             /* 🔻 un poco más compacto */
     font-weight: 600;
     color: #222222;
     text-decoration: none;
@@ -186,12 +184,11 @@ body.dark-mode .nav-item a::after {
   body.dark-mode .nav-menu {
     background-color: #1A1A1A;
     border-color: #FF0033;
-    box-shadow: 0 0 12px #FF0033;
+    box-shadow: 0 0 10px #FF0033;
   }
 
   body.dark-mode .nav-menu .nav-item a {
     color: #f1f1f1;
-    background-color: transparent;
   }
 
   body.dark-mode .nav-menu .nav-item a:hover {
