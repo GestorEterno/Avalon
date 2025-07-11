@@ -50,14 +50,14 @@ body {
 h1, h2, h3 {
   font-weight: 800;
   letter-spacing: 0.5px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;       /* antes 20px, mucho más compacto */
   text-transform: uppercase;
   color: var(--color-brand);
 }
 
 p {
-  line-height: 1.65;
-  margin-bottom: 20px;
+  line-height: 1.4;          /* antes 1.65, mucho más cerrado */
+  margin-bottom: 14px;       /* antes 20px, más justo y parejo */
   font-size: 1.05rem;
   color: var(--color-muted);
 }
@@ -65,10 +65,6 @@ p {
 /* Ajuste solo para el botón en tema claro */
 body:not(.dark-mode) .cta-button {
   color: #000;
-}
-
-.nuestra-solucion h2 + p {
-  margin-top: -10px;
 }
 
 /* ===========================
