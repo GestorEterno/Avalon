@@ -67,6 +67,12 @@ body:not(.dark-mode) .cta-button {
   color: #000;
 }
 
+/* ❌ Remove mobile tap highlight*/
+a, button {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent; /* estándar, por si acaso */
+}
+
 /* ===========================
    HERO & PROBLEMA
 =========================== */
