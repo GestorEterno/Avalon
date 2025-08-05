@@ -247,53 +247,58 @@ body:not(.dark-mode) .cta-button {
 }
 
 /* ===========================
-   COMO TRABAJAMOS
+   PLANES DE PRECIO
 =========================== */
-.como-trabajamos .content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
+.precios .planes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 40px;
 }
 
-.como-trabajamos h2 {
+.plan-card {
+  background-color: var(--color-card);
+  border: 2px solid rgba(255, 0, 51, 0.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 1.9rem;
-  color: var(--color-brand);
-}
-
-.como-trabajamos ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  counter-reset: paso;
-}
-
-.como-trabajamos li {
-  counter-increment: paso;
-  margin-bottom: 24px;
-  padding-left: 36px;
   position: relative;
-  line-height: 1.6;
-  font-size: 1.05rem;
-  color: var(--color-text);
 }
 
-.como-trabajamos li::before {
-  content: counter(paso) ".";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-weight: bold;
-  color: var(--color-brand);
-  font-size: 1.2rem;
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
-.como-trabajamos li strong {
-  display: block;
-  margin-bottom: 5px;
+.plan-card h3 {
+  font-size: 1.4rem;
   color: var(--color-brand);
-  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.plan-card .price {
+  margin-bottom: 14px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.new-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-brand);
+}
+
+.plan-card p {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin-bottom: 20px;
 }
 
 /* ===========================
