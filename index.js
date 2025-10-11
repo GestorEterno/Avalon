@@ -1,3 +1,8 @@
+// Inicializar EmailJS
+(function() {
+    emailjs.init("nOQsC2dQzB9_h9qy-");
+})();
+
 // Navegación móvil mejorada
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -32,7 +37,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Formulario de contacto mejorado
+// Formulario de contacto mejorado con EmailJS
 const contactForm = document.getElementById('contact-form');
 
 contactForm.addEventListener('submit', (e) => {
@@ -44,7 +49,25 @@ contactForm.addEventListener('submit', (e) => {
     
     // Recopilar datos del formulario
     const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
+    
+    // Obtener servicios seleccionados
+    const selectedServices = [];
+    document.querySelectorAll('input[name="services"]:checked').forEach(checkbox => {
+        selectedServices.push(checkbox.value);
+    });
+    
+    // Preparar datos para EmailJS
+    const templateParams = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        channel: document.getElementById('channel').value,
+        content_type: document.getElementById('content-type').value,
+        platform: document.getElementById('platform').value,
+        subscribers: document.getElementById('subscribers').value,
+        videos_per_month: document.getElementById('videos-per-month').value,
+        services: selectedServices.join(', '),
+        proposal: document.getElementById('proposal').value
+    };
     
     // Mostrar estado de envío
     const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -53,22 +76,33 @@ contactForm.addEventListener('submit', (e) => {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
     submitButton.disabled = true;
     
-    // Simular envío (en producción, enviar a servidor)
-    setTimeout(() => {
-        // Mostrar notificación de éxito
-        showNotification('¡Solicitud enviada con éxito! Te contactaremos en menos de 24 horas.', 'success');
-        
-        // Reiniciar formulario
-        contactForm.reset();
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-        
-        // Scroll suave al inicio
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    // Enviar formulario con EmailJS
+    emailjs.send('service_avalon', 'template_fhscr7c', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Mostrar notificación de éxito
+            showNotification('¡Solicitud enviada con éxito! Te contactaremos en menos de 24 horas.', 'success');
+            
+            // Reiniciar formulario
+            contactForm.reset();
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+            
+            // Scroll suave al inicio
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, function(error) {
+            console.log('FAILED...', error);
+            
+            // Mostrar notificación de error
+            showNotification('Error al enviar el formulario. Por favor, intenta nuevamente.', 'error');
+            
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
         });
-    }, 2000);
 });
 
 // Función de notificación mejorada
@@ -84,7 +118,7 @@ function showNotification(message, type = 'info') {
     notification.className = `notification ${type}`;
     notification.innerHTML = `
         <div class="notification-content">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
             <span>${message}</span>
         </div>
         <button class="notification-close">
