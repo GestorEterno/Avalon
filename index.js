@@ -259,7 +259,14 @@ const counterObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const statNumber = entry.target.querySelector('.stat-number');
             if (statNumber && !statNumber.classList.contains('animated')) {
-                const target = parseInt(statNumber.textContent);
+                let target;
+                if (statNumber.textContent.includes('+')) {
+                    target = parseInt(statNumber.textContent.replace('+', ''));
+                } else if (statNumber.textContent.includes('M')) {
+                    target = parseInt(statNumber.textContent.replace('M', '')) * 1000000;
+                } else {
+                    target = parseInt(statNumber.textContent);
+                }
                 animateCounter(statNumber, target);
                 statNumber.classList.add('animated');
             }
@@ -304,7 +311,7 @@ function validateForm() {
 // Efectos de hover mejorados para tarjetas
 document.querySelectorAll('.service-card, .plan-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
+        this.style.transform = 'translateY(-8px) scale(1.02)';
     });
     
     card.addEventListener('mouseleave', function() {
