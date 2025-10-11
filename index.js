@@ -1,6 +1,6 @@
-// Inicializar EmailJS
+// Inicializar EmailJS con tus credenciales CORRECTAS
 (function() {
-    emailjs.init("nOQsC2dQzB9_h9qy-");
+    emailjs.init("nOQsC2dQzB9_h9qy-"); // Tu Public Key está correcta
 })();
 
 // Navegación móvil mejorada
@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Formulario de contacto mejorado con EmailJS
+// Formulario de contacto CORREGIDO con los IDs correctos
 const contactForm = document.getElementById('contact-form');
 
 contactForm.addEventListener('submit', (e) => {
@@ -56,7 +56,7 @@ contactForm.addEventListener('submit', (e) => {
         selectedServices.push(checkbox.value);
     });
     
-    // Preparar datos para EmailJS
+    // Preparar datos para EmailJS - CORREGIDO con tus IDs reales
     const templateParams = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -76,8 +76,8 @@ contactForm.addEventListener('submit', (e) => {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
     submitButton.disabled = true;
     
-    // Enviar formulario con EmailJS
-    emailjs.send('service_avalon', 'template_fhscr7c', templateParams)
+    // Enviar formulario con EmailJS - CORREGIDO con tus IDs
+    emailjs.send('service_xqs4rp8', 'template_fhscr7c', templateParams)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             
@@ -97,8 +97,16 @@ contactForm.addEventListener('submit', (e) => {
         }, function(error) {
             console.log('FAILED...', error);
             
-            // Mostrar notificación de error
-            showNotification('Error al enviar el formulario. Por favor, intenta nuevamente.', 'error');
+            // Mostrar notificación de error más específica
+            let errorMessage = 'Error al enviar el formulario. Por favor, intenta nuevamente.';
+            
+            if (error.text.includes('Invalid user ID')) {
+                errorMessage = 'Error de configuración. Contacta al administrador.';
+            } else if (error.text.includes('Service not found')) {
+                errorMessage = 'Servicio de email no encontrado. Verifica la configuración.';
+            }
+            
+            showNotification(errorMessage, 'error');
             
             submitButton.innerHTML = originalText;
             submitButton.disabled = false;
@@ -334,9 +342,10 @@ function validateForm() {
     }
     
     // Validación de URL
-    const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
-    if (!urlRegex.test(channel)) {
-        showNotification('Por favor, introduce un enlace válido a tu canal.', 'error');
+    try {
+        new URL(channel);
+    } catch (_) {
+        showNotification('Por favor, introduce un enlace válido a tu canal (debe incluir http:// o https://).', 'error');
         return false;
     }
     
@@ -382,8 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 });
 
-// Efecto de escritura eliminado para mejorar rendimiento y experiencia
-
 // Mejora de accesibilidad: navegación por teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -396,17 +403,15 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mejora de rendimiento: throttling para eventos de scroll
-let scrollTimer;
-window.addEventListener('scroll', () => {
-    if (!scrollTimer) {
-        scrollTimer = setTimeout(() => {
-            scrollTimer = null;
-            // Aquí iría el código que se ejecuta en scroll
-        }, 10);
-    }
-});
-
-// Mejora de UX: preloader eliminado para carga más rápida
-
 console.log('AVALON CREATORS - Sitio web cargado correctamente');
+
+// Función de depuración adicional para EmailJS
+function debugEmailJS() {
+    console.log('EmailJS Debug Info:');
+    console.log('- Service ID: service_xqs4rp8');
+    console.log('- Template ID: template_fhscr7c');
+    console.log('- User ID: nOQsC2dQzB9_h9qy-');
+}
+
+// Ejecutar depuración en consola
+debugEmailJS();
