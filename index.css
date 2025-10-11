@@ -1,4 +1,4 @@
-/* Reset y configuraciones avanzadas optimizadas */
+/* Reset y configuraciones avanzadas - COLORES ORIGINALES */
 :root {
     --primary: #0f3460;
     --secondary: #533483;
@@ -11,8 +11,8 @@
     --gray: rgba(255, 255, 255, 0.5);
     --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.2);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --border-radius-lg: 20px;
 }
@@ -47,7 +47,7 @@ body {
     padding: 0 20px;
 }
 
-/* Fondo animado optimizado para rendimiento */
+/* Fondo animado MEJORADO - MANTENIENDO COLORES ORIGINALES */
 .animated-background {
     position: fixed;
     top: 0;
@@ -56,12 +56,9 @@ body {
     height: 100%;
     background: linear-gradient(-45deg, var(--dark), var(--darker), var(--primary), var(--secondary));
     background-size: 400% 400%;
-    animation: gradient 18s ease infinite;
+    animation: gradient 15s ease infinite;
     z-index: -2;
     opacity: 0.95;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
 }
 
 .particles-container {
@@ -73,13 +70,9 @@ body {
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 2px, transparent 0),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 0),
-        radial-gradient(circle at 40% 80%, rgba(83, 52, 131, 0.1) 2px, transparent 0),
-        radial-gradient(circle at 60% 10%, rgba(255, 255, 255, 0.03) 1px, transparent 0),
-        radial-gradient(circle at 90% 40%, rgba(255, 215, 0, 0.08) 2px, transparent 0);
-    background-size: 300px 300px, 200px 200px, 400px 400px, 250px 250px, 350px 350px;
-    animation: particlesFloat 25s linear infinite;
-    transform: translateZ(0);
-    will-change: transform;
+        radial-gradient(circle at 40% 80%, rgba(83, 52, 131, 0.1) 2px, transparent 0);
+    background-size: 300px 300px, 200px 200px, 400px 400px;
+    animation: particlesMove 20s linear infinite;
 }
 
 @keyframes gradient {
@@ -94,66 +87,78 @@ body {
     }
 }
 
-@keyframes particlesFloat {
+@keyframes particlesMove {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-30px) translateX(20px);
+    }
+    66% {
+        transform: translateY(20px) translateX(-15px);
     }
     100% {
-        transform: translate3d(-100px, -100px, 0);
+        transform: translateY(0px) translateX(0px);
     }
 }
 
-/* Efecto de brillo sutil */
+/* Efectos de brillo sutiles ANIMADOS */
 .glow-effect {
     position: absolute;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-    filter: blur(40px);
-    animation: glowMove 20s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+    filter: blur(60px);
+    animation: glowFloat 15s ease-in-out infinite;
     z-index: -1;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .glow-effect:nth-child(1) {
-    top: -200px;
+    top: -150px;
     right: -100px;
     animation-delay: 0s;
 }
 
 .glow-effect:nth-child(2) {
-    bottom: -150px;
+    bottom: -100px;
     left: -100px;
-    animation-delay: 5s;
-    background: radial-gradient(circle, rgba(83, 52, 131, 0.1) 0%, transparent 70%);
+    animation-delay: 7s;
+    background: radial-gradient(circle, rgba(83, 52, 131, 0.08) 0%, transparent 70%);
 }
 
-@keyframes glowMove {
+@keyframes glowFloat {
     0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
+        transform: translate(0, 0) scale(1);
+        opacity: 0.4;
     }
-    33% {
-        transform: translate3d(50px, 50px, 0) scale(1.1);
+    25% {
+        transform: translate(30px, -20px) scale(1.1);
+        opacity: 0.6;
     }
-    66% {
-        transform: translate3d(-30px, -30px, 0) scale(0.9);
+    50% {
+        transform: translate(-20px, 25px) scale(0.9);
+        opacity: 0.5;
+    }
+    75% {
+        transform: translate(15px, 15px) scale(1.05);
+        opacity: 0.7;
     }
 }
 
-/* Header y navegación optimizados */
+/* Header y navegación MEJORADOS */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     box-shadow: var(--shadow);
     z-index: 1000;
     transition: var(--transition);
     padding: 0.3rem 0;
-    transform: translateZ(0);
 }
 
 .nav-container {
@@ -216,7 +221,6 @@ body {
     height: 2px;
     background: var(--accent);
     transition: var(--transition);
-    transform-origin: left;
 }
 
 .nav-link:hover {
@@ -228,7 +232,7 @@ body {
 }
 
 .contact-btn {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: var(--primary);
     color: var(--light) !important;
     padding: 0.6rem 1.5rem;
     border-radius: 30px;
@@ -252,8 +256,9 @@ body {
 }
 
 .contact-btn:hover {
+    background: var(--secondary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(15, 52, 96, 0.4);
+    box-shadow: 0 5px 15px rgba(15, 52, 96, 0.3);
 }
 
 .contact-btn:hover:before {
@@ -280,7 +285,6 @@ body {
     background: var(--dark);
     transition: var(--transition);
     border-radius: 3px;
-    transform-origin: center;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -289,21 +293,19 @@ body {
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
-    transform: scale(0);
 }
 
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Sección Hero optimizada */
+/* Sección Hero MEJORADA */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 80px 0 50px;
     position: relative;
-    overflow: hidden;
 }
 
 .hero-content-wrapper {
@@ -325,11 +327,11 @@ body {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translate3d(0, 40px, 0);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0);
     }
 }
 
@@ -427,7 +429,6 @@ body {
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
-    transform: translateZ(0);
 }
 
 .btn-primary {
@@ -494,7 +495,6 @@ body {
     animation: float 6s ease-in-out infinite;
     position: absolute;
     transition: var(--transition);
-    transform: translateZ(0);
 }
 
 .floating-card:hover {
@@ -542,17 +542,17 @@ body {
 
 @keyframes float {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0px);
     }
     50% {
-        transform: translate3d(0, -15px, 0);
+        transform: translateY(-15px);
     }
     100% {
-        transform: translate3d(0, 0, 0);
+        transform: translateY(0px);
     }
 }
 
-/* Secciones generales optimizadas */
+/* Secciones generales MEJORADAS */
 section {
     padding: 70px 0;
     position: relative;
@@ -582,6 +582,16 @@ section {
     height: 3px;
     background: var(--accent);
     border-radius: 2px;
+    animation: linePulse 2s ease-in-out infinite;
+}
+
+@keyframes linePulse {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1);
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1.2);
+    }
 }
 
 .section-subtitle {
@@ -592,7 +602,7 @@ section {
     line-height: 1.5;
 }
 
-/* Servicios optimizados */
+/* Servicios MEJORADOS */
 .services {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -617,7 +627,6 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
-    transform: translateZ(0);
 }
 
 .service-card:before {
@@ -630,11 +639,10 @@ section {
     background: linear-gradient(90deg, var(--accent), var(--primary));
     transform: scaleX(0);
     transition: var(--transition);
-    transform-origin: left;
 }
 
 .service-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
     border-color: rgba(255, 215, 0, 0.2);
 }
@@ -651,7 +659,7 @@ section {
 }
 
 .service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1);
 }
 
 .service-card h3 {
@@ -690,7 +698,7 @@ section {
     font-size: 0.75rem;
 }
 
-/* Proceso de trabajo optimizado */
+/* Proceso de trabajo MEJORADO */
 .process {
     background: rgba(255, 255, 255, 0.02);
 }
@@ -712,6 +720,16 @@ section {
     height: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
     z-index: 0;
+    animation: lineFlow 3s ease-in-out infinite;
+}
+
+@keyframes lineFlow {
+    0%, 100% {
+        background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    50% {
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
 }
 
 .step {
@@ -765,7 +783,7 @@ section {
     font-size: 0.9rem;
 }
 
-/* Planes optimizados */
+/* Planes MEJORADOS */
 .plans-container {
     display: flex;
     justify-content: center;
@@ -786,11 +804,10 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    transform: translateZ(0);
 }
 
 .plan-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -798,15 +815,15 @@ section {
     border-color: var(--accent);
     transform: scale(1.02);
     background: rgba(255, 255, 255, 0.08);
-    animation: featuredGlow 3s ease-in-out infinite;
+    animation: featuredPulse 4s ease-in-out infinite;
 }
 
-@keyframes featuredGlow {
+@keyframes featuredPulse {
     0%, 100% {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 rgba(255, 215, 0, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
     50% {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 215, 0, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(255, 215, 0, 0.3);
     }
 }
 
@@ -825,15 +842,15 @@ section {
     font-weight: 700;
     font-size: 0.75rem;
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-    animation: badgePulse 2s ease-in-out infinite;
+    animation: badgeBounce 2s ease-in-out infinite;
 }
 
-@keyframes badgePulse {
+@keyframes badgeBounce {
     0%, 100% {
-        transform: scale(1);
+        transform: translateY(0);
     }
     50% {
-        transform: scale(1.05);
+        transform: translateY(-3px);
     }
 }
 
@@ -947,7 +964,7 @@ section {
     background: var(--accent-light);
 }
 
-/* Contacto optimizado */
+/* Contacto MEJORADO */
 .contact {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -1138,7 +1155,7 @@ section {
     margin-top: 0.5rem;
 }
 
-/* Footer optimizado */
+/* Footer MEJORADO */
 footer {
     background: rgba(15, 52, 96, 0.9);
     color: var(--light);
@@ -1539,22 +1556,4 @@ footer:before {
         width: 100%;
         justify-content: center;
     }
-}
-
-/* Mejoras de rendimiento para animaciones */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Optimizaciones de rendimiento */
-.performance-optimized {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
 }
