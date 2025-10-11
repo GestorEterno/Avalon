@@ -121,7 +121,7 @@ body {
 }
 
 .logo-img {
-    height: 40px;
+    height: 80px;
     width: auto;
 }
 
@@ -180,6 +180,7 @@ body {
     font-weight: 600;
     border: none;
     cursor: pointer;
+    position: relative;
 }
 
 .contact-btn:hover {
@@ -364,15 +365,15 @@ body {
 }
 
 .floating-card:nth-child(1) {
-    top: 10%;
-    right: 5%;
+    top: 20%;
+    right: 15%;
     animation-delay: 0s;
     z-index: 2;
 }
 
 .floating-card.secondary {
-    bottom: 10%;
-    left: 5%;
+    bottom: 20%;
+    left: 15%;
     animation-delay: 2s;
     background: rgba(15, 52, 96, 0.2);
     z-index: 1;
@@ -835,6 +836,15 @@ section {
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
+.form-group select {
+    color: var(--dark);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-group select:focus {
+    background: rgba(255, 255, 255, 0.95);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
@@ -901,7 +911,7 @@ footer {
 }
 
 .footer-logo .logo-img {
-    height: 35px;
+    height: 70px;
     width: auto;
 }
 
