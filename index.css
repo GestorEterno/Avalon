@@ -1,4 +1,4 @@
-/* Reset y configuraciones avanzadas */
+/* Reset y configuraciones avanzadas - OPTIMIZADO */
 :root {
     --primary: #0f3460;
     --secondary: #533483;
@@ -44,7 +44,7 @@ body {
     padding: 0 20px;
 }
 
-/* Fondo animado mejorado */
+/* Fondo animado OPTIMIZADO - Reducida complejidad */
 .animated-background {
     position: fixed;
     top: 0;
@@ -53,9 +53,13 @@ body {
     height: 100%;
     background: linear-gradient(-45deg, var(--dark), var(--darker), var(--primary), var(--secondary));
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    animation: gradient 20s ease infinite;
     z-index: -2;
     opacity: 0.95;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
 }
 
 .particles-container {
@@ -64,12 +68,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Reducido el número de partículas para mejor rendimiento */
     background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 2px, transparent 0),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 0),
-        radial-gradient(circle at 40% 80%, rgba(83, 52, 131, 0.1) 2px, transparent 0);
-    background-size: 300px 300px, 200px 200px, 400px 400px;
-    animation: particles 20s linear infinite;
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 2px, transparent 0),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+    background-size: 400px 400px, 300px 300px;
+    /* Animación más suave */
+    animation: particles 30s linear infinite;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 @keyframes gradient {
@@ -89,11 +97,11 @@ body {
         transform: translateY(0) translateX(0);
     }
     100% {
-        transform: translateY(-100px) translateX(50px);
+        transform: translateY(-150px) translateX(80px);
     }
 }
 
-/* Header y navegación mejorados */
+/* Header y navegación OPTIMIZADOS */
 .navbar {
     position: fixed;
     top: 0;
@@ -105,6 +113,8 @@ body {
     z-index: 1000;
     transition: var(--transition);
     padding: 0.3rem 0;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
 }
 
 .nav-container {
@@ -222,7 +232,7 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Sección Hero mejorada */
+/* Sección Hero OPTIMIZADA */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -321,6 +331,9 @@ body {
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .btn-primary {
@@ -368,8 +381,11 @@ body {
     text-align: center;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
     position: absolute;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .floating-card:nth-child(1) {
@@ -410,14 +426,14 @@ body {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-12px);
     }
     100% {
         transform: translateY(0px);
     }
 }
 
-/* Secciones generales mejoradas */
+/* Secciones generales OPTIMIZADAS */
 section {
     padding: 70px 0;
     position: relative;
@@ -443,7 +459,7 @@ section {
     line-height: 1.5;
 }
 
-/* Servicios mejorados */
+/* Servicios OPTIMIZADOS */
 .services {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -468,6 +484,9 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .service-card:before {
@@ -529,7 +548,7 @@ section {
     font-size: 0.75rem;
 }
 
-/* Proceso de trabajo */
+/* Proceso de trabajo OPTIMIZADO */
 .process {
     background: rgba(255, 255, 255, 0.02);
 }
@@ -592,7 +611,7 @@ section {
     font-size: 0.9rem;
 }
 
-/* Planes mejorados */
+/* Planes OPTIMIZADOS */
 .plans-container {
     display: flex;
     justify-content: center;
@@ -613,6 +632,9 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .plan-card:hover {
@@ -715,6 +737,9 @@ section {
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.9rem;
+    /* Mejora de rendimiento */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .btn-plan:hover {
@@ -731,7 +756,7 @@ section {
     background: var(--accent-light);
 }
 
-/* Contacto mejorado */
+/* Contacto OPTIMIZADO */
 .contact {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -897,7 +922,7 @@ section {
     margin-top: 0.5rem;
 }
 
-/* Footer mejorado */
+/* Footer OPTIMIZADO */
 footer {
     background: rgba(15, 52, 96, 0.9);
     color: var(--light);
@@ -957,6 +982,8 @@ footer {
     color: var(--light);
     text-decoration: none;
     transition: var(--transition);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .social-links a:hover {
@@ -1043,7 +1070,77 @@ footer {
     color: var(--accent);
 }
 
-/* Responsive mejorado */
+/* NUEVAS ANIMACIONES MEJORADAS */
+/* Animación de entrada suave para elementos al hacer scroll */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animate {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Efecto de brillo sutil para elementos interactivos */
+.glow-on-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-on-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+.glow-on-hover:hover::before {
+    left: 100%;
+}
+
+/* Animación de pulso sutil para elementos destacados */
+@keyframes subtlePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.pulse-highlight {
+    animation: subtlePulse 2s infinite;
+}
+
+/* Animación de escalado suave para elementos al hacer hover */
+.scale-on-hover {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scale-on-hover:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive mejorado OPTIMIZADO */
 @media (max-width: 1200px) {
     .hero-content h1 {
         font-size: 2.2rem;
@@ -1258,5 +1355,34 @@ footer {
     .checkbox-group label {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* Optimizaciones de rendimiento avanzadas */
+/* Reducir repaints y reflows */
+* {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Optimización de animaciones */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mejorar el rendimiento de elementos con backdrop-filter */
+.backdrop-blur {
+    transform: translateZ(0);
+    will-change: transform, backdrop-filter;
+}
+
+/* Optimización para dispositivos con pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .particles-container {
+        background-size: 600px 600px, 450px 450px;
     }
 }
