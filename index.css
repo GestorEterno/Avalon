@@ -35,6 +35,13 @@ body {
     position: relative;
     font-weight: 400;
     background: var(--dark);
+    /* Prevenir flashes de contenido no estilizado */
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 .container {
@@ -56,7 +63,7 @@ body {
     animation: gradient 20s ease infinite;
     z-index: -2;
     opacity: 0.95;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento */
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000;
@@ -68,16 +75,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Reducido el número de partículas para mejor rendimiento */
+    /* Partículas simplificadas para mejor rendimiento */
     background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 2px, transparent 0),
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 1px, transparent 0),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 0);
     background-size: 400px 400px, 300px 300px;
-    /* Animación más suave */
     animation: particles 30s linear infinite;
-    /* Mejora de rendimiento */
-    transform: translateZ(0);
+    /* Optimizaciones de rendimiento */
     will-change: transform;
+    transform: translateZ(0);
 }
 
 @keyframes gradient {
@@ -97,7 +103,7 @@ body {
         transform: translateY(0) translateX(0);
     }
     100% {
-        transform: translateY(-150px) translateX(80px);
+        transform: translateY(-150px) translateX(30px);
     }
 }
 
@@ -107,14 +113,15 @@ body {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     z-index: 1000;
     transition: var(--transition);
     padding: 0.3rem 0;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento */
     transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .nav-container {
@@ -133,6 +140,8 @@ body {
 .logo-img {
     height: 70px;
     width: auto;
+    /* Optimizar imágenes */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .logo h2 {
@@ -160,6 +169,8 @@ body {
     transition: var(--transition);
     position: relative;
     padding: 0.5rem 0;
+    /* Mejorar rendimiento de transiciones */
+    will-change: transform, color;
 }
 
 .nav-link:after {
@@ -171,6 +182,8 @@ body {
     height: 2px;
     background: var(--accent);
     transition: var(--transition);
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .nav-link:hover {
@@ -191,6 +204,9 @@ body {
     border: none;
     cursor: pointer;
     position: relative;
+    /* Mejorar rendimiento */
+    will-change: transform, background-color;
+    transform: translateZ(0);
 }
 
 .contact-btn:hover {
@@ -218,6 +234,8 @@ body {
     background: var(--dark);
     transition: var(--transition);
     border-radius: 3px;
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -262,6 +280,8 @@ body {
     margin-bottom: 1.2rem;
     line-height: 1.2;
     letter-spacing: -0.5px;
+    /* Animación de entrada mejorada */
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .highlight {
@@ -280,6 +300,8 @@ body {
     background: rgba(255, 215, 0, 0.2);
     z-index: -1;
     border-radius: 4px;
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .hero-content p {
@@ -287,12 +309,16 @@ body {
     margin-bottom: 1.8rem;
     opacity: 0.9;
     line-height: 1.6;
+    /* Animación de entrada mejorada */
+    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .hero-stats {
     display: flex;
     gap: 1.8rem;
     margin-bottom: 2rem;
+    /* Animación de entrada mejorada */
+    animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
 .stat {
@@ -316,6 +342,8 @@ body {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    /* Animación de entrada mejorada */
+    animation: fadeInUp 0.8s ease-out 0.8s both;
 }
 
 .btn-primary, .btn-secondary {
@@ -331,9 +359,10 @@ body {
     border: none;
     cursor: pointer;
     font-size: 0.9rem;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento de animaciones */
+    will-change: transform, background-color, box-shadow;
     transform: translateZ(0);
-    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .btn-primary {
@@ -373,19 +402,19 @@ body {
 
 .floating-card {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     padding: 1.8rem;
     max-width: 240px;
     text-align: center;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: float 8s ease-in-out infinite;
+    animation: float 6s ease-in-out infinite;
     position: absolute;
-    /* Mejora de rendimiento */
-    transform: translateZ(0);
+    /* Mejorar rendimiento de animaciones */
     will-change: transform;
+    transform: translateZ(0);
 }
 
 .floating-card:nth-child(1) {
@@ -426,10 +455,55 @@ body {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-12px);
+        transform: translateY(-15px);
     }
     100% {
         transform: translateY(0px);
+    }
+}
+
+/* Nuevas animaciones optimizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-40px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(40px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -449,6 +523,8 @@ section {
     margin-bottom: 0.8rem;
     font-weight: 700;
     letter-spacing: -0.5px;
+    /* Animación de entrada */
+    animation: fadeInUp 0.8s ease-out both;
 }
 
 .section-subtitle {
@@ -457,12 +533,14 @@ section {
     margin: 0 auto;
     opacity: 0.8;
     line-height: 1.5;
+    /* Animación de entrada */
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 /* Servicios OPTIMIZADOS */
 .services {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 .services-grid {
@@ -473,8 +551,8 @@ section {
 
 .service-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     padding: 1.8rem 1.5rem;
     transition: var(--transition);
@@ -484,10 +562,21 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento de animaciones */
+    will-change: transform, box-shadow;
     transform: translateZ(0);
-    will-change: transform;
+    backface-visibility: hidden;
+    /* Animación de entrada escalonada */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
 
 .service-card:before {
     content: '';
@@ -499,6 +588,8 @@ section {
     background: linear-gradient(90deg, var(--accent), var(--primary));
     transform: scaleX(0);
     transition: var(--transition);
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .service-card:hover {
@@ -581,7 +672,15 @@ section {
     z-index: 1;
     flex: 1;
     padding: 0 1rem;
+    /* Animación de entrada escalonada */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
+
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.3s; }
+.step:nth-child(4) { animation-delay: 0.4s; }
 
 .step-number {
     width: 70px;
@@ -596,7 +695,9 @@ section {
     color: var(--accent);
     margin-bottom: 1.2rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .step-content h3 {
@@ -621,8 +722,8 @@ section {
 
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     padding: 1.8rem;
     width: 100%;
@@ -632,10 +733,17 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento de animaciones */
+    will-change: transform, box-shadow;
     transform: translateZ(0);
-    will-change: transform;
+    backface-visibility: hidden;
+    /* Animación de entrada */
+    opacity: 0;
+    animation: scaleIn 0.6s ease-out forwards;
 }
+
+.plan-card:nth-child(1) { animation-delay: 0.2s; }
+.plan-card:nth-child(2) { animation-delay: 0.4s; }
 
 .plan-card:hover {
     transform: translateY(-8px);
@@ -663,6 +771,8 @@ section {
     font-weight: 700;
     font-size: 0.75rem;
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .plan-header {
@@ -737,9 +847,9 @@ section {
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.9rem;
-    /* Mejora de rendimiento */
+    /* Mejorar rendimiento */
+    will-change: transform, background-color;
     transform: translateZ(0);
-    will-change: transform;
 }
 
 .btn-plan:hover {
@@ -759,7 +869,7 @@ section {
 /* Contacto OPTIMIZADO */
 .contact {
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 .contact-container {
@@ -771,11 +881,14 @@ section {
 
 .contact-info {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     padding: 1.8rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: fit-content;
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInLeft 0.6s ease-out 0.2s both;
 }
 
 .contact-info h3 {
@@ -814,6 +927,8 @@ section {
     color: var(--accent);
     font-size: 1rem;
     flex-shrink: 0;
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .contact-text h4 {
@@ -829,10 +944,13 @@ section {
 
 .contact-form {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     border-radius: var(--border-radius-lg);
     padding: 1.8rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeInRight 0.6s ease-out 0.4s both;
 }
 
 .form-row {
@@ -864,6 +982,8 @@ section {
     font-family: 'Montserrat', sans-serif;
     transition: var(--transition);
     font-size: 0.9rem;
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .form-group input:focus,
@@ -906,6 +1026,8 @@ section {
     padding: 0.4rem 0.8rem;
     border-radius: 30px;
     transition: var(--transition);
+    /* Mejorar rendimiento */
+    transform: translateZ(0);
 }
 
 .checkbox-group label:hover {
@@ -952,6 +1074,8 @@ footer {
 .footer-logo .logo-img {
     height: 60px;
     width: auto;
+    /* Optimizar imágenes */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .footer-logo h3 {
@@ -982,8 +1106,9 @@ footer {
     color: var(--light);
     text-decoration: none;
     transition: var(--transition);
+    /* Mejorar rendimiento */
+    will-change: transform, background-color;
     transform: translateZ(0);
-    will-change: transform;
 }
 
 .social-links a:hover {
@@ -1014,6 +1139,8 @@ footer {
     transition: var(--transition);
     opacity: 0.8;
     font-size: 0.9rem;
+    /* Mejorar rendimiento */
+    will-change: opacity, color, padding;
 }
 
 .footer-links a:hover {
@@ -1070,77 +1197,7 @@ footer {
     color: var(--accent);
 }
 
-/* NUEVAS ANIMACIONES MEJORADAS */
-/* Animación de entrada suave para elementos al hacer scroll */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.scroll-animate {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-/* Efecto de brillo sutil para elementos interactivos */
-.glow-on-hover {
-    position: relative;
-    overflow: hidden;
-}
-
-.glow-on-hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: left 0.7s ease;
-}
-
-.glow-on-hover:hover::before {
-    left: 100%;
-}
-
-/* Animación de pulso sutil para elementos destacados */
-@keyframes subtlePulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-    }
-}
-
-.pulse-highlight {
-    animation: subtlePulse 2s infinite;
-}
-
-/* Animación de escalado suave para elementos al hacer hover */
-.scale-on-hover {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.scale-on-hover:hover {
-    transform: scale(1.03);
-}
-
-/* Responsive mejorado OPTIMIZADO */
+/* Responsive OPTIMIZADO */
 @media (max-width: 1200px) {
     .hero-content h1 {
         font-size: 2.2rem;
@@ -1248,7 +1305,7 @@ footer {
         right: -100%;
         flex-direction: column;
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(15px);
         width: 80%;
         max-width: 280px;
         text-align: left;
@@ -1257,6 +1314,8 @@ footer {
         border-radius: 0 0 0 15px;
         padding: 1.5rem;
         gap: 0;
+        /* Mejorar rendimiento */
+        transform: translateZ(0);
     }
     
     .nav-menu.active {
@@ -1315,6 +1374,15 @@ footer {
     .footer-legals {
         justify-content: center;
     }
+    
+    /* Reducir animaciones en móviles para mejor rendimiento */
+    .floating-card {
+        animation-duration: 8s;
+    }
+    
+    .animated-background {
+        animation-duration: 30s;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1356,33 +1424,44 @@ footer {
         width: 100%;
         justify-content: center;
     }
+    
+    /* Desactivar algunas animaciones en dispositivos muy lentos */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 }
 
-/* Optimizaciones de rendimiento avanzadas */
-/* Reducir repaints y reflows */
-* {
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Optimización de animaciones */
+/* Prefers-reduced-motion para accesibilidad */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-/* Mejorar el rendimiento de elementos con backdrop-filter */
-.backdrop-blur {
-    transform: translateZ(0);
-    will-change: transform, backdrop-filter;
-}
-
-/* Optimización para dispositivos con pantallas de alta densidad */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    
+    .animated-background {
+        animation: none;
+    }
+    
     .particles-container {
-        background-size: 600px 600px, 450px 450px;
+        animation: none;
+    }
+    
+    .floating-card {
+        animation: none;
+    }
+}
+
+/* Mejoras de rendimiento específicas para navegadores WebKit */
+@media (-webkit-min-device-pixel-ratio: 2) {
+    .navbar,
+    .service-card,
+    .plan-card,
+    .floating-card {
+        -webkit-font-smoothing: antialiased;
     }
 }
