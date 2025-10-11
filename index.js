@@ -24,11 +24,11 @@ window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '0.3rem 0';
+        navbar.style.padding = '0.2rem 0';
     } else {
         navbar.style.background = 'rgba(255, 255, 255, 0.95)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '0.5rem 0';
+        navbar.style.padding = '0.3rem 0';
     }
 });
 
@@ -99,22 +99,22 @@ function showNotification(message, type = 'info') {
         styles.textContent = `
             .notification {
                 position: fixed;
-                top: 100px;
+                top: 80px;
                 right: 20px;
                 background: rgba(255, 255, 255, 0.95);
                 backdrop-filter: blur(15px);
                 border-left: 4px solid #4CAF50;
                 border-radius: 8px;
-                padding: 1rem 1.5rem;
+                padding: 0.9rem 1.3rem;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
                 z-index: 10000;
-                max-width: 400px;
+                max-width: 380px;
                 transform: translateX(120%);
                 transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: 1rem;
+                gap: 0.8rem;
             }
             .notification.success {
                 border-left-color: #4CAF50;
@@ -131,12 +131,13 @@ function showNotification(message, type = 'info') {
             .notification-content {
                 display: flex;
                 align-items: center;
-                gap: 0.7rem;
+                gap: 0.6rem;
                 color: #333;
                 font-weight: 500;
+                font-size: 0.9rem;
             }
             .notification-content i {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             .notification.success .notification-content i {
                 color: #4CAF50;
@@ -152,7 +153,7 @@ function showNotification(message, type = 'info') {
                 border: none;
                 color: #666;
                 cursor: pointer;
-                font-size: 1rem;
+                font-size: 0.9rem;
                 transition: color 0.3s ease;
             }
             .notification-close:hover {
