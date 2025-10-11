@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVALON CREATORS - Elevamos tu contenido al siguiente nivel</title>
+    <title>AVALON CREATORS - Agencia Profesional para Creadores de Contenido</title>
+    <meta name="description" content="Agencia especializada en gestión integral para creadores de contenido. Edición profesional, diseño estratégico y crecimiento de audiencia.">
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Fondo animado -->
-    <div class="animated-background"></div>
+    <!-- Fondo animado mejorado -->
+    <div class="animated-background">
+        <div class="particles-container"></div>
+    </div>
     
-    <!-- Header -->
+    <!-- Header mejorado -->
     <header>
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
                     <h2>AVALON CREATORS</h2>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#planes" class="nav-link">Planes</a></li>
+                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
                     <li><a href="#contacto" class="contact-btn">Contacto</a></li>
                 </ul>
                 <div class="hamburger">
@@ -33,67 +41,188 @@
         </nav>
     </header>
 
-    <!-- Sección Hero -->
+    <!-- Sección Hero mejorada -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Eleva tu contenido al <span class="highlight">siguiente nivel</span></h1>
-            <p>Un equipo profesional de editores, diseñadores y managers dedicados a potenciar tu canal sin complicaciones.</p>
+            <div class="hero-badge">
+                <span>Agencia Profesional</span>
+            </div>
+            <h1>Potenciamos tu <span class="highlight">crecimiento digital</span></h1>
+            <p>Un equipo especializado en gestión integral para creadores. Combinamos estrategia, diseño y ejecución para maximizar tu impacto.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">+200</span>
+                    <span class="stat-label">Creadores</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">+5M</span>
+                    <span class="stat-label">Suscriptores</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">+15K</span>
+                    <span class="stat-label">Videos</span>
+                </div>
+            </div>
             <div class="hero-buttons">
-                <a href="#servicios" class="btn-primary">Conoce nuestros servicios</a>
-                <a href="#contacto" class="btn-secondary">Contactar ahora</a>
+                <a href="#contacto" class="btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Comenzar ahora
+                </a>
+                <a href="#servicios" class="btn-secondary">
+                    <i class="fas fa-play-circle"></i>
+                    Ver servicios
+                </a>
             </div>
         </div>
         <div class="hero-image">
             <div class="floating-card">
-                <h3>Tu éxito es nuestra prioridad</h3>
-                <p>Sin acceso a tus cuentas - Total transparencia</p>
+                <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Seguridad Garantizada</h3>
+                <p>Sin acceso a tus cuentas - Proceso transparente y seguro</p>
+            </div>
+            <div class="floating-card secondary">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Resultados Medibles</h3>
+                <p>Crecimiento sostenido y métricas verificables</p>
             </div>
         </div>
     </section>
 
-    <!-- Sección Servicios -->
+    <!-- Sección Servicios mejorada -->
     <section id="servicios" class="services">
         <div class="container">
-            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="section-header">
+                <h2 class="section-title">Servicios Especializados</h2>
+                <p class="section-subtitle">Soluciones integrales adaptadas a las necesidades específicas de creadores de contenido</p>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🎬</div>
-                    <h3>Edición de Video</h3>
-                    <p>Editores profesionales que entienden tu estilo y audiencia para crear contenido impactante.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Edición Profesional</h3>
+                    <p>Edición de video avanzada con atención al detalle, ritmo narrativo y optimización para cada plataforma.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Corrección de color y audio</li>
+                        <li><i class="fas fa-check"></i> Efectos y transiciones</li>
+                        <li><i class="fas fa-check"></i> Optimización de formato</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Diseño de Miniaturas</h3>
-                    <p>Diseñadores e ilustradores que crean miniaturas que captan clicks y aumentan tu CTR.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Diseño Estratégico</h3>
+                    <p>Miniaturas y gráficos diseñados para maximizar CTR y engagement con tu audiencia.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Psicología del color aplicada</li>
+                        <li><i class="fas fa-check"></i> Análisis de tendencias</li>
+                        <li><i class="fas fa-check"></i> A/B testing integrado</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Asesoría de Canal</h3>
-                    <p>Expertos en crecimiento de canales que te ayudan a optimizar tu contenido y estrategia.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Estrategia de Crecimiento</h3>
+                    <p>Análisis de métricas y desarrollo de estrategias personalizadas para expansión de audiencia.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Auditoría de canal</li>
+                        <li><i class="fas fa-check"></i> Planificación de contenido</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
-                    <h3>Gestión de Sponsors</h3>
-                    <p>Conectamos con marcas y negociamos los mejores acuerdos para tu canal.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Gestión de Colaboraciones</h3>
+                    <p>Conexión con marcas y negociación de acuerdos comerciales beneficiosos para tu canal.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Identificación de oportunidades</li>
+                        <li><i class="fas fa-check"></i> Negociación profesional</li>
+                        <li><i class="fas fa-check"></i> Gestión contractual</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">👨‍💼</div>
-                    <h3>Manager Personal</h3>
-                    <p>Un manager dedicado que coordina todo el equipo para que tú solo te enfoques en crear.</p>
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Manager Dedicado</h3>
+                    <p>Coordinación integral de tu equipo creativo para que te enfoques únicamente en crear.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Comunicación centralizada</li>
+                        <li><i class="fas fa-check"></i> Planificación de entregas</li>
+                        <li><i class="fas fa-check"></i> Control de calidad</li>
+                    </ul>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🛡️</div>
+                    <div class="service-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
                     <h3>Seguridad Total</h3>
-                    <p>Tu seguridad es nuestra prioridad. Nunca pedimos acceso a tus cuentas personales.</p>
+                    <p>Procesos seguros que protegen tu contenido y cuentas en todo momento.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Transferencias seguras</li>
+                        <li><i class="fas fa-check"></i> Confidencialidad garantizada</li>
+                        <li><i class="fas fa-check"></i> Backup automático</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Planes -->
+    <!-- Nueva sección: Proceso de trabajo -->
+    <section id="proceso" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Proceso</h2>
+                <p class="section-subtitle">Metodología probada para garantizar resultados excepcionales</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Evaluación Inicial</h3>
+                        <p>Analizamos tu canal, contenido y objetivos para diseñar una estrategia personalizada.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Asignación de Equipo</h3>
+                        <p>Seleccionamos profesionales especializados en tu nicho y estilo de contenido.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Ejecución Colaborativa</h3>
+                        <p>Trabajamos en estrecha colaboración manteniendo tu visión creativa intacta.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Optimización Continua</h3>
+                        <p>Ajustamos estrategias basadas en métricas y feedback para maximizar resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Planes mejorada -->
     <section id="planes" class="plans">
         <div class="container">
-            <h2 class="section-title">Nuestros Planes</h2>
+            <div class="section-header">
+                <h2 class="section-title">Planes de Servicio</h2>
+                <p class="section-subtitle">Soluciones flexibles adaptadas a diferentes niveles de producción</p>
+            </div>
             <div class="plans-container">
                 <div class="plan-card">
                     <div class="plan-header">
@@ -101,155 +230,229 @@
                         <div class="price">Gratuito*</div>
                     </div>
                     <div class="plan-description">
-                        <p>Para creadores con potencial demostrable. Evaluamos tu canal y si cumple con nuestros criterios, te asignamos un equipo completo con acuerdo personalizado.</p>
+                        <p>Para creadores con potencial demostrable y métricas prometedoras. Evaluamos tu canal y si cumple con nuestros criterios, te asignamos un equipo completo.</p>
                     </div>
                     <ul class="plan-features">
-                        <li>✓ Equipo completo asignado</li>
-                        <li>✓ Acuerdo personalizado</li>
-                        <li>✓ Sin costos iniciales</li>
-                        <li>✓ Evaluación de potencial</li>
+                        <li><i class="fas fa-check"></i> Equipo completo asignado</li>
+                        <li><i class="fas fa-check"></i> Acuerdo personalizado</li>
+                        <li><i class="fas fa-check"></i> Sin costos iniciales</li>
+                        <li><i class="fas fa-check"></i> Evaluación de potencial</li>
                     </ul>
                     <div class="plan-note">
-                        <p>*Aplican términos y condiciones</p>
+                        <p>*Aplican términos y condiciones. Requiere evaluación previa.</p>
                     </div>
+                    <a href="#contacto" class="btn-plan">Solicitar Evaluación</a>
                 </div>
                 <div class="plan-card featured">
-                    <div class="plan-badge">Popular</div>
+                    <div class="plan-badge">Más Popular</div>
                     <div class="plan-header">
                         <h3>Plan Personalizado</h3>
                         <div class="price">Desde $5/video</div>
+                        <div class="price-note">Precios escalables por volumen</div>
                     </div>
                     <div class="plan-description">
-                        <p>Servicios a la medida según tus necesidades específicas. Precios basados en cantidad y tipo de contenido.</p>
+                        <p>Servicios a la medida según tus necesidades específicas. Combinación flexible de servicios con precios basados en cantidad y complejidad.</p>
                     </div>
                     <ul class="plan-features">
-                        <li>✓ Videos largos: desde $5 c/u</li>
-                        <li>✓ Shorts: desde $1 c/u</li>
-                        <li>✓ Miniaturas: desde $3 c/u</li>
-                        <li>✓ Manager personal incluido</li>
-                        <li>✓ Asesoría de sponsors</li>
-                        <li>✓ Flexibilidad total</li>
+                        <li><i class="fas fa-check"></i> Videos largos: desde $5 c/u</li>
+                        <li><i class="fas fa-check"></i> Shorts/Reels: desde $1 c/u</li>
+                        <li><i class="fas fa-check"></i> Miniaturas: desde $3 c/u</li>
+                        <li><i class="fas fa-check"></i> Manager personal incluido</li>
+                        <li><i class="fas fa-check"></i> Asesoría de sponsors</li>
+                        <li><i class="fas fa-check"></i> Flexibilidad total</li>
                     </ul>
                     <div class="plan-note">
-                        <p>Precios variables según complejidad y volumen</p>
+                        <p>Precios variables según complejidad, duración y volumen mensual</p>
                     </div>
+                    <a href="#contacto" class="btn-plan featured">Personalizar Plan</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
+    <!-- Sección Contacto mejorada -->
     <section id="contacto" class="contact">
         <div class="container">
-            <h2 class="section-title">¿Listo para llevar tu contenido al siguiente nivel?</h2>
-            <p class="section-subtitle">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas</p>
+            <div class="section-header">
+                <h2 class="section-title">¿Listo para transformar tu contenido?</h2>
+                <p class="section-subtitle">Completa el formulario y nuestro equipo se pondrá en contacto contigo en menos de 24 horas</p>
+            </div>
             
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="channel">Enlace de tu canal</label>
-                    <input type="url" id="channel" name="channel" placeholder="https://youtube.com/tucanal" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="content-type">Tipo de contenido que produces</label>
-                    <select id="content-type" name="content-type" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="gaming">Gaming</option>
-                        <option value="vlogs">Vlogs/Lifestyle</option>
-                        <option value="educacion">Educación/Tutoriales</option>
-                        <option value="entretenimiento">Entretenimiento</option>
-                        <option value="review">Reviews/Análisis</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="platform">Plataforma principal</label>
-                    <select id="platform" name="platform" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="youtube">YouTube</option>
-                        <option value="twitch">Twitch</option>
-                        <option value="tiktok">TikTok</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="otra">Otra</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="subscribers">Cantidad aproximada de suscriptores/seguidores</label>
-                    <select id="subscribers" name="subscribers" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="menos-1k">Menos de 1,000</option>
-                        <option value="1k-10k">1,000 - 10,000</option>
-                        <option value="10k-50k">10,000 - 50,000</option>
-                        <option value="50k-100k">50,000 - 100,000</option>
-                        <option value="100k-500k">100,000 - 500,000</option>
-                        <option value="500k-1m">500,000 - 1,000,000</option>
-                        <option value="mas-1m">Más de 1,000,000</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="videos-per-month">¿Cuántos videos produces al mes aproximadamente?</label>
-                    <input type="number" id="videos-per-month" name="videos-per-month" min="1" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="proposal">Cuéntanos sobre tu canal y tus objetivos</label>
-                    <textarea id="proposal" name="proposal" rows="5" placeholder="Describe tu contenido, tu audiencia, lo que esperas lograr con nuestro equipo, etc." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="services-needed">¿Qué servicios te interesan principalmente?</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="services" value="edicion"> Edición de video</label>
-                        <label><input type="checkbox" name="services" value="miniaturas"> Diseño de miniaturas</label>
-                        <label><input type="checkbox" name="services" value="asesoria"> Asesoría de canal</label>
-                        <label><input type="checkbox" name="services" value="sponsors"> Gestión de sponsors</label>
-                        <label><input type="checkbox" name="services" value="manager"> Manager personal</label>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Hablemos de tu proyecto</h3>
+                    <p>Nuestro equipo está listo para entender tus objetivos y proponer la mejor estrategia para tu crecimiento.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Correo Electrónico</h4>
+                                <p>info@avaloncreators.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Teléfono</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Horario de Atención</h4>
+                                <p>Lun - Vie: 9:00 - 18:00</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <button type="submit" class="btn-primary btn-full">Enviar solicitud</button>
-            </form>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="channel">Enlace de tu canal</label>
+                        <input type="url" id="channel" name="channel" placeholder="https://youtube.com/tucanal" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="content-type">Tipo de contenido</label>
+                            <select id="content-type" name="content-type" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="vlogs">Vlogs/Lifestyle</option>
+                                <option value="educacion">Educación/Tutoriales</option>
+                                <option value="entretenimiento">Entretenimiento</option>
+                                <option value="review">Reviews/Análisis</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="platform">Plataforma principal</label>
+                            <select id="platform" name="platform" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="twitch">Twitch</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="otra">Otra</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subscribers">Audiencia aproximada</label>
+                        <select id="subscribers" name="subscribers" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="menos-1k">Menos de 1,000</option>
+                            <option value="1k-10k">1,000 - 10,000</option>
+                            <option value="10k-50k">10,000 - 50,000</option>
+                            <option value="50k-100k">50,000 - 100,000</option>
+                            <option value="100k-500k">100,000 - 500,000</option>
+                            <option value="500k-1m">500,000 - 1,000,000</option>
+                            <option value="mas-1m">Más de 1,000,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="videos-per-month">Producción mensual estimada</label>
+                        <input type="number" id="videos-per-month" name="videos-per-month" min="1" placeholder="Ej: 8" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="proposal">Describe tu canal y objetivos</label>
+                        <textarea id="proposal" name="proposal" rows="4" placeholder="Cuéntanos sobre tu contenido, audiencia, lo que esperas lograr con nuestro equipo, etc." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="services-needed">Servicios de interés</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="services" value="edicion"> Edición de video</label>
+                            <label><input type="checkbox" name="services" value="miniaturas"> Diseño de miniaturas</label>
+                            <label><input type="checkbox" name="services" value="asesoria"> Estrategia de crecimiento</label>
+                            <label><input type="checkbox" name="services" value="sponsors"> Gestión de sponsors</label>
+                            <label><input type="checkbox" name="services" value="manager"> Manager personal</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar solicitud
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer mejorado -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>AVALON CREATORS</h3>
-                    <p>La agencia para creadores más confiable del mundo</p>
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-crown"></i>
+                        <h3>AVALON CREATORS</h3>
+                    </div>
+                    <p>La agencia de gestión más confiable para creadores de contenido digital.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Enlaces rápidos</h4>
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Edición Profesional</a></li>
+                        <li><a href="#servicios">Diseño Estratégico</a></li>
+                        <li><a href="#servicios">Gestión de Crecimiento</a></li>
+                        <li><a href="#servicios">Colaboraciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Empresa</h4>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
                         <li><a href="#planes">Planes</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p>info@avaloncreators.com</p>
-                    <p>+1 (555) 123-4567</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@avaloncreators.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Global - Trabajamos remotamente</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 AVALON CREATORS. Todos los derechos reservados.</p>
+                <div class="footer-legals">
+                    <a href="#">Términos de servicio</a>
+                    <a href="#">Política de privacidad</a>
+                </div>
             </div>
         </div>
     </footer>
