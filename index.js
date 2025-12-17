@@ -242,14 +242,12 @@ function enhanceStepAnimations() {
     });
 }
 
-// ===== CARRUSEL DE PLANES PARA MÓVIL - CORREGIDO =====
+// ===== CARRUSEL DE PLANES PARA MÓVIL - VERSIÓN PERFECTA =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.carousel-container .plan-card');
     const indicators = document.querySelectorAll('.indicator');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const nextBtn = document.querySelector('.carousel-arrow.next');
     
     if (!carouselContainer || planCards.length === 0) return;
     
@@ -259,18 +257,26 @@ function initPlansCarousel() {
         return;
     } else {
         carouselContainer.style.display = 'block';
+        
+        // Ajustar dinámicamente la altura del carrusel
+        const updateCarouselHeight = () => {
+            let maxHeight = 0;
+            planCards.forEach(card => {
+                const height = card.offsetHeight;
+                if (height > maxHeight) maxHeight = height;
+            });
+            carousel.style.height = maxHeight + 'px';
+        };
+        
+        // Actualizar altura después de cargar
+        setTimeout(updateCarouselHeight, 100);
+        window.addEventListener('resize', updateCarouselHeight);
     }
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
     
     function updateCarousel() {
-        // Calcular desplazamiento - mostrar un slide a la vez
-        const translateX = -currentIndex * 100;
-        
-        // Aplicar transformación
-        carousel.style.transform = `translateX(${translateX}%)`;
-        
         // Actualizar indicadores
         indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === currentIndex);
@@ -280,49 +286,47 @@ function initPlansCarousel() {
         planCards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
         });
+        
+        // Scroll suave al slide actual (scroll nativo)
+        if (carousel.scrollTo) {
+            const cardWidth = planCards[0].offsetWidth + 
+                            parseInt(getComputedStyle(planCards[0]).marginRight);
+            const scrollPosition = currentIndex * cardWidth;
+            carousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        }
     }
     
-    // Eventos para botones
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateCarousel();
-        });
-    }
-    
-    // Eventos para indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
-    });
-    
-    // Swipe táctil mejorado
+    // Swipe táctil mejorado con scroll nativo
     let touchStartX = 0;
     let touchEndX = 0;
-    let isSwiping = false;
+    let isScrolling = false;
     
-    carouselContainer.addEventListener('touchstart', (e) => {
+    carousel.addEventListener('scroll', () => {
+        if (isScrolling) return;
+        
+        const scrollLeft = carousel.scrollLeft;
+        const cardWidth = planCards[0].offsetWidth + 
+                         parseInt(getComputedStyle(planCards[0]).marginRight);
+        
+        currentIndex = Math.round(scrollLeft / cardWidth);
+        updateCarousel();
+    });
+    
+    carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
-        isSwiping = true;
+        isScrolling = false;
     }, { passive: true });
     
-    carouselContainer.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
+    carousel.addEventListener('touchmove', (e) => {
         touchEndX = e.touches[0].clientX;
+        isScrolling = true;
     }, { passive: true });
     
-    carouselContainer.addEventListener('touchend', () => {
-        if (!isSwiping) return;
-        isSwiping = false;
+    carousel.addEventListener('touchend', () => {
+        if (!isScrolling) return;
         
         const swipeThreshold = 50;
         const diff = touchStartX - touchEndX;
@@ -337,18 +341,32 @@ function initPlansCarousel() {
             }
             updateCarousel();
         }
+        
+        isScrolling = false;
+    });
+    
+    // Eventos para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
     });
     
     // Inicializar
     updateCarousel();
     
-    // Redimensionar ventana - re-inicializar si cambia entre móvil/escritorio
+    // Redimensionar ventana - optimizado
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            initPlansCarousel();
-        } else {
-            if (carouselContainer) carouselContainer.style.display = 'none';
-        }
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth <= 768) {
+                initPlansCarousel();
+            } else {
+                if (carouselContainer) carouselContainer.style.display = 'none';
+            }
+        }, 250);
     });
 }
 
