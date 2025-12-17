@@ -115,10 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(event);
     }, 500);
     
-    // Inicializar carrusel cuando el DOM esté listo
-    setTimeout(initPlansCarousel, 100);
+    // Inicializar carrusel
+    initPlansCarousel();
     
-    // También inicializar cuando se carguen todas las imágenes
     window.addEventListener('load', () => {
         setTimeout(initPlansCarousel, 300);
     });
@@ -168,21 +167,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.stat').forEach(stat => {
     counterObserver.observe(stat);
-});
-
-// ===== EFECTOS HOVER EN TARJETAS =====
-document.querySelectorAll('.service-card, .plan-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        if (!this.classList.contains('featured')) {
-            this.style.transform = 'translateY(0)';
-        } else {
-            this.style.transform = 'scale(1.02)';
-        }
-    });
 });
 
 // ===== CARGA DIFERIDA DE IMÁGENES =====
@@ -238,7 +222,7 @@ function setupSocialMediaNotifications() {
     });
 }
 
-// ===== CARRUSEL DE PLANES PARA MÓVIL - VERSIÓN PERFECTA =====
+// ===== CARRUSEL ULTRA FLUIDO PARA MÓVIL =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
@@ -257,9 +241,16 @@ function initPlansCarousel() {
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
+    let isScrolling = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let velocity = 0;
+    let lastX = 0;
+    let timestamp = 0;
+    let lastTimestamp = 0;
     
     // Función para actualizar el carrusel
-    function updateCarousel() {
+    function updateCarousel(smooth = true) {
         // Actualizar indicadores
         indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === currentIndex);
@@ -268,52 +259,136 @@ function initPlansCarousel() {
         // Actualizar clases de tarjetas
         planCards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
-            card.classList.toggle('featured', card.classList.contains('featured'));
         });
         
         // Scroll suave al slide actual
         const cardWidth = planCards[0].offsetWidth;
-        const scrollPosition = currentIndex * (cardWidth + 15);
+        const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+        const scrollPosition = currentIndex * (cardWidth + margin);
         
-        carousel.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
+        if (smooth) {
+            carousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        } else {
+            carousel.scrollLeft = scrollPosition;
+        }
     }
     
-    // Detectar scroll para actualizar índice
-    let isScrolling = false;
-    carousel.addEventListener('scroll', () => {
-        if (isScrolling) return;
-        
-        const scrollLeft = carousel.scrollLeft;
+    // Calcular el índice basado en scroll
+    function getCurrentIndex() {
         const cardWidth = planCards[0].offsetWidth;
-        const newIndex = Math.round(scrollLeft / (cardWidth + 15));
+        const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+        const scrollLeft = carousel.scrollLeft;
+        return Math.round(scrollLeft / (cardWidth + margin));
+    }
+    
+    // Scroll event con debounce
+    let scrollTimeout;
+    carousel.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const newIndex = getCurrentIndex();
+            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+                currentIndex = newIndex;
+                updateCarousel(false);
+            }
+        }, 50);
+    });
+    
+    // Touch events para swipe ultra fluido
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX;
+        scrollLeft = carousel.scrollLeft;
+        velocity = 0;
+        lastX = startX;
+        timestamp = Date.now();
+        lastTimestamp = timestamp;
+        isScrolling = true;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isScrolling) return;
         
+        const x = e.touches[0].pageX;
+        const walk = (startX - x) * 1.5; // Multiplicador para más sensibilidad
+        carousel.scrollLeft = scrollLeft + walk;
+        
+        // Calcular velocidad
+        const now = Date.now();
+        const deltaTime = now - lastTimestamp;
+        if (deltaTime > 0) {
+            const deltaX = x - lastX;
+            velocity = deltaX / deltaTime;
+            lastX = x;
+            lastTimestamp = now;
+        }
+        
+        e.preventDefault();
+    }, { passive: false });
+    
+    carousel.addEventListener('touchend', () => {
+        if (!isScrolling) return;
+        isScrolling = false;
+        
+        // Usar velocidad para determinar el swipe
+        const threshold = 0.3; // Velocidad mínima para cambiar de slide
+        const cardWidth = planCards[0].offsetWidth;
+        const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+        
+        if (Math.abs(velocity) > threshold) {
+            // Swipe rápido - cambiar slide
+            if (velocity > 0 && currentIndex > 0) {
+                currentIndex--;
+            } else if (velocity < 0 && currentIndex < totalSlides - 1) {
+                currentIndex++;
+            }
+        } else {
+            // Swipe lento - snap al slide más cercano
+            const scrollLeft = carousel.scrollLeft;
+            const newIndex = Math.round(scrollLeft / (cardWidth + margin));
+            currentIndex = Math.max(0, Math.min(newIndex, totalSlides - 1));
+        }
+        
+        updateCarousel();
+    });
+    
+    // Mouse events para desktop (en caso de que se pruebe en móvil con emulador)
+    carousel.addEventListener('mousedown', (e) => {
+        startX = e.pageX;
+        scrollLeft = carousel.scrollLeft;
+        isScrolling = true;
+        carousel.style.cursor = 'grabbing';
+        e.preventDefault();
+    });
+    
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isScrolling) return;
+        const x = e.pageX;
+        const walk = (startX - x) * 2;
+        carousel.scrollLeft = scrollLeft + walk;
+    });
+    
+    carousel.addEventListener('mouseup', () => {
+        isScrolling = false;
+        carousel.style.cursor = 'grab';
+        const newIndex = getCurrentIndex();
         if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
             currentIndex = newIndex;
             updateCarousel();
         }
     });
     
-    // Swipe táctil
-    let touchStartX = 0;
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-    
-    carousel.addEventListener('touchend', (e) => {
-        const touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX - touchEndX;
-        const swipeThreshold = 50;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0 && currentIndex < totalSlides - 1) {
-                currentIndex++;
-            } else if (diff < 0 && currentIndex > 0) {
-                currentIndex--;
+    carousel.addEventListener('mouseleave', () => {
+        if (isScrolling) {
+            isScrolling = false;
+            carousel.style.cursor = 'grab';
+            const newIndex = getCurrentIndex();
+            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+                currentIndex = newIndex;
+                updateCarousel();
             }
-            updateCarousel();
         }
     });
     
@@ -326,9 +401,9 @@ function initPlansCarousel() {
     });
     
     // Inicializar
-    updateCarousel();
+    updateCarousel(false);
     
-    // Ajustar altura de tarjetas
+    // Ajustar altura automáticamente
     function adjustCardHeights() {
         if (window.innerWidth > 768) return;
         
@@ -339,9 +414,8 @@ function initPlansCarousel() {
             if (height > maxHeight) maxHeight = height;
         });
         
-        // Establecer altura uniforme
         planCards.forEach(card => {
-            card.style.height = (maxHeight + 20) + 'px';
+            card.style.height = maxHeight + 'px';
         });
     }
     
@@ -355,20 +429,18 @@ function initPlansCarousel() {
             if (window.innerWidth <= 768) {
                 carouselContainer.style.display = 'block';
                 adjustCardHeights();
-                updateCarousel();
+                updateCarousel(false);
             } else {
                 carouselContainer.style.display = 'none';
             }
         }, 250);
     });
     
-    // Asegurar que el carrusel esté en la posición correcta al cargar
+    // Inicializar posición
     setTimeout(() => {
-        if (carousel) {
-            carousel.scrollLeft = 0;
-            currentIndex = 0;
-            updateCarousel();
-        }
+        carousel.scrollLeft = 0;
+        currentIndex = 0;
+        updateCarousel(false);
     }, 500);
 }
 
@@ -404,6 +476,6 @@ checkWhatsAppLinks();
 
 // ===== MENSAJE DE CONSOLA =====
 console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-console.log('📱 Carrusel móvil optimizado - Modo móvil estabilizado');
+console.log('📱 Carrusel móvil ultra fluido - Swipe perfecto');
 console.log('✨ Todos los elementos funcionan correctamente');
-console.log('🎯 Versión de escritorio intacta - Correcciones solo para móvil');
+console.log('🎯 Versión móvil compacta y optimizada');
