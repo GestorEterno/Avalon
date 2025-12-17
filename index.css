@@ -715,12 +715,13 @@ section {
     font-size: 0.75rem;
 }
 
-/* === MEJORAS EN LA SECCIÓN DE PROCESO - PERFECTA === */
+/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA - BELLÍSIMA === */
 
-/* Proceso de trabajo MEJORADO Y OPTIMIZADO */
+/* Proceso de trabajo - NUEVO DISEÑO ELEGANTE */
 .process {
     background: rgba(255, 255, 255, 0.02);
     overflow: hidden;
+    position: relative;
 }
 
 .process-steps {
@@ -729,10 +730,10 @@ section {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
-/* Línea de conexión - PERFECTA Y PRECISA */
+/* Línea de conexión - DISEÑO ELEGANTE CON EFECTO DE NEÓN */
 .process-steps:before {
     content: '';
     position: absolute;
@@ -740,63 +741,43 @@ section {
     left: 50px;
     right: 50px;
     height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 215, 0, 0.2) 10%, 
-        rgba(255, 215, 0, 0.4) 50%, 
-        rgba(255, 215, 0, 0.2) 90%, 
-        transparent 100%);
+    background: rgba(255, 215, 0, 0.1);
     z-index: 0;
     border-radius: 3px;
 }
 
-/* Efecto de flujo de energía - PERFECTO DESDE EL PRIMER HASTA EL ÚLTIMO CÍRCULO */
+/* Efecto de partículas doradas flotando a lo largo de la línea */
 .process-steps:after {
     content: '';
     position: absolute;
-    top: 40px;
+    top: 39px;
     left: 50px;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        var(--accent-light), 
-        var(--accent),
-        var(--accent-light));
+    right: 50px;
+    height: 5px;
+    background: 
+        radial-gradient(circle at 0% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+        radial-gradient(circle at 10% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
+        radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+        radial-gradient(circle at 40% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.7) 2px, transparent 3px),
+        radial-gradient(circle at 60% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+        radial-gradient(circle at 70% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+        radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
+        radial-gradient(circle at 90% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+        radial-gradient(circle at 100% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px);
+    background-size: 10% 100%;
     z-index: 1;
-    border-radius: 3px;
-    animation: energyFlowPerfect 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
-    transform-origin: left center;
+    animation: sparkleFlow 3s linear infinite;
+    filter: blur(0.5px);
 }
 
-/* ANIMACIÓN PERFECTA - COMIENZA EXACTAMENTE EN EL PRIMER CÍRCULO Y TERMINA EN EL ÚLTIMO */
-@keyframes energyFlowPerfect {
+@keyframes sparkleFlow {
     0% {
-        left: 50px;
-        width: 0;
-        opacity: 0;
-        transform: scaleX(0);
-    }
-    10% {
-        opacity: 1;
-        transform: scaleX(1);
-    }
-    20% {
-        width: calc(100% - 100px); /* Exactamente de círculo a círculo */
-    }
-    80% {
-        width: calc(100% - 100px);
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.5;
-        transform: scaleX(1);
+        background-position: 0% 0;
     }
     100% {
-        left: calc(100% - 50px - (100% - 100px)); /* Posición final exacta */
-        width: 0;
-        opacity: 0;
-        transform: scaleX(0);
+        background-position: 100% 0;
     }
 }
 
@@ -813,15 +794,17 @@ section {
 }
 
 .step:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
 }
 
-/* Números de paso - DISEÑO MEJORADO */
+/* Números de paso - DISEÑO ELEGANTE CON EFECTO 3D */
 .step-number {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -829,54 +812,88 @@ section {
     font-weight: 800;
     color: var(--accent);
     margin-bottom: 1.5rem;
-    border: 2px solid rgba(255, 215, 0, 0.3); /* Borde más visible */
+    border: 2px solid rgba(255, 215, 0, 0.3);
     backdrop-filter: blur(10px);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
-    z-index: 2; /* Asegurar que esté por encima de la línea */
+    z-index: 2;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Efecto de brillo interior en los números */
 .step-number:before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-        transparent 20%, 
-        rgba(255, 215, 0, 0.1) 50%, 
-        transparent 80%);
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
     border-radius: 50%;
-    animation: stepGlow 3s ease-in-out infinite;
+    animation: gentleGlow 4s ease-in-out infinite;
     z-index: -1;
 }
 
-@keyframes stepGlow {
+@keyframes gentleGlow {
     0%, 100% {
         opacity: 0.3;
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1);
     }
-    50% {
-        opacity: 0.6;
-        transform: rotate(180deg);
+    33% {
+        opacity: 0.4;
+        transform: rotate(120deg) scale(1.05);
+    }
+    66% {
+        opacity: 0.5;
+        transform: rotate(240deg) scale(1.02);
     }
 }
 
+/* Efecto de conexión sutil entre números */
+.step-number:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 215, 0, 0.3), 
+        transparent);
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.step:hover .step-number:after {
+    opacity: 1;
+    width: 60px;
+}
+
 .step:hover .step-number {
-    background: rgba(255, 215, 0, 0.15);
+    background: linear-gradient(145deg, 
+        rgba(255, 215, 0, 0.15), 
+        rgba(255, 215, 0, 0.05));
     transform: scale(1.15) rotate(5deg);
     box-shadow: 
-        0 0 25px rgba(255, 215, 0, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 215, 0, 0.4);
+        0 10px 30px rgba(255, 215, 0, 0.3),
+        0 0 40px rgba(255, 215, 0, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
+    color: var(--accent-light);
 }
 
 /* Contenido del paso */
 .step-content {
     padding: 0 10px;
+    position: relative;
 }
 
 .step-content h3 {
@@ -887,6 +904,23 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    display: inline-block;
+}
+
+.step-content h3:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transition: var(--transition);
+}
+
+.step:hover .step-content h3:after {
+    width: 100%;
 }
 
 .step-content p {
@@ -895,6 +929,46 @@ section {
     font-size: 0.95rem;
     max-width: 220px;
     margin: 0 auto;
+    transition: var(--transition);
+}
+
+.step:hover .step-content p {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+/* Efecto de halo alrededor de cada paso */
+.step:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(255, 215, 0, 0.05) 0%, 
+        transparent 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.step:hover:before {
+    opacity: 1;
+    animation: haloPulse 2s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.5;
+    }
 }
 
 /* Planes MEJORADOS */
@@ -1295,13 +1369,13 @@ footer:before {
     }
 }
 
-/* === RESPONSIVE PARA PROCESO - PERFECTO === */
+/* === RESPONSIVE PARA PROCESO - DISEÑO ELEGANTE === */
 @media (max-width: 1200px) {
     .process-steps {
         flex-direction: column;
-        gap: 50px;
+        gap: 60px;
         max-width: 600px;
-        padding: 30px 0;
+        padding: 60px 0;
     }
     
     .process-steps:before {
@@ -1311,12 +1385,7 @@ footer:before {
         transform: translateX(-50%);
         width: 3px;
         height: 100%;
-        background: linear-gradient(180deg, 
-            transparent 0%, 
-            rgba(255, 215, 0, 0.2) 10%, 
-            rgba(255, 215, 0, 0.4) 50%, 
-            rgba(255, 215, 0, 0.2) 90%, 
-            transparent 100%);
+        background: rgba(255, 215, 0, 0.1);
     }
     
     .process-steps:after {
@@ -1324,52 +1393,38 @@ footer:before {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 3px;
-        height: 0;
-        background: linear-gradient(180deg, 
-            var(--accent-light), 
-            var(--accent),
-            var(--accent-light));
-        animation: energyFlowVerticalPerfect 4s ease-in-out infinite;
-        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
-        transform-origin: center top;
+        width: 5px;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+            radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+            radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
+            radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+            radial-gradient(circle at 50% 40%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+            radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.7) 2px, transparent 3px),
+            radial-gradient(circle at 50% 60%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
+            radial-gradient(circle at 50% 70%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+            radial-gradient(circle at 50% 80%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
+            radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
+            radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.6) 2px, transparent 3px);
+        background-size: 100% 10%;
+        animation: sparkleFlowVertical 3s linear infinite;
+        filter: blur(0.5px);
     }
     
-    /* ANIMACIÓN VERTICAL PERFECTA */
-    @keyframes energyFlowVerticalPerfect {
+    @keyframes sparkleFlowVertical {
         0% {
-            top: 35px; /* Comienza exactamente en el centro del primer círculo */
-            height: 0;
-            opacity: 0;
-            transform: translateX(-50%) scaleY(0);
-        }
-        10% {
-            opacity: 1;
-            transform: translateX(-50%) scaleY(1);
-        }
-        20% {
-            height: calc(100% - 70px); /* Exactamente de círculo a círculo */
-        }
-        80% {
-            height: calc(100% - 70px);
-            opacity: 1;
-        }
-        90% {
-            opacity: 0.5;
-            transform: translateX(-50%) scaleY(1);
+            background-position: 0 0%;
         }
         100% {
-            top: calc(100% - 35px); /* Termina exactamente en el centro del último círculo */
-            height: 0;
-            opacity: 0;
-            transform: translateX(-50%) scaleY(0);
+            background-position: 0 100%;
         }
     }
     
     .step {
         flex-direction: row;
         text-align: left;
-        gap: 25px;
+        gap: 30px;
         align-items: flex-start;
     }
     
@@ -1388,6 +1443,29 @@ footer:before {
     .step-content p {
         max-width: 100%;
         margin: 0;
+    }
+    
+    .step-number:after {
+        top: 100%;
+        left: 50%;
+        width: 2px;
+        height: 30px;
+        background: linear-gradient(180deg, 
+            rgba(255, 215, 0, 0.3), 
+            transparent);
+        transform: translateX(-50%);
+    }
+    
+    .step:hover .step-number:after {
+        height: 40px;
+        opacity: 1;
+        width: 2px;
+    }
+    
+    .step:before {
+        top: 50%;
+        left: 35px;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -1529,7 +1607,7 @@ footer:before {
     .step {
         flex-direction: column;
         text-align: center;
-        gap: 20px;
+        gap: 25px;
         align-items: center;
     }
     
@@ -1538,9 +1616,9 @@ footer:before {
     }
     
     .step-number {
-        width: 65px;
-        height: 65px;
-        font-size: 1.3rem;
+        width: 70px;
+        height: 70px;
+        font-size: 1.4rem;
     }
     
     .hero-image {
