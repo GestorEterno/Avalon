@@ -957,15 +957,15 @@ section {
     color: var(--accent);
 }
 
-/* ===== FOOTER MEJORADO CON ESTRUCTURA DUAL ===== */
+/* ===== FOOTER MEJORADO CON ESPACIOS REDUCIDOS ===== */
 footer {
     background: transparent;
     color: var(--light);
-    padding: 1rem 0 0.5rem; /* REDUCIDO: 2rem 0 1.5rem → 1rem 0 0.5rem */
+    padding: 0.6rem 0 0.3rem; /* REDUCIDO AÚN MÁS */
     position: relative;
     overflow: hidden;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 1rem; /* REDUCIDO: 2rem → 1rem */
+    margin-top: 0.5rem; /* REDUCIDO */
 }
 
 footer:before {
@@ -984,8 +984,8 @@ footer:before {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.8rem; /* REDUCIDO: 1rem → 0.8rem */
-    margin-bottom: 0.8rem; /* REDUCIDO: 1.5rem → 0.8rem */
+    gap: 0.4rem; /* REDUCIDO */
+    margin-bottom: 0.4rem; /* REDUCIDO */
 }
 
 /* Versión móvil (visible por defecto) */
@@ -1006,7 +1006,7 @@ footer:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.4rem; /* REDUCIDO */
 }
 
 .footer-logo {
@@ -1031,10 +1031,11 @@ footer:before {
     font-weight: 700;
 }
 
+/* TEXTO AUMENTADO 20% EN MÓVIL */
 .footer-tagline {
     opacity: 0.8;
     line-height: 1.4;
-    font-size: 0.85rem;
+    font-size: 1.02rem; /* AUMENTADO 20%: 0.85rem → 1.02rem */
     max-width: 300px;
     margin: 0 auto;
 }
@@ -1066,8 +1067,8 @@ footer:before {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 0.8rem; /* REDUCIDO: 1.2rem → 0.8rem */
-    padding-bottom: 0.2rem; /* AÑADIDO para reducir espacio inferior */
+    padding-top: 0.4rem; /* REDUCIDO */
+    padding-bottom: 0.1rem; /* REDUCIDO */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     opacity: 0.7;
@@ -1076,7 +1077,7 @@ footer:before {
 .footer-bottom p {
     margin: 0;
     font-weight: 400;
-    line-height: 1.2; /* REDUCIDO para compactar */
+    line-height: 1.2;
 }
 
 /* ===== FOOTER PARA DESKTOP (3 COLUMNAS) ===== */
@@ -1096,8 +1097,8 @@ footer:before {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        gap: 1rem; /* REDUCIDO: 2rem → 1rem */
-        margin-bottom: 1rem; /* REDUCIDO: 2rem → 1rem */
+        gap: 0.5rem; /* REDUCIDO */
+        margin-bottom: 0.5rem; /* REDUCIDO */
     }
     
     /* Logo a la izquierda (20% más grande que en móvil) */
@@ -1106,23 +1107,23 @@ footer:before {
     }
     
     .footer-left .footer-logo {
-        transform: scale(1); /* 20% más grande que móvil (0.8 * 1.2 ≈ 1) */
+        transform: scale(1);
         justify-content: flex-start;
     }
     
     .footer-left .footer-logo .logo-img {
-        height: 42px; /* 35px + 20% */
+        height: 42px;
     }
     
     .footer-left .footer-logo h3 {
-        font-size: 1.2rem; /* 1rem + 20% */
+        font-size: 1.2rem;
     }
     
     .footer-left .footer-logo:hover {
         transform: scale(1.05);
     }
     
-    /* Frase centrada */
+    /* Frase centrada (TEXTO AUMENTADO 20% EN DESKTOP) */
     .footer-center {
         justify-content: center;
         text-align: center;
@@ -1131,7 +1132,7 @@ footer:before {
     .footer-center .footer-tagline {
         margin: 0;
         max-width: 100%;
-        font-size: 0.9rem;
+        font-size: 1.08rem; /* AUMENTADO 20%: 0.9rem → 1.08rem */
         opacity: 0.8;
     }
     
@@ -1145,8 +1146,8 @@ footer:before {
     }
     
     .footer-right .social-links a {
-        width: 38px; /* AUMENTADO 20%: 32px → 38px (32 * 1.2 = 38.4) */
-        height: 38px; /* AUMENTADO 20%: 32px → 38px */
+        width: 38px; /* AUMENTADO 20% */
+        height: 38px; /* AUMENTADO 20% */
     }
 }
 
@@ -1365,7 +1366,7 @@ footer:before {
     }
     
     .footer-tagline {
-        font-size: 0.8rem;
+        font-size: 0.95rem; /* Ajustado para móvil pequeño */
         max-width: 250px;
     }
     
@@ -1379,7 +1380,7 @@ footer:before {
     }
     
     .footer-bottom {
-        padding-top: 1rem;
+        padding-top: 0.8rem;
         font-size: 0.75rem;
     }
 }
