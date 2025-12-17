@@ -18,57 +18,102 @@ navLinks.forEach(link => {
     });
 });
 
-// Cambiar navbar al hacer scroll - AHORA TRANSPARENTE QUE CAMBIA
+// Sistema de navegación activa según scroll
+const sections = document.querySelectorAll('section');
+const navLinksArray = Array.from(navLinks);
+
+// Configuración del Intersection Observer para detección de sección activa
+const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px', // Ajuste fino para detección temprana
+    threshold: 0
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Remover clase activa de todos los enlaces
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                link.style.color = '';
+            });
+            
+            // Agregar clase activa al enlace correspondiente
+            const id = entry.target.getAttribute('id');
+            const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
+            
+            if (correspondingLink) {
+                correspondingLink.classList.add('active');
+                // Añadir estilo inline para el subrayado activo
+                correspondingLink.style.color = 'var(--accent)';
+            }
+        }
+    });
+}, observerOptions);
+
+// Observar todas las secciones
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Cambiar navbar al hacer scroll - MEJORADO
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
+    const currentScroll = window.scrollY;
+    
+    // Efecto de fondo al hacer scroll
+    if (currentScroll > 50) {
         navbar.style.background = 'rgba(15, 52, 96, 0.95)';
         navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
         navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        navbar.style.backdropFilter = 'blur(15px)';
     } else {
         navbar.style.background = 'rgba(15, 52, 96, 0.1)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+        navbar.style.backdropFilter = 'blur(15px)';
     }
+    
+    // Detectar dirección del scroll para efectos sutiles
+    if (currentScroll <= 0) {
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScroll = currentScroll;
 });
 
 // Animaciones al hacer scroll mejoradas
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            entry.target.classList.add('active');
         }
     });
-}, observerOptions);
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+});
 
 // Observar elementos para animación
 document.addEventListener('DOMContentLoaded', () => {
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
     
     elementsToAnimate.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+        el.classList.add('reveal');
+        revealObserver.observe(el);
     });
     
-    // Añadir clase para animación
-    const style = document.createElement('style');
-    style.textContent = `
-        .animate-in {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
+    // Activar sección "inicio" por defecto al cargar
+    const homeLink = document.querySelector('.nav-link[href="#inicio"]');
+    if (homeLink && window.scrollY < 100) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        homeLink.classList.add('active');
+        homeLink.style.color = 'var(--accent)';
+    }
 });
 
-// Contadores animados para estadísticas
+// Contadores animados para estadísticas - MEJORADO
 function animateCounter(element, target, duration = 2000) {
     let start = 0;
     const increment = target / (duration / 16);
@@ -92,13 +137,13 @@ const counterObserver = new IntersectionObserver((entries) => {
                 let target;
                 if (statNumber.textContent.includes('+')) {
                     target = parseInt(statNumber.textContent.replace('+', ''));
-                } else if (statNumber.textContent.includes('M')) {
-                    target = parseInt(statNumber.textContent.replace('M', '')) * 1000000;
                 } else {
                     target = parseInt(statNumber.textContent);
                 }
-                animateCounter(statNumber, target);
-                statNumber.classList.add('animated');
+                if (!isNaN(target)) {
+                    animateCounter(statNumber, target);
+                    statNumber.classList.add('animated');
+                }
             }
         }
     });
@@ -112,23 +157,29 @@ document.querySelectorAll('.stat').forEach(stat => {
 // Efectos de hover mejorados para tarjetas
 document.querySelectorAll('.service-card, .plan-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.transform = 'translateY(-8px)';
     });
     
     card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
+        if (!this.classList.contains('featured')) {
+            this.style.transform = 'translateY(0)';
+        } else {
+            this.style.transform = 'scale(1.02)';
+        }
     });
 });
 
-// Carga progresiva de imágenes (para futuras implementaciones)
+// Carga progresiva de imágenes
 function lazyLoadImages() {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
             }
         });
     });
@@ -146,22 +197,36 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
+    
+    // Forzar actualización del menú activo después de carga
+    setTimeout(() => {
+        const event = new Event('scroll');
+        window.dispatchEvent(event);
+    }, 500);
 });
 
 // Mejora de accesibilidad: navegación por teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Cerrar menú móvil si está abierto
         if (navMenu.classList.contains('active')) {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
     }
+    
+    // Navegación con teclado entre secciones
+    if (e.altKey && e.key >= '1' && e.key <= '4') {
+        const index = parseInt(e.key) - 1;
+        if (navLinksArray[index]) {
+            navLinksArray[index].click();
+        }
+    }
 });
 
-// Mensaje de consola con información del sitio
-console.log('🚀 AVALON CREATORS - Agencia Revolucionaria de Software cargada correctamente');
-console.log('✅ Versión: 2.0 - Iconos modernos actualizados');
-console.log('✅ Font Awesome: 6.5.1 con iconos de X/Twitter y Sistemas Empresariales');
-console.log('✅ Todos los iconos visibles y funcionando');
+// Mensaje de consola
+console.log('🚀 AVALON CREATORS - Menú activo y animaciones mejoradas');
+console.log('✅ Navegación: Secciones activas detectadas automáticamente');
+console.log('✅ Animaciones: Suaves y optimizadas');
+console.log('✅ Proceso: Animación de flujo de energía activada');
+console.log('✅ Footer: Estructura dual responsive funcionando');
