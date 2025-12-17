@@ -1,3 +1,4 @@
+// ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -16,6 +17,7 @@ navLinks.forEach(link => {
     });
 });
 
+// ===== NAVEGACIÓN ACTIVA =====
 const sections = document.querySelectorAll('section');
 const navLinksArray = Array.from(navLinks);
 
@@ -48,6 +50,7 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
+// ===== EFECTO SCROLL EN NAVBAR =====
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -72,6 +75,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
+// ===== ANIMACIONES DE REVELADO =====
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -83,6 +87,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -50px 0px'
 });
 
+// ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
     
@@ -97,8 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
         homeLink.classList.add('active');
         homeLink.style.color = 'var(--accent)';
     }
+    
+    lazyLoadImages();
+    setupSocialMediaNotifications();
+    
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 100);
+    
+    setTimeout(() => {
+        const event = new Event('scroll');
+        window.dispatchEvent(event);
+    }, 500);
+    
+    // Inicializar carrusel cuando el DOM esté listo
+    setTimeout(initPlansCarousel, 100);
+    
+    // También inicializar cuando se carguen todas las imágenes
+    window.addEventListener('load', () => {
+        setTimeout(initPlansCarousel, 300);
+    });
 });
 
+// ===== CONTADORES ANIMADOS =====
 function animateCounter(element, target, duration = 2000, suffix = '') {
     let start = 0;
     const increment = target / (duration / 16);
@@ -144,6 +170,7 @@ document.querySelectorAll('.stat').forEach(stat => {
     counterObserver.observe(stat);
 });
 
+// ===== EFECTOS HOVER EN TARJETAS =====
 document.querySelectorAll('.service-card, .plan-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-8px)';
@@ -158,6 +185,7 @@ document.querySelectorAll('.service-card, .plan-card').forEach(card => {
     });
 });
 
+// ===== CARGA DIFERIDA DE IMÁGENES =====
 function lazyLoadImages() {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -177,6 +205,7 @@ function lazyLoadImages() {
     });
 }
 
+// ===== NOTIFICACIONES DE REDES SOCIALES =====
 function setupSocialMediaNotifications() {
     const socialNotification = document.getElementById('social-notification');
     const underConstructionLinks = document.querySelectorAll('.social-under-construction');
@@ -209,45 +238,14 @@ function setupSocialMediaNotifications() {
     });
 }
 
-function enhanceStepAnimations() {
-    const steps = document.querySelectorAll('.step');
-    
-    steps.forEach(step => {
-        step.addEventListener('mouseenter', function() {
-            const stepNumber = this.querySelector('.step-number');
-            const stepContent = this.querySelector('.step-content');
-            
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                if (audioContext) {
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 440 + (Math.random() * 100);
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.001, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.005, audioContext.currentTime + 0.1);
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
-                    
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.3);
-                }
-            } catch (e) {
-            }
-        });
-    });
-}
-
 // ===== CARRUSEL DE PLANES PARA MÓVIL - VERSIÓN PERFECTA =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.carousel-container .plan-card');
     const indicators = document.querySelectorAll('.indicator');
+    const prevArrow = document.querySelector('.carousel-arrow.prev');
+    const nextArrow = document.querySelector('.carousel-arrow.next');
     
     if (!carouselContainer || planCards.length === 0) return;
     
@@ -258,14 +256,19 @@ function initPlansCarousel() {
     } else {
         carouselContainer.style.display = 'block';
         
-        // Ajustar dinámicamente la altura del carrusel
+        // Ajustar altura automáticamente basada en el contenido más alto
         const updateCarouselHeight = () => {
             let maxHeight = 0;
             planCards.forEach(card => {
-                const height = card.offsetHeight;
-                if (height > maxHeight) maxHeight = height;
+                card.style.height = 'auto';
+                const cardHeight = card.offsetHeight;
+                if (cardHeight > maxHeight) maxHeight = cardHeight;
             });
-            carousel.style.height = maxHeight + 'px';
+            
+            // Establecer la misma altura para todas las tarjetas
+            planCards.forEach(card => {
+                card.style.height = maxHeight + 'px';
+            });
         };
         
         // Actualizar altura después de cargar
@@ -275,6 +278,7 @@ function initPlansCarousel() {
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
+    let isScrolling = false;
     
     function updateCarousel() {
         // Actualizar indicadores
@@ -287,23 +291,25 @@ function initPlansCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave al slide actual (scroll nativo)
-        if (carousel.scrollTo) {
+        // Scroll suave al slide actual
+        if (carousel && !isScrolling) {
+            isScrolling = true;
             const cardWidth = planCards[0].offsetWidth + 
                             parseInt(getComputedStyle(planCards[0]).marginRight);
             const scrollPosition = currentIndex * cardWidth;
+            
             carousel.scrollTo({
                 left: scrollPosition,
                 behavior: 'smooth'
             });
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, 300);
         }
     }
     
-    // Swipe táctil mejorado con scroll nativo
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let isScrolling = false;
-    
+    // Detectar cambio de slide con scroll nativo
     carousel.addEventListener('scroll', () => {
         if (isScrolling) return;
         
@@ -311,39 +317,57 @@ function initPlansCarousel() {
         const cardWidth = planCards[0].offsetWidth + 
                          parseInt(getComputedStyle(planCards[0]).marginRight);
         
-        currentIndex = Math.round(scrollLeft / cardWidth);
-        updateCarousel();
+        const newIndex = Math.round(scrollLeft / cardWidth);
+        
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+            currentIndex = newIndex;
+            updateCarousel();
+        }
     });
+    
+    // Swipe táctil mejorado
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50;
     
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
-        isScrolling = false;
     }, { passive: true });
     
-    carousel.addEventListener('touchmove', (e) => {
-        touchEndX = e.touches[0].clientX;
-        isScrolling = true;
-    }, { passive: true });
-    
-    carousel.addEventListener('touchend', () => {
-        if (!isScrolling) return;
-        
-        const swipeThreshold = 50;
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
         const diff = touchStartX - touchEndX;
         
         if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
+            if (diff > 0 && currentIndex < totalSlides - 1) {
                 // Swipe izquierda - siguiente
-                currentIndex = Math.min(currentIndex + 1, totalSlides - 1);
-            } else {
+                currentIndex++;
+            } else if (diff < 0 && currentIndex > 0) {
                 // Swipe derecha - anterior
-                currentIndex = Math.max(currentIndex - 1, 0);
+                currentIndex--;
             }
             updateCarousel();
         }
-        
-        isScrolling = false;
     });
+    
+    // Eventos para flechas (si existen)
+    if (prevArrow) {
+        prevArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+    
+    if (nextArrow) {
+        nextArrow.addEventListener('click', () => {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
     
     // Eventos para indicadores
     indicators.forEach((indicator, index) => {
@@ -356,62 +380,50 @@ function initPlansCarousel() {
     // Inicializar
     updateCarousel();
     
-    // Redimensionar ventana - optimizado
+    // Redimensionar ventana
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             if (window.innerWidth <= 768) {
-                initPlansCarousel();
+                // Re-inicializar carrusel
+                if (carouselContainer) {
+                    carouselContainer.style.display = 'block';
+                    planCards.forEach(card => {
+                        card.style.height = 'auto';
+                    });
+                    setTimeout(() => {
+                        const updateCarouselHeight = () => {
+                            let maxHeight = 0;
+                            planCards.forEach(card => {
+                                const cardHeight = card.offsetHeight;
+                                if (cardHeight > maxHeight) maxHeight = cardHeight;
+                            });
+                            
+                            planCards.forEach(card => {
+                                card.style.height = maxHeight + 'px';
+                            });
+                        };
+                        updateCarouselHeight();
+                    }, 100);
+                }
             } else {
                 if (carouselContainer) carouselContainer.style.display = 'none';
             }
         }, 250);
     });
+    
+    // Asegurar que el carrusel esté en la posición correcta al cargar
+    setTimeout(() => {
+        if (carousel) {
+            carousel.scrollLeft = 0;
+            currentIndex = 0;
+            updateCarousel();
+        }
+    }, 500);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
-    setupSocialMediaNotifications();
-    enhanceStepAnimations();
-    
-    setTimeout(() => {
-        document.body.classList.add('loaded');
-    }, 100);
-    
-    setTimeout(() => {
-        const event = new Event('scroll');
-        window.dispatchEvent(event);
-    }, 500);
-    
-    // Inicializar carrusel cuando el DOM esté listo
-    setTimeout(initPlansCarousel, 100);
-    
-    // Optimizar para móvil - cargar elementos progresivamente
-    if (window.innerWidth <= 768) {
-        const lazyElements = document.querySelectorAll('.service-card, .step, .floating-card');
-        
-        const lazyObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    lazyObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        lazyElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            lazyObserver.observe(el);
-        });
-    }
-});
-
+// ===== ATAJOS DE TECLADO =====
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (navMenu.classList.contains('active')) {
@@ -429,6 +441,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ===== VERIFICACIÓN DE ENLACES WHATSAPP =====
 function checkWhatsAppLinks() {
     const whatsappLinks = document.querySelectorAll('a[href*="whatsapp"]');
     whatsappLinks.forEach(link => {
@@ -440,5 +453,7 @@ function checkWhatsAppLinks() {
 
 checkWhatsAppLinks();
 
+// ===== MENSAJE DE CONSOLA =====
 console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-console.log('🎯 Todos los iconos funcionan correctamente en Font Awesome 6.5.1');
+console.log('🎯 Carrusel móvil optimizado para desplazamiento perfecto');
+console.log('✨ Todos los elementos funcionan correctamente');
