@@ -715,7 +715,7 @@ section {
     font-size: 0.75rem;
 }
 
-/* === MEJORAS EN LA SECCIÓN DE PROCESO === */
+/* === MEJORAS EN LA SECCIÓN DE PROCESO - PERFECTA === */
 
 /* Proceso de trabajo MEJORADO Y OPTIMIZADO */
 .process {
@@ -732,59 +732,71 @@ section {
     padding: 40px 0;
 }
 
-/* Línea de conexión - ANIMACIÓN MEJORADA */
+/* Línea de conexión - PERFECTA Y PRECISA */
 .process-steps:before {
     content: '';
     position: absolute;
     top: 40px;
-    left: 10%;
-    width: 80%;
+    left: 50px;
+    right: 50px;
     height: 3px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        var(--accent) 20%, 
-        var(--accent) 80%, 
+        rgba(255, 215, 0, 0.2) 10%, 
+        rgba(255, 215, 0, 0.4) 50%, 
+        rgba(255, 215, 0, 0.2) 90%, 
         transparent 100%);
     z-index: 0;
-    opacity: 0.3;
+    border-radius: 3px;
 }
 
-/* Efecto de flujo de energía en la línea */
+/* Efecto de flujo de energía - PERFECTO DESDE EL PRIMER HASTA EL ÚLTIMO CÍRCULO */
 .process-steps:after {
     content: '';
     position: absolute;
     top: 40px;
-    left: 10%;
-    width: 30px;
+    left: 50px;
+    width: 0;
     height: 3px;
     background: linear-gradient(90deg, 
-        transparent, 
         var(--accent-light), 
-        var(--accent));
+        var(--accent),
+        var(--accent-light));
     z-index: 1;
     border-radius: 3px;
-    animation: energyFlow 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+    animation: energyFlowPerfect 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+    transform-origin: left center;
 }
 
-@keyframes energyFlow {
+/* ANIMACIÓN PERFECTA - COMIENZA EXACTAMENTE EN EL PRIMER CÍRCULO Y TERMINA EN EL ÚLTIMO */
+@keyframes energyFlowPerfect {
     0% {
-        left: 10%;
+        left: 50px;
+        width: 0;
         opacity: 0;
-        transform: scaleX(0.5);
+        transform: scaleX(0);
     }
     10% {
         opacity: 1;
         transform: scaleX(1);
     }
-    90% {
+    20% {
+        width: calc(100% - 100px); /* Exactamente de círculo a círculo */
+    }
+    80% {
+        width: calc(100% - 100px);
         opacity: 1;
+    }
+    90% {
+        opacity: 0.5;
         transform: scaleX(1);
     }
     100% {
-        left: 90%;
+        left: calc(100% - 50px - (100% - 100px)); /* Posición final exacta */
+        width: 0;
         opacity: 0;
-        transform: scaleX(0.5);
+        transform: scaleX(0);
     }
 }
 
@@ -817,11 +829,12 @@ section {
     font-weight: 800;
     color: var(--accent);
     margin-bottom: 1.5rem;
-    border: 2px solid rgba(255, 215, 0, 0.2);
+    border: 2px solid rgba(255, 215, 0, 0.3); /* Borde más visible */
     backdrop-filter: blur(10px);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    z-index: 2; /* Asegurar que esté por encima de la línea */
 }
 
 /* Efecto de brillo interior en los números */
@@ -882,33 +895,6 @@ section {
     font-size: 0.95rem;
     max-width: 220px;
     margin: 0 auto;
-}
-
-/* Puntos de conexión entre pasos */
-.step:not(:last-child):after {
-    content: '';
-    position: absolute;
-    top: 40px;
-    right: -25px;
-    width: 10px;
-    height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    opacity: 0.5;
-    z-index: 2;
-    animation: pulseDot 2s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: scale(1.3);
-        opacity: 0.8;
-        box-shadow: 0 0 10px var(--accent);
-    }
 }
 
 /* Planes MEJORADOS */
@@ -1309,7 +1295,7 @@ footer:before {
     }
 }
 
-/* === RESPONSIVE PARA PROCESO === */
+/* === RESPONSIVE PARA PROCESO - PERFECTO === */
 @media (max-width: 1200px) {
     .process-steps {
         flex-direction: column;
@@ -1327,8 +1313,9 @@ footer:before {
         height: 100%;
         background: linear-gradient(180deg, 
             transparent 0%, 
-            var(--accent) 10%, 
-            var(--accent) 90%, 
+            rgba(255, 215, 0, 0.2) 10%, 
+            rgba(255, 215, 0, 0.4) 50%, 
+            rgba(255, 215, 0, 0.2) 90%, 
             transparent 100%);
     }
     
@@ -1338,32 +1325,44 @@ footer:before {
         left: 50%;
         transform: translateX(-50%);
         width: 3px;
-        height: 30px;
+        height: 0;
         background: linear-gradient(180deg, 
-            transparent, 
             var(--accent-light), 
-            var(--accent));
-        animation: energyFlowVertical 4s ease-in-out infinite;
+            var(--accent),
+            var(--accent-light));
+        animation: energyFlowVerticalPerfect 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+        transform-origin: center top;
     }
     
-    @keyframes energyFlowVertical {
+    /* ANIMACIÓN VERTICAL PERFECTA */
+    @keyframes energyFlowVerticalPerfect {
         0% {
-            top: 0;
+            top: 35px; /* Comienza exactamente en el centro del primer círculo */
+            height: 0;
             opacity: 0;
-            transform: translateX(-50%) scaleY(0.5);
+            transform: translateX(-50%) scaleY(0);
         }
         10% {
             opacity: 1;
             transform: translateX(-50%) scaleY(1);
         }
-        90% {
+        20% {
+            height: calc(100% - 70px); /* Exactamente de círculo a círculo */
+        }
+        80% {
+            height: calc(100% - 70px);
             opacity: 1;
+        }
+        90% {
+            opacity: 0.5;
             transform: translateX(-50%) scaleY(1);
         }
         100% {
-            top: calc(100% - 30px);
+            top: calc(100% - 35px); /* Termina exactamente en el centro del último círculo */
+            height: 0;
             opacity: 0;
-            transform: translateX(-50%) scaleY(0.5);
+            transform: translateX(-50%) scaleY(0);
         }
     }
     
@@ -1389,10 +1388,6 @@ footer:before {
     .step-content p {
         max-width: 100%;
         margin: 0;
-    }
-    
-    .step:not(:last-child):after {
-        display: none;
     }
 }
 
