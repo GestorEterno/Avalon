@@ -121,7 +121,7 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-// Scroll optimizado para móviles con debouncing
+// Scroll optimizado para móviles con debouncing - MODIFICADO
 let isScrolling;
 let lastScroll = 0;
 
@@ -135,15 +135,11 @@ window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         
         if (currentScroll > 50) {
-            navbar.style.background = 'rgba(15, 52, 96, 0.95)';
             navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
             navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-            navbar.style.backdropFilter = 'blur(15px)';
         } else {
-            navbar.style.background = 'rgba(15, 52, 96, 0.1)';
             navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
             navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-            navbar.style.backdropFilter = 'blur(15px)';
         }
         
         if (currentScroll <= 0) {
@@ -151,7 +147,7 @@ window.addEventListener('scroll', () => {
         }
         
         lastScroll = currentScroll;
-    }, 66); // 66ms para ~15fps, suficiente para scroll en móviles
+    }, 66);
 }, { passive: true });
 
 // Animaciones de aparición optimizadas para móviles
@@ -514,24 +510,5 @@ document.addEventListener('touchmove', function(e) {
 // Log de carga optimizada
 setTimeout(() => {
     console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-    console.log('📱 Optimizado para móviles con touch-first approach');
-    console.log('✅ MODIFICACIÓN 1: Icono de Sistemas Empresariales actualizado a fa-building (icono funcional)');
-    console.log('✅ MODIFICACIÓN 2: Enlaces de WhatsApp actualizados con mensajes predefinidos');
-    console.log('✅ MODIFICACIÓN 3: Animaciones mejoradas para los 4 pasos de metodología');
-    console.log('✅ MODIFICACIÓN 4: Cambiado stat de +100 a 100% Clientes Satisfechos');
-    console.log('✅ MODIFICACIÓN 5: Paneles hero cambiados a "Webs Avanzadas" y "Software Único"');
-    console.log('✅ MODIFICACIÓN 6: "Panel administrador" cambiado a "Mantenimiento por un año" en Plan Web Pro');
-    console.log('🎯 Optimizaciones Mobile:');
-    console.log('   • Menú hamburguesa optimizado con animaciones fluidas');
-    console.log('   • Áreas táctiles aumentadas (mínimo 44x44px)');
-    console.log('   • Scroll suave con debouncing para mejor rendimiento');
-    console.log('   • Animaciones adaptativas para móviles');
-    console.log('   • Carga progresiva optimizada');
-    console.log('   • Navegación por secciones mejorada');
-    console.log('✅ WhatsApp: 3 enlaces diferentes funcionando con mensajes específicos');
-    console.log('✅ Instagram, YouTube, X: Mostrarán mensaje de "en construcción"');
-    console.log('✅ Navegación: Secciones activas detectadas automáticamente');
-    console.log('✅ Animaciones: Suaves, fluidas y optimizadas para rendimiento');
-    console.log('🎯 Sistema completamente funcional y optimizado para producción');
-    console.log('🎯 Todos los iconos funcionan correctamente en Font Awesome 6.5.1');
+    console.log('🎯 Efecto glassmorphism permanente en navbar con inmersión total');
 }, 1000);
