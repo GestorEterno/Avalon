@@ -715,7 +715,7 @@ section {
     font-size: 0.75rem;
 }
 
-/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA - BELLÍSIMA === */
+/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA - SIN LÍNEA RARA === */
 
 /* Proceso de trabajo - NUEVO DISEÑO ELEGANTE */
 .process {
@@ -733,53 +733,8 @@ section {
     padding: 60px 0;
 }
 
-/* Línea de conexión - DISEÑO ELEGANTE CON EFECTO DE NEÓN */
-.process-steps:before {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 50px;
-    right: 50px;
-    height: 3px;
-    background: rgba(255, 215, 0, 0.1);
-    z-index: 0;
-    border-radius: 3px;
-}
-
-/* Efecto de partículas doradas flotando a lo largo de la línea */
-.process-steps:after {
-    content: '';
-    position: absolute;
-    top: 39px;
-    left: 50px;
-    right: 50px;
-    height: 5px;
-    background: 
-        radial-gradient(circle at 0% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-        radial-gradient(circle at 10% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
-        radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-        radial-gradient(circle at 40% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.7) 2px, transparent 3px),
-        radial-gradient(circle at 60% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-        radial-gradient(circle at 70% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-        radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
-        radial-gradient(circle at 90% 50%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-        radial-gradient(circle at 100% 50%, rgba(255, 215, 0, 0.6) 2px, transparent 3px);
-    background-size: 10% 100%;
-    z-index: 1;
-    animation: sparkleFlow 3s linear infinite;
-    filter: blur(0.5px);
-}
-
-@keyframes sparkleFlow {
-    0% {
-        background-position: 0% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
+/* MODIFICACIÓN CRÍTICA 1: SE ELIMINÓ LA LÍNEA RARA Y SUS PSEUDO-ELEMENTOS */
+/* Los pseudo-elementos :before y :after han sido eliminados completamente */
 
 .step {
     display: flex;
@@ -853,41 +808,6 @@ section {
         opacity: 0.5;
         transform: rotate(240deg) scale(1.02);
     }
-}
-
-/* Efecto de conexión sutil entre números */
-.step-number:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    width: 50px;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        rgba(255, 215, 0, 0.3), 
-        transparent);
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.step:hover .step-number:after {
-    opacity: 1;
-    width: 60px;
-}
-
-.step:hover .step-number {
-    background: linear-gradient(145deg, 
-        rgba(255, 215, 0, 0.15), 
-        rgba(255, 215, 0, 0.05));
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 
-        0 10px 30px rgba(255, 215, 0, 0.3),
-        0 0 40px rgba(255, 215, 0, 0.2),
-        inset 0 2px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 215, 0, 0.5);
-    color: var(--accent-light);
 }
 
 /* Contenido del paso */
@@ -1298,6 +1218,73 @@ footer:before {
     line-height: 1.2;
 }
 
+/* ===== MODIFICACIÓN CRÍTICA 2: NOTIFICACIÓN PARA REDES SOCIALES ===== */
+.social-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary);
+    color: var(--light);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--accent);
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-width: 90%;
+    width: 350px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-notification.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.notification-content i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.notification-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Estilo para enlaces de redes sociales en construcción */
+.social-under-construction {
+    cursor: pointer;
+    position: relative;
+}
+
+.social-under-construction:hover::after {
+    content: "Próximamente";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    border: 1px solid var(--accent);
+}
+
 /* ===== FOOTER PARA DESKTOP (3 COLUMNAS) ===== */
 @media (min-width: 992px) {
     .footer-mobile {
@@ -1378,49 +1365,6 @@ footer:before {
         padding: 60px 0;
     }
     
-    .process-steps:before {
-        display: block;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 3px;
-        height: 100%;
-        background: rgba(255, 215, 0, 0.1);
-    }
-    
-    .process-steps:after {
-        display: block;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 5px;
-        height: 100%;
-        background: 
-            radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-            radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-            radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
-            radial-gradient(circle at 50% 30%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-            radial-gradient(circle at 50% 40%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-            radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.7) 2px, transparent 3px),
-            radial-gradient(circle at 50% 60%, rgba(255, 215, 0, 0.6) 2px, transparent 3px),
-            radial-gradient(circle at 50% 70%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-            radial-gradient(circle at 50% 80%, rgba(255, 215, 0, 0.4) 2px, transparent 3px),
-            radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.5) 2px, transparent 3px),
-            radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.6) 2px, transparent 3px);
-        background-size: 100% 10%;
-        animation: sparkleFlowVertical 3s linear infinite;
-        filter: blur(0.5px);
-    }
-    
-    @keyframes sparkleFlowVertical {
-        0% {
-            background-position: 0 0%;
-        }
-        100% {
-            background-position: 0 100%;
-        }
-    }
-    
     .step {
         flex-direction: row;
         text-align: left;
@@ -1443,29 +1387,6 @@ footer:before {
     .step-content p {
         max-width: 100%;
         margin: 0;
-    }
-    
-    .step-number:after {
-        top: 100%;
-        left: 50%;
-        width: 2px;
-        height: 30px;
-        background: linear-gradient(180deg, 
-            rgba(255, 215, 0, 0.3), 
-            transparent);
-        transform: translateX(-50%);
-    }
-    
-    .step:hover .step-number:after {
-        height: 40px;
-        opacity: 1;
-        width: 2px;
-    }
-    
-    .step:before {
-        top: 50%;
-        left: 35px;
-        transform: translate(-50%, -50%);
     }
 }
 
@@ -1637,6 +1558,11 @@ footer:before {
     .plans-container {
         grid-template-columns: 1fr;
     }
+    
+    .social-notification {
+        width: 90%;
+        padding: 12px 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1694,5 +1620,22 @@ footer:before {
     .footer-bottom {
         padding-top: 0.3rem;
         font-size: 0.75rem;
+    }
+    
+    .social-notification {
+        width: 95%;
+        padding: 10px 12px;
+    }
+    
+    .notification-content {
+        gap: 8px;
+    }
+    
+    .notification-content i {
+        font-size: 1rem;
+    }
+    
+    .notification-content p {
+        font-size: 0.8rem;
     }
 }
