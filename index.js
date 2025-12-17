@@ -23,17 +23,21 @@ navLinks.forEach(link => {
     });
 });
 
-// Cambiar navbar al hacer scroll
+// Cambiar navbar al hacer scroll - MEJORADO PARA ARMONIZAR CON FONDO
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 52, 96, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
-        navbar.style.padding = '0.2rem 0';
+        navbar.style.background = 'rgba(10, 17, 40, 0.85)';
+        navbar.style.backdropFilter = 'blur(25px)';
+        navbar.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.2)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+        navbar.style.padding = '0.3rem 0';
     } else {
-        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '0.2rem 0';
+        navbar.style.background = 'rgba(10, 17, 40, 0.7)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+        navbar.style.padding = '0.3rem 0';
     }
 });
 
