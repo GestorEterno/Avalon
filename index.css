@@ -752,12 +752,14 @@ section {
     font-size: 0.9rem;
 }
 
-/* Planes MEJORADOS */
+/* Planes MEJORADOS - CORREGIDOS PARA 3 EN LÍNEA */
 .plans-container {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Cambiado de wrap a nowrap */
+    overflow-x: auto; /* Permitir scroll en móvil si es necesario */
+    padding: 1rem 0;
 }
 
 .plan-card {
@@ -767,12 +769,13 @@ section {
     border-radius: var(--border-radius-lg);
     padding: 1.8rem;
     width: 100%;
-    max-width: 380px;
+    min-width: 280px; /* Ancho mínimo para que no se rompa */
     position: relative;
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
+    flex-shrink: 0; /* Evitar que se reduzca */
 }
 
 .plan-card:hover {
@@ -933,7 +936,7 @@ section {
     background: var(--accent-light);
 }
 
-/* Footer MEJORADO */
+/* Footer MEJORADO Y SIMPLIFICADO */
 footer {
     background: rgba(15, 52, 96, 0.9);
     color: var(--light);
@@ -954,7 +957,7 @@ footer:before {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 2fr 1fr; /* Solo 2 columnas ahora */
     gap: 1.8rem;
     margin-bottom: 2rem;
 }
@@ -1017,39 +1020,15 @@ footer:before {
     transform: translateY(-3px) scale(1.1);
 }
 
-.footer-links h4,
+.footer-links {
+    display: none; /* Ocultar las secciones de enlaces */
+}
+
 .footer-contact h4 {
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 600;
     color: var(--accent);
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 0.6rem;
-    transition: var(--transition-fast);
-}
-
-.footer-links li:hover {
-    transform: translateX(5px);
-}
-
-.footer-links a {
-    color: var(--light);
-    text-decoration: none;
-    transition: var(--transition);
-    opacity: 0.8;
-    font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-    opacity: 1;
-    color: var(--accent);
-    padding-left: 5px;
 }
 
 .footer-contact .contact-info {
@@ -1080,30 +1059,17 @@ footer:before {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centrado */
     align-items: center;
     padding-top: 1.8rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.85rem;
     opacity: 0.7;
-    flex-wrap: wrap;
-    gap: 1rem;
+    text-align: center;
 }
 
 .footer-legals {
-    display: flex;
-    gap: 1.3rem;
-}
-
-.footer-legals a {
-    color: var(--light);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-legals a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
+    display: none; /* Ocultar política y términos */
 }
 
 /* Efectos de scroll reveal */
@@ -1196,8 +1162,13 @@ footer:before {
     }
     
     .plans-container {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap; /* Cambiar a wrap solo en tablet */
+        justify-content: center;
+    }
+    
+    .plan-card {
+        max-width: 320px;
+        flex-shrink: 1;
     }
     
     .plan-card.featured {
@@ -1282,6 +1253,17 @@ footer:before {
         height: auto;
     }
     
+    .plans-container {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: visible;
+    }
+    
+    .plan-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -1289,10 +1271,6 @@ footer:before {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
-    }
-    
-    .footer-legals {
-        justify-content: center;
     }
 }
 
