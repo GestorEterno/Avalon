@@ -1,6 +1,6 @@
 // Inicializar EmailJS con tus credenciales CORRECTAS
 (function() {
-    emailjs.init("nOQsC2dQzB9_h9qy-"); // Tu Public Key está correcta
+    emailjs.init("nOQsC2dQzB9_h9qy-");
 })();
 
 // Navegación móvil mejorada
@@ -27,13 +27,13 @@ navLinks.forEach(link => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(15, 52, 96, 0.98)';
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
         navbar.style.padding = '0.2rem 0';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '0.3rem 0';
+        navbar.style.padding = '0.2rem 0';
     }
 });
 
@@ -60,13 +60,12 @@ contactForm.addEventListener('submit', (e) => {
     const templateParams = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
-        channel: document.getElementById('channel').value,
-        content_type: document.getElementById('content-type').value,
-        platform: document.getElementById('platform').value,
-        subscribers: document.getElementById('subscribers').value,
-        videos_per_month: document.getElementById('videos-per-month').value,
-        services: selectedServices.join(', '),
-        proposal: document.getElementById('proposal').value
+        company: document.getElementById('company').value,
+        project_type: document.getElementById('project-type').value,
+        budget: document.getElementById('budget').value,
+        description: document.getElementById('description').value,
+        timeline: document.getElementById('timeline').value,
+        services: selectedServices.join(', ')
     };
     
     // Mostrar estado de envío
@@ -82,7 +81,7 @@ contactForm.addEventListener('submit', (e) => {
             console.log('SUCCESS!', response.status, response.text);
             
             // Mostrar notificación de éxito
-            showNotification('¡Solicitud enviada con éxito! Te contactaremos en menos de 24 horas.', 'success');
+            showNotification('¡Propuesta enviada con éxito! Te contactaremos en menos de 24 horas para revolucionar tu negocio.', 'success');
             
             // Reiniciar formulario
             contactForm.reset();
@@ -322,15 +321,22 @@ document.querySelectorAll('.stat').forEach(stat => {
     counterObserver.observe(stat);
 });
 
-// Validación mejorada del formulario
+// Validación mejorada del formulario para desarrollo de software
 function validateForm() {
     const email = document.getElementById('email').value;
-    const channel = document.getElementById('channel').value;
     const name = document.getElementById('name').value;
+    const company = document.getElementById('company').value;
+    const description = document.getElementById('description').value;
     
     // Validación de nombre
     if (name.trim().length < 2) {
         showNotification('Por favor, introduce un nombre válido (mínimo 2 caracteres).', 'error');
+        return false;
+    }
+    
+    // Validación de empresa
+    if (company.trim().length < 2) {
+        showNotification('Por favor, introduce el nombre de tu empresa.', 'error');
         return false;
     }
     
@@ -341,11 +347,9 @@ function validateForm() {
         return false;
     }
     
-    // Validación de URL
-    try {
-        new URL(channel);
-    } catch (_) {
-        showNotification('Por favor, introduce un enlace válido a tu canal (debe incluir http:// o https://).', 'error');
+    // Validación de descripción
+    if (description.trim().length < 20) {
+        showNotification('Por favor, describe tu proyecto con más detalle (mínimo 20 caracteres).', 'error');
         return false;
     }
     
@@ -403,7 +407,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-console.log('AVALON CREATORS - Sitio web cargado correctamente');
+console.log('AVALON CREATORS - Agencia Revolucionaria de Software cargada correctamente');
 
 // Función de depuración adicional para EmailJS
 function debugEmailJS() {
@@ -411,6 +415,7 @@ function debugEmailJS() {
     console.log('- Service ID: service_xqs4rp8');
     console.log('- Template ID: template_fhscr7c');
     console.log('- User ID: nOQsC2dQzB9_h9qy-');
+    console.log('- Agencia: Desarrollo de Software Revolucionario');
 }
 
 // Ejecutar depuración en consola
