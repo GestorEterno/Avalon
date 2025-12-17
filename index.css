@@ -957,15 +957,15 @@ section {
     color: var(--accent);
 }
 
-/* ===== FOOTER MEJORADO CON ESPACIOS REDUCIDOS ===== */
+/* ===== FOOTER MEJORADO CON ESTRUCTURA DUAL ===== */
 footer {
     background: transparent;
     color: var(--light);
-    padding: 0.6rem 0 0.3rem; /* REDUCIDO AÚN MÁS */
+    padding: 0.5rem 0 0.25rem; /* REDUCIDO: 1rem 0 0.5rem → 0.5rem 0 0.25rem */
     position: relative;
     overflow: hidden;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 0.5rem; /* REDUCIDO */
+    margin-top: 0.5rem; /* REDUCIDO: 1rem → 0.5rem */
 }
 
 footer:before {
@@ -984,8 +984,8 @@ footer:before {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.4rem; /* REDUCIDO */
-    margin-bottom: 0.4rem; /* REDUCIDO */
+    gap: 0.3rem; /* REDUCIDO: 0.8rem → 0.3rem */
+    margin-bottom: 0.3rem; /* REDUCIDO: 0.8rem → 0.3rem */
 }
 
 /* Versión móvil (visible por defecto) */
@@ -1006,7 +1006,7 @@ footer:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem; /* REDUCIDO */
+    gap: 0.4rem; /* REDUCIDO: 0.8rem → 0.4rem */
 }
 
 .footer-logo {
@@ -1031,11 +1031,10 @@ footer:before {
     font-weight: 700;
 }
 
-/* TEXTO AUMENTADO 20% EN MÓVIL */
 .footer-tagline {
     opacity: 0.8;
     line-height: 1.4;
-    font-size: 1.02rem; /* AUMENTADO 20%: 0.85rem → 1.02rem */
+    font-size: 0.85rem;
     max-width: 300px;
     margin: 0 auto;
 }
@@ -1067,8 +1066,8 @@ footer:before {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 0.4rem; /* REDUCIDO */
-    padding-bottom: 0.1rem; /* REDUCIDO */
+    padding-top: 0.4rem; /* REDUCIDO: 0.8rem → 0.4rem */
+    padding-bottom: 0.1rem; /* REDUCIDO: 0.2rem → 0.1rem */
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     opacity: 0.7;
@@ -1097,8 +1096,8 @@ footer:before {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        gap: 0.5rem; /* REDUCIDO */
-        margin-bottom: 0.5rem; /* REDUCIDO */
+        gap: 0.5rem; /* REDUCIDO: 1rem → 0.5rem */
+        margin-bottom: 0.5rem; /* REDUCIDO: 1rem → 0.5rem */
     }
     
     /* Logo a la izquierda (20% más grande que en móvil) */
@@ -1123,7 +1122,7 @@ footer:before {
         transform: scale(1.05);
     }
     
-    /* Frase centrada (TEXTO AUMENTADO 20% EN DESKTOP) */
+    /* Frase centrada */
     .footer-center {
         justify-content: center;
         text-align: center;
@@ -1132,7 +1131,7 @@ footer:before {
     .footer-center .footer-tagline {
         margin: 0;
         max-width: 100%;
-        font-size: 1.08rem; /* AUMENTADO 20%: 0.9rem → 1.08rem */
+        font-size: 0.9rem;
         opacity: 0.8;
     }
     
@@ -1146,8 +1145,8 @@ footer:before {
     }
     
     .footer-right .social-links a {
-        width: 38px; /* AUMENTADO 20% */
-        height: 38px; /* AUMENTADO 20% */
+        width: 38px;
+        height: 38px;
     }
 }
 
@@ -1366,7 +1365,7 @@ footer:before {
     }
     
     .footer-tagline {
-        font-size: 0.95rem; /* Ajustado para móvil pequeño */
+        font-size: 0.8rem;
         max-width: 250px;
     }
     
@@ -1380,7 +1379,7 @@ footer:before {
     }
     
     .footer-bottom {
-        padding-top: 0.8rem;
+        padding-top: 0.3rem;
         font-size: 0.75rem;
     }
 }
