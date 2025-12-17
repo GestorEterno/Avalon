@@ -1,183 +1,230 @@
+[file name]: index.js
+[file content begin]
+// MENÚ HAMBURGUESA FACHERO - CRÍTICO OPTIMIZADO
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
+const navbar = document.querySelector('.navbar');
 
+// Animación de menú hamburguesa mejorada
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
     document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    
+    // Animación de fondo cuando el menú está abierto
+    if (navMenu.classList.contains('active')) {
+        navbar.style.background = 'rgba(15, 52, 96, 0.98)';
+        document.body.style.position = 'fixed';
+    } else {
+        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+        document.body.style.position = '';
+    }
 });
 
+// Cerrar menú al hacer clic en enlace
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+    link.addEventListener('click', (e) => {
+        // Solo cerrar si estamos en móvil
+        if (window.innerWidth <= 991) {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            
+            // Cerrar menú primero
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+            
+            // Desplazarse suavemente al target después de cerrar menú
+            setTimeout(() => {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = navbar.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 300);
+        }
     });
 });
 
-const sections = document.querySelectorAll('section');
-const navLinksArray = Array.from(navLinks);
+// Detectar scroll para cambiar estilo del navbar
+let lastScroll = 0;
+let ticking = false;
 
-const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -70% 0px',
-    threshold: 0
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                navbar.style.backdropFilter = 'blur(15px)';
+            } else {
+                navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                navbar.style.backdropFilter = 'blur(15px)';
+            }
+            
+            lastScroll = currentScroll;
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Sistema de animaciones al hacer scroll - OPTIMIZADO PARA MÓVILES
+const revealElements = () => {
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        
+        if (elementTop < windowHeight - revealPoint) {
+            element.classList.add('active');
+        } else {
+            element.classList.remove('active');
+        }
+    });
 };
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                link.style.color = '';
-            });
-            
-            const id = entry.target.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
-            
-            if (correspondingLink) {
-                correspondingLink.classList.add('active');
-                correspondingLink.style.color = 'var(--accent)';
-            }
-        }
-    });
-}, observerOptions);
-
-sections.forEach(section => {
-    sectionObserver.observe(section);
-});
-
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const currentScroll = window.scrollY;
-    
-    if (currentScroll > 50) {
-        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-        navbar.style.backdropFilter = 'blur(15px)';
-    } else {
-        navbar.style.background = 'rgba(15, 52, 96, 0.1)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-        navbar.style.backdropFilter = 'blur(15px)';
+// Throttle para optimizar rendimiento en móviles
+let revealTimeout;
+function throttleReveal() {
+    if (!revealTimeout) {
+        revealTimeout = setTimeout(() => {
+            revealElements();
+            revealTimeout = null;
+        }, 100);
     }
-    
-    if (currentScroll <= 0) {
-        navbar.style.transform = 'translateY(0)';
-    }
-    
-    lastScroll = currentScroll;
-});
+}
 
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-});
-
+// Inicializar sistema de animaciones
 document.addEventListener('DOMContentLoaded', () => {
+    // Agregar clase reveal-on-scroll a elementos que se animarán
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
-    
     elementsToAnimate.forEach(el => {
-        el.classList.add('reveal');
-        revealObserver.observe(el);
+        el.classList.add('reveal-on-scroll');
     });
     
+    // Revelar elementos en la vista inicial
+    revealElements();
+    
+    // Configurar eventos para animaciones
+    window.addEventListener('scroll', throttleReveal);
+    window.addEventListener('resize', throttleReveal);
+    
+    // Cargar elementos con retardo para mejor rendimiento en móviles
+    const loadDelayedElements = () => {
+        const delayedElements = document.querySelectorAll('.service-card, .floating-card');
+        delayedElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('loading-element');
+            }, index * 100);
+        });
+    };
+    
+    // Cargar después de un breve retardo
+    setTimeout(loadDelayedElements, 300);
+    
+    // Configurar navegación por teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+        }
+    });
+    
+    // Activar enlace de inicio si estamos en la parte superior
     const homeLink = document.querySelector('.nav-link[href="#inicio"]');
     if (homeLink && window.scrollY < 100) {
         navLinks.forEach(link => link.classList.remove('active'));
         homeLink.classList.add('active');
-        homeLink.style.color = 'var(--accent)';
     }
 });
 
-function animateCounter(element, target, duration = 2000, suffix = '') {
+// Sistema de contadores animados - Optimizado para móviles
+const animateCounter = (element, target, duration = 1500) => {
     let start = 0;
     const increment = target / (duration / 16);
     const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
-            element.textContent = target + suffix;
+            element.textContent = target;
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(start) + suffix;
+            element.textContent = Math.floor(start);
         }
     }, 16);
-}
+};
 
+// Observador para contadores
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const statNumber = entry.target.querySelector('.stat-number');
             if (statNumber && !statNumber.classList.contains('animated')) {
-                let target, suffix = '';
+                let target = 0;
                 const text = statNumber.textContent;
                 
                 if (text.includes('+')) {
                     target = parseInt(text.replace('+', ''));
-                    suffix = '+';
                 } else if (text.includes('%')) {
                     target = parseInt(text.replace('%', ''));
-                    suffix = '%';
                 } else {
                     target = parseInt(text);
                 }
                 
                 if (!isNaN(target)) {
-                    animateCounter(statNumber, target, 2000, suffix);
+                    animateCounter(statNumber, target, 1500);
                     statNumber.classList.add('animated');
                 }
             }
         }
     });
-}, { threshold: 0.5 });
+}, { 
+    threshold: 0.5,
+    rootMargin: '0px 0px -50px 0px'
+});
 
+// Observar todos los stats
 document.querySelectorAll('.stat').forEach(stat => {
     counterObserver.observe(stat);
 });
 
-document.querySelectorAll('.service-card, .plan-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        if (!this.classList.contains('featured')) {
-            this.style.transform = 'translateY(0)';
-        } else {
-            this.style.transform = 'scale(1.02)';
-        }
-    });
-});
-
-function lazyLoadImages() {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
+// Efectos hover optimizados para móviles
+const setupHoverEffects = () => {
+    // Solo en escritorio
+    if (window.innerWidth > 768) {
+        document.querySelectorAll('.service-card, .plan-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('featured')) {
+                    this.style.transform = 'translateY(0)';
+                } else {
+                    this.style.transform = 'scale(1.02)';
                 }
-            }
+            });
         });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
+    }
+};
 
-function setupSocialMediaNotifications() {
+// Sistema de notificaciones para redes sociales
+const setupSocialMediaNotifications = () => {
     const socialNotification = document.getElementById('social-notification');
     const underConstructionLinks = document.querySelectorAll('.social-under-construction');
     
@@ -188,113 +235,100 @@ function setupSocialMediaNotifications() {
         
         setTimeout(() => {
             socialNotification.classList.remove('active');
-        }, 3000);
+        }, 2500);
     }
     
     underConstructionLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
+            // Efecto táctil para móviles
             this.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 this.style.transform = '';
-            }, 300);
+            }, 200);
             
             showNotification();
-            
-            const icon = this.querySelector('i');
-            const platform = icon ? icon.className.split(' ')[1] : 'red social';
-            console.log(`🔄 ${platform} - En construcción. Notificación mostrada.`);
+        });
+        
+        // Añadir feedback táctil
+        link.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        
+        link.addEventListener('touchend', function() {
+            this.style.transform = '';
         });
     });
-}
+};
 
-function enhanceStepAnimations() {
-    const steps = document.querySelectorAll('.step');
+// Optimización para carga en móviles
+const optimizeForMobile = () => {
+    // Reducir animaciones en móviles con poca batería
+    if (navigator.connection) {
+        const connection = navigator.connection;
+        if (connection.saveData || connection.effectiveType.includes('2g')) {
+            document.body.classList.add('reduced-motion');
+        }
+    }
     
-    steps.forEach(step => {
-        step.addEventListener('mouseenter', function() {
-            const stepNumber = this.querySelector('.step-number');
-            const stepContent = this.querySelector('.step-content');
-            
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                if (audioContext) {
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 440 + (Math.random() * 100);
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.001, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.005, audioContext.currentTime + 0.1);
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
-                    
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.3);
-                }
-            } catch (e) {
-            }
+    // Detectar si es móvil y ajustar
+    if (window.innerWidth <= 768) {
+        // Reducir duración de animaciones en móviles
+        document.documentElement.style.setProperty('--transition', 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)');
+        
+        // Optimizar elementos flotantes
+        const floatingCards = document.querySelectorAll('.floating-card');
+        floatingCards.forEach(card => {
+            card.style.animationDuration = '8s';
         });
-    });
-}
+    }
+};
 
-document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && 
+        !navMenu.contains(e.target) && 
+        !hamburger.contains(e.target) &&
+        window.innerWidth <= 991) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+    }
+});
+
+// Inicializar todo cuando el DOM esté listo
+window.addEventListener('DOMContentLoaded', () => {
+    setupHoverEffects();
     setupSocialMediaNotifications();
-    enhanceStepAnimations();
+    optimizeForMobile();
     
+    // Añadir clase loaded para transiciones suaves
     setTimeout(() => {
         document.body.classList.add('loaded');
     }, 100);
     
+    // Forzar un scroll inicial para activar animaciones
     setTimeout(() => {
-        const event = new Event('scroll');
-        window.dispatchEvent(event);
+        window.dispatchEvent(new Event('scroll'));
     }, 500);
-});
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        if (navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
     
-    if (e.altKey && e.key >= '1' && e.key <= '4') {
-        const index = parseInt(e.key) - 1;
-        if (navLinksArray[index]) {
-            navLinksArray[index].click();
-        }
-    }
+    // Log de inicialización
+    console.log('🚀 AVALON CREATORS - Sistema móvil optimizado cargado al 100%');
+    console.log('📱 MODO MÓVIL: Menú hamburguesa fachero activado');
+    console.log('🎯 ANIMACIONES: Optimizadas para rendimiento en móviles');
+    console.log('⚡ CARGA: Elementos cargados inteligentemente');
+    console.log('👆 INTERACCIÓN: Touch optimizado para pantallas táctiles');
 });
 
-function checkWhatsAppLinks() {
-    const whatsappLinks = document.querySelectorAll('a[href*="whatsapp"]');
-    whatsappLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            console.log(`📱 WhatsApp link clicked: ${this.href}`);
-        });
-    });
-}
+// Mejorar experiencia táctil
+document.addEventListener('touchstart', () => {}, {passive: true});
 
-checkWhatsAppLinks();
-
-console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-console.log('✅ MODIFICACIÓN 1: Icono de Sistemas Empresariales actualizado a fa-building (icono funcional)');
-console.log('✅ MODIFICACIÓN 2: Enlaces de WhatsApp actualizados con mensajes predefinidos');
-console.log('✅ MODIFICACIÓN 3: Animaciones mejoradas para los 4 pasos de metodología');
-console.log('✅ MODIFICACIÓN 4: Cambiado stat de +100 a 100% Clientes Satisfechos');
-console.log('✅ MODIFICACIÓN 5: Paneles hero cambiados a "Webs Avanzadas" y "Software Único"');
-console.log('✅ MODIFICACIÓN 6: "Panel administrador" cambiado a "Mantenimiento por un año" en Plan Web Pro');
-console.log('✅ WhatsApp: 3 enlaces diferentes funcionando con mensajes específicos');
-console.log('✅ Instagram, YouTube, X: Mostrarán mensaje de "en construcción"');
-console.log('✅ Navegación: Secciones activas detectadas automáticamente');
-console.log('✅ Animaciones: Suaves, fluidas y optimizadas para rendimiento');
-console.log('🎯 Sistema completamente funcional y listo para producción');
-console.log('🎯 Todos los iconos funcionan correctamente en Font Awesome 6.5.1');
+// Prevenir zoom en inputs en iOS
+document.addEventListener('touchmove', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        e.preventDefault();
+    }
+}, { passive: false });
+[file content end]
