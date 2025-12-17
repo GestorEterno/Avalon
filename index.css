@@ -715,9 +715,7 @@ section {
     font-size: 0.75rem;
 }
 
-/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA - SIN LÍNEA RARA === */
-
-/* Proceso de trabajo - NUEVO DISEÑO ELEGANTE */
+/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA CON ANIMACIONES MEJORADAS === */
 .process {
     background: rgba(255, 255, 255, 0.02);
     overflow: hidden;
@@ -733,9 +731,6 @@ section {
     padding: 60px 0;
 }
 
-/* MODIFICACIÓN CRÍTICA 1: SE ELIMINÓ LA LÍNEA RARA Y SUS PSEUDO-ELEMENTOS */
-/* Los pseudo-elementos :before y :after han sido eliminados completamente */
-
 .step {
     display: flex;
     flex-direction: column;
@@ -748,8 +743,9 @@ section {
     transition: var(--transition);
 }
 
+/* Animaciones mejoradas para hover en pasos */
 .step:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
 }
 
 /* Números de paso - DISEÑO ELEGANTE CON EFECTO 3D */
@@ -769,7 +765,7 @@ section {
     margin-bottom: 1.5rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
     backdrop-filter: blur(10px);
-    transition: var(--transition);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
     z-index: 2;
@@ -814,6 +810,7 @@ section {
 .step-content {
     padding: 0 10px;
     position: relative;
+    transition: var(--transition);
 }
 
 .step-content h3 {
@@ -826,6 +823,7 @@ section {
     background-clip: text;
     position: relative;
     display: inline-block;
+    transition: var(--transition);
 }
 
 .step-content h3:after {
@@ -839,10 +837,6 @@ section {
     transition: var(--transition);
 }
 
-.step:hover .step-content h3:after {
-    width: 100%;
-}
-
 .step-content p {
     opacity: 0.85;
     line-height: 1.6;
@@ -850,6 +844,71 @@ section {
     max-width: 220px;
     margin: 0 auto;
     transition: var(--transition);
+}
+
+/* ANIMACIONES NUEVAS Y MEJORADAS PARA HOVER */
+.step:hover .step-number {
+    animation: stepPulse 1.5s ease-in-out infinite, 
+               stepElevate 2s ease-in-out infinite;
+    border-color: var(--accent);
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.15), 
+        rgba(255, 255, 255, 0.05));
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+        0 0 20px 5px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes stepPulse {
+    0%, 100% {
+        box-shadow: 
+            0 5px 15px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+            0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        box-shadow: 
+            0 10px 25px rgba(0, 0, 0, 0.3),
+            inset 0 2px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+            0 0 20px 5px rgba(255, 215, 0, 0.3);
+    }
+}
+
+@keyframes stepElevate {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.step:hover .step-content h3 {
+    animation: textGlow 3s ease-in-out infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+}
+
+.step:hover .step-content h3:after {
+    width: 100%;
 }
 
 .step:hover .step-content p {
@@ -888,6 +947,38 @@ section {
     50% {
         transform: translateX(-50%) scale(1.1);
         opacity: 0.5;
+    }
+}
+
+/* Efecto de partículas al hacer hover */
+.step:hover:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, 
+        rgba(255, 215, 0, 0.2) 0%, 
+        rgba(255, 215, 0, 0.1) 20%, 
+        transparent 70%);
+    z-index: -1;
+    animation: particleExplosion 0.8s ease-out forwards;
+}
+
+@keyframes particleExplosion {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(1.5);
     }
 }
 
@@ -1218,7 +1309,7 @@ footer:before {
     line-height: 1.2;
 }
 
-/* ===== MODIFICACIÓN CRÍTICA 2: NOTIFICACIÓN PARA REDES SOCIALES ===== */
+/* ===== NOTIFICACIÓN PARA REDES SOCIALES ===== */
 .social-notification {
     position: fixed;
     bottom: 20px;
@@ -1263,9 +1354,6 @@ footer:before {
     font-weight: 500;
     line-height: 1.3;
 }
-
-/* MODIFICACIÓN CRÍTICA: SE ELIMINÓ EL TOOLTIP EN HOVER */
-/* .social-under-construction:hover::after ha sido eliminado completamente */
 
 /* ===== FOOTER PARA DESKTOP (3 COLUMNAS) ===== */
 @media (min-width: 992px) {
@@ -1620,4 +1708,4 @@ footer:before {
     .notification-content p {
         font-size: 0.8rem;
     }
-}
+        }
