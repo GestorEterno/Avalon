@@ -242,26 +242,31 @@ function enhanceStepAnimations() {
     });
 }
 
-// ===== CARRUSEL DE PLANES PARA MÓVIL =====
+// ===== CARRUSEL DE PLANES PARA MÓVIL - CORREGIDO =====
 function initPlansCarousel() {
+    const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.carousel-container .plan-card');
     const indicators = document.querySelectorAll('.indicator');
     const prevBtn = document.querySelector('.carousel-arrow.prev');
     const nextBtn = document.querySelector('.carousel-arrow.next');
     
-    if (!carousel || planCards.length === 0) return;
+    if (!carouselContainer || planCards.length === 0) return;
+    
+    // Solo activar en móvil
+    if (window.innerWidth > 768) {
+        carouselContainer.style.display = 'none';
+        return;
+    } else {
+        carouselContainer.style.display = 'block';
+    }
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
     
-    // Solo activar en móvil
-    if (window.innerWidth > 768) return;
-    
     function updateCarousel() {
-        // Calcular desplazamiento
-        const slideWidth = 100 / totalSlides;
-        const translateX = -currentIndex * slideWidth;
+        // Calcular desplazamiento - mostrar un slide a la vez
+        const translateX = -currentIndex * 100;
         
         // Aplicar transformación
         carousel.style.transform = `translateX(${translateX}%)`;
@@ -300,40 +305,51 @@ function initPlansCarousel() {
         });
     });
     
-    // Swipe táctil
+    // Swipe táctil mejorado
     let touchStartX = 0;
     let touchEndX = 0;
+    let isSwiping = false;
     
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+    carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        isSwiping = true;
     }, { passive: true });
     
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+    carouselContainer.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        touchEndX = e.touches[0].clientX;
     }, { passive: true });
     
-    function handleSwipe() {
+    carouselContainer.addEventListener('touchend', () => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        
         const swipeThreshold = 50;
         const diff = touchStartX - touchEndX;
         
         if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0 && currentIndex < totalSlides - 1) {
+            if (diff > 0) {
                 // Swipe izquierda - siguiente
-                currentIndex++;
-            } else if (diff < 0 && currentIndex > 0) {
+                currentIndex = Math.min(currentIndex + 1, totalSlides - 1);
+            } else {
                 // Swipe derecha - anterior
-                currentIndex--;
+                currentIndex = Math.max(currentIndex - 1, 0);
             }
             updateCarousel();
         }
-    }
+    });
     
     // Inicializar
     updateCarousel();
     
-    // Redimensionar ventana
-    window.addEventListener('resize', initPlansCarousel);
+    // Redimensionar ventana - re-inicializar si cambia entre móvil/escritorio
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            initPlansCarousel();
+        } else {
+            if (carouselContainer) carouselContainer.style.display = 'none';
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
