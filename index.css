@@ -957,7 +957,7 @@ section {
     color: var(--accent);
 }
 
-/* Footer MEJORADO Y MINIMALISTA */
+/* ===== FOOTER MEJORADO CON ESTRUCTURA DUAL ===== */
 footer {
     background: transparent;
     color: var(--light);
@@ -978,6 +978,7 @@ footer:before {
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
+/* Estructura general del footer */
 .footer-content {
     display: flex;
     flex-direction: column;
@@ -987,6 +988,20 @@ footer:before {
     margin-bottom: 1.5rem;
 }
 
+/* Versión móvil (visible por defecto) */
+.footer-mobile {
+    display: block;
+    width: 100%;
+}
+
+/* Versión desktop (oculta por defecto) */
+.footer-left,
+.footer-center,
+.footer-right {
+    display: none;
+}
+
+/* Estilos para la versión móvil (mantiene diseño original) */
 .footer-brand {
     display: flex;
     flex-direction: column;
@@ -999,20 +1014,20 @@ footer:before {
     align-items: center;
     gap: 0.5rem;
     transition: var(--transition);
-    transform: scale(0.8); /* 20% más pequeño */
+    transform: scale(0.8);
 }
 
 .footer-logo:hover {
-    transform: scale(0.85); /* 20% más pequeño con hover */
+    transform: scale(0.85);
 }
 
 .footer-logo .logo-img {
-    height: 35px; /* Reducido 20% */
+    height: 35px;
     width: auto;
 }
 
 .footer-logo h3 {
-    font-size: 1rem; /* Reducido 20% */
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -1062,6 +1077,73 @@ footer:before {
     font-weight: 400;
 }
 
+/* ===== FOOTER PARA DESKTOP (3 COLUMNAS) ===== */
+@media (min-width: 992px) {
+    .footer-mobile {
+        display: none;
+    }
+    
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Logo a la izquierda (20% más grande que en móvil) */
+    .footer-left {
+        justify-content: flex-start;
+    }
+    
+    .footer-left .footer-logo {
+        transform: scale(1); /* 20% más grande que móvil (0.8 * 1.2 ≈ 1) */
+        justify-content: flex-start;
+    }
+    
+    .footer-left .footer-logo .logo-img {
+        height: 42px; /* 35px + 20% */
+    }
+    
+    .footer-left .footer-logo h3 {
+        font-size: 1.2rem; /* 1rem + 20% */
+    }
+    
+    .footer-left .footer-logo:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Frase centrada */
+    .footer-center {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-center .footer-tagline {
+        margin: 0;
+        max-width: 100%;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    /* Redes a la derecha */
+    .footer-right {
+        justify-content: flex-end;
+    }
+    
+    .footer-right .social-links {
+        margin-top: 0;
+    }
+}
+
+/* ===== AJUSTES RESPONSIVE EXISTENTES ===== */
 /* Efectos de scroll reveal */
 .reveal {
     opacity: 0;
@@ -1162,11 +1244,6 @@ footer:before {
     .plan-card.featured:hover {
         transform: translateY(-8px);
     }
-    
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.8rem;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1240,15 +1317,6 @@ footer:before {
     .plans-container {
         grid-template-columns: 1fr;
     }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1307,4 +1375,4 @@ footer:before {
         padding-top: 1rem;
         font-size: 0.75rem;
     }
-}
+    }
