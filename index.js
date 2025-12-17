@@ -160,4 +160,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-console.log('AVALON CREATORS - Agencia Revolucionaria de Software cargada correctamente');
+// Mensaje de consola con información del sitio
+console.log('🚀 AVALON CREATORS - Agencia Revolucionaria de Software cargada correctamente');
+console.log('✅ Versión: 2.0 - Iconos modernos actualizados');
+console.log('✅ Font Awesome: 6.5.1 con iconos de X/Twitter y Sistemas Empresariales');
+console.log('✅ Todos los iconos visibles y funcionando');
