@@ -1333,124 +1333,162 @@ footer:before {
     display: none;
     position: relative;
     width: 100%;
+    max-width: 350px;
+    margin: 0 auto 30px;
     overflow: hidden;
-    margin-bottom: 30px;
 }
 
 .plans-carousel {
     display: flex;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 300%; /* 3 slides */
-    gap: 1.5rem;
-    padding: 10px;
 }
 
-/* En escritorio, mantener grid normal */
-@media (min-width: 769px) {
-    .carousel-container {
-        display: none; /* Ocultar carrusel en escritorio */
-    }
-    .plans-container {
-        display: grid; /* Mostrar grid normal */
-    }
+.plan-card {
+    flex: 0 0 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    transform: scale(0.95);
+    opacity: 0.8;
+    transition: all 0.3s ease;
 }
 
-/* En móvil, mostrar carrusel */
+.plan-card.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0 15px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.indicator.active {
+    background: var(--accent);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Flechas de navegación */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--light);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.carousel-arrow:hover {
+    background: var(--accent);
+    color: var(--dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: 10px;
+}
+
+.carousel-arrow.next {
+    right: 10px;
+}
+
+/* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
-    .plans-container {
-        display: none; /* Ocultar grid en móvil */
+    /* DESACTIVAR FONDO ANIMADO QUE CAUSA LAG */
+    .animated-background {
+        animation: none !important;
+        background: linear-gradient(135deg, #0a1a36 0%, var(--darker) 50%, var(--primary) 100%) !important;
+        background-size: cover !important;
     }
+    
+    .particles-container {
+        animation: none !important;
+        opacity: 0.3 !important;
+    }
+    
+    .glow-effect {
+        animation: none !important;
+        opacity: 0.1 !important;
+    }
+    
+    /* DESACTIVAR LEVITACIÓN DE LOS 4 PASOS */
+    .step {
+        animation: none !important;
+    }
+    
+    .step:hover {
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    .step-number {
+        animation: none !important;
+    }
+    
+    .step:hover .step-number {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    .step:hover .step-content h3 {
+        animation: none !important;
+    }
+    
+    .step:hover:before,
+    .step:hover:after {
+        animation: none !important;
+        opacity: 0 !important;
+    }
+    
+    /* ACTIVAR CARRUSEL Y OCULTAR GRID */
     .carousel-container {
-        display: block; /* Mostrar carrusel */
+        display: block !important;
     }
     
-    .plans-carousel {
-        display: flex;
-        width: 300%;
-        padding: 0 10px;
+    .plans-container {
+        display: none !important;
     }
     
-    .plan-card {
-        flex: 0 0 calc(100% - 20px);
-        margin: 0 10px;
-        scroll-snap-align: center;
-        transform: scale(0.95);
-        transition: transform 0.3s ease;
+    /* DESACTIVAR ANIMACIONES EN MÓVIL PARA MEJOR RENDIMIENTO */
+    .floating-card {
+        animation: none !important;
     }
     
-    .plan-card.active {
-        transform: scale(1);
+    .service-card:hover {
+        transform: none !important;
     }
     
-    /* Indicadores del carrusel */
-    .carousel-indicators {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 25px;
-        padding-bottom: 10px;
+    .plan-card:hover {
+        transform: none !important;
     }
     
-    .indicator {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .indicator.active {
-        background: var(--accent);
-        transform: scale(1.2);
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    
-    /* Flechas de navegación */
-    .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: var(--light);
-        cursor: pointer;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        opacity: 0;
-        animation: fadeInArrows 0.5s ease forwards 0.5s;
-    }
-    
-    @keyframes fadeInArrows {
-        to {
-            opacity: 1;
-        }
-    }
-    
-    .carousel-arrow:hover {
-        background: var(--accent);
-        color: var(--dark);
-        transform: translateY(-50%) scale(1.1);
-    }
-    
-    .carousel-arrow.prev {
-        left: 10px;
-    }
-    
-    .carousel-arrow.next {
-        right: 10px;
-    }
-}
-
-/* Mejoras de fluidez para móvil */
-@media (max-width: 768px) {
+    /* OPTIMIZACIONES GENERALES PARA MÓVIL */
     section {
         padding: 50px 0 !important;
     }
@@ -1489,35 +1527,13 @@ footer:before {
         height: auto !important;
         min-height: 200px !important;
         margin: 10px 0 !important;
-        animation-duration: 8s !important;
-    }
-    
-    .floating-card:hover {
-        transform: translateY(-5px) !important;
     }
     
     .service-card {
         margin: 10px 0 !important;
-        animation-duration: 0.6s !important;
     }
     
-    .service-card:hover {
-        transform: translateY(-5px) !important;
-    }
-    
-    /* Optimizar animaciones para mejor rendimiento en móvil */
-    .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-    }
-    
-    /* Mejorar scroll suave */
-    html {
-        scroll-behavior: smooth !important;
-    }
-    
-    /* Optimizar el header */
+    /* MEJORAR HEADER PARA MÓVIL */
     .navbar {
         backdrop-filter: blur(10px) !important;
         padding: 0.1rem 0 !important;
@@ -1525,6 +1541,17 @@ footer:before {
     
     .logo-img {
         height: 35px !important;
+    }
+}
+
+/* En escritorio mantener todo como está */
+@media (min-width: 769px) {
+    .carousel-container {
+        display: none !important;
+    }
+    
+    .plans-container {
+        display: grid !important;
     }
 }
 
@@ -1552,12 +1579,16 @@ footer:before {
     }
     
     .indicator {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     
     .section-title {
         font-size: 1.5rem !important;
+    }
+    
+    .carousel-container {
+        max-width: 320px;
     }
 }
 
