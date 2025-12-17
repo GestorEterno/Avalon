@@ -1,4 +1,3 @@
-/* Reset y configuraciones avanzadas - COLORES ORIGINALES */
 :root {
     --primary: #0f3460;
     --secondary: #533483;
@@ -47,7 +46,6 @@ body {
     padding: 0 20px;
 }
 
-/* Fondo animado MEJORADO - SIN GRIS APAGADO */
 .animated-background {
     position: fixed;
     top: 0;
@@ -102,7 +100,6 @@ body {
     }
 }
 
-/* Efectos de brillo sutiles ANIMADOS */
 .glow-effect {
     position: absolute;
     width: 400px;
@@ -147,7 +144,6 @@ body {
     }
 }
 
-/* === ESTILOS PARA MENÚ ACTIVO === */
 .nav-link {
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -176,7 +172,6 @@ body {
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
-/* Efecto de pulso para enlace activo */
 @keyframes activePulse {
     0%, 100% {
         box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
@@ -190,12 +185,10 @@ body {
     animation: activePulse 2s infinite;
 }
 
-/* Asegurar que los enlaces mantengan estilo en hover incluso cuando están activos */
 .nav-link.active:hover {
     color: var(--accent-light);
 }
 
-/* Header y navegación MEJORADOS Y MÁS COMPACTOS */
 .navbar {
     position: fixed;
     top: 0;
@@ -310,7 +303,6 @@ body {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Sección Hero MEJORADA */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -484,7 +476,6 @@ body {
     border-color: var(--light);
 }
 
-/* HERO IMAGE MEJORADO - AMBOS PANELES IGUALES Y ANIMADOS UNO AL LADO DEL OTRO */
 .hero-image {
     flex: 1;
     display: flex;
@@ -569,7 +560,6 @@ body {
     }
 }
 
-/* Secciones generales MEJORADAS */
 section {
     padding: 70px 0;
     position: relative;
@@ -619,7 +609,6 @@ section {
     line-height: 1.5;
 }
 
-/* Servicios MEJORADOS */
 .services {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -715,7 +704,6 @@ section {
     font-size: 0.75rem;
 }
 
-/* === SECCIÓN DE PROCESO COMPLETAMENTE REDISEÑADA CON ANIMACIONES MEJORADAS === */
 .process {
     background: rgba(255, 255, 255, 0.02);
     overflow: hidden;
@@ -743,12 +731,10 @@ section {
     transition: var(--transition);
 }
 
-/* Animaciones mejoradas para hover en pasos */
 .step:hover {
     transform: translateY(-15px);
 }
 
-/* Números de paso - DISEÑO ELEGANTE CON EFECTO 3D */
 .step-number {
     width: 80px;
     height: 80px;
@@ -775,7 +761,6 @@ section {
         inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Efecto de brillo interior en los números */
 .step-number:before {
     content: '';
     position: absolute;
@@ -806,7 +791,6 @@ section {
     }
 }
 
-/* Contenido del paso */
 .step-content {
     padding: 0 10px;
     position: relative;
@@ -846,7 +830,6 @@ section {
     transition: var(--transition);
 }
 
-/* ANIMACIONES NUEVAS Y MEJORADAS PARA HOVER */
 .step:hover .step-number {
     animation: stepPulse 1.5s ease-in-out infinite, 
                stepElevate 2s ease-in-out infinite;
@@ -916,7 +899,6 @@ section {
     transform: translateY(5px);
 }
 
-/* Efecto de halo alrededor de cada paso */
 .step:before {
     content: '';
     position: absolute;
@@ -950,7 +932,6 @@ section {
     }
 }
 
-/* Efecto de partículas al hacer hover */
 .step:hover:after {
     content: '';
     position: absolute;
@@ -982,7 +963,6 @@ section {
     }
 }
 
-/* Planes MEJORADOS */
 .plans-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1164,7 +1144,6 @@ section {
     background: var(--accent-light);
 }
 
-/* Nota de planes */
 .plan-disclaimer {
     text-align: center;
     margin-top: 2rem;
@@ -1187,7 +1166,6 @@ section {
     color: var(--accent);
 }
 
-/* ===== FOOTER MEJORADO CON ESTRUCTURA DUAL ===== */
 footer {
     background: transparent;
     color: var(--light);
@@ -1208,7 +1186,6 @@ footer:before {
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-/* Estructura general del footer */
 .footer-content {
     display: flex;
     flex-direction: column;
@@ -1218,20 +1195,17 @@ footer:before {
     margin-bottom: 0.3rem;
 }
 
-/* Versión móvil (visible por defecto) */
 .footer-mobile {
     display: block;
     width: 100%;
 }
 
-/* Versión desktop (oculta por defecto) */
 .footer-left,
 .footer-center,
 .footer-right {
     display: none;
 }
 
-/* Estilos para la versión móvil (mantiene diseño original) */
 .footer-brand {
     display: flex;
     flex-direction: column;
@@ -1309,7 +1283,6 @@ footer:before {
     line-height: 1.2;
 }
 
-/* ===== NOTIFICACIÓN PARA REDES SOCIALES ===== */
 .social-notification {
     position: fixed;
     bottom: 20px;
@@ -1355,7 +1328,6 @@ footer:before {
     line-height: 1.3;
 }
 
-/* ===== FOOTER PARA DESKTOP (3 COLUMNAS) ===== */
 @media (min-width: 992px) {
     .footer-mobile {
         display: none;
@@ -1376,7 +1348,6 @@ footer:before {
         margin-bottom: 0.5rem;
     }
     
-    /* Logo a la izquierda (20% más grande que en móvil) */
     .footer-left {
         justify-content: flex-start;
     }
@@ -1398,7 +1369,6 @@ footer:before {
         transform: scale(1.05);
     }
     
-    /* Frase centrada */
     .footer-center {
         justify-content: center;
         text-align: center;
@@ -1411,7 +1381,6 @@ footer:before {
         opacity: 0.8;
     }
     
-    /* Redes a la derecha (BOTONES 20% MÁS GRANDES) */
     .footer-right {
         justify-content: flex-end;
     }
@@ -1426,7 +1395,6 @@ footer:before {
     }
 }
 
-/* === RESPONSIVE PARA PROCESO - DISEÑO ELEGANTE === */
 @media (max-width: 1200px) {
     .process-steps {
         flex-direction: column;
@@ -1460,8 +1428,6 @@ footer:before {
     }
 }
 
-/* ===== AJUSTES RESPONSIVE EXISTENTES ===== */
-/* Efectos de scroll reveal */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -1473,7 +1439,6 @@ footer:before {
     transform: translateY(0);
 }
 
-/* Responsive mejorado */
 @media (max-width: 1200px) {
     .hero-content h1 {
         font-size: 2.2rem;
@@ -1708,4 +1673,4 @@ footer:before {
     .notification-content p {
         font-size: 0.8rem;
     }
-        }
+}
