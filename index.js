@@ -189,9 +189,50 @@ function lazyLoadImages() {
     });
 }
 
+// ===== MODIFICACIÓN CRÍTICA 2: NOTIFICACIÓN PARA REDES SOCIALES =====
+function setupSocialMediaNotifications() {
+    const socialNotification = document.getElementById('social-notification');
+    const underConstructionLinks = document.querySelectorAll('.social-under-construction');
+    
+    if (!socialNotification || underConstructionLinks.length === 0) return;
+    
+    // Función para mostrar notificación
+    function showNotification() {
+        // Mostrar notificación
+        socialNotification.classList.add('active');
+        
+        // Ocultar después de 3 segundos
+        setTimeout(() => {
+            socialNotification.classList.remove('active');
+        }, 3000);
+    }
+    
+    // Añadir event listener a todos los enlaces en construcción
+    underConstructionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Efecto visual en el botón clickeado
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 300);
+            
+            // Mostrar notificación
+            showNotification();
+            
+            // Registrar en consola
+            const icon = this.querySelector('i');
+            const platform = icon ? icon.className.split(' ')[1] : 'red social';
+            console.log(`🔄 ${platform} - En construcción. Notificación mostrada.`);
+        });
+    });
+}
+
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     lazyLoadImages();
+    setupSocialMediaNotifications();
     
     // Añadir clase cargada al body para transiciones suaves
     setTimeout(() => {
@@ -225,8 +266,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Mensaje de consola
-console.log('🚀 AVALON CREATORS - Menú activo y animaciones mejoradas');
+console.log('🚀 AVALON CREATORS - Sistema mejorado cargado');
+console.log('✅ MODIFICACIÓN 1: Línea rara en proceso eliminada');
+console.log('✅ MODIFICACIÓN 2: Notificación para redes sociales activada');
+console.log('✅ WhatsApp: Funcionando normalmente');
+console.log('✅ Instagram, YouTube, X: Mostrarán mensaje de "en construcción"');
 console.log('✅ Navegación: Secciones activas detectadas automáticamente');
 console.log('✅ Animaciones: Suaves y optimizadas');
-console.log('✅ Proceso: Animación de flujo de energía activada');
-console.log('✅ Footer: Estructura dual responsive funcionando');
