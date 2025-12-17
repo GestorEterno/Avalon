@@ -237,12 +237,13 @@ function enhanceStepAnimations() {
                     oscillator.stop(audioContext.currentTime + 0.3);
                 }
             } catch (e) {
+                // Silenciar errores de audio
             }
         });
     });
 }
 
-// ===== CARRUSEL DE PLANES PARA MÓVIL =====
+// ===== CARRUSEL DE PLANES VERTICAL PARA MÓVIL =====
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.carousel-container .plan-card');
@@ -256,15 +257,20 @@ function initPlansCarousel() {
     const totalSlides = planCards.length;
     
     // Solo activar en móvil
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > 768) {
+        // En escritorio, mostrar todos los planes
+        carousel.style.transform = 'translateY(0)';
+        planCards.forEach(card => card.classList.add('active'));
+        return;
+    }
     
     function updateCarousel() {
-        // Calcular desplazamiento
-        const slideWidth = 100 / totalSlides;
-        const translateX = -currentIndex * slideWidth;
+        // Calcular desplazamiento vertical
+        const slideHeight = 100 / totalSlides;
+        const translateY = -currentIndex * slideHeight;
         
-        // Aplicar transformación
-        carousel.style.transform = `translateX(${translateX}%)`;
+        // Aplicar transformación VERTICAL
+        carousel.style.transform = `translateY(${translateY}%)`;
         
         // Actualizar indicadores
         indicators.forEach((indicator, index) => {
@@ -275,20 +281,27 @@ function initPlansCarousel() {
         planCards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
         });
+        
+        // Suavizar la transición
+        carousel.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
     
-    // Eventos para botones
+    // Eventos para botones VERTICALES
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateCarousel();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
         });
     }
     
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateCarousel();
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
         });
     }
     
@@ -300,29 +313,33 @@ function initPlansCarousel() {
         });
     });
     
-    // Swipe táctil
-    let touchStartX = 0;
-    let touchEndX = 0;
+    // Swipe táctil VERTICAL para móvil
+    let touchStartY = 0;
+    let touchEndY = 0;
     
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
+    if (window.innerWidth <= 768) {
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].clientY;
+            carousel.style.transition = 'none';
+        }, { passive: true });
+        
+        carousel.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].clientY;
+            handleSwipe();
+            carousel.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }, { passive: true });
+    }
     
     function handleSwipe() {
         const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
+        const diff = touchStartY - touchEndY;
         
         if (Math.abs(diff) > swipeThreshold) {
             if (diff > 0 && currentIndex < totalSlides - 1) {
-                // Swipe izquierda - siguiente
+                // Swipe hacia arriba - siguiente
                 currentIndex++;
             } else if (diff < 0 && currentIndex > 0) {
-                // Swipe derecha - anterior
+                // Swipe hacia abajo - anterior
                 currentIndex--;
             }
             updateCarousel();
@@ -333,7 +350,33 @@ function initPlansCarousel() {
     updateCarousel();
     
     // Redimensionar ventana
-    window.addEventListener('resize', initPlansCarousel);
+    window.addEventListener('resize', function() {
+        // Resetear si cambia a escritorio
+        if (window.innerWidth > 768) {
+            carousel.style.transform = 'translateY(0)';
+            planCards.forEach(card => {
+                card.classList.add('active');
+                card.style.opacity = '1';
+            });
+        } else {
+            // Volver a modo móvil
+            updateCarousel();
+        }
+    });
+}
+
+// Optimizar animaciones para móvil
+function optimizeForMobile() {
+    if (window.innerWidth <= 768) {
+        // Reducir animaciones pesadas
+        const animations = document.querySelectorAll('.floating-card, .service-card, .step');
+        animations.forEach(el => {
+            el.style.animationDuration = '1.5s';
+        });
+        
+        // Mejorar rendimiento de scroll
+        document.documentElement.style.scrollBehavior = 'smooth';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -350,10 +393,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(event);
     }, 500);
     
-    // Inicializar carrusel cuando el DOM esté listo
+    // Inicializar carrusel
     setTimeout(initPlansCarousel, 100);
     
-    // Optimizar para móvil - cargar elementos progresivamente
+    // Optimizar para móvil
+    optimizeForMobile();
+    
+    // Optimizar carga progresiva para móvil
     if (window.innerWidth <= 768) {
         const lazyElements = document.querySelectorAll('.service-card, .step, .floating-card');
         
