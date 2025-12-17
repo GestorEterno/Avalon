@@ -1,3 +1,4 @@
+// NAVBAR TOGGLE
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -16,21 +17,14 @@ navLinks.forEach(link => {
     });
 });
 
+// ACTIVE NAV LINK ON SCROLL
 const sections = document.querySelectorAll('section');
-const navLinksArray = Array.from(navLinks);
-
-const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -70% 0px',
-    threshold: 0
-};
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                link.style.color = '';
             });
             
             const id = entry.target.getAttribute('id');
@@ -38,212 +32,32 @@ const sectionObserver = new IntersectionObserver((entries) => {
             
             if (correspondingLink) {
                 correspondingLink.classList.add('active');
-                correspondingLink.style.color = 'var(--accent)';
             }
         }
     });
-}, observerOptions);
+}, {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+});
 
 sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-let lastScroll = 0;
+// SIMPLE NAVBAR SCROLL EFFECT
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
         navbar.style.background = 'rgba(15, 52, 96, 0.95)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-        navbar.style.backdropFilter = 'blur(15px)';
     } else {
-        navbar.style.background = 'rgba(15, 52, 96, 0.1)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-        navbar.style.backdropFilter = 'blur(15px)';
-    }
-    
-    if (currentScroll <= 0) {
-        navbar.style.transform = 'translateY(0)';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
-    
-    elementsToAnimate.forEach(el => {
-        el.classList.add('reveal');
-        revealObserver.observe(el);
-    });
-    
-    const homeLink = document.querySelector('.nav-link[href="#inicio"]');
-    if (homeLink && window.scrollY < 100) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        homeLink.classList.add('active');
-        homeLink.style.color = 'var(--accent)';
+        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
     }
 });
 
-function animateCounter(element, target, duration = 2000, suffix = '') {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target + suffix;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start) + suffix;
-        }
-    }, 16);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumber = entry.target.querySelector('.stat-number');
-            if (statNumber && !statNumber.classList.contains('animated')) {
-                let target, suffix = '';
-                const text = statNumber.textContent;
-                
-                if (text.includes('+')) {
-                    target = parseInt(text.replace('+', ''));
-                    suffix = '+';
-                } else if (text.includes('%')) {
-                    target = parseInt(text.replace('%', ''));
-                    suffix = '%';
-                } else {
-                    target = parseInt(text);
-                }
-                
-                if (!isNaN(target)) {
-                    animateCounter(statNumber, target, 2000, suffix);
-                    statNumber.classList.add('animated');
-                }
-            }
-        }
-    });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat').forEach(stat => {
-    counterObserver.observe(stat);
-});
-
-document.querySelectorAll('.service-card, .plan-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        if (!this.classList.contains('featured')) {
-            this.style.transform = 'translateY(0)';
-        } else {
-            this.style.transform = 'scale(1.02)';
-        }
-    });
-});
-
-function lazyLoadImages() {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            }
-        });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-function setupSocialMediaNotifications() {
-    const socialNotification = document.getElementById('social-notification');
-    const underConstructionLinks = document.querySelectorAll('.social-under-construction');
-    
-    if (!socialNotification || underConstructionLinks.length === 0) return;
-    
-    function showNotification() {
-        socialNotification.classList.add('active');
-        
-        setTimeout(() => {
-            socialNotification.classList.remove('active');
-        }, 3000);
-    }
-    
-    underConstructionLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            this.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 300);
-            
-            showNotification();
-            
-            const icon = this.querySelector('i');
-            const platform = icon ? icon.className.split(' ')[1] : 'red social';
-            console.log(`🔄 ${platform} - En construcción. Notificación mostrada.`);
-        });
-    });
-}
-
-function enhanceStepAnimations() {
-    const steps = document.querySelectorAll('.step');
-    
-    steps.forEach(step => {
-        step.addEventListener('mouseenter', function() {
-            const stepNumber = this.querySelector('.step-number');
-            const stepContent = this.querySelector('.step-content');
-            
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                if (audioContext) {
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    oscillator.frequency.value = 440 + (Math.random() * 100);
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.001, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.005, audioContext.currentTime + 0.1);
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
-                    
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.3);
-                }
-            } catch (e) {
-                // Silenciar errores de audio
-            }
-        });
-    });
-}
-
-// ===== CARRUSEL DE PLANES VERTICAL PARA MÓVIL =====
+// ===== CARRUSEL DE PLANES SIMPLE PARA MÓVIL =====
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.carousel-container .plan-card');
@@ -258,7 +72,6 @@ function initPlansCarousel() {
     
     // Solo activar en móvil
     if (window.innerWidth > 768) {
-        // En escritorio, mostrar todos los planes
         carousel.style.transform = 'translateY(0)';
         planCards.forEach(card => card.classList.add('active'));
         return;
@@ -271,6 +84,7 @@ function initPlansCarousel() {
         
         // Aplicar transformación VERTICAL
         carousel.style.transform = `translateY(${translateY}%)`;
+        carousel.style.transition = 'transform 0.3s ease';
         
         // Actualizar indicadores
         indicators.forEach((indicator, index) => {
@@ -281,9 +95,6 @@ function initPlansCarousel() {
         planCards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
         });
-        
-        // Suavizar la transición
-        carousel.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
     
     // Eventos para botones VERTICALES
@@ -313,25 +124,23 @@ function initPlansCarousel() {
         });
     });
     
-    // Swipe táctil VERTICAL para móvil
+    // Swipe táctil VERTICAL simple para móvil
     let touchStartY = 0;
     let touchEndY = 0;
     
     if (window.innerWidth <= 768) {
         carousel.addEventListener('touchstart', (e) => {
             touchStartY = e.changedTouches[0].clientY;
-            carousel.style.transition = 'none';
         }, { passive: true });
         
         carousel.addEventListener('touchend', (e) => {
             touchEndY = e.changedTouches[0].clientY;
             handleSwipe();
-            carousel.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         }, { passive: true });
     }
     
     function handleSwipe() {
-        const swipeThreshold = 50;
+        const swipeThreshold = 30;
         const diff = touchStartY - touchEndY;
         
         if (Math.abs(diff) > swipeThreshold) {
@@ -351,79 +160,98 @@ function initPlansCarousel() {
     
     // Redimensionar ventana
     window.addEventListener('resize', function() {
-        // Resetear si cambia a escritorio
         if (window.innerWidth > 768) {
             carousel.style.transform = 'translateY(0)';
             planCards.forEach(card => {
                 card.classList.add('active');
-                card.style.opacity = '1';
             });
         } else {
-            // Volver a modo móvil
             updateCarousel();
         }
     });
 }
 
-// Optimizar animaciones para móvil
+// SOCIAL MEDIA NOTIFICATIONS
+function setupSocialMediaNotifications() {
+    const socialNotification = document.getElementById('social-notification');
+    const underConstructionLinks = document.querySelectorAll('.social-under-construction');
+    
+    if (!socialNotification || underConstructionLinks.length === 0) return;
+    
+    function showNotification() {
+        socialNotification.classList.add('active');
+        
+        setTimeout(() => {
+            socialNotification.classList.remove('active');
+        }, 3000);
+    }
+    
+    underConstructionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showNotification();
+        });
+    });
+}
+
+// OPTIMIZACIÓN EXTREMA PARA MÓVIL
 function optimizeForMobile() {
     if (window.innerWidth <= 768) {
-        // Reducir animaciones pesadas
-        const animations = document.querySelectorAll('.floating-card, .service-card, .step');
-        animations.forEach(el => {
-            el.style.animationDuration = '1.5s';
+        // Desactivar todas las animaciones CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                * {
+                    animation: none !important;
+                    transition: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Desactivar IntersectionObserver para móvil
+        const observers = ['revealObserver', 'counterObserver', 'lazyObserver'];
+        observers.forEach(obs => {
+            if (window[obs]) {
+                window[obs].disconnect();
+            }
         });
         
-        // Mejorar rendimiento de scroll
-        document.documentElement.style.scrollBehavior = 'smooth';
+        console.log('📱 Modo móvil optimizado activado');
     }
 }
 
+// DOM LOADED
 document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
-    setupSocialMediaNotifications();
-    enhanceStepAnimations();
-    
-    setTimeout(() => {
-        document.body.classList.add('loaded');
-    }, 100);
-    
-    setTimeout(() => {
-        const event = new Event('scroll');
-        window.dispatchEvent(event);
-    }, 500);
-    
-    // Inicializar carrusel
-    setTimeout(initPlansCarousel, 100);
-    
-    // Optimizar para móvil
+    // Optimización extrema para móvil
     optimizeForMobile();
     
-    // Optimizar carga progresiva para móvil
-    if (window.innerWidth <= 768) {
-        const lazyElements = document.querySelectorAll('.service-card, .step, .floating-card');
-        
-        const lazyObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                    lazyObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        lazyElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            lazyObserver.observe(el);
+    // Inicializar carrusel
+    initPlansCarousel();
+    
+    // Notificaciones de redes sociales
+    setupSocialMediaNotifications();
+    
+    // Mostrar active en el primer nav link
+    const homeLink = document.querySelector('.nav-link[href="#inicio"]');
+    if (homeLink && window.scrollY < 100) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        homeLink.classList.add('active');
+    }
+    
+    // Contadores simples (sin animación en móvil)
+    const stats = document.querySelectorAll('.stat');
+    if (window.innerWidth > 768) {
+        stats.forEach(stat => {
+            const statNumber = stat.querySelector('.stat-number');
+            if (statNumber && !statNumber.classList.contains('animated')) {
+                statNumber.classList.add('animated');
+            }
         });
     }
 });
 
+// CERRAR MENÚ CON ESCAPE
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (navMenu.classList.contains('active')) {
@@ -432,25 +260,6 @@ document.addEventListener('keydown', (e) => {
             document.body.style.overflow = '';
         }
     }
-    
-    if (e.altKey && e.key >= '1' && e.key <= '4') {
-        const index = parseInt(e.key) - 1;
-        if (navLinksArray[index]) {
-            navLinksArray[index].click();
-        }
-    }
 });
 
-function checkWhatsAppLinks() {
-    const whatsappLinks = document.querySelectorAll('a[href*="whatsapp"]');
-    whatsappLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            console.log(`📱 WhatsApp link clicked: ${this.href}`);
-        });
-    });
-}
-
-checkWhatsAppLinks();
-
-console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-console.log('🎯 Todos los iconos funcionan correctamente en Font Awesome 6.5.1');
+console.log('🚀 AVALON CREATORS - Optimizado para móvil');
