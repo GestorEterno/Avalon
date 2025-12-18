@@ -481,7 +481,4 @@ function checkWhatsAppLinks() {
 checkWhatsAppLinks();
 
 // ===== MENSAJE DE CONSOLA =====
-console.log('🚀 AVALON CREATORS - Sistema mejorado cargado al 100%');
-console.log('📱 Carrusel móvil ultra fluido - Swipe perfecto');
-console.log('✨ Todos los elementos funcionan correctamente');
-console.log('🎯 Versión móvil compacta y optimizada');
+console.log('Versión móvil compacta y optimizada');
