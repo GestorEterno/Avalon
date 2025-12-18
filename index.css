@@ -1522,6 +1522,26 @@ footer:before {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
     
+    /* ARREGLAR BADGE "MÁS REVOLUCIONARIO" EN MÓVIL */
+    .carousel-container .plan-card.featured .plan-badge {
+        position: absolute;
+        top: -10px !important;
+        right: 50% !important;
+        transform: translateX(50%) !important;
+        white-space: nowrap;
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.7rem !important;
+        max-width: 90% !important;
+        text-align: center;
+        z-index: 10;
+        box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3) !important;
+    }
+    
+    /* Asegurar que la tarjeta tenga espacio para el badge */
+    .carousel-container .plan-card.featured {
+        padding-top: 15px !important;
+    }
+    
     /* 3. REDUCIR ESPACIOS EN PLAN CARDS */
     .carousel-container .plan-header {
         margin-bottom: 1rem !important;
@@ -1827,6 +1847,14 @@ footer:before {
     
     .carousel-container .plan-card:last-child {
         margin-right: 5%;
+    }
+    
+    /* Ajuste extra para el badge en pantallas muy pequeñas */
+    .carousel-container .plan-card.featured .plan-badge {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.65rem !important;
+        max-width: 85% !important;
+        top: -8px !important;
     }
     
     .hero-content h1 {
