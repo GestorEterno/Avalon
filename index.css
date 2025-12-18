@@ -1466,7 +1466,7 @@ footer:before {
         width: 100%;
         max-width: 100%;
         margin: 0 auto 30px;
-        overflow: visible !important;
+        overflow: hidden !important;
         padding: 0;
     }
     
@@ -1478,7 +1478,8 @@ footer:before {
         display: flex;
         width: 100%;
         height: auto;
-        overflow-x: auto;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
@@ -1497,14 +1498,16 @@ footer:before {
         scroll-snap-align: center;
         scroll-snap-stop: always;
         height: auto;
-        min-height: 480px !important; /* Reducido para menos espacio */
+        min-height: 480px !important;
         transform: scale(0.95);
         transition: transform 0.3s ease;
         opacity: 0.9;
-        padding: 20px 15px; /* Menos padding */
+        padding: 20px 15px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         border-radius: var(--border-radius-lg);
+        position: relative;
+        overflow: visible !important;
     }
     
     .carousel-container .plan-card:first-child {
@@ -1522,45 +1525,41 @@ footer:before {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
     
-    /* SOLUCIÓN DEFINITIVA PARA EL BADGE "MÁS REVOLUCIONARIO" EN MÓVIL */
-    /* El problema es que el badge está usando position:absolute con right:20px,
-       pero en móvil el contenedor es más estrecho y el badge se sale. */
-    /* Solución: Reemplazar right:20px por left:50% y transform:translateX(-50%) para centrarlo */
-    /* PERO también ajustar el ancho máximo y el overflow */
+    /* SOLUCIÓN DEFINITIVA PARA EL BADGE EN MÓVIL */
+    /* Mantener el badge visible pero dentro de los límites de la tarjeta */
+    .carousel-container .plan-card.featured {
+        padding-top: 25px !important;
+        margin-top: 10px !important;
+        position: relative;
+    }
+    
     .carousel-container .plan-card.featured .plan-badge {
-        position: absolute;
+        position: absolute !important;
         top: -12px !important;
         left: 50% !important;
-        right: auto !important;
         transform: translateX(-50%) !important;
+        right: auto !important;
         white-space: nowrap;
         padding: 0.35rem 0.8rem !important;
         font-size: 0.7rem !important;
-        max-width: 90% !important;
+        max-width: 85% !important;
         text-align: center;
         z-index: 10;
         box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3) !important;
         overflow: visible;
-        border: 1px solid rgba(0, 0, 0, 0.2);
         word-break: keep-all;
         display: inline-block;
         box-sizing: border-box;
+        background: var(--accent) !important;
+        color: var(--dark) !important;
+        border-radius: 20px !important;
+        font-weight: 700 !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
     }
     
-    /* Asegurar que la tarjeta tenga espacio para el badge */
-    .carousel-container .plan-card.featured {
-        padding-top: 15px !important;
-        position: relative;
-        overflow: visible !important;
-    }
-    
-    /* Asegurar que el contenedor del carrusel permita ver el badge completo */
+    /* Agregar espacio extra en el carrusel para que el badge no se corte */
     .plans-carousel {
-        overflow: visible !important;
-    }
-    
-    .carousel-container {
-        overflow: visible !important;
+        padding-top: 10px !important;
     }
     
     /* 3. REDUCIR ESPACIOS EN PLAN CARDS */
@@ -1858,7 +1857,7 @@ footer:before {
         min-width: 90%;
         max-width: 90%;
         margin: 0 5% 0 0;
-        min-height: 460px !important; /* Aún más compacto */
+        min-height: 460px !important;
         padding: 15px 12px;
     }
     
@@ -1874,14 +1873,12 @@ footer:before {
     .carousel-container .plan-card.featured .plan-badge {
         padding: 0.3rem 0.6rem !important;
         font-size: 0.65rem !important;
-        max-width: 85% !important;
+        max-width: 80% !important;
         top: -10px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        white-space: nowrap;
-        overflow: visible;
-        word-break: keep-all;
-        display: inline-block;
+    }
+    
+    .plans-carousel {
+        padding-top: 5px !important;
     }
     
     .hero-content h1 {
@@ -1924,7 +1921,6 @@ footer:before {
         font-size: 0.8rem !important;
     }
     
-    /* Ajuste para el badge en escritorio (para mantener consistencia) */
     .plan-badge {
         font-size: 0.7rem !important;
         padding: 0.3rem 0.8rem !important;
@@ -1954,23 +1950,6 @@ footer:before {
     .glow-effect {
         display: block !important;
         animation: glowFloat 15s ease-in-out infinite !important;
-    }
-    
-    /* Asegurar que en escritorio el badge se vea bien */
-    .plan-card.featured .plan-badge {
-        position: absolute;
-        top: -15px;
-        right: 20px;
-        background: var(--accent);
-        color: var(--dark);
-        padding: 0.4rem 1rem;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: 0.75rem;
-        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        animation: badgeBounce 2s ease-in-out infinite;
-        white-space: nowrap;
-        z-index: 10;
     }
 }
 
