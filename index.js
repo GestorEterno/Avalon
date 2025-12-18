@@ -222,7 +222,7 @@ function setupSocialMediaNotifications() {
     });
 }
 
-// ===== CARRUSEL ULTRA FLUIDO PARA MÓVIL =====
+// ===== CARRUSEL ULTRA FLUIDO PARA MÓVIL - MEJORADO =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
@@ -243,11 +243,9 @@ function initPlansCarousel() {
     const totalSlides = planCards.length;
     let isScrolling = false;
     let startX = 0;
+    let startY = 0;
     let scrollLeft = 0;
-    let velocity = 0;
-    let lastX = 0;
-    let timestamp = 0;
-    let lastTimestamp = 0;
+    let startTime = 0;
     
     // Función para actualizar el carrusel
     function updateCarousel(smooth = true) {
@@ -294,17 +292,15 @@ function initPlansCarousel() {
                 currentIndex = newIndex;
                 updateCarousel(false);
             }
-        }, 50);
-    });
+        }, 100);
+    }, { passive: true });
     
-    // Touch events para swipe ultra fluido
+    // DETECCIÓN INTELIGENTE DE GESTOS - MEJORADO
     carousel.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
         scrollLeft = carousel.scrollLeft;
-        velocity = 0;
-        lastX = startX;
-        timestamp = Date.now();
-        lastTimestamp = timestamp;
+        startTime = Date.now();
         isScrolling = true;
     }, { passive: true });
     
@@ -312,46 +308,56 @@ function initPlansCarousel() {
         if (!isScrolling) return;
         
         const x = e.touches[0].pageX;
-        const walk = (startX - x) * 1.5; // Multiplicador para más sensibilidad
-        carousel.scrollLeft = scrollLeft + walk;
+        const y = e.touches[0].pageY;
+        const dx = x - startX;
+        const dy = y - startY;
         
-        // Calcular velocidad
-        const now = Date.now();
-        const deltaTime = now - lastTimestamp;
-        if (deltaTime > 0) {
-            const deltaX = x - lastX;
-            velocity = deltaX / deltaTime;
-            lastX = x;
-            lastTimestamp = now;
+        // Determinar si el gesto es principalmente horizontal
+        // Umbral: si el movimiento horizontal es 1.5x mayor que el vertical, es un swipe horizontal
+        if (Math.abs(dx) > Math.abs(dy) * 1.5) {
+            // Es un swipe horizontal - mover el carrusel
+            const walk = (startX - x) * 1.5;
+            carousel.scrollLeft = scrollLeft + walk;
+            e.preventDefault(); // Solo prevenir el comportamiento por defecto para gestos horizontales
         }
-        
-        e.preventDefault();
+        // Si es principalmente vertical, NO hacer preventDefault para permitir scroll vertical
     }, { passive: false });
     
-    carousel.addEventListener('touchend', () => {
+    carousel.addEventListener('touchend', (e) => {
         if (!isScrolling) return;
         isScrolling = false;
         
-        // Usar velocidad para determinar el swipe
-        const threshold = 0.3; // Velocidad mínima para cambiar de slide
-        const cardWidth = planCards[0].offsetWidth;
-        const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+        const x = e.changedTouches[0].pageX;
+        const y = e.changedTouches[0].pageY;
+        const dx = x - startX;
+        const dy = y - startY;
+        const timeElapsed = Date.now() - startTime;
         
-        if (Math.abs(velocity) > threshold) {
-            // Swipe rápido - cambiar slide
-            if (velocity > 0 && currentIndex > 0) {
-                currentIndex--;
-            } else if (velocity < 0 && currentIndex < totalSlides - 1) {
-                currentIndex++;
+        // Solo procesar como swipe horizontal si fue principalmente horizontal
+        if (Math.abs(dx) > Math.abs(dy) * 1.5) {
+            const cardWidth = planCards[0].offsetWidth;
+            const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+            
+            // Determinar dirección y velocidad
+            const velocity = dx / timeElapsed;
+            const threshold = 0.3;
+            
+            if (Math.abs(velocity) > threshold) {
+                // Swipe rápido - cambiar slide basado en dirección
+                if (velocity < 0 && currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                } else if (velocity > 0 && currentIndex > 0) {
+                    currentIndex--;
+                }
+            } else {
+                // Swipe lento - snap al slide más cercano
+                const scrollLeft = carousel.scrollLeft;
+                const newIndex = Math.round(scrollLeft / (cardWidth + margin));
+                currentIndex = Math.max(0, Math.min(newIndex, totalSlides - 1));
             }
-        } else {
-            // Swipe lento - snap al slide más cercano
-            const scrollLeft = carousel.scrollLeft;
-            const newIndex = Math.round(scrollLeft / (cardWidth + margin));
-            currentIndex = Math.max(0, Math.min(newIndex, totalSlides - 1));
+            
+            updateCarousel();
         }
-        
-        updateCarousel();
     });
     
     // Mouse events para desktop (en caso de que se pruebe en móvil con emulador)
