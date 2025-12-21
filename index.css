@@ -39,6 +39,33 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body.loaded .hero-content,
+body.loaded .floating-card,
+body.loaded .service-card,
+body.loaded .plan-card,
+body.loaded .step {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.loaded .hero-content { animation-delay: 0.1s; }
+body.loaded .floating-card:nth-child(1) { animation-delay: 0.3s; }
+body.loaded .floating-card:nth-child(2) { animation-delay: 0.4s; }
+body.loaded .service-card:nth-child(1) { animation-delay: 0.5s; }
+body.loaded .service-card:nth-child(2) { animation-delay: 0.6s; }
+body.loaded .service-card:nth-child(3) { animation-delay: 0.7s; }
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -198,7 +225,9 @@ body {
     -webkit-backdrop-filter: blur(15px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: var(--transition);
+    transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                backdrop-filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     padding: 0.2rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -387,11 +416,17 @@ body {
     display: flex;
     gap: 1.8rem;
     margin-bottom: 2rem;
+    background: rgba(15, 52, 96, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat {
     text-align: center;
     transition: var(--transition);
+    flex: 1;
 }
 
 .stat:hover {
@@ -404,6 +439,9 @@ body {
     font-weight: 700;
     color: var(--accent);
     line-height: 1;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .stat-label {
@@ -440,6 +478,14 @@ body {
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
+.btn-primary::after {
+    content: '→';
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .btn-primary:before {
     content: '';
     position: absolute;
@@ -459,6 +505,11 @@ body {
 
 .btn-primary:hover:before {
     left: 100%;
+}
+
+.btn-primary:hover::after {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .btn-secondary {
@@ -530,6 +581,31 @@ body {
     margin-bottom: 0.8rem;
     color: var(--accent);
     transition: var(--transition);
+    position: relative;
+    display: inline-block;
+}
+
+.card-icon::after,
+.service-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, 
+        rgba(255, 215, 0, 0.2) 0%, 
+        transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.card-icon:hover::after,
+.service-icon:hover::after {
+    width: 60px;
+    height: 60px;
 }
 
 .floating-card:hover .card-icon {
@@ -633,6 +709,9 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .service-card:before {
@@ -649,7 +728,10 @@ section {
 
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 215, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 215, 0, 0.2);
 }
 
@@ -662,6 +744,8 @@ section {
     margin-bottom: 1rem;
     color: var(--accent);
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    display: inline-block;
 }
 
 .service-card:hover .service-icon {
@@ -1181,14 +1265,20 @@ footer {
     margin-top: 0.5rem;
 }
 
-footer:before {
+footer::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.3) 20%, 
+        rgba(255, 215, 0, 0.6) 50%, 
+        rgba(255, 215, 0, 0.3) 80%, 
+        transparent 100%);
 }
 
 .footer-content {
@@ -1307,6 +1397,22 @@ footer:before {
     text-align: center;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideInUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transform-origin: bottom center;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100px) scale(0.9);
+    }
+    70% {
+        transform: translateX(-50%) translateY(-10px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
 }
 
 .social-notification.active {
@@ -1412,17 +1518,34 @@ footer:before {
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
+    width: 28px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transition: left 0.3s ease;
 }
 
 .indicator.active {
-    background: var(--accent);
-    transform: scale(1.3);
+    background: rgba(255, 215, 0, 0.3);
+    transform: scaleX(1.2);
+}
+
+.indicator.active::before {
+    left: 0;
 }
 
 /* ===== CORRECIONES CRÍTICAS PARA MÓVIL ===== */
@@ -1544,21 +1667,32 @@ footer:before {
         transform: translateX(-50%) !important;
         right: auto !important;
         white-space: nowrap;
-        padding: 0.35rem 0.8rem !important;
-        font-size: 0.7rem !important;
-        max-width: 85% !important;
-        text-align: center;
+        padding: 0.5rem 1.2rem !important;
+        font-size: 0.75rem !important;
         z-index: 10;
-        box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3) !important;
-        overflow: visible;
-        word-break: keep-all;
-        display: inline-block;
-        box-sizing: border-box;
-        background: var(--accent) !important;
+        background: linear-gradient(135deg, var(--accent), var(--accent-light)) !important;
         color: var(--dark) !important;
         border-radius: 20px !important;
-        font-weight: 700 !important;
-        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.5px;
+        box-shadow: 
+            0 4px 15px rgba(255, 215, 0, 0.4),
+            0 0 0 1px rgba(0, 0, 0, 0.1) !important;
+        text-transform: uppercase;
+        animation: badgePulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes badgePulse {
+        0%, 100% { 
+            box-shadow: 
+                0 4px 15px rgba(255, 215, 0, 0.4),
+                0 0 0 1px rgba(0, 0, 0, 0.1); 
+        }
+        50% { 
+            box-shadow: 
+                0 4px 20px rgba(255, 215, 0, 0.6),
+                0 0 0 1px rgba(0, 0, 0, 0.1); 
+        }
     }
     
     /* Agregar espacio extra en el carrusel para que el badge no se corte */
@@ -2195,4 +2329,25 @@ footer:before {
     .notification-content p {
         font-size: 0.8rem;
     }
+}
+
+/* ===== SCROLLBAR PERSONALIZADA - DETALLE PREMIUM ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 52, 96, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--accent-light), var(--accent));
 }
