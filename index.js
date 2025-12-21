@@ -61,15 +61,15 @@ function updateNavbarOnScroll() {
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
-        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+        navbar.style.background = 'rgba(15, 52, 96, 0.92)';
         navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
         navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-        navbar.style.backdropFilter = 'blur(15px)';
+        navbar.style.backdropFilter = 'blur(8px)';
     } else {
         navbar.style.background = 'rgba(15, 52, 96, 0.1)';
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-        navbar.style.backdropFilter = 'blur(15px)';
+        navbar.style.backdropFilter = 'blur(12px)';
     }
     
     if (currentScroll <= 0) {
@@ -129,14 +129,26 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(event);
     }, 500);
     
-    // Inicializar carruseles
-    initPlansCarousel();
-    initProcessCarousel();
-    
-    window.addEventListener('load', () => {
-        setTimeout(initPlansCarousel, 300);
-        setTimeout(initProcessCarousel, 300);
-    });
+    // Inicializar carruseles con optimización para móvil
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            initPlansCarousel();
+            initProcessCarousel();
+            
+            // Forzar que las animaciones de los números se ejecuten
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.step-number-mobile').forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+            });
+        }, 300);
+    } else {
+        // En escritorio, inicializar después del load
+        window.addEventListener('load', () => {
+            setTimeout(initPlansCarousel, 300);
+            setTimeout(initProcessCarousel, 300);
+        });
+    }
 });
 
 // ===== CONTADORES ANIMADOS OPTIMIZADOS =====
@@ -300,6 +312,7 @@ function initPlansCarousel() {
             const scrollPosition = currentIndex * (cardWidth + margin);
             
             if (smooth) {
+                // En móvil, usar un scroll más suave
                 carousel.scrollTo({
                     left: scrollPosition,
                     behavior: 'smooth'
