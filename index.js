@@ -213,7 +213,7 @@ function initPlansCarousel() {
         scrollTimeout = setTimeout(() => {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = cardWidth * 0.1; // 10% de tolerancia
+            const tolerance = cardWidth * 0.1;
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
