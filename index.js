@@ -57,45 +57,9 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ===== OPTIMIZACIÓN DE ANIMACIONES PARA MÓVIL =====
-function optimizeMobileAnimations() {
-    const floatingCards = document.querySelectorAll('.floating-card');
-    const isMobile = window.innerWidth <= 768;
-    
-    floatingCards.forEach(card => {
-        if (isMobile) {
-            // Desactivar animaciones CSS en móvil
-            card.style.animation = 'none';
-            card.style.transform = 'translateY(0)';
-            card.style.willChange = 'auto';
-            
-            // Optimizar para rendimiento táctil
-            card.addEventListener('touchstart', function(e) {
-                this.style.transform = 'scale(0.98)';
-            }, { passive: true });
-            
-            card.addEventListener('touchend', function(e) {
-                this.style.transform = 'scale(1)';
-            }, { passive: true });
-        } else {
-            // Reactivar animaciones en PC
-            card.style.animation = '';
-            card.style.transform = '';
-            card.style.willChange = 'transform';
-            
-            // Eliminar eventos táctiles
-            card.removeEventListener('touchstart', () => {});
-            card.removeEventListener('touchend', () => {});
-        }
-    });
-}
-
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC');
-    
-    // Optimizar animaciones basadas en el dispositivo
-    optimizeMobileAnimations();
     
     // Animar elementos al cargar
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
@@ -199,13 +163,13 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        }, { passive: true });
+        });
         
         prevArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 prevArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        }, { passive: true });
+        });
     }
     
     if (nextArrow) {
@@ -219,13 +183,13 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        }, { passive: true });
+        });
         
         nextArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 nextArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        }, { passive: true });
+        });
     }
     
     // Indicadores
@@ -249,6 +213,7 @@ function initPlansCarousel() {
         scrollTimeout = setTimeout(() => {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
+            const tolerance = cardWidth * 0.1; // 10% de tolerancia
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
@@ -265,7 +230,7 @@ function initPlansCarousel() {
             
             isScrolling = false;
         }, 150);
-    }, { passive: true });
+    });
     
     // Inicializar
     updateCarousel(false);
@@ -343,13 +308,13 @@ function initProcessCarousel() {
         
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        }, { passive: true });
+        });
         
         prevArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 prevArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        }, { passive: true });
+        });
     }
     
     if (nextArrow) {
@@ -362,13 +327,13 @@ function initProcessCarousel() {
         
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        }, { passive: true });
+        });
         
         nextArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 nextArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        }, { passive: true });
+        });
     }
     
     // Indicadores
@@ -392,6 +357,7 @@ function initProcessCarousel() {
         scrollTimeout = setTimeout(() => {
             const stepWidth = steps[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
+            const tolerance = stepWidth * 0.1;
             
             let newIndex = Math.round(scrollLeft / stepWidth);
             
@@ -405,7 +371,7 @@ function initProcessCarousel() {
             
             isScrolling = false;
         }, 150);
-    }, { passive: true });
+    });
     
     updateCarousel(false);
     
@@ -495,9 +461,6 @@ window.addEventListener('resize', () => {
     
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
-        
-        // Optimizar animaciones basadas en el nuevo tamaño
-        optimizeMobileAnimations();
         
         // Re-inicializar carruseles si cambiamos a móvil
         if (window.innerWidth <= 768) {
