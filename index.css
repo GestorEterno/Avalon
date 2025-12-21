@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA Y MEJORADA */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA COMPLETAMENTE */
 
 :root {
     --primary: #0f3460;
@@ -40,19 +40,18 @@ body {
     position: relative;
 }
 
-/* === ANIMACIONES OPTIMIZADAS === */
+/* === ANIMACIONES MINIMIZADAS === */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ANIMACIÓN CORREGIDA: Ultra fluida y suave */
-@keyframes smoothFloat {
+@keyframes float {
     0%, 100% { 
-        transform: translateY(0px) translateZ(0); 
+        transform: translateY(0px) translateZ(0);
     }
     50% { 
-        transform: translateY(-8px) translateZ(0); 
+        transform: translateY(-12px) translateZ(0);
     }
 }
 
@@ -335,7 +334,7 @@ body {
     border-color: var(--accent);
 }
 
-/* === HERO IMAGE - ANIMACIÓN CORREGIDA === */
+/* === HERO IMAGE === */
 .hero-image {
     flex: 1;
     display: flex;
@@ -354,45 +353,30 @@ body {
     text-align: center;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: float 6s ease-in-out infinite;
     transition: var(--transition);
     height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* ACELERACIÓN POR HARDWARE PARA FLUIDEZ PERFECTA */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
-/* ANIMACIÓN DE FLOTACIÓN SOLO PARA PC */
-@media (min-width: 769px) {
-    .floating-card {
-        animation: smoothFloat 4s ease-in-out infinite;
-    }
-    
-    .floating-card:nth-child(2) {
-        animation-delay: 2s; /* Desfase para efecto natural */
-    }
-    
-    .floating-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
+/* SEGUNDO PANEL CON DELAY PERO MISMA FLUIDEZ */
+.floating-card:nth-child(1) {
+    animation: float 6s ease-in-out infinite;
 }
 
-.card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--accent);
+.floating-card:nth-child(2) {
+    animation: float 6s ease-in-out infinite 0.5s;
 }
 
-.floating-card h3 {
-    margin-bottom: 0.8rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.floating-card p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    line-height: 1.4;
+.floating-card:hover {
+    transform: translateY(-10px) translateZ(0);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* === SECTION COMMON === */
@@ -1181,6 +1165,7 @@ footer {
     margin-bottom: 1.2rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
     transition: var(--transition);
+    animation: float 4s ease-in-out infinite;
 }
 
 .step-number-mobile::before {
@@ -1216,6 +1201,16 @@ footer {
 
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
+    /* DESACTIVAR ANIMACIÓN DE LEVITACIÓN EN MÓVIL */
+    .floating-card {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    .floating-card:hover {
+        transform: none !important;
+    }
+    
     /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
     .animated-background {
         background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
@@ -1237,12 +1232,6 @@ footer {
         background: transparent !important;
         min-height: auto;
         padding: 90px 0 40px;
-    }
-    
-    /* CORRECCIÓN ESPECÍFICA: Desactivar animación de flotación en móvil */
-    .floating-card {
-        animation: none !important;
-        transform: translateY(0) !important;
     }
     
     /* Asegurar que todas las secciones tengan fondo transparente */
@@ -1363,11 +1352,6 @@ footer {
         margin: 0;
     }
     
-    .floating-card:hover {
-        transform: none !important;
-        box-shadow: var(--shadow-lg);
-    }
-    
     /* Section titles móvil */
     .section-title {
         font-size: 1.8rem;
@@ -1429,13 +1413,13 @@ footer {
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -25px !important;
+        left: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -25px !important;
+        right: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
         left: auto !important;
     }
     
@@ -1469,6 +1453,7 @@ footer {
     /* Desactivar hover en móvil para mejor rendimiento */
     .service-card:hover,
     .plan-card:hover,
+    .floating-card:hover,
     .step:hover {
         transform: none;
     }
@@ -1524,12 +1509,12 @@ footer {
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px !important;
+        left: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px !important;
+        right: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
     }
 }
 
