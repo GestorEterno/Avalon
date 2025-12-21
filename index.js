@@ -57,9 +57,45 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
+// ===== OPTIMIZACIÓN DE ANIMACIONES PARA MÓVIL =====
+function optimizeMobileAnimations() {
+    const floatingCards = document.querySelectorAll('.floating-card');
+    const isMobile = window.innerWidth <= 768;
+    
+    floatingCards.forEach(card => {
+        if (isMobile) {
+            // Desactivar animaciones CSS en móvil
+            card.style.animation = 'none';
+            card.style.transform = 'translateY(0)';
+            card.style.willChange = 'auto';
+            
+            // Optimizar para rendimiento táctil
+            card.addEventListener('touchstart', function(e) {
+                this.style.transform = 'scale(0.98)';
+            }, { passive: true });
+            
+            card.addEventListener('touchend', function(e) {
+                this.style.transform = 'scale(1)';
+            }, { passive: true });
+        } else {
+            // Reactivar animaciones en PC
+            card.style.animation = '';
+            card.style.transform = '';
+            card.style.willChange = 'transform';
+            
+            // Eliminar eventos táctiles
+            card.removeEventListener('touchstart', () => {});
+            card.removeEventListener('touchend', () => {});
+        }
+    });
+}
+
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC');
+    
+    // Optimizar animaciones basadas en el dispositivo
+    optimizeMobileAnimations();
     
     // Animar elementos al cargar
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
@@ -151,21 +187,6 @@ function initPlansCarousel() {
         }
     }
     
-    // Eliminar efecto de foco y selección en móvil
-    if (prevArrow && nextArrow) {
-        // Prevenir selección de texto en móvil
-        prevArrow.style.userSelect = 'none';
-        nextArrow.style.userSelect = 'none';
-        prevArrow.style.webkitUserSelect = 'none';
-        nextArrow.style.webkitUserSelect = 'none';
-        
-        // Eliminar efecto de focus
-        prevArrow.addEventListener('mousedown', (e) => e.preventDefault());
-        nextArrow.addEventListener('mousedown', (e) => e.preventDefault());
-        prevArrow.addEventListener('touchstart', (e) => e.preventDefault());
-        nextArrow.addEventListener('touchstart', (e) => e.preventDefault());
-    }
-    
     // Flechas - CON MEJOR FEEDBACK TÁCTIL
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
@@ -178,14 +199,13 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-            prevArrow.style.opacity = '1';
-        });
+        }, { passive: true });
         
         prevArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 prevArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        });
+        }, { passive: true });
     }
     
     if (nextArrow) {
@@ -199,14 +219,13 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-            nextArrow.style.opacity = '1';
-        });
+        }, { passive: true });
         
         nextArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 nextArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        });
+        }, { passive: true });
     }
     
     // Indicadores
@@ -217,10 +236,6 @@ function initPlansCarousel() {
                 updateCarousel();
             }
         });
-        
-        // Eliminar efecto de foco en indicadores
-        indicator.addEventListener('mousedown', (e) => e.preventDefault());
-        indicator.addEventListener('touchstart', (e) => e.preventDefault());
     });
     
     // Scroll automático con debounce mejorado
@@ -250,7 +265,7 @@ function initPlansCarousel() {
             
             isScrolling = false;
         }, 150);
-    });
+    }, { passive: true });
     
     // Inicializar
     updateCarousel(false);
@@ -317,21 +332,6 @@ function initProcessCarousel() {
         }
     }
     
-    // Eliminar efecto de foco y selección en móvil
-    if (prevArrow && nextArrow) {
-        // Prevenir selección de texto en móvil
-        prevArrow.style.userSelect = 'none';
-        nextArrow.style.userSelect = 'none';
-        prevArrow.style.webkitUserSelect = 'none';
-        nextArrow.style.webkitUserSelect = 'none';
-        
-        // Eliminar efecto de focus
-        prevArrow.addEventListener('mousedown', (e) => e.preventDefault());
-        nextArrow.addEventListener('mousedown', (e) => e.preventDefault());
-        prevArrow.addEventListener('touchstart', (e) => e.preventDefault());
-        nextArrow.addEventListener('touchstart', (e) => e.preventDefault());
-    }
-    
     // Flechas con feedback táctil
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
@@ -343,14 +343,13 @@ function initProcessCarousel() {
         
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-            prevArrow.style.opacity = '1';
-        });
+        }, { passive: true });
         
         prevArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 prevArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        });
+        }, { passive: true });
     }
     
     if (nextArrow) {
@@ -363,14 +362,13 @@ function initProcessCarousel() {
         
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-            nextArrow.style.opacity = '1';
-        });
+        }, { passive: true });
         
         nextArrow.addEventListener('touchend', () => {
             setTimeout(() => {
                 nextArrow.style.transform = 'translateY(-50%) scale(1)';
             }, 150);
-        });
+        }, { passive: true });
     }
     
     // Indicadores
@@ -381,10 +379,6 @@ function initProcessCarousel() {
                 updateCarousel();
             }
         });
-        
-        // Eliminar efecto de foco en indicadores
-        indicator.addEventListener('mousedown', (e) => e.preventDefault());
-        indicator.addEventListener('touchstart', (e) => e.preventDefault());
     });
     
     // Scroll automático
@@ -411,7 +405,7 @@ function initProcessCarousel() {
             
             isScrolling = false;
         }, 150);
-    });
+    }, { passive: true });
     
     updateCarousel(false);
     
@@ -491,10 +485,6 @@ function setupSocialNotifications() {
             e.preventDefault();
             showNotification();
         });
-        
-        // Eliminar efecto de foco en enlaces sociales
-        link.addEventListener('mousedown', (e) => e.preventDefault());
-        link.addEventListener('touchstart', (e) => e.preventDefault());
     });
 }
 
@@ -505,6 +495,9 @@ window.addEventListener('resize', () => {
     
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
+        
+        // Optimizar animaciones basadas en el nuevo tamaño
+        optimizeMobileAnimations();
         
         // Re-inicializar carruseles si cambiamos a móvil
         if (window.innerWidth <= 768) {
