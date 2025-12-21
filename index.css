@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - FOOTER CORREGIDO */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - FOOTER CORREGIDO Y OPTIMIZADO */
 
 :root {
     --primary: #0f3460;
@@ -1293,6 +1293,115 @@ footer {
     }
 }
 
+/* ===== FOOTER ESCRITORIO - COMPACTADO AL MÁXIMO Y OPTIMIZADO ===== */
+@media (min-width: 992px) {
+    footer {
+        padding: 0.15rem 0 0.1rem !important; /* Reducido al máximo */
+    }
+    
+    .footer-mobile {
+        display: none;
+    }
+    
+    /* Cambiar a 2 columnas: logo a la izquierda, redes a la derecha */
+    .footer-content {
+        display: grid !important;
+        grid-template-columns: 1fr auto !important; /* Logo | Redes */
+        align-items: center !important;
+        gap: 0 !important; /* Sin espacio entre columnas */
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+        min-height: 40px !important; /* Altura mínima reducida */
+    }
+    
+    /* Ocultar centro completamente */
+    .footer-center {
+        display: none !important;
+    }
+    
+    /* Izquierda: solo logo */
+    .footer-left {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 40px !important;
+    }
+    
+    /* Derecha: solo redes sociales */
+    .footer-right {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 40px !important;
+    }
+    
+    /* Logo ultra compacto */
+    .footer-logo {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.4rem !important; /* Reducido espacio entre logo y texto */
+        height: 32px !important; /* Altura fija */
+    }
+    
+    .footer-logo .logo-img {
+        height: 28px !important; /* Logo ligeramente más pequeño */
+        width: auto !important;
+    }
+    
+    .footer-logo h3 {
+        font-size: 0.85rem !important; /* Texto más compacto */
+        font-weight: 700 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+    }
+    
+    /* Redes sociales ultra compactas */
+    .social-links {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.3rem !important; /* Espacio mínimo entre iconos */
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    .social-links a {
+        width: 30px !important;
+        height: 30px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* Footer bottom ultra compacto */
+    .footer-bottom {
+        padding: 0.15rem 0 0.1rem !important;
+        margin: 0 !important;
+        font-size: 0.65rem !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        line-height: 1 !important;
+    }
+    
+    /* Asegurar que el contenedor no agregue padding extra */
+    footer .container {
+        padding: 0 20px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* Eliminar cualquier espacio adicional en el último elemento */
+footer:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
     /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
@@ -1671,46 +1780,6 @@ footer {
     
     .process-steps {
         display: flex;
-    }
-}
-
-/* Footer escritorio - COMPACTADO AL MÁXIMO */
-@media (min-width: 992px) {
-    .footer-mobile {
-        display: none;
-    }
-    
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.1rem 0 !important;
-    }
-    
-    .footer-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
-        gap: 0.3rem !important;
-        margin-bottom: 0.3rem !important;
-    }
-    
-    .footer-right {
-        justify-content: flex-end;
-    }
-    
-    .footer-center {
-        justify-content: center;
-    }
-    
-    .footer-left {
-        justify-content: flex-start;
-    }
-    
-    .footer-logo {
-        margin-bottom: 0 !important;
     }
 }
 
