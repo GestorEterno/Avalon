@@ -151,6 +151,21 @@ function initPlansCarousel() {
         }
     }
     
+    // Eliminar efecto de foco y selección en móvil
+    if (prevArrow && nextArrow) {
+        // Prevenir selección de texto en móvil
+        prevArrow.style.userSelect = 'none';
+        nextArrow.style.userSelect = 'none';
+        prevArrow.style.webkitUserSelect = 'none';
+        nextArrow.style.webkitUserSelect = 'none';
+        
+        // Eliminar efecto de focus
+        prevArrow.addEventListener('mousedown', (e) => e.preventDefault());
+        nextArrow.addEventListener('mousedown', (e) => e.preventDefault());
+        prevArrow.addEventListener('touchstart', (e) => e.preventDefault());
+        nextArrow.addEventListener('touchstart', (e) => e.preventDefault());
+    }
+    
     // Flechas - CON MEJOR FEEDBACK TÁCTIL
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
@@ -163,6 +178,7 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
+            prevArrow.style.opacity = '1';
         });
         
         prevArrow.addEventListener('touchend', () => {
@@ -183,6 +199,7 @@ function initPlansCarousel() {
         // Feedback táctil para móvil
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
+            nextArrow.style.opacity = '1';
         });
         
         nextArrow.addEventListener('touchend', () => {
@@ -200,6 +217,10 @@ function initPlansCarousel() {
                 updateCarousel();
             }
         });
+        
+        // Eliminar efecto de foco en indicadores
+        indicator.addEventListener('mousedown', (e) => e.preventDefault());
+        indicator.addEventListener('touchstart', (e) => e.preventDefault());
     });
     
     // Scroll automático con debounce mejorado
@@ -213,7 +234,6 @@ function initPlansCarousel() {
         scrollTimeout = setTimeout(() => {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = cardWidth * 0.1; // 10% de tolerancia
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
@@ -297,6 +317,21 @@ function initProcessCarousel() {
         }
     }
     
+    // Eliminar efecto de foco y selección en móvil
+    if (prevArrow && nextArrow) {
+        // Prevenir selección de texto en móvil
+        prevArrow.style.userSelect = 'none';
+        nextArrow.style.userSelect = 'none';
+        prevArrow.style.webkitUserSelect = 'none';
+        nextArrow.style.webkitUserSelect = 'none';
+        
+        // Eliminar efecto de focus
+        prevArrow.addEventListener('mousedown', (e) => e.preventDefault());
+        nextArrow.addEventListener('mousedown', (e) => e.preventDefault());
+        prevArrow.addEventListener('touchstart', (e) => e.preventDefault());
+        nextArrow.addEventListener('touchstart', (e) => e.preventDefault());
+    }
+    
     // Flechas con feedback táctil
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
@@ -308,6 +343,7 @@ function initProcessCarousel() {
         
         prevArrow.addEventListener('touchstart', () => {
             prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
+            prevArrow.style.opacity = '1';
         });
         
         prevArrow.addEventListener('touchend', () => {
@@ -327,6 +363,7 @@ function initProcessCarousel() {
         
         nextArrow.addEventListener('touchstart', () => {
             nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
+            nextArrow.style.opacity = '1';
         });
         
         nextArrow.addEventListener('touchend', () => {
@@ -344,6 +381,10 @@ function initProcessCarousel() {
                 updateCarousel();
             }
         });
+        
+        // Eliminar efecto de foco en indicadores
+        indicator.addEventListener('mousedown', (e) => e.preventDefault());
+        indicator.addEventListener('touchstart', (e) => e.preventDefault());
     });
     
     // Scroll automático
@@ -357,7 +398,6 @@ function initProcessCarousel() {
         scrollTimeout = setTimeout(() => {
             const stepWidth = steps[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = stepWidth * 0.1;
             
             let newIndex = Math.round(scrollLeft / stepWidth);
             
@@ -451,6 +491,10 @@ function setupSocialNotifications() {
             e.preventDefault();
             showNotification();
         });
+        
+        // Eliminar efecto de foco en enlaces sociales
+        link.addEventListener('mousedown', (e) => e.preventDefault());
+        link.addEventListener('touchstart', (e) => e.preventDefault());
     });
 }
 
