@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA COMPLETAMENTE */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA Y MEJORADA */
 
 :root {
     --primary: #0f3460;
@@ -534,6 +534,12 @@ section {
     z-index: 2;
     flex: 1;
     padding: 0 15px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.step:hover {
+    transform: translateY(-10px);
 }
 
 .step-number {
@@ -554,6 +560,7 @@ section {
     backdrop-filter: blur(10px);
     transition: var(--transition);
     position: relative;
+    overflow: hidden;
 }
 
 .step-number::before {
@@ -563,16 +570,30 @@ section {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.15) 0%, transparent 50%);
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
     border-radius: 50%;
     animation: gentleGlow 4s ease-in-out infinite;
     z-index: -1;
 }
 
 .step:hover .step-number {
-    transform: scale(1.1);
+    transform: scale(1.2) translateY(-5px);
     border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+}
+
+.step-content {
+    transition: var(--transition);
+}
+
+.step:hover .step-content h3 {
+    color: var(--accent);
+    transform: translateY(5px);
+}
+
+.step:hover .step-content p {
+    opacity: 1;
+    transform: translateY(5px);
 }
 
 .step-content h3 {
@@ -580,6 +601,7 @@ section {
     margin-bottom: 0.8rem;
     font-weight: 700;
     color: var(--light);
+    transition: var(--transition);
 }
 
 .step-content p {
@@ -588,6 +610,7 @@ section {
     font-size: 0.95rem;
     max-width: 220px;
     margin: 0 auto;
+    transition: var(--transition);
 }
 
 /* === PLANS DESKTOP === */
@@ -1144,7 +1167,7 @@ footer {
     transform: scale(1.3);
 }
 
-/* Step móvil */
+/* Step móvil - CORREGIDO: Eliminada aureola problemática */
 .step-mobile {
     flex: 0 0 85%;
     width: 85%;
@@ -1185,19 +1208,23 @@ footer {
     margin-bottom: 1.2rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden; /* Previene que se salga la aureola */
 }
 
+/* AUREOLA CORREGIDA: Reducida intensidad y tamaño */
 .step-number-mobile::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.15) 0%, transparent 50%);
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
     border-radius: 50%;
-    animation: gentleGlow 4s ease-in-out infinite;
+    animation: gentleGlow 6s ease-in-out infinite;
     z-index: -1;
+    opacity: 0.5; /* Reducida opacidad */
 }
 
 .step-content-mobile {
@@ -1401,6 +1428,29 @@ footer {
         overflow: visible;
     }
     
+    /* CORRECCIÓN CRÍTICA: Eliminar efectos hover en móvil para los steps */
+    .step {
+        cursor: default;
+    }
+    
+    .step:hover,
+    .step:hover .step-number,
+    .step:hover .step-content h3,
+    .step:hover .step-content p {
+        transform: none !important;
+    }
+    
+    .step:hover .step-number {
+        box-shadow: none;
+        border-color: rgba(255, 215, 0, 0.3);
+    }
+    
+    /* CORRECCIÓN: Aún más reducida la aureola en móvil */
+    .step-number-mobile::before {
+        opacity: 0.3 !important;
+        animation-duration: 8s !important;
+    }
+    
     /* Plans - ocultar desktop, mostrar carrusel */
     .plans-container {
         display: none;
@@ -1431,13 +1481,13 @@ footer {
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
+        left: -25px !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
+        right: -25px !important;
         left: auto !important;
     }
     
@@ -1527,12 +1577,17 @@ footer {
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
+        left: -20px !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
+        right: -20px !important;
+    }
+    
+    /* CORRECCIÓN FINAL: Eliminar completamente la aureola en móviles muy pequeños */
+    .step-number-mobile::before {
+        display: none !important;
     }
 }
 
