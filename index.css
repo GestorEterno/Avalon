@@ -1293,81 +1293,144 @@ footer {
     }
 }
 
-/* ===== FOOTER ESCRITORIO - CORRECCIONES MEJORADAS EXCLUSIVAMENTE PARA PC ===== */
+/* ===== FOOTER ESCRITORIO - MEJORAS ESPECÍFICAS PARA PC ===== */
 @media (min-width: 992px) {
-    /* Reducir espacio vertical del footer al mínimo */
+    /* 1. REDUCIR ESPACIO INNECESARIO EN EL FOOTER */
     footer {
-        padding: 0.1rem 0 0.05rem !important;
+        padding: 0.1rem 0 !important;
         margin-top: -15px !important;
     }
     
-    /* Aumentar ligeramente el tamaño del icono y texto */
-    .footer-logo .logo-img {
-        height: 38px !important;
-        transition: var(--transition) !important;
-    }
-    
-    .footer-logo h3 {
-        font-size: 1.1rem !important;
-        transition: var(--transition) !important;
-    }
-    
-    /* Animación al pasar el mouse sobre el logo */
-    .footer-logo:hover .logo-img {
-        transform: translateY(-2px) scale(1.05);
-        filter: drop-shadow(0 3px 6px rgba(255, 215, 0, 0.3));
-    }
-    
-    .footer-logo:hover h3 {
-        color: var(--accent-light);
-        text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
-        transform: translateY(-1px);
-    }
-    
-    /* Reducir espacio en el contenedor principal */
+    /* 2. MEJORAR ESPACIADO Y ALINEACIÓN */
     .footer-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 0.8rem !important;
         margin-bottom: 0.3rem !important;
-        gap: 0.3rem !important;
-        min-height: 35px !important;
+        padding: 0.2rem 0 !important;
+        min-height: 45px !important;
     }
     
-    /* Ajustar padding de las columnas */
+    /* 3. OCULTAR FOOTER MÓVIL EN PC */
+    .footer-mobile {
+        display: none !important;
+    }
+    
+    /* 4. MOSTRAR LAS TRES COLUMNAS EN PC */
     .footer-left,
     .footer-center,
     .footer-right {
-        height: 35px !important;
+        display: flex !important;
+        align-items: center !important;
         padding: 0 !important;
-    }
-    
-    /* Reducir espacio del texto del centro */
-    .footer-center .footer-tagline {
-        font-size: 0.8rem !important;
-        line-height: 1.2 !important;
         margin: 0 !important;
+        height: 45px !important;
     }
     
-    /* Reducir aún más el footer bottom */
-    .footer-bottom {
-        padding: 0.4rem 0 0.3rem !important;
-        margin-top: 0 !important;
-        font-size: 0.75rem !important;
-        line-height: 1.1 !important;
+    .footer-left {
+        justify-content: flex-start !important;
+        flex: 1;
     }
     
-    /* Ajustar contenedor principal */
-    footer .container {
-        padding: 0 20px !important;
+    .footer-center {
+        justify-content: center !important;
+        flex: 1;
     }
-}
-
-/* Ajuste adicional para pantallas muy grandes */
-@media (min-width: 1200px) {
+    
+    .footer-right {
+        justify-content: flex-end !important;
+        flex: 1;
+    }
+    
+    /* 5. LOGO MÁS GRANDE Y CON ANIMACIÓN */
+    .footer-logo {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.5rem !important;
+        height: 45px !important;
+        transition: var(--transition) !important;
+        cursor: pointer;
+        padding: 4px 8px !important;
+        border-radius: 8px !important;
+    }
+    
     .footer-logo .logo-img {
-        height: 42px !important;
+        height: 38px !important;
+        width: auto !important;
+        transition: var(--transition) !important;
     }
     
     .footer-logo h3 {
-        font-size: 1.15rem !important;
+        font-size: 1rem !important;
+        font-weight: 800 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        transition: var(--transition) !important;
+    }
+    
+    /* ANIMACIÓN AL HOVER DEL LOGO */
+    .footer-logo:hover {
+        transform: translateY(-3px) scale(1.05) !important;
+        background: rgba(255, 215, 0, 0.1) !important;
+    }
+    
+    .footer-logo:hover .logo-img {
+        filter: drop-shadow(0 5px 8px rgba(255, 215, 0, 0.3)) !important;
+    }
+    
+    .footer-logo:hover h3 {
+        color: var(--accent-light) !important;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+    }
+    
+    /* 6. CENTRO: MEJORAR EL TAGLINE */
+    .footer-center .footer-tagline {
+        opacity: 0.9;
+        line-height: 1.3 !important;
+        font-size: 0.9rem !important;
+        margin: 0 !important;
+        text-align: center;
+        padding: 0 10px;
+        border-left: 2px solid rgba(255, 215, 0, 0.3);
+        border-right: 2px solid rgba(255, 215, 0, 0.3);
+    }
+    
+    /* 7. REDES SOCIALES */
+    .social-links {
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0.4rem !important;
+        height: 32px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    .social-links a {
+        width: 30px !important;
+        height: 30px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* 8. FOOTER BOTTOM MÁS COMPACTO */
+    .footer-bottom {
+        padding: 0.6rem 0 0.3rem !important;
+        margin-top: 0.1rem !important;
+        font-size: 0.8rem !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* 9. CONTENEDOR */
+    footer .container {
+        padding: 0 20px !important;
+        margin: 0 auto !important;
     }
 }
 
