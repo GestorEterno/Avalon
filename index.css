@@ -984,6 +984,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 580px;
 }
 
 .plan-card:hover {
@@ -1113,6 +1114,10 @@ section {
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .btn-plan:before {
@@ -1370,7 +1375,7 @@ footer:before {
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: auto;
-    min-height: 520px;
+    min-height: 580px !important;
     transition: all 0.3s ease;
     padding: 25px;
     position: relative;
@@ -1498,7 +1503,7 @@ footer:before {
         scroll-snap-align: center;
         scroll-snap-stop: always;
         height: auto;
-        min-height: 480px !important;
+        min-height: 560px !important;
         transform: scale(0.95);
         transition: transform 0.3s ease;
         opacity: 0.9;
@@ -1526,7 +1531,6 @@ footer:before {
     }
     
     /* SOLUCIÓN DEFINITIVA PARA EL BADGE EN MÓVIL */
-    /* Mantener el badge visible pero dentro de los límites de la tarjeta */
     .carousel-container .plan-card.featured {
         padding-top: 25px !important;
         margin-top: 10px !important;
@@ -1857,7 +1861,7 @@ footer:before {
         min-width: 90%;
         max-width: 90%;
         margin: 0 5% 0 0;
-        min-height: 460px !important;
+        min-height: 550px !important;
         padding: 15px 12px;
     }
     
