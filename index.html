@@ -3,801 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevWeb Pro - Desarrollo Web Profesional</title>
+    <title>AVALON CREATORS - Agencia Revolucionaria de Desarrollo de Software</title>
+    <meta name="description" content="Agencia especializada en desarrollo de software personalizado, webs y sistemas con IA. Creamos soluciones tecnológicas revolucionarias a precios accesibles.">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-    <!-- Header Compacto Rediseñado -->
-    <header class="header">
-        <div class="container">
-            <!-- Primera Fila: Logo + Utilidades -->
-            <div class="header-top">
-                <a href="#" class="logo">DEVWEB PRO</a>
-                <div class="header-utils">
-                    <!-- Buscador -->
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Buscar servicios...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    
-                    <!-- Iconos de Utilidad -->
-                    <div class="utility-icons">
-                        <button class="icon-btn" id="contactBtn" title="Contacto Rápido">
-                            <i class="fas fa-envelope"></i>
-                        </button>
-                        <button class="icon-btn" id="notificationBtn">
-                            <i class="fas fa-bell"></i>
-                            <span class="notification-count">0</span>
-                        </button>
-                        <button class="icon-btn" id="loginBtn" title="Área Clientes">
-                            <i class="fas fa-user"></i>
-                        </button>
-                    </div>
+    <div class="animated-background">
+        <div class="particles-container"></div>
+        <div class="glow-effect"></div>
+        <div class="glow-effect"></div>
+    </div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                    <h2>AVALON CREATORS</h2>
                 </div>
-                
-                <!-- Hamburger para Móvil -->
-                <button class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-            
-            <!-- Segunda Fila: Menú de Navegación -->
-            <nav class="header-bottom">
                 <ul class="nav-menu">
-                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="#ecommerce" class="nav-link">Ecommerce</a></li>
-                    <li><a href="#corporativa" class="nav-link">Web Corporativa</a></li>
-                    <li><a href="#marca" class="nav-link">Marca Personal</a></li>
-                    <li><a href="#proceso" class="nav-link">Proceso</a></li>
-                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="eccomerce.html" class="nav-link">Ecommerce</a></li>
+                    <li><a href="#" class="nav-link active">Web Corporativa</a></li>
+                    <li><a href="Personal.html" class="nav-link">Marca Personal</a></li>
                 </ul>
-            </nav>
-        </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Hero con Carrusel Horizontal -->
     <section id="inicio" class="hero">
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Slide 1: Ecommerce -->
-                <div class="carousel-slide active">
-                    <div class="slide-content">
-                        <h1>Ecommerce <span>Profesional</span></h1>
-                        <p>Desde $10/mes - Total personalización, sin límites de productos</p>
-                        <a href="#ecommerce" class="btn">Ver Plan</a>
-                    </div>
-                    <div class="slide-image" style="background-image: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
-                        <div class="slide-icon">
-                            <i class="fas fa-shopping-cart"></i>
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-content">
+                    <h1>Desarrollo de Software <span class="highlight">Revolucionario</span></h1>
+                    <p>Somos el equipo de desarrolladores más innovador del mercado. Creamos software personalizado, webs que superan a la competencia y sistemas con IA que piensan por sí mismos. Llevamos el código a otro nivel.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">+100</span>
+                            <span class="stat-label">Webs Desarrolladas</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Clientes Satisfechos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Softwares Únicos</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Slide 2: Web Corporativa -->
-                <div class="carousel-slide">
-                    <div class="slide-content">
-                        <h1>Web <span>Corporativa</span></h1>
-                        <p>Desde $10/mes - Presencia digital integral para empresas</p>
-                        <a href="#corporativa" class="btn">Ver Plan</a>
+                    <div class="hero-buttons">
+                        <a href="#planes" class="btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Ver Planes
+                        </a>
+                        <a href="#servicios" class="btn-secondary">
+                            <i class="fas fa-laptop-code"></i>
+                            Ver Servicios
+                        </a>
                     </div>
-                    <div class="slide-image" style="background-image: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);">
-                        <div class="slide-icon">
-                            <i class="fas fa-building"></i>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
                         </div>
+                        <h3>Webs Avanzadas</h3>
+                        <p>Creadas con alto impacto en usuarios y diseñadas con estilo único</p>
                     </div>
-                </div>
-                
-                <!-- Slide 3: Marca Personal -->
-                <div class="carousel-slide">
-                    <div class="slide-content">
-                        <h1>Marca <span>Personal</span></h1>
-                        <p>Desde $1 anual - Web única hecha a medida por expertos</p>
-                        <a href="#marca" class="btn">Ver Plan</a>
-                    </div>
-                    <div class="slide-image" style="background-image: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);">
-                        <div class="slide-icon">
-                            <i class="fas fa-user-tie"></i>
+                    <div class="floating-card secondary">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
                         </div>
+                        <h3>Software Único</h3>
+                        <p>Desarrollamos soluciones únicas con lógica avanzada e IA integrada</p>
                     </div>
                 </div>
-            </div>
-            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel-dots">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
             </div>
         </div>
     </section>
 
-    <!-- Sección Ecommerce -->
-    <section id="ecommerce" class="plan-section">
+    <section id="servicios" class="services">
         <div class="container">
-            <div class="plan-header">
-                <h2 class="section-title">Plan <span>Ecommerce</span></h2>
-                <div class="plan-price">
-                    <span class="price">Desde $10</span>
-                    <span class="period">/mensuales</span>
-                </div>
-                <p class="section-subtitle">Tienda online profesional sin límites de productos</p>
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Revolucionamos el desarrollo de software con la mejor tecnología</p>
             </div>
-            
-            <div class="plan-features">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>Total Personalización</h3>
-                        <p>Diseño único adaptado a tu marca y productos</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-infinity"></i>
-                        </div>
-                        <h3>Sin Límites</h3>
-                        <p>Agrega todos los productos que necesites sin restricciones</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                        <h3>Todas las Pasarelas</h3>
-                        <p>Integración con múltiples métodos de pago</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3>Estadísticas Avanzadas</h3>
-                        <p>Panel con métricas detalladas de ventas y visitas</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Responsive Total</h3>
-                        <p>Optimizado para todos los dispositivos móviles</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Seguridad SSL</h3>
-                        <p>Certificado de seguridad para transacciones seguras</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h3>Gestión de Envíos</h3>
-                        <p>Sistema integrado de cálculo de envíos y logística</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3>Soporte 24/7</h3>
-                        <p>Asistencia técnica permanente para tu tienda</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="plan-cta">
-                <button class="btn btn-primary btn-quote" data-plan="ecommerce">
-                    <i class="fas fa-file-alt"></i> Solicitar Presupuesto Personalizado
-                </button>
-                <p class="cta-note">Incluye dominio y hosting premium por 1 año</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Web Corporativa -->
-    <section id="corporativa" class="plan-section plan-corporate">
-        <div class="container">
-            <div class="plan-header">
-                <h2 class="section-title">Plan <span>Web Corporativa</span></h2>
-                <div class="plan-price">
-                    <span class="price">Desde $10</span>
-                    <span class="period">/mensuales</span>
-                </div>
-                <p class="section-subtitle">Presencia digital completa para empresas</p>
-            </div>
-            
-            <div class="plan-includes">
-                <div class="includes-badge">
-                    <i class="fas fa-check-circle"></i>
-                    <span>INCLUYE TODO EL PLAN ECOMMERCE</span>
-                </div>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
                         <i class="fas fa-globe"></i>
                     </div>
-                    <h3>Web Corporativa Completa</h3>
-                    <p>Diseño profesional que refleja la identidad de tu empresa</p>
+                    <h3>Webs Unicas</h3>
+                    <p>Desarrollamos webs que superan a toda tu competencia. Diseño único, rendimiento extremo y conversión garantizada.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diseño 100% personalizado</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO avanzada</li>
+                        <li><i class="fas fa-check"></i> Velocidad de carga récord</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-users"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <h3>Portal de Empleados</h3>
-                    <p>Sección para gestión de equipo y recursos humanos</p>
+                    <h3>Software a Medida</h3>
+                    <p>Creamos software personalizado para control total de tu empresa: ingresos, usuarios, inventario, TODO.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Bases de datos personalizadas</li>
+                        <li><i class="fas fa-check"></i> Paneles de control completos</li>
+                        <li><i class="fas fa-check"></i> Integración con cualquier sistema</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-briefcase"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h3>Sistema de Postulaciones</h3>
-                    <p>Gestiona vacantes y recibe aplicaciones de candidatos</p>
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Entrenamos IAs únicas que piensan, corrigen, adaptan y desarrollan estrategias automáticamente.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Cerebros IA auto-adaptables</li>
+                        <li><i class="fas fa-check"></i> Análisis predictivo avanzado</li>
+                        <li><i class="fas fa-check"></i> Automatización de procesos</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-newspaper"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Blog Corporativo</h3>
-                    <p>Publica noticias, artículos y comunicados oficiales</p>
+                    <h3>Aplicaciones Móviles</h3>
+                    <p>Desarrollo de apps nativas e híbridas con experiencias de usuario revolucionarias.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> iOS y Android nativas</li>
+                        <li><i class="fas fa-check"></i> Diseño UX/UI premiado</li>
+                        <li><i class="fas fa-check"></i> Integración con APIs</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-project-diagram"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <h3>Galería de Proyectos</h3>
-                    <p>Muestra tu portafolio y casos de éxito</p>
+                    <h3>Sistemas Empresariales</h3>
+                    <p>Software integral para gestión completa: CRM, ERP, contabilidad, logística y más.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Control total de operaciones</li>
+                        <li><i class="fas fa-check"></i> Reportes en tiempo real</li>
+                        <li><i class="fas fa-check"></i> Escalabilidad infinita</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-handshake"></i>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Portal de Clientes</h3>
-                    <p>Área privada para clientes con recursos exclusivos</p>
+                    <h3>Seguridad Extrema</h3>
+                    <p>Implementamos los sistemas de seguridad más avanzados del mercado para proteger tu software.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Encriptación militar</li>
+                        <li><i class="fas fa-check"></i> Protección contra ataques</li>
+                        <li><i class="fas fa-check"></i> Backups automáticos</li>
+                    </ul>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3>Analytics Avanzado</h3>
-                    <p>Reportes detallados de tráfico y conversiones</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon corporate">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3>Seguridad Corporativa</h3>
-                    <p>Protección avanzada y backups automatizados</p>
-                </div>
-            </div>
-            
-            <div class="plan-cta">
-                <button class="btn btn-primary btn-quote" data-plan="corporativa">
-                    <i class="fas fa-file-alt"></i> Solicitar Presupuesto Corporativo
-                </button>
-                <p class="cta-note">Incluye configuración de email corporativo y SEO avanzado</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Marca Personal -->
-    <section id="marca" class="plan-section plan-personal">
-        <div class="container">
-            <div class="plan-header">
-                <h2 class="section-title">Plan <span>Marca Personal</span></h2>
-                <div class="plan-price">
-                    <span class="price">Desde $1</span>
-                    <span class="period">/anual</span>
-                </div>
-                <p class="section-subtitle">Potencia tu imagen con una web única y personalizada</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Diseño Único</h3>
-                    <p>Web completamente personalizada y hecha a medida</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <h3>Portafolio Digital</h3>
-                    <p>Muestra tu trabajo, habilidades y experiencia profesional</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-blog"></i>
-                    </div>
-                    <h3>Blog Personal</h3>
-                    <p>Comparte tus conocimientos y establece tu autoridad</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Integración RRSS</h3>
-                    <p>Conexión con todas tus redes sociales profesionales</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <h3>Contacto Profesional</h3>
-                    <p>Sistema de contacto avanzado con formulario inteligente</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>SEO Básico</h3>
-                    <p>Optimización para motores de búsqueda incluida</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3>Desarrollo a Mano</h3>
-                    <p>Código limpio y optimizado por nuestros expertos</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon personal">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Alta Velocidad</h3>
-                    <p>Web ultra rápida y optimizada para mejor experiencia</p>
-                </div>
-            </div>
-            
-            <div class="plan-cta">
-                <button class="btn btn-primary btn-quote" data-plan="marca">
-                    <i class="fas fa-file-alt"></i> Solicitar Web Personalizada
-                </button>
-                <p class="cta-note">Incluye dominio .com por 1 año y certificado SSL gratuito</p>
             </div>
         </div>
     </section>
 
-    <!-- Sección Proceso de Trabajo -->
-    <section id="proceso" class="process-section">
+    <section id="proceso" class="process">
         <div class="container">
-            <h2 class="section-title">Nuestro <span>Proceso</span></h2>
-            <p class="section-subtitle">Cómo trabajamos para crear tu web perfecta</p>
-            
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Metodología Revolucionaria</h2>
+                <p class="section-subtitle">Proceso probado para crear software que cambia las reglas del juego</p>
+            </div>
             <div class="process-steps">
-                <div class="process-step">
+                <div class="step">
                     <div class="step-number">01</div>
-                    <div class="step-icon">
-                        <i class="fas fa-comments"></i>
+                    <div class="step-content">
+                        <h3>Análisis Profundo</h3>
+                        <p>Estudiamos tu negocio, competencia y objetivos para entender exactamente qué necesitas.</p>
                     </div>
-                    <h3>Consulta</h3>
-                    <p>Analizamos tus necesidades y objetivos para entender tu proyecto</p>
                 </div>
-                
-                <div class="process-step">
+                <div class="step">
                     <div class="step-number">02</div>
-                    <div class="step-icon">
-                        <i class="fas fa-pencil-ruler"></i>
+                    <div class="step-content">
+                        <h3>Diseño de Solución</h3>
+                        <p>Creamos la arquitectura perfecta para tu software, usando tecnología de punta.</p>
                     </div>
-                    <h3>Diseño</h3>
-                    <p>Creamos prototipos y diseños personalizados para tu aprobación</p>
                 </div>
-                
-                <div class="process-step">
+                <div class="step">
                     <div class="step-number">03</div>
-                    <div class="step-icon">
-                        <i class="fas fa-code"></i>
+                    <div class="step-content">
+                        <h3>Desarrollo Ágil</h3>
+                        <p>Programamos con metodologías ágiles, entregando avances constantes para tu revisión.</p>
                     </div>
-                    <h3>Desarrollo</h3>
-                    <p>Programamos tu web con las mejores tecnologías y prácticas</p>
                 </div>
-                
-                <div class="process-step">
+                <div class="step">
                     <div class="step-number">04</div>
-                    <div class="step-icon">
-                        <i class="fas fa-check-double"></i>
+                    <div class="step-content">
+                        <h3>Implementación y Soporte</h3>
+                        <p>Desplegamos tu software y brindamos soporte continuo para asegurar su éxito.</p>
                     </div>
-                    <h3>Pruebas</h3>
-                    <p>Realizamos testing exhaustivo en todos los dispositivos</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">05</div>
-                    <div class="step-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Lanzamiento</h3>
-                    <p>Publicamos tu web y realizamos seguimiento post-lanzamiento</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">06</div>
-                    <div class="step-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Soporte</h3>
-                    <p>Ofrecemos mantenimiento y soporte continuo para tu web</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="contact-section">
+    <section id="planes" class="plans">
         <div class="container">
-            <h2 class="section-title">¿Listo para <span>empezar</span>?</h2>
-            <p class="section-subtitle">Contáctanos para un presupuesto personalizado sin compromiso</p>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <h3>Teléfono</h3>
-                        <p>+1 (234) 567-8900</p>
-                        <p>Lunes a Viernes, 9:00 - 18:00</p>
+            <div class="section-header">
+                <h2 class="section-title">Planes de Desarrollo</h2>
+                <p class="section-subtitle">Soluciones flexibles con precios adaptables a tus necesidades</p>
+            </div>
+
+            <!-- Para escritorio: grid de 3 columnas -->
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan Web Pro</h3>
+                        <div class="price">$100</div>
+                        <div class="price-note">Precio base</div>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <p>info@devwebpro.com</p>
-                        <p>Respuesta en menos de 24 horas</p>
+                    <div class="plan-description">
+                        <p>Web personalizada profesional con diseño moderno y optimizada para resultados.</p>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Diseño 100% original</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO avanzada</li>
+                        <li><i class="fas fa-check"></i> Responsive total</li>
+                        <li><i class="fas fa-check"></i> Mantenimiento por un año</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Incluye dominio y hosting premium por 1 año</p>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20el%20desarrollo%20de%20una%20web%3F" 
+                       class="btn-plan" target="_blank">
+                       Consultar Web
+                    </a>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan Software</h3>
+                        <div class="price">$400</div>
+                        <div class="price-note">Precio base</div>
+                    </div>
+                    <div class="plan-description">
+                        <p>Software personalizado para gestión empresarial con lógica de negocio robusta.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Software a medida</li>
+                        <li><i class="fas fa-check"></i> Base de datos personalizada</li>
+                        <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                        <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Precio puede variar según complejidad</p>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20desarrollo%20de%20software%3F" 
+                       class="btn-plan" target="_blank">
+                       Consultar Software
+                    </a>
+                </div>
+                <div class="plan-card featured">
+                    <div class="plan-badge">Más Revolucionario</div>
+                    <div class="plan-header">
+                        <h3>Software con IA</h3>
+                        <div class="price">$1000</div>
+                        <div class="price-note">Precio base</div>
+                    </div>
+                    <div class="plan-description">
+                        <p>Sistema ultra sofisticado con IA integrada para automatización inteligente.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Software a medida completo</li>
+                        <li><i class="fas fa-check"></i> Base de datos personalizada</li>
+                        <li><i class="fas fa-check"></i> Integración con IA</li>
+                        <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                        <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                        <li><i class="fas fa-check"></i> Actualizaciones gratuitas</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Incluye IA entrenada específicamente para tu negocio</p>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20desarrollo%20de%20software%20con%20IA%3F" 
+                       class="btn-plan featured" target="_blank">
+                       Consultar Software con IA
+                    </a>
+                </div>
+            </div>
+
+            <!-- Para móvil: carrusel PERFECTO -->
+            <div class="carousel-container">
+                <div class="plans-carousel">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Plan Web Pro</h3>
+                            <div class="price">$100</div>
+                            <div class="price-note">Precio base</div>
                         </div>
-                        <h3>Ubicación</h3>
-                        <p>Ciudad Digital 123</p>
-                        <p>Trabajamos con clientes de todo el mundo</p>
+                        <div class="plan-description">
+                            <p>Web personalizada profesional con diseño moderno y optimizada para resultados.</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Diseño 100% original</li>
+                            <li><i class="fas fa-check"></i> Optimización SEO avanzada</li>
+                            <li><i class="fas fa-check"></i> Responsive total</li>
+                            <li><i class="fas fa-check"></i> Mantenimiento por un año</li>
+                        </ul>
+                        <div class="plan-note">
+                            <p>*Incluye dominio y hosting premium por 1 año</p>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20el%20desarrollo%20de%20una%20web%3F" 
+                           class="btn-plan" target="_blank">
+                           Consultar Web
+                        </a>
+                    </div>
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Plan Software</h3>
+                            <div class="price">$400</div>
+                            <div class="price-note">Precio base</div>
+                        </div>
+                        <div class="plan-description">
+                            <p>Software personalizado para gestión empresarial con lógica de negocio robusta.</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Software a medida</li>
+                            <li><i class="fas fa-check"></i> Base de datos personalizada</li>
+                            <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                            <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                        </ul>
+                        <div class="plan-note">
+                            <p>*Precio puede variar según complejidad</p>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20desarrollo%20de%20software%3F" 
+                           class="btn-plan" target="_blank">
+                           Consultar Software
+                        </a>
+                    </div>
+                    <div class="plan-card featured">
+                        <div class="plan-badge">Más Revolucionario</div>
+                        <div class="plan-header">
+                            <h3>Software con IA</h3>
+                            <div class="price">$1000</div>
+                            <div class="price-note">Precio base</div>
+                        </div>
+                        <div class="plan-description">
+                            <p>Sistema ultra sofisticado con IA integrada para automatización inteligente.</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Software a medida completo</li>
+                            <li><i class="fas fa-check"></i> Base de datos personalizada</li>
+                            <li><i class="fas fa-check"></i> Integración con IA</li>
+                            <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                            <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                            <li><i class="fas fa-check"></i> Actualizaciones gratuitas</li>
+                        </ul>
+                        <div class="plan-note">
+                            <p>*Incluye IA entrenada específicamente para tu negocio</p>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5411328638&text=Hola%2C%20queria%20consultar%20por%20desarrollo%20de%20software%20con%20IA%3F" 
+                           class="btn-plan featured" target="_blank">
+                           Consultar Software con IA
+                        </a>
                     </div>
                 </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="contactName">Nombre Completo *</label>
-                            <input type="text" id="contactName" placeholder="Tu nombre" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contactEmail">Correo Electrónico *</label>
-                            <input type="email" id="contactEmail" placeholder="tu@email.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contactPlan">Plan de Interés *</label>
-                            <select id="contactPlan" required>
-                                <option value="">Selecciona un plan</option>
-                                <option value="ecommerce">Ecommerce</option>
-                                <option value="corporativa">Web Corporativa</option>
-                                <option value="marca">Marca Personal</option>
-                                <option value="personalizado">Personalizado</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contactMessage">Mensaje *</label>
-                            <textarea id="contactMessage" rows="5" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Enviar Mensaje
-                        </button>
-                    </form>
+                <div class="carousel-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
                 </div>
+            </div>
+
+            <div class="plan-disclaimer">
+                <p><i class="fas fa-info-circle"></i> Todos los precios son adaptables. Ofrecemos planes de pago en cuotas sin interés.</p>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Cotización -->
-    <div class="modal-overlay" id="quoteModal">
-        <div class="modal-container quote-modal">
-            <button class="modal-close quote-close">&times;</button>
-            <div class="modal-content">
-                <div class="quote-header">
-                    <h2><i class="fas fa-file-invoice-dollar"></i> Solicitar Presupuesto</h2>
-                    <p id="quotePlanTitle"></p>
-                </div>
-                
-                <form id="quoteForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="quoteName">Nombre Completo *</label>
-                            <input type="text" id="quoteName" placeholder="Tu nombre completo" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="quoteCompany">Empresa / Proyecto</label>
-                            <input type="text" id="quoteCompany" placeholder="Nombre de tu empresa o proyecto">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="quoteEmail">Correo Electrónico *</label>
-                            <input type="email" id="quoteEmail" placeholder="tu@email.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="quotePhone">Teléfono</label>
-                            <input type="tel" id="quotePhone" placeholder="+1 (234) 567-8900">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="quotePlan">Plan Seleccionado *</label>
-                        <select id="quotePlan" required>
-                            <option value="">Selecciona un plan</option>
-                            <option value="ecommerce">Ecommerce - Desde $10/mes</option>
-                            <option value="corporativa">Web Corporativa - Desde $10/mes</option>
-                            <option value="marca">Marca Personal - Desde $1/anual</option>
-                            <option value="personalizado">Personalizado - Presupuesto a medida</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="quoteFeatures">Funcionalidades Específicas</label>
-                        <textarea id="quoteFeatures" rows="3" placeholder="¿Qué funcionalidades específicas necesitas?"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="quoteTimeline">Plazo Estimado</label>
-                        <select id="quoteTimeline">
-                            <option value="">Sin preferencia</option>
-                            <option value="urgent">Urgente (1-2 semanas)</option>
-                            <option value="normal">Normal (3-4 semanas)</option>
-                            <option value="flexible">Flexible (1-2 meses)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="quoteBudget">Presupuesto Aproximado</label>
-                        <select id="quoteBudget">
-                            <option value="">No estoy seguro</option>
-                            <option value="500">$500 - $1,000</option>
-                            <option value="1000">$1,000 - $3,000</option>
-                            <option value="3000">$3,000 - $5,000</option>
-                            <option value="5000">$5,000+</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="quoteMessage">Detalles Adicionales</label>
-                        <textarea id="quoteMessage" rows="4" placeholder="Cuéntanos más sobre tu proyecto..."></textarea>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox">
-                            <input type="checkbox" id="quoteTerms" required>
-                            <span>Acepto que mis datos sean procesados según la <a href="#">Política de Privacidad</a></span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-submit-quote">
-                        <i class="fas fa-paper-plane"></i> Solicitar Presupuesto
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Notificaciones -->
-    <div class="modal-overlay" id="notificationModal">
-        <div class="modal-container notification-modal">
-            <button class="modal-close notification-close">&times;</button>
-            <div class="modal-content">
-                <div class="notification-header">
-                    <h2>Notificaciones</h2>
-                    <button class="btn btn-mark-all" id="markAllReadBtn">Marcar todas como leídas</button>
-                </div>
-                <div class="notifications-list" id="notificationsList">
-                    <!-- Las notificaciones se cargarán dinámicamente desde JavaScript -->
-                </div>
-                <div class="no-notifications" id="noNotifications">
-                    <i class="far fa-bell-slash"></i>
-                    <p>No hay notificaciones nuevas</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Login/Registro -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-container login-modal">
-            <button class="modal-close login-close">&times;</button>
-            <div class="modal-content">
-                <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="login">Área Clientes</button>
-                    <button class="auth-tab" data-tab="register">Nuevo Cliente</button>
-                </div>
-                
-                <!-- Formulario de Login -->
-                <div class="auth-form active" id="loginForm">
-                    <div class="form-header">
-                        <h2>Área de Clientes</h2>
-                        <p>Accede a tu panel de control y proyectos</p>
-                    </div>
-                    
-                    <form id="loginFormContent">
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="loginEmail" placeholder="cliente@ejemplo.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required>
-                            <button type="button" class="toggle-password" data-target="loginPassword">
-                                <i class="far fa-eye"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="form-options">
-                            <label class="checkbox">
-                                <input type="checkbox" id="rememberMe">
-                                <span>Recordar sesión</span>
-                            </label>
-                            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-login">Acceder al Panel</button>
-                    </form>
-                </div>
-                
-                <!-- Formulario de Registro -->
-                <div class="auth-form" id="registerForm">
-                    <div class="form-header">
-                        <h2>Registrar Nuevo Cliente</h2>
-                        <p>Comienza tu proyecto con nosotros</p>
-                    </div>
-                    
-                    <form id="registerFormContent">
-                        <div class="form-group">
-                            <label for="fullName">Nombre completo</label>
-                            <input type="text" id="registerName" placeholder="Tu nombre completo" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="registerEmail" placeholder="tu@email.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Empresa / Proyecto</label>
-                            <input type="text" id="registerCompany" placeholder="Nombre de tu empresa o proyecto">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="registerPassword" placeholder="Crea una contraseña segura" required>
-                            <button type="button" class="toggle-password" data-target="registerPassword">
-                                <i class="far fa-eye"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirmar contraseña</label>
-                            <input type="password" id="registerConfirmPassword" placeholder="Repite tu contraseña" required>
-                            <button type="button" class="toggle-password" data-target="registerConfirmPassword">
-                                <i class="far fa-eye"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox">
-                                <input type="checkbox" id="acceptTerms" required>
-                                <span>Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a></span>
-                            </label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-register">Registrarse</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <!-- Primera fila: Logo a la izquierda, redes a la derecha -->
-            <div class="footer-top">
-                <a href="#" class="logo">DEVWEB PRO</a>
-                <div class="footer-social">
-                    <!-- WhatsApp primero y destacado -->
-                    <a href="#" aria-label="WhatsApp" class="whatsapp-first"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                        <h3>AVALON CREATORS</h3>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Línea divisoria -->
-            <div class="footer-divider"></div>
-            
-            <!-- Segunda fila: Enlaces rápidos -->
-            <div class="footer-middle">
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Servicios</h4>
-                        <ul>
-                            <li><a href="#ecommerce">Plan Ecommerce</a></li>
-                            <li><a href="#corporativa">Web Corporativa</a></li>
-                            <li><a href="#marca">Marca Personal</a></li>
-                        </ul>
+                
+                <div class="footer-center">
+                    <p class="footer-tagline">Si es código nosotros lo hacemos posible.</p>
+                </div>
+                
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="https://api.whatsapp.com/send?phone=5411328638" target="_blank" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-x-twitter"></i></a>
                     </div>
-                    
-                    <div class="link-group">
-                        <h4>Empresa</h4>
-                        <ul>
-                            <li><a href="#proceso">Proceso</a></li>
-                            <li><a href="#contacto">Contacto</a></li>
-                            <li><a href="#">Sobre Nosotros</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="link-group">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Términos y Condiciones</a></li>
-                            <li><a href="#">Política de Privacidad</a></li>
-                            <li><a href="#">Aviso Legal</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="link-group">
-                        <h4>Recursos</h4>
-                        <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Soporte</a></li>
-                        </ul>
+                </div>
+                
+                <div class="footer-mobile">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                            <h3>AVALON CREATORS</h3>
+                        </div>
+                        <p class="footer-tagline">Si es código, nosotros lo hacemos posible.</p>
+                        <div class="social-links">
+                            <a href="https://api.whatsapp.com/send?phone=5411328638" target="_blank" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-x-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Tercera fila: Derechos reservados -->
             <div class="footer-bottom">
-                <p>&copy; 2024 DevWeb Pro. Todos los derechos reservados. | Desarrollo web profesional a tu alcance</p>
+                <p>&copy; 2025 AVALON CREATORS - Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <div id="social-notification" class="social-notification">
+        <div class="notification-content">
+            <i class="fas fa-tools"></i>
+            <p>Estamos trabajando en las redes, pronto estarán disponibles</p>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>
