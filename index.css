@@ -1409,13 +1409,13 @@ footer {
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px !important;
+        left: -50px !important; /* CAMBIADO DE -20px A -50px */
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px !important;
+        right: -50px !important; /* CAMBIADO DE -20px A -50px */
         left: auto !important;
     }
     
@@ -1505,12 +1505,12 @@ footer {
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -15px !important;
+        left: -40px !important; /* CAMBIADO DE -15px A -40px */
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -15px !important;
+        right: -40px !important; /* CAMBIADO DE -15px A -40px */
     }
 }
 
