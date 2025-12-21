@@ -1,1031 +1,93 @@
+/* ===== ESTILOS BASE (igual que index.css pero con modificaciones específicas) ===== */
 :root {
     --primary: #0f3460;
     --secondary: #533483;
-    --accent: #00d084;
-    --accent-light: #2de69c;
-    --accent-dark: #00b874;
+    --accent: #ffd700;
+    --accent-light: #ffed4a;
     --dark: #1a1a2e;
     --darker: #16213e;
     --light: #ffffff;
     --gray-light: rgba(255, 255, 255, 0.7);
     --gray: rgba(255, 255, 255, 0.5);
-    --red: #ff4757;
-    --green: #00d084;
-    --orange: #ff9f43;
-    --blue: #2e86de;
     --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --border-radius-lg: 20px;
+    --ecommerce-primary: #2a9d8f;
+    --ecommerce-secondary: #e76f51;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Importar estilos base (copiar todo de index.css y agregar lo siguiente) */
 
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
+/* ===== ESTILOS ESPECÍFICOS PARA ECOMMERCE ===== */
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    color: var(--light);
-    overflow-x: hidden;
-    position: relative;
-    font-weight: 400;
-    background: var(--dark);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Background específico para ecommerce */
-.ecommerce-bg {
-    background: linear-gradient(-45deg, #0a1a36, #0f3460, #005c5c, #008080);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-}
-
-.ecommerce-particles {
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(0, 208, 132, 0.1) 2px, transparent 0),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 1px, transparent 0),
-        radial-gradient(circle at 40% 80%, rgba(46, 134, 222, 0.1) 2px, transparent 0);
-}
-
-.ecommerce-glow {
-    background: radial-gradient(circle, rgba(0, 208, 132, 0.15) 0%, transparent 70%);
-}
-
-.ecommerce-glow-2 {
-    background: radial-gradient(circle, rgba(46, 134, 222, 0.1) 0%, transparent 70%);
-}
-
-/* Navbar específico para ecommerce */
-.ecommerce-nav {
-    background: rgba(15, 52, 96, 0.1);
-    border-bottom: 1px solid rgba(0, 208, 132, 0.1);
-}
-
-/* Hero Ecommerce */
-.hero-ecommerce {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 0 50px;
-    position: relative;
-}
-
-.hero-ecommerce-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.hero-text h1 {
-    font-size: 3rem;
-    font-weight: 700;
+/* Hero específico para Ecommerce */
+.ecommerce-hero .hero-content h1 {
+    font-size: 2.8rem;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
 }
 
-.highlight {
-    color: var(--accent);
-    position: relative;
-    display: inline-block;
+.ecommerce-hero .floating-card.ecommerce-card {
+    background: rgba(42, 157, 143, 0.15);
+    border: 1px solid rgba(42, 157, 143, 0.3);
 }
 
-.highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: rgba(0, 208, 132, 0.2);
-    z-index: -1;
-    border-radius: 4px;
+.ecommerce-hero .floating-card.ecommerce-card .card-icon {
+    color: var(--ecommerce-primary);
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    line-height: 1.6;
+.ecommerce-hero .floating-card.secondary .card-icon {
+    color: var(--ecommerce-secondary);
 }
 
-.hero-stats-ecommerce {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 2.5rem 0;
-}
-
-.stat-ecommerce {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: var(--border-radius);
+/* Sección de servicios específica */
+.ecommerce-services .service-card {
+    border-top: 3px solid transparent;
     transition: var(--transition);
 }
 
-.stat-ecommerce:hover {
-    background: rgba(0, 208, 132, 0.1);
-    transform: translateY(-5px);
+.ecommerce-services .service-card:nth-child(1) {
+    border-top-color: var(--ecommerce-primary);
 }
 
-.stat-ecommerce i {
-    font-size: 2rem;
-    color: var(--accent);
+.ecommerce-services .service-card:nth-child(2) {
+    border-top-color: var(--accent);
 }
 
-.stat-number {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
+.ecommerce-services .service-card:nth-child(3) {
+    border-top-color: var(--ecommerce-secondary);
 }
 
-.stat-label {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.btn-primary-ecommerce {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    background: var(--accent);
-    color: var(--dark);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 208, 132, 0.3);
-}
-
-.btn-primary-ecommerce:hover {
-    background: var(--accent-light);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 208, 132, 0.4);
-}
-
-.btn-secondary-ecommerce {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    background: transparent;
-    color: var(--light);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-secondary-ecommerce:hover {
-    background: var(--light);
-    color: var(--dark);
-    border-color: var(--light);
-    transform: translateY(-3px);
-}
-
-/* Dashboard Preview */
-.hero-ecommerce-visual {
-    position: relative;
-}
-
-.dashboard-preview {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow-lg);
-}
-
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dashboard-title {
-    font-weight: 600;
-    color: var(--accent);
-}
-
-.dashboard-stats {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.stat-badge {
-    background: rgba(0, 208, 132, 0.1);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(0, 208, 132, 0.2);
-}
-
-.dashboard-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
-
-.metric-card {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.metric-card:hover {
-    background: rgba(0, 208, 132, 0.05);
-    transform: translateY(-5px);
-}
-
-.metric-card i {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-}
-
-.metric-card h4 {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.8;
-}
-
-.metric-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent);
-}
-
-/* Sección Problemas */
-.problemas-ecommerce {
-    padding: 80px 0;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.problemas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-}
-
-.problema-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.problema-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 71, 87, 0.05);
-    border-color: rgba(255, 71, 87, 0.2);
-}
-
-.problema-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.red-icon {
-    color: var(--red);
-}
-
-.green-icon {
-    color: var(--green);
-}
-
-.problema-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.problema-card p {
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    font-size: 0.9rem;
-}
-
-.solucion {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem;
-    background: rgba(0, 208, 132, 0.1);
-    border-radius: var(--border-radius);
-    border-left: 3px solid var(--accent);
-}
-
-/* Sección Beneficios */
-.beneficios-ecommerce {
-    padding: 80px 0;
-}
-
-.beneficios-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.beneficio-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.beneficio-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.beneficio-item:hover {
-    background: rgba(0, 208, 132, 0.05);
-    transform: translateX(5px);
-}
-
-.beneficio-item i {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-top: 0.2rem;
-}
-
-.beneficio-item h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.beneficio-item p {
-    opacity: 0.8;
-    font-size: 0.9rem;
-}
-
-/* Sección Planes Ecommerce */
-.planes-ecommerce-section {
-    padding: 80px 0;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.planes-ecommerce-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-}
-
-.plan-ecommerce-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    height: 100%;
-}
-
-.plan-ecommerce-card:hover {
+.ecommerce-services .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.plan-ecommerce-card.featured {
-    border-color: var(--accent);
-    background: rgba(0, 208, 132, 0.05);
-    transform: scale(1.05);
-}
-
-.plan-ecommerce-card.featured:hover {
-    transform: scale(1.05) translateY(-10px);
-}
-
-.plan-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    background: var(--blue);
-    color: var(--light);
-}
-
-.plan-badge.popular {
-    background: var(--accent);
-    color: var(--dark);
-}
-
-.plan-badge.premium {
-    background: linear-gradient(45deg, var(--accent), var(--blue));
-    color: var(--light);
-}
-
-.plan-header-ecommerce {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.plan-header-ecommerce h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-}
-
-.price-ecommerce {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.3rem;
-    margin: 1rem 0;
-}
-
-.amount {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent);
-}
-
-.period {
-    font-size: 1rem;
-    opacity: 0.8;
-}
-
-.price-subtitle {
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-.plan-description-ecommerce {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.plan-features-ecommerce {
-    list-style: none;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-}
-
-.plan-features-ecommerce li {
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-    font-size: 0.9rem;
-}
-
-.plan-features-ecommerce li i {
-    color: var(--accent);
-    margin-top: 0.2rem;
-}
-
-.plan-limitations {
-    background: rgba(255, 71, 87, 0.05);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 71, 87, 0.1);
-}
-
-.plan-limitations p {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
-    opacity: 0.8;
-}
-
-.limitation-icon {
-    color: var(--red);
-}
-
-.plan-app-preview {
-    background: rgba(46, 134, 222, 0.1);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    text-align: center;
-    border: 1px solid rgba(46, 134, 222, 0.2);
-}
-
-.plan-app-preview i {
-    font-size: 2rem;
-    color: var(--blue);
-    margin-bottom: 0.5rem;
-}
-
-.plan-ia-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.ia-feature {
-    background: rgba(0, 208, 132, 0.1);
-    padding: 0.8rem;
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    border: 1px solid rgba(0, 208, 132, 0.2);
-}
-
-.ia-feature i {
-    color: var(--accent);
-}
-
-.plan-value {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    text-align: center;
-    border-left: 3px solid var(--accent);
-}
-
-.plan-value p {
-    font-size: 0.9rem;
-}
-
-.btn-plan-ecommerce {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--light);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: auto;
-}
-
-.btn-plan-ecommerce:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-}
-
-.btn-plan-ecommerce.featured {
-    background: var(--accent);
-    color: var(--dark);
-}
-
-.btn-plan-ecommerce.featured:hover {
-    background: var(--accent-light);
-}
-
-/* Comparativa */
-.comparativa-planes {
-    margin-top: 4rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.comparativa-planes h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-}
-
-.comparativa-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.comparativa-col {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.comparativa-col h4 {
-    color: var(--accent);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-/* Proceso Ecommerce */
-.proceso-ecommerce {
-    padding: 80px 0;
-}
-
-.proceso-timeline {
-    max-width: 800px;
-    margin: 3rem auto 0;
-}
-
-.proceso-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.proceso-step:not(:last-child):after {
-    content: '';
-    position: absolute;
-    left: 35px;
-    top: 70px;
-    width: 2px;
-    height: calc(100% + 1rem);
-    background: linear-gradient(to bottom, var(--accent), transparent);
-}
-
-.step-number-ecommerce {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--light);
-    flex-shrink: 0;
-    z-index: 1;
-}
-
-.step-content-ecommerce {
-    flex-grow: 1;
-}
-
-.step-content-ecommerce h3 {
-    margin-bottom: 0.8rem;
-    font-size: 1.3rem;
-    color: var(--accent);
-}
-
-/* CTA Final */
-.cta-ecommerce {
-    padding: 80px 0;
-    background: linear-gradient(135deg, rgba(15, 52, 96, 0.9), rgba(0, 208, 132, 0.1));
-    text-align: center;
-}
-
-.cta-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.cta-content > p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.cta-features {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem 0 3rem;
-}
-
-.cta-feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.cta-feature i {
-    color: var(--accent);
-}
-
-.btn-cta-final {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 3rem;
-    background: var(--accent);
-    color: var(--dark);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 30px;
-    transition: var(--transition);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.btn-cta-final:hover {
-    background: var(--accent-light);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 208, 132, 0.4);
-}
-
-.cta-note {
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .hero-ecommerce-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .planes-ecommerce-container {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .plan-ecommerce-card.featured {
-        transform: none;
-    }
-    
-    .plan-ecommerce-card.featured:hover {
-        transform: translateY(-10px);
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-stats-ecommerce {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-    }
-    
-    .beneficios-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .comparativa-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .cta-features {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .proceso-step {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .proceso-step:not(:last-child):after {
-        left: 50%;
-        top: 70px;
-        height: calc(100% + 1rem);
-        transform: translateX(-50%);
-    }
-    
-    .step-number-ecommerce {
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-    
-    .amount {
-        font-size: 2rem;
-    }
-    
-    .dashboard-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .plan-ia-features {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Mantener el footer igual que index */
-footer {
-    background: transparent;
-    color: var(--light);
-    padding: 0.5rem 0 0.25rem;
+/* Sección de planes específica */
+.ecommerce-plans .plan-card {
     position: relative;
     overflow: hidden;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 0.5rem;
 }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.3rem;
-    margin-bottom: 0.3rem;
-}
-
-.footer-mobile {
-    display: block;
+.ecommerce-plans .plan-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ecommerce-primary), var(--accent), var(--ecommerce-secondary));
 }
 
-.footer-left,
-.footer-center,
-.footer-right {
-    display: none;
+.ecommerce-plans .plan-card.featured:before {
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--ecommerce-primary), var(--accent));
+    animation: gradientShift 3s ease infinite;
 }
 
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: var(--transition);
-    transform: scale(0.8);
-}
-
-.footer-logo:hover {
-    transform: scale(0.85);
-}
-
-.footer-logo .logo-img {
-    height: 35px;
-    width: auto;
-}
-
-.footer-logo h3 {
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.footer-tagline {
-    opacity: 0.8;
-    line-height: 1.4;
-    font-size: 0.85rem;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.social-links {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--light);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-    background: var(--accent);
-    color: var(--dark);
-    transform: translateY(-2px) scale(1.1);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 0.4rem;
-    padding-bottom: 0.1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-/* Navbar responsive igual que index */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex !important;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 50px;
-        right: -100%;
-        flex-direction: column;
-        background: rgba(15, 52, 96, 0.98);
-        backdrop-filter: blur(20px);
-        width: 80%;
-        max-width: 280px;
-        text-align: left;
-        transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: var(--shadow-lg);
-        border-radius: 0 0 0 15px;
-        padding: 1.5rem;
-        gap: 0;
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    .nav-menu li {
-        margin: 0;
-        width: 100%;
-    }
-    
-    .nav-link {
-        display: block;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-}
-
-/* Carrusel para móvil (similar al index) */
-.carousel-container-ecommerce {
-    display: none;
-}
-
-@media (max-width: 1024px) {
-    .carousel-container-ecommerce {
-        display: block;
-        margin-top: 2rem;
-    }
-    
-    .planes-ecommerce-container {
-        display: none;
-    }
-}
-
-/* Animaciones */
-@keyframes gradient {
+@keyframes gradientShift {
     0% {
         background-position: 0% 50%;
     }
@@ -1037,13 +99,290 @@ footer {
     }
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.ecommerce-plans .plan-features li strong {
+    color: var(--accent);
+    font-weight: 700;
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.ecommerce-plans .plan-note {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}
+
+.ecommerce-plans .plan-note p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Sección de beneficios */
+.ecommerce-benefits {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-lg);
+    margin: 4rem auto;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ecommerce-benefits:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(42, 157, 143, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(231, 111, 81, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--ecommerce-primary);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    color: var(--ecommerce-primary);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+}
+
+.benefit-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+}
+
+.benefit-card p {
+    color: var(--gray-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Mejoras para los planes en móvil */
+@media (max-width: 768px) {
+    .ecommerce-hero .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .ecommerce-plans .plan-card {
+        min-height: 620px !important;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefit-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Efectos especiales para botones de Ecommerce */
+.ecommerce-plans .btn-plan {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--primary), var(--ecommerce-primary));
+    transition: var(--transition);
+}
+
+.ecommerce-plans .btn-plan:hover {
+    background: linear-gradient(90deg, var(--ecommerce-primary), var(--accent));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(42, 157, 143, 0.3);
+}
+
+.ecommerce-plans .btn-plan.featured {
+    background: linear-gradient(90deg, var(--accent), var(--ecommerce-secondary));
+}
+
+.ecommerce-plans .btn-plan.featured:hover {
+    background: linear-gradient(90deg, var(--ecommerce-secondary), var(--accent-light));
+}
+
+/* Animación para el proceso específico de Ecommerce */
+.ecommerce-process .step-number {
+    background: linear-gradient(145deg, 
+        rgba(42, 157, 143, 0.2), 
+        rgba(42, 157, 143, 0.1));
+    border-color: rgba(42, 157, 143, 0.3);
+}
+
+.ecommerce-process .step:hover .step-number {
+    background: linear-gradient(145deg, 
+        rgba(42, 157, 143, 0.3), 
+        rgba(42, 157, 143, 0.2));
+    border-color: var(--ecommerce-primary);
+}
+
+/* Indicadores del carrusel específicos para Ecommerce */
+.ecommerce-plans .indicator.active {
+    background: var(--ecommerce-primary);
+    box-shadow: 0 0 10px rgba(42, 157, 143, 0.5);
+}
+
+/* Mejoras en la legibilidad de las listas de características */
+.ecommerce-plans .plan-features li {
+    position: relative;
+    padding-left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ecommerce-plans .plan-features li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 100%;
+    background: rgba(42, 157, 143, 0.1);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.ecommerce-plans .plan-features li:hover:before {
+    width: 100%;
+}
+
+/* Badge especial para planes de Ecommerce */
+.ecommerce-plans .plan-badge {
+    background: linear-gradient(90deg, var(--ecommerce-primary), var(--accent));
+    animation: badgeGlow 2s ease-in-out infinite;
+}
+
+@keyframes badgeGlow {
+    0%, 100% {
+        box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
+    }
+    50% {
+        box-shadow: 0 5px 20px rgba(42, 157, 143, 0.5);
+    }
+}
+
+/* Responsive adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .ecommerce-hero .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .ecommerce-plans .plan-card {
+        min-height: 650px !important;
+    }
+    
+    .ecommerce-plans .plan-features {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .ecommerce-plans .plan-features::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .ecommerce-plans .plan-features::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 2px;
+    }
+    
+    .ecommerce-plans .plan-features::-webkit-scrollbar-thumb {
+        background: var(--ecommerce-primary);
+        border-radius: 2px;
+    }
+}
+
+/* Animación de entrada específica para Ecommerce */
+@keyframes ecommerceSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ecommerce-plans .plan-card {
+    animation: ecommerceSlideIn 0.6s ease-out both;
+}
+
+.ecommerce-plans .plan-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.ecommerce-plans .plan-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ecommerce-plans .plan-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Efecto de hover mejorado para cards */
+.ecommerce-plans .plan-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(42, 157, 143, 0.1);
+}
+
+/* Estilo para la sección de proceso específica de Ecommerce */
+.ecommerce-process .process-steps:before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--ecommerce-primary), 
+        var(--accent), 
+        var(--ecommerce-secondary), 
+        transparent);
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* Mejoras en el diseño responsive para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .ecommerce-plans .plans-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ecommerce-plans .plan-card:nth-child(3) {
+        grid-column: span 2;
+        max-width: 80%;
+        margin: 0 auto;
+    }
 }
