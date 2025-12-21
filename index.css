@@ -1406,22 +1406,24 @@ footer {
         justify-content: center !important;
     }
     
+    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 5px !important;
+        left: -20px !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 5px !important;
+        right: -20px !important;
         left: auto !important;
     }
     
-    /* Ajustar contenedores para que las flechas no se superpongan */
+    /* Asegurar que el contenedor no corte las flechas */
     .carousel-container,
     .process-carousel-container {
-        padding: 0 5px;
+        overflow: visible !important;
+        padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -1500,14 +1502,15 @@ footer {
         font-size: 1rem !important;
     }
     
+    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 5px !important;
+        left: -15px !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 5px !important;
+        right: -15px !important;
     }
 }
 
