@@ -1293,117 +1293,81 @@ footer {
     }
 }
 
-/* ===== FOOTER ESCRITORIO - SOLO CORRECCIONES NECESARIAS ===== */
+/* ===== FOOTER ESCRITORIO - CORRECCIONES MEJORADAS EXCLUSIVAMENTE PARA PC ===== */
 @media (min-width: 992px) {
+    /* Reducir espacio vertical del footer al mínimo */
     footer {
-        padding: 0.15rem 0 0.1rem !important;
+        padding: 0.1rem 0 0.05rem !important;
+        margin-top: -15px !important;
     }
     
-    .footer-mobile {
-        display: none;
-    }
-    
-    /* FOOTER EN PC DEBE MOSTRAR EL CONTENIDO NORMAL */
-    .footer-content {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 1rem !important;
-        margin-bottom: 0.5rem !important;
-        padding: 0 !important;
-        min-height: 40px !important;
-    }
-    
-    /* MOSTRAR LAS TRES COLUMNAS EN PC */
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        display: flex !important;
-        align-items: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        height: 40px !important;
-    }
-    
-    .footer-left {
-        justify-content: flex-start !important;
-        flex: 1;
-    }
-    
-    .footer-center {
-        justify-content: center !important;
-        flex: 1;
-    }
-    
-    .footer-right {
-        justify-content: flex-end !important;
-        flex: 1;
-    }
-    
-    /* Logo compacto - LIGERAMENTE MÁS GRANDE (32px en lugar de 28px) */
-    .footer-logo {
-        margin: 0 !important;
-        padding: 0 !important;
-        gap: 0.5rem !important;
-        height: 36px !important;
-    }
-    
+    /* Aumentar ligeramente el tamaño del icono y texto */
     .footer-logo .logo-img {
-        height: 32px !important; /* AUMENTADO DE 28px A 32px */
-        width: auto !important;
+        height: 38px !important;
+        transition: var(--transition) !important;
     }
     
     .footer-logo h3 {
-        font-size: 0.9rem !important; /* Ajustado proporcionalmente */
-        font-weight: 700 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        line-height: 1 !important;
+        font-size: 1.1rem !important;
+        transition: var(--transition) !important;
     }
     
-    /* Centro: mostrar la frase en PC */
+    /* Animación al pasar el mouse sobre el logo */
+    .footer-logo:hover .logo-img {
+        transform: translateY(-2px) scale(1.05);
+        filter: drop-shadow(0 3px 6px rgba(255, 215, 0, 0.3));
+    }
+    
+    .footer-logo:hover h3 {
+        color: var(--accent-light);
+        text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        transform: translateY(-1px);
+    }
+    
+    /* Reducir espacio en el contenedor principal */
+    .footer-content {
+        margin-bottom: 0.3rem !important;
+        gap: 0.3rem !important;
+        min-height: 35px !important;
+    }
+    
+    /* Ajustar padding de las columnas */
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        height: 35px !important;
+        padding: 0 !important;
+    }
+    
+    /* Reducir espacio del texto del centro */
     .footer-center .footer-tagline {
-        opacity: 0.8;
-        line-height: 1.3 !important;
-        font-size: 0.85rem !important;
-        margin: 0 !important;
-        text-align: center;
-    }
-    
-    /* Redes sociales */
-    .social-links {
-        margin: 0 !important;
-        padding: 0 !important;
-        gap: 0.4rem !important;
-        height: 32px !important;
-        display: flex !important;
-        align-items: center !important;
-    }
-    
-    .social-links a {
-        width: 30px !important;
-        height: 30px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* Footer bottom - TEXTO MÁS PEQUEÑO (0.85rem en lugar de 1rem) y CON MÁS ESPACIO */
-    .footer-bottom {
-        padding: 0.8rem 0 0.5rem !important; /* MÁS ESPACIO ARRIBA Y ABAJO */
-        margin: 0 !important;
-        font-size: 0.85rem !important; /* REDUCIDO DE 1rem A 0.85rem */
-        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        font-size: 0.8rem !important;
         line-height: 1.2 !important;
+        margin: 0 !important;
     }
     
-    /* Contenedor */
+    /* Reducir aún más el footer bottom */
+    .footer-bottom {
+        padding: 0.4rem 0 0.3rem !important;
+        margin-top: 0 !important;
+        font-size: 0.75rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Ajustar contenedor principal */
     footer .container {
         padding: 0 20px !important;
-        margin: 0 auto !important;
+    }
+}
+
+/* Ajuste adicional para pantallas muy grandes */
+@media (min-width: 1200px) {
+    .footer-logo .logo-img {
+        height: 42px !important;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.15rem !important;
     }
 }
 
