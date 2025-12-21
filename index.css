@@ -862,7 +862,7 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 0.3rem !important;
+    padding-top: 0.5rem !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.7rem !important;
     opacity: 0.7;
@@ -1310,7 +1310,7 @@ footer {
         justify-content: space-between !important;
         align-items: center !important;
         gap: 1rem !important;
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0.5rem !important;
         padding: 0 !important;
         min-height: 40px !important;
     }
@@ -1341,21 +1341,21 @@ footer {
         flex: 1;
     }
     
-    /* Logo compacto */
+    /* Logo compacto - LIGERAMENTE MÁS GRANDE (32px en lugar de 28px) */
     .footer-logo {
         margin: 0 !important;
         padding: 0 !important;
-        gap: 0.4rem !important;
-        height: 32px !important;
+        gap: 0.5rem !important;
+        height: 36px !important;
     }
     
     .footer-logo .logo-img {
-        height: 28px !important;
+        height: 32px !important; /* AUMENTADO DE 28px A 32px */
         width: auto !important;
     }
     
     .footer-logo h3 {
-        font-size: 0.85rem !important;
+        font-size: 0.9rem !important; /* Ajustado proporcionalmente */
         font-weight: 700 !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -1375,7 +1375,7 @@ footer {
     .social-links {
         margin: 0 !important;
         padding: 0 !important;
-        gap: 0.3rem !important;
+        gap: 0.4rem !important;
         height: 32px !important;
         display: flex !important;
         align-items: center !important;
@@ -1391,13 +1391,13 @@ footer {
         justify-content: center !important;
     }
     
-    /* Footer bottom - TEXTO MÁS GRANDE EN PC (1rem) */
+    /* Footer bottom - TEXTO MÁS PEQUEÑO (0.85rem en lugar de 1rem) y CON MÁS ESPACIO */
     .footer-bottom {
-        padding: 0.15rem 0 0.1rem !important;
+        padding: 0.8rem 0 0.5rem !important; /* MÁS ESPACIO ARRIBA Y ABAJO */
         margin: 0 !important;
-        font-size: 1rem !important; /* CAMBIADO DE 0.65rem A 1rem */
+        font-size: 0.85rem !important; /* REDUCIDO DE 1rem A 0.85rem */
         border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-        line-height: 1 !important;
+        line-height: 1.2 !important;
     }
     
     /* Contenedor */
