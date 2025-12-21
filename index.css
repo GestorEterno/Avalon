@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA Y MEJORADA */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA COMPLETAMENTE */
 
 :root {
     --primary: #0f3460;
@@ -62,8 +62,32 @@ body {
 }
 
 @keyframes gentleGlow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.05);
+    }
+}
+
+@keyframes levitate {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-12px); 
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% { 
+        text-shadow: 0 0 0px rgba(255, 215, 0, 0);
+    }
+    50% { 
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
 }
 
 /* === BACKGROUND OPTIMIZADO === */
@@ -534,12 +558,6 @@ section {
     z-index: 2;
     flex: 1;
     padding: 0 15px;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.step:hover {
-    transform: translateY(-10px);
 }
 
 .step-number {
@@ -560,7 +578,6 @@ section {
     backdrop-filter: blur(10px);
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
 }
 
 .step-number::before {
@@ -570,30 +587,17 @@ section {
     left: -10px;
     right: -10px;
     bottom: -10px;
-    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
     border-radius: 50%;
     animation: gentleGlow 4s ease-in-out infinite;
     z-index: -1;
+    filter: blur(5px);
 }
 
 .step:hover .step-number {
-    transform: scale(1.2) translateY(-5px);
+    transform: scale(1.1);
     border-color: var(--accent);
-    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-}
-
-.step-content {
-    transition: var(--transition);
-}
-
-.step:hover .step-content h3 {
-    color: var(--accent);
-    transform: translateY(5px);
-}
-
-.step:hover .step-content p {
-    opacity: 1;
-    transform: translateY(5px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .step-content h3 {
@@ -601,7 +605,6 @@ section {
     margin-bottom: 0.8rem;
     font-weight: 700;
     color: var(--light);
-    transition: var(--transition);
 }
 
 .step-content p {
@@ -610,7 +613,6 @@ section {
     font-size: 0.95rem;
     max-width: 220px;
     margin: 0 auto;
-    transition: var(--transition);
 }
 
 /* === PLANS DESKTOP === */
@@ -1167,7 +1169,7 @@ footer {
     transform: scale(1.3);
 }
 
-/* Step móvil - CORREGIDO: Eliminada aureola problemática */
+/* Step móvil */
 .step-mobile {
     flex: 0 0 85%;
     width: 85%;
@@ -1208,23 +1210,20 @@ footer {
     margin-bottom: 1.2rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
     transition: var(--transition);
-    position: relative;
-    overflow: hidden; /* Previene que se salga la aureola */
 }
 
-/* AUREOLA CORREGIDA: Reducida intensidad y tamaño */
 .step-number-mobile::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
     border-radius: 50%;
-    animation: gentleGlow 6s ease-in-out infinite;
+    animation: gentleGlow 4s ease-in-out infinite;
     z-index: -1;
-    opacity: 0.5; /* Reducida opacidad */
+    filter: blur(5px);
 }
 
 .step-content-mobile {
@@ -1245,8 +1244,88 @@ footer {
     max-width: 100%;
 }
 
+/* ===== EFECTOS ESPECTACULARES SOLO PARA PC ===== */
+@media (min-width: 769px) {
+    /* EFECTO SUPERIOR AL HOVER EN LOS PASOS DEL PROCESO */
+    .step {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .step:hover {
+        transform: translateY(-15px) scale(1.05);
+    }
+    
+    .step:hover .step-number {
+        transform: translateY(-10px) scale(1.2);
+        animation: levitate 2s ease-in-out infinite;
+        border-color: var(--accent-light);
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 0.4),
+            0 15px 40px rgba(255, 215, 0, 0.2),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.15), 
+            rgba(255, 255, 255, 0.05));
+    }
+    
+    /* Brillar el texto en hover */
+    .step:hover .step-content h3 {
+        color: var(--accent-light);
+        animation: textGlow 2s ease-in-out infinite;
+        transform: translateY(-3px);
+        transition: all 0.4s ease;
+    }
+    
+    .step:hover .step-content p {
+        opacity: 1;
+        color: var(--light);
+        transform: translateY(-2px);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease 0.1s;
+    }
+    
+    /* Mejorar la aureola del número (solo PC) */
+    .step:hover .step-number::before {
+        animation: gentleGlow 2s ease-in-out infinite;
+        background: radial-gradient(
+            circle at 50% 50%, 
+            rgba(255, 215, 0, 0.4) 0%, 
+            rgba(255, 215, 0, 0.25) 40%, 
+            transparent 70%
+        );
+        filter: blur(8px);
+    }
+}
+
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
+    /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
+    .step-number::before,
+    .step-number-mobile::before {
+        display: none !important;
+    }
+    
+    /* Desactivar animaciones de hover en móvil */
+    .step:hover .step-number {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: rgba(255, 215, 0, 0.3) !important;
+        animation: none !important;
+    }
+    
+    .step:hover .step-content h3,
+    .step:hover .step-content p {
+        transform: none !important;
+        text-shadow: none !important;
+        color: inherit !important;
+        opacity: inherit !important;
+        animation: none !important;
+    }
+    
+    .step:hover {
+        transform: none !important;
+    }
+    
     /* DESACTIVAR ANIMACIÓN DE LEVITACIÓN EN MÓVIL */
     .floating-card {
         animation: none !important;
@@ -1428,29 +1507,6 @@ footer {
         overflow: visible;
     }
     
-    /* CORRECCIÓN CRÍTICA: Eliminar efectos hover en móvil para los steps */
-    .step {
-        cursor: default;
-    }
-    
-    .step:hover,
-    .step:hover .step-number,
-    .step:hover .step-content h3,
-    .step:hover .step-content p {
-        transform: none !important;
-    }
-    
-    .step:hover .step-number {
-        box-shadow: none;
-        border-color: rgba(255, 215, 0, 0.3);
-    }
-    
-    /* CORRECCIÓN: Aún más reducida la aureola en móvil */
-    .step-number-mobile::before {
-        opacity: 0.3 !important;
-        animation-duration: 8s !important;
-    }
-    
     /* Plans - ocultar desktop, mostrar carrusel */
     .plans-container {
         display: none;
@@ -1481,13 +1537,13 @@ footer {
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -25px !important;
+        left: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -25px !important;
+        right: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
         left: auto !important;
     }
     
@@ -1577,17 +1633,12 @@ footer {
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px !important;
+        left: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px !important;
-    }
-    
-    /* CORRECCIÓN FINAL: Eliminar completamente la aureola en móviles muy pequeños */
-    .step-number-mobile::before {
-        display: none !important;
+        right: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
     }
 }
 
