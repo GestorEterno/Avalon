@@ -879,7 +879,7 @@ footer {
     line-height: 1.3;
 }
 
-/* ===== CARRUSELES MÓVIL - CORREGIDOS ===== */
+/* ===== CARRUSELES MÓVIL ===== */
 .carousel-container,
 .process-carousel-container {
     display: none;
@@ -887,8 +887,8 @@ footer {
     width: 100%;
     max-width: 100%;
     margin: 0 auto 30px;
-    padding: 0 40px; /* Espacio para flechas */
-    overflow: visible;
+    overflow: hidden;
+    padding-bottom: 40px;
 }
 
 .plans-carousel,
@@ -900,7 +900,6 @@ footer {
     padding: 20px 0 40px;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -911,55 +910,56 @@ footer {
     display: none;
 }
 
-/* FLECHAS CORRECTAMENTE POSICIONADAS */
+/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow,
 .process-carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background: rgba(15, 52, 96, 0.95);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    color: white;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-    transition: var(--transition);
-    opacity: 0.9;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    pointer-events: auto;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(15, 52, 96, 0.95) !important;
+    border: 2px solid var(--accent) !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-size: 1.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 100 !important;
+    transition: var(--transition) !important;
+    opacity: 0.9 !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
 .carousel-arrow:hover,
 .process-carousel-arrow:hover {
-    background: var(--accent);
-    color: var(--dark);
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
+    background: var(--accent) !important;
+    color: var(--dark) !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1.1) !important;
 }
 
 .carousel-arrow.prev-arrow,
 .process-carousel-arrow.prev-arrow {
-    left: 0;
+    left: 10px !important;
+    right: auto !important;
 }
 
 .carousel-arrow.next-arrow,
 .process-carousel-arrow.next-arrow {
-    right: 0;
+    right: 10px !important;
+    left: auto !important;
 }
 
 /* Plan cards móvil */
 .plan-card-mobile {
-    flex: 0 0 calc(100% - 20px);
-    width: calc(100% - 20px);
-    min-width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
-    margin: 0 10px;
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     box-shadow: var(--shadow);
@@ -1131,11 +1131,11 @@ footer {
 
 /* Step móvil */
 .step-mobile {
-    flex: 0 0 calc(100% - 20px);
-    width: calc(100% - 20px);
-    min-width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
-    margin: 0 10px;
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     padding: 25px 20px;
@@ -1206,9 +1206,9 @@ footer {
 
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
-    /* FONDO CONSISTENTE EN TODO EL SITIO */
+    /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
     .animated-background {
-        background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 60%, var(--darker) 100%);
+        background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
         position: fixed;
         height: 100vh;
         z-index: -10;
@@ -1222,17 +1222,18 @@ footer {
         z-index: -9;
     }
     
-    /* HERO CON FONDO UNIFICADO */
+    /* Hero con el mismo fondo que el resto */
     .hero {
-        background: linear-gradient(
-            135deg,
-            rgba(15, 52, 96, 0.8) 0%,
-            rgba(26, 26, 46, 0.9) 100%
-        );
-        backdrop-filter: blur(3px);
+        background: transparent !important;
         min-height: auto;
         padding: 90px 0 40px;
-        text-align: center;
+    }
+    
+    /* Asegurar que todas las secciones tengan fondo transparente */
+    section {
+        background: transparent;
+        position: relative;
+        z-index: 1;
     }
     
     /* Navbar móvil */
@@ -1279,7 +1280,14 @@ footer {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* Hero móvil reorganizado */
+    /* Hero móvil */
+    .hero {
+        flex-direction: column;
+        min-height: auto;
+        padding: 90px 0 40px;
+        text-align: center;
+    }
+    
     .hero-content-wrapper {
         flex-direction: column;
         gap: 2rem;
@@ -1337,6 +1345,7 @@ footer {
         height: auto;
         min-height: 180px;
         margin: 0;
+        animation: float 6s ease-in-out infinite;
     }
     
     /* Section titles móvil */
@@ -1359,41 +1368,60 @@ footer {
         padding: 1.5rem;
     }
     
-    /* Process - mostrar carrusel, ocultar desktop */
+    /* Process - ocultar desktop, mostrar carrusel */
     .process-steps {
         display: none;
     }
     
     .process-carousel-container {
         display: block;
+        position: relative;
+        overflow: visible;
     }
     
-    /* Plans - mostrar carrusel, ocultar desktop */
+    /* Plans - ocultar desktop, mostrar carrusel */
     .plans-container {
         display: none;
     }
     
     .carousel-container {
         display: block;
+        position: relative;
+        overflow: visible;
     }
     
-    /* Ajustes de flechas en móvil */
+    /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE y al límite */
     .carousel-arrow,
     .process-carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-        background: rgba(15, 52, 96, 0.98);
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 100 !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(15, 52, 96, 0.95) !important;
+        border: 2px solid var(--accent) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 5px;
+        left: 5px !important;
+        right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 5px;
+        right: 5px !important;
+        left: auto !important;
+    }
+    
+    /* Ajustar contenedores para que las flechas no se superpongan */
+    .carousel-container,
+    .process-carousel-container {
+        padding: 0 5px;
     }
     
     /* Ajustes de altura en móvil */
@@ -1447,39 +1475,39 @@ footer {
     }
     
     .plan-card-mobile {
-        flex: 0 0 calc(100% - 10px);
-        width: calc(100% - 10px);
-        min-width: calc(100% - 10px);
-        max-width: calc(100% - 10px);
-        margin: 0 5px;
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
         min-height: 500px;
         padding: 1rem;
     }
     
     .step-mobile {
-        flex: 0 0 calc(100% - 10px);
-        width: calc(100% - 10px);
-        min-width: calc(100% - 10px);
-        max-width: calc(100% - 10px);
-        margin: 0 5px;
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
         padding: 1.2rem;
     }
     
     .carousel-arrow,
     .process-carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 1rem !important;
     }
     
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 0;
+        left: 5px !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 0;
+        right: 5px !important;
     }
 }
 
