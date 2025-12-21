@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA */
 
 :root {
     --primary: #0f3460;
@@ -37,6 +37,7 @@ body {
     background: var(--dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
 }
 
 /* === ANIMACIONES MINIMIZADAS === */
@@ -61,24 +62,24 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
-    z-index: -2;
+    z-index: -10;
 }
 
 .particles-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 2px, transparent 0),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 0);
     background-size: 400px 400px, 300px 300px;
     animation: particlesMove 40s linear infinite alternate;
     opacity: 0.3;
-    z-index: -1;
+    z-index: -9;
 }
 
 @keyframes particlesMove {
@@ -387,6 +388,8 @@ body {
 section {
     padding: 80px 0;
     position: relative;
+    background: rgba(15, 52, 96, 0.02);
+    z-index: 1;
 }
 
 .section-header {
@@ -738,6 +741,8 @@ footer {
     color: var(--light);
     padding: 1rem 0 0.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
@@ -905,9 +910,10 @@ footer {
     display: none;
 }
 
+/* CORRECCIÓN CRÍTICA: Cambiar fixed por absolute */
 .carousel-arrow,
 .process-carousel-arrow {
-    position: fixed; /* Cambiado de absolute a fixed */
+    position: absolute; /* CORREGIDO: era fixed */
     top: 50%;
     transform: translateY(-50%);
     width: 44px;
@@ -1198,15 +1204,36 @@ footer {
 
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
-    /* Desactivar animaciones pesadas en móvil */
+    /* CORRECCIÓN CRÍTICA: Fondo fijo que no se levanta */
     .animated-background {
         background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 60%, var(--darker) 100%);
         animation: none;
+        position: fixed;
+        height: 100vh;
+        z-index: -10;
     }
     
     .particles-container {
         opacity: 0.2;
-        animation: particlesMove 60s linear infinite;
+        animation: particlesMove 120s linear infinite;
+        position: fixed;
+        height: 100vh;
+        z-index: -9;
+    }
+    
+    /* Asegurar que el contenido tenga fondo */
+    section {
+        background: rgba(15, 52, 96, 0.05);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero {
+        background: linear-gradient(
+            to bottom,
+            rgba(15, 52, 96, 0.7) 0%,
+            rgba(26, 26, 46, 0.9) 100%
+        );
     }
     
     /* Navbar móvil */
@@ -1348,6 +1375,8 @@ footer {
     
     .process-carousel-container {
         display: block;
+        position: relative;
+        overflow: visible;
     }
     
     /* Plans - ocultar desktop, mostrar carrusel */
@@ -1357,6 +1386,27 @@ footer {
     
     .carousel-container {
         display: block;
+        position: relative;
+        overflow: visible;
+    }
+    
+    /* CORRECCIÓN CRÍTICA: Flechas posicionadas correctamente */
+    .carousel-arrow,
+    .process-carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 50;
+    }
+    
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
+        left: 5px;
+    }
+    
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
+        right: 5px;
     }
     
     /* Ajustes de altura en móvil */
@@ -1385,6 +1435,17 @@ footer {
     .floating-card:hover,
     .step:hover {
         transform: none;
+    }
+    
+    /* Mejorar scroll en móvil */
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    body {
+        overflow-x: hidden;
+        position: relative;
     }
 }
 
