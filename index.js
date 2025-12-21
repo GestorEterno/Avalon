@@ -61,7 +61,7 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC');
     
-    // Animar elementos al cargar
+    // CORRECCIÓN 1: Animar elementos al cargar INCLUYENDO AMBAS TARJETAS DEL HERO
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
     
     const revealObserver = new IntersectionObserver((entries) => {
@@ -76,6 +76,34 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('reveal');
         revealObserver.observe(el);
     });
+    
+    // CORRECCIÓN ESPECIAL: Asegurar que las tarjetas del Hero se animen inmediatamente
+    const heroCards = document.querySelectorAll('.hero .floating-card');
+    if (heroCards.length > 0) {
+        // Verificar si ya están en pantalla
+        const heroSection = document.querySelector('.hero');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activar ambas tarjetas inmediatamente
+                    heroCards.forEach(card => {
+                        card.classList.add('active');
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        heroObserver.observe(heroSection);
+        
+        // También activar después de un pequeño delay por si acaso
+        setTimeout(() => {
+            heroCards.forEach(card => {
+                if (!card.classList.contains('active')) {
+                    card.classList.add('active');
+                }
+            });
+        }, 300);
+    }
     
     // Inicializar carruseles solo en móvil
     if (window.innerWidth <= 768) {
