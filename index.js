@@ -129,11 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
         window.dispatchEvent(event);
     }, 500);
     
-    // Inicializar carrusel
+    // Inicializar carruseles
     initPlansCarousel();
+    initProcessCarousel();
     
     window.addEventListener('load', () => {
         setTimeout(initPlansCarousel, 300);
+        setTimeout(initProcessCarousel, 300);
     });
 });
 
@@ -248,12 +250,14 @@ function setupSocialMediaNotifications() {
     });
 }
 
-// ===== CARRUSEL ULTRA FLUIDO OPTIMIZADO =====
+// ===== CARRUSEL DE PLANES ULTRA FLUIDO OPTIMIZADO =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
-    const planCards = document.querySelectorAll('.carousel-container .plan-card');
-    const indicators = document.querySelectorAll('.indicator');
+    const planCards = document.querySelectorAll('.plan-card-mobile');
+    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+    const prevArrow = document.querySelector('.carousel-arrow.prev-arrow');
+    const nextArrow = document.querySelector('.carousel-arrow.next-arrow');
     
     if (!carouselContainer || planCards.length === 0) return;
     
@@ -329,6 +333,35 @@ function initPlansCarousel() {
         }, 100);
     }, { passive: true });
     
+    // Eventos para flechas
+    if (prevArrow) {
+        prevArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+    
+    if (nextArrow) {
+        nextArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+    
+    // Eventos para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+    });
+    
     // DETECCIÓN INTELIGENTE DE GESTOS - OPTIMIZADO
     carousel.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX;
@@ -347,14 +380,12 @@ function initPlansCarousel() {
         const dy = y - startY;
         
         // Determinar si el gesto es principalmente horizontal
-        // Umbral aumentado para reducir falsos positivos
         if (Math.abs(dx) > Math.abs(dy) * 2.5) {
             // Es un swipe horizontal - mover el carrusel
-            const walk = (startX - x) * 1.2; // Reducir multiplicador
+            const walk = (startX - x) * 1.2;
             carousel.scrollLeft = scrollLeft + walk;
-            e.preventDefault(); // Solo prevenir el comportamiento por defecto para gestos horizontales
+            e.preventDefault();
         }
-        // Si es principalmente vertical, NO hacer preventDefault para permitir scroll vertical
     }, { passive: false });
     
     carousel.addEventListener('touchend', (e) => {
@@ -374,7 +405,7 @@ function initPlansCarousel() {
             
             // Determinar dirección y velocidad
             const velocity = dx / timeElapsed;
-            const threshold = 0.25; // Umbral reducido para mayor sensibilidad
+            const threshold = 0.25;
             
             if (Math.abs(velocity) > threshold) {
                 // Swipe rápido - cambiar slide basado en dirección
@@ -392,52 +423,6 @@ function initPlansCarousel() {
             
             updateCarousel();
         }
-    });
-    
-    // Mouse events para desktop (en caso de que se pruebe en móvil con emulador)
-    carousel.addEventListener('mousedown', (e) => {
-        startX = e.pageX;
-        scrollLeft = carousel.scrollLeft;
-        isScrolling = true;
-        carousel.style.cursor = 'grabbing';
-        e.preventDefault();
-    });
-    
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isScrolling) return;
-        const x = e.pageX;
-        const walk = (startX - x) * 2;
-        carousel.scrollLeft = scrollLeft + walk;
-    });
-    
-    carousel.addEventListener('mouseup', () => {
-        isScrolling = false;
-        carousel.style.cursor = 'grab';
-        const newIndex = getCurrentIndex();
-        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
-            currentIndex = newIndex;
-            updateCarousel();
-        }
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-        if (isScrolling) {
-            isScrolling = false;
-            carousel.style.cursor = 'grab';
-            const newIndex = getCurrentIndex();
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
-                currentIndex = newIndex;
-                updateCarousel();
-            }
-        }
-    });
-    
-    // Eventos para indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
     });
     
     // Inicializar
@@ -475,7 +460,7 @@ function initPlansCarousel() {
                     carouselContainer.style.display = 'none';
                 }
             });
-        }, 150); // Reducido de 250ms a 150ms
+        }, 150);
     });
     
     // Inicializar posición
@@ -484,6 +469,185 @@ function initPlansCarousel() {
         currentIndex = 0;
         updateCarousel(false);
     }, 500);
+}
+
+// ===== CARRUSEL DE PROCESO PARA MÓVIL =====
+function initProcessCarousel() {
+    const processContainer = document.querySelector('.process-carousel-container');
+    const processCarousel = document.querySelector('.process-carousel');
+    const processSteps = document.querySelectorAll('.step-mobile');
+    const indicators = document.querySelectorAll('.process-indicator');
+    const prevArrow = document.querySelector('.process-carousel-arrow.prev-arrow');
+    const nextArrow = document.querySelector('.process-carousel-arrow.next-arrow');
+    
+    if (!processContainer || processSteps.length === 0) return;
+    
+    // Solo activar en móvil
+    if (window.innerWidth > 768) {
+        processContainer.style.display = 'none';
+        return;
+    }
+    
+    processContainer.style.display = 'block';
+    
+    let currentProcessIndex = 0;
+    const totalProcessSlides = processSteps.length;
+    let isProcessScrolling = false;
+    let processStartX = 0;
+    let processStartY = 0;
+    let processScrollLeft = 0;
+    let processStartTime = 0;
+    
+    // Función para actualizar el carrusel
+    function updateProcessCarousel(smooth = true) {
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentProcessIndex);
+        });
+        
+        // Actualizar clases de pasos
+        processSteps.forEach((step, index) => {
+            step.classList.toggle('active', index === currentProcessIndex);
+        });
+        
+        // Scroll suave al slide actual
+        const stepWidth = processSteps[0].offsetWidth;
+        const margin = parseInt(getComputedStyle(processSteps[0]).marginRight || 0);
+        const scrollPosition = currentProcessIndex * (stepWidth + margin);
+        
+        if (smooth) {
+            processCarousel.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+        } else {
+            processCarousel.scrollLeft = scrollPosition;
+        }
+    }
+    
+    // Calcular el índice basado en scroll
+    function getCurrentProcessIndex() {
+        const stepWidth = processSteps[0].offsetWidth;
+        const margin = parseInt(getComputedStyle(processSteps[0]).marginRight || 0);
+        const scrollLeft = processCarousel.scrollLeft;
+        return Math.round(scrollLeft / (stepWidth + margin));
+    }
+    
+    // Scroll event
+    let processScrollTimeout;
+    processCarousel.addEventListener('scroll', () => {
+        clearTimeout(processScrollTimeout);
+        processScrollTimeout = setTimeout(() => {
+            const newIndex = getCurrentProcessIndex();
+            if (newIndex !== currentProcessIndex && newIndex >= 0 && newIndex < totalProcessSlides) {
+                currentProcessIndex = newIndex;
+                updateProcessCarousel(false);
+            }
+        }, 100);
+    }, { passive: true });
+    
+    // Eventos para flechas
+    if (prevArrow) {
+        prevArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProcessIndex > 0) {
+                currentProcessIndex--;
+                updateProcessCarousel();
+            }
+        });
+    }
+    
+    if (nextArrow) {
+        nextArrow.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentProcessIndex < totalProcessSlides - 1) {
+                currentProcessIndex++;
+                updateProcessCarousel();
+            }
+        });
+    }
+    
+    // Eventos para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentProcessIndex = index;
+            updateProcessCarousel();
+        });
+    });
+    
+    // Gestos táctiles
+    processCarousel.addEventListener('touchstart', (e) => {
+        processStartX = e.touches[0].pageX;
+        processStartY = e.touches[0].pageY;
+        processScrollLeft = processCarousel.scrollLeft;
+        processStartTime = Date.now();
+        isProcessScrolling = true;
+    }, { passive: true });
+    
+    processCarousel.addEventListener('touchmove', (e) => {
+        if (!isProcessScrolling) return;
+        
+        const x = e.touches[0].pageX;
+        const y = e.touches[0].pageY;
+        const dx = x - processStartX;
+        const dy = y - processStartY;
+        
+        if (Math.abs(dx) > Math.abs(dy) * 2.5) {
+            const walk = (processStartX - x) * 1.2;
+            processCarousel.scrollLeft = processScrollLeft + walk;
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    processCarousel.addEventListener('touchend', (e) => {
+        if (!isProcessScrolling) return;
+        isProcessScrolling = false;
+        
+        const x = e.changedTouches[0].pageX;
+        const y = e.changedTouches[0].pageY;
+        const dx = x - processStartX;
+        const dy = y - processStartY;
+        const timeElapsed = Date.now() - processStartTime;
+        
+        if (Math.abs(dx) > Math.abs(dy) * 2.5) {
+            const stepWidth = processSteps[0].offsetWidth;
+            const margin = parseInt(getComputedStyle(processSteps[0]).marginRight || 0);
+            
+            const velocity = dx / timeElapsed;
+            const threshold = 0.25;
+            
+            if (Math.abs(velocity) > threshold) {
+                if (velocity < 0 && currentProcessIndex < totalProcessSlides - 1) {
+                    currentProcessIndex++;
+                } else if (velocity > 0 && currentProcessIndex > 0) {
+                    currentProcessIndex--;
+                }
+            } else {
+                const scrollLeft = processCarousel.scrollLeft;
+                const newIndex = Math.round(scrollLeft / (stepWidth + margin));
+                currentProcessIndex = Math.max(0, Math.min(newIndex, totalProcessSlides - 1));
+            }
+            
+            updateProcessCarousel();
+        }
+    });
+    
+    // Inicializar
+    updateProcessCarousel(false);
+    
+    // Redimensionar ventana
+    let processResizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(processResizeTimeout);
+        processResizeTimeout = setTimeout(() => {
+            if (window.innerWidth <= 768) {
+                processContainer.style.display = 'block';
+                updateProcessCarousel(false);
+            } else {
+                processContainer.style.display = 'none';
+            }
+        }, 150);
+    });
 }
 
 // ===== ATAJOS DE TECLADO =====
