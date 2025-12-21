@@ -1298,7 +1298,7 @@ footer {
     /* 1. REDUCIR ESPACIO INNECESARIO EN EL FOOTER */
     footer {
         padding: 0.1rem 0 !important;
-        margin-top: -15px !important;
+        margin-top: -5px !important;
     }
     
     /* 2. MEJORAR ESPACIADO Y ALINEACIÓN */
@@ -1307,10 +1307,10 @@ footer {
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        gap: 0.8rem !important;
-        margin-bottom: 0.3rem !important;
-        padding: 0.2rem 0 !important;
-        min-height: 45px !important;
+        gap: 0 !important;
+        margin-bottom: 0.2rem !important;
+        padding: 0.1rem 0 !important;
+        min-height: 40px !important;
     }
     
     /* 3. OCULTAR FOOTER MÓVIL EN PC */
@@ -1326,7 +1326,7 @@ footer {
         align-items: center !important;
         padding: 0 !important;
         margin: 0 !important;
-        height: 45px !important;
+        height: 40px !important;
     }
     
     .footer-left {
@@ -1344,26 +1344,26 @@ footer {
         flex: 1;
     }
     
-    /* 5. LOGO MÁS GRANDE Y CON ANIMACIÓN */
+    /* 5. LOGO MÁS GRANDE Y CON ANIMACIÓN LIGERA */
     .footer-logo {
         margin: 0 !important;
         padding: 0 !important;
-        gap: 0.5rem !important;
-        height: 45px !important;
+        gap: 0.6rem !important;
+        height: 40px !important;
         transition: var(--transition) !important;
         cursor: pointer;
-        padding: 4px 8px !important;
-        border-radius: 8px !important;
+        padding: 2px 4px !important;
+        border-radius: 4px !important;
     }
     
     .footer-logo .logo-img {
-        height: 38px !important;
+        height: 36px !important; /* Aumentado de 32px a 36px */
         width: auto !important;
         transition: var(--transition) !important;
     }
     
     .footer-logo h3 {
-        font-size: 1rem !important;
+        font-size: 1rem !important; /* Aumentado de 0.9rem a 1rem */
         font-weight: 800 !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -1371,31 +1371,31 @@ footer {
         transition: var(--transition) !important;
     }
     
-    /* ANIMACIÓN AL HOVER DEL LOGO */
+    /* ANIMACIÓN LIGERA AL HOVER DEL LOGO - SIN FONDO, SOLO LEVANTAR Y BRILLO */
     .footer-logo:hover {
-        transform: translateY(-3px) scale(1.05) !important;
-        background: rgba(255, 215, 0, 0.1) !important;
+        transform: translateY(-2px) !important; /* Solo levantar un poco */
+        background: transparent !important; /* Sin fondo */
     }
     
     .footer-logo:hover .logo-img {
-        filter: drop-shadow(0 5px 8px rgba(255, 215, 0, 0.3)) !important;
+        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.2)) !important; /* Brillo sutil */
     }
     
     .footer-logo:hover h3 {
-        color: var(--accent-light) !important;
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+        color: var(--accent) !important; /* Solo cambia a dorado */
+        text-shadow: none !important; /* Sin sombra de texto */
     }
     
-    /* 6. CENTRO: MEJORAR EL TAGLINE */
+    /* 6. CENTRO: FRASE SIN LÍNEAS LATERALES */
     .footer-center .footer-tagline {
         opacity: 0.9;
         line-height: 1.3 !important;
         font-size: 0.9rem !important;
         margin: 0 !important;
         text-align: center;
-        padding: 0 10px;
-        border-left: 2px solid rgba(255, 215, 0, 0.3);
-        border-right: 2px solid rgba(255, 215, 0, 0.3);
+        padding: 0 10px !important;
+        border-left: none !important; /* ELIMINADO */
+        border-right: none !important; /* ELIMINADO */
     }
     
     /* 7. REDES SOCIALES */
@@ -1418,11 +1418,11 @@ footer {
         justify-content: center !important;
     }
     
-    /* 8. FOOTER BOTTOM MÁS COMPACTO */
+    /* 8. FOOTER BOTTON MÁS COMPACTO */
     .footer-bottom {
-        padding: 0.6rem 0 0.3rem !important;
+        padding: 0.4rem 0 0.2rem !important; /* Reducido aún más */
         margin-top: 0.1rem !important;
-        font-size: 0.8rem !important;
+        font-size: 0.75rem !important; /* Un poco más pequeño */
         border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
         line-height: 1.2 !important;
     }
