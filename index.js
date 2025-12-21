@@ -17,31 +17,33 @@ navLinks.forEach(link => {
     });
 });
 
-// ===== NAVEGACIÓN ACTIVA =====
+// ===== NAVEGACIÓN ACTIVA OPTIMIZADA =====
 const sections = document.querySelectorAll('section');
 const navLinksArray = Array.from(navLinks);
 
 const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -70% 0px',
-    threshold: 0
+    rootMargin: '-25% 0px -70% 0px',
+    threshold: 0.1
 };
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                link.style.color = '';
+            requestAnimationFrame(() => {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.style.color = '';
+                });
+                
+                const id = entry.target.getAttribute('id');
+                const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                
+                if (correspondingLink) {
+                    correspondingLink.classList.add('active');
+                    correspondingLink.style.color = 'var(--accent)';
+                }
             });
-            
-            const id = entry.target.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
-            
-            if (correspondingLink) {
-                correspondingLink.classList.add('active');
-                correspondingLink.style.color = 'var(--accent)';
-            }
         }
     });
 }, observerOptions);
@@ -50,9 +52,11 @@ sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-// ===== EFECTO SCROLL EN NAVBAR =====
+// ===== EFECTO SCROLL EN NAVBAR OPTIMIZADO =====
 let lastScroll = 0;
-window.addEventListener('scroll', () => {
+let ticking = false;
+
+function updateNavbarOnScroll() {
     const navbar = document.querySelector('.navbar');
     const currentScroll = window.scrollY;
     
@@ -73,21 +77,31 @@ window.addEventListener('scroll', () => {
     }
     
     lastScroll = currentScroll;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(updateNavbarOnScroll);
+        ticking = true;
+    }
 });
 
-// ===== ANIMACIONES DE REVELADO =====
+// ===== ANIMACIONES DE REVELADO OPTIMIZADAS =====
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+            requestAnimationFrame(() => {
+                entry.target.classList.add('active');
+            });
         }
     });
 }, {
     threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -100px 0px'
 });
 
-// ===== INICIALIZACIÓN =====
+// ===== INICIALIZACIÓN OPTIMIZADA =====
 document.addEventListener('DOMContentLoaded', () => {
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
     
@@ -123,19 +137,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ===== CONTADORES ANIMADOS =====
+// ===== CONTADORES ANIMADOS OPTIMIZADOS =====
 function animateCounter(element, target, duration = 2000, suffix = '') {
     let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target + suffix;
-            clearInterval(timer);
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Usar easing para suavizar
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const currentValue = Math.floor(easeProgress * target);
+        
+        element.textContent = currentValue + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = Math.floor(start) + suffix;
+            element.textContent = target + suffix;
         }
-    }, 16);
+    }
+    
+    requestAnimationFrame(updateCounter);
 }
 
 const counterObserver = new IntersectionObserver((entries) => {
@@ -169,16 +193,18 @@ document.querySelectorAll('.stat').forEach(stat => {
     counterObserver.observe(stat);
 });
 
-// ===== CARGA DIFERIDA DE IMÁGENES =====
+// ===== CARGA DIFERIDA DE IMÁGENES OPTIMIZADA =====
 function lazyLoadImages() {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
+                    requestAnimationFrame(() => {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    });
                 }
             }
         });
@@ -222,7 +248,7 @@ function setupSocialMediaNotifications() {
     });
 }
 
-// ===== CARRUSEL ULTRA FLUIDO PARA MÓVIL - MEJORADO =====
+// ===== CARRUSEL ULTRA FLUIDO OPTIMIZADO =====
 function initPlansCarousel() {
     const carouselContainer = document.querySelector('.carousel-container');
     const carousel = document.querySelector('.plans-carousel');
@@ -246,32 +272,40 @@ function initPlansCarousel() {
     let startY = 0;
     let scrollLeft = 0;
     let startTime = 0;
+    let isAnimating = false;
     
     // Función para actualizar el carrusel
     function updateCarousel(smooth = true) {
-        // Actualizar indicadores
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
+        if (isAnimating) return;
+        isAnimating = true;
         
-        // Actualizar clases de tarjetas
-        planCards.forEach((card, index) => {
-            card.classList.toggle('active', index === currentIndex);
-        });
-        
-        // Scroll suave al slide actual
-        const cardWidth = planCards[0].offsetWidth;
-        const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
-        const scrollPosition = currentIndex * (cardWidth + margin);
-        
-        if (smooth) {
-            carousel.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
+        requestAnimationFrame(() => {
+            // Actualizar indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
             });
-        } else {
-            carousel.scrollLeft = scrollPosition;
-        }
+            
+            // Actualizar clases de tarjetas
+            planCards.forEach((card, index) => {
+                card.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Scroll suave al slide actual
+            const cardWidth = planCards[0].offsetWidth;
+            const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
+            const scrollPosition = currentIndex * (cardWidth + margin);
+            
+            if (smooth) {
+                carousel.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                carousel.scrollLeft = scrollPosition;
+            }
+            
+            isAnimating = false;
+        });
     }
     
     // Calcular el índice basado en scroll
@@ -295,7 +329,7 @@ function initPlansCarousel() {
         }, 100);
     }, { passive: true });
     
-    // DETECCIÓN INTELIGENTE DE GESTOS - MEJORADO
+    // DETECCIÓN INTELIGENTE DE GESTOS - OPTIMIZADO
     carousel.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX;
         startY = e.touches[0].pageY;
@@ -313,10 +347,10 @@ function initPlansCarousel() {
         const dy = y - startY;
         
         // Determinar si el gesto es principalmente horizontal
-        // Umbral: si el movimiento horizontal es 1.5x mayor que el vertical, es un swipe horizontal
-        if (Math.abs(dx) > Math.abs(dy) * 1.5) {
+        // Umbral aumentado para reducir falsos positivos
+        if (Math.abs(dx) > Math.abs(dy) * 2.5) {
             // Es un swipe horizontal - mover el carrusel
-            const walk = (startX - x) * 1.5;
+            const walk = (startX - x) * 1.2; // Reducir multiplicador
             carousel.scrollLeft = scrollLeft + walk;
             e.preventDefault(); // Solo prevenir el comportamiento por defecto para gestos horizontales
         }
@@ -334,13 +368,13 @@ function initPlansCarousel() {
         const timeElapsed = Date.now() - startTime;
         
         // Solo procesar como swipe horizontal si fue principalmente horizontal
-        if (Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (Math.abs(dx) > Math.abs(dy) * 2.5) {
             const cardWidth = planCards[0].offsetWidth;
             const margin = parseInt(getComputedStyle(planCards[0]).marginRight || 0);
             
             // Determinar dirección y velocidad
             const velocity = dx / timeElapsed;
-            const threshold = 0.3;
+            const threshold = 0.25; // Umbral reducido para mayor sensibilidad
             
             if (Math.abs(velocity) > threshold) {
                 // Swipe rápido - cambiar slide basado en dirección
@@ -427,19 +461,21 @@ function initPlansCarousel() {
     
     setTimeout(adjustCardHeights, 100);
     
-    // Redimensionar ventana
+    // Redimensionar ventana optimizado
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            if (window.innerWidth <= 768) {
-                carouselContainer.style.display = 'block';
-                adjustCardHeights();
-                updateCarousel(false);
-            } else {
-                carouselContainer.style.display = 'none';
-            }
-        }, 250);
+            requestAnimationFrame(() => {
+                if (window.innerWidth <= 768) {
+                    carouselContainer.style.display = 'block';
+                    adjustCardHeights();
+                    updateCarousel(false);
+                } else {
+                    carouselContainer.style.display = 'none';
+                }
+            });
+        }, 150); // Reducido de 250ms a 150ms
     });
     
     // Inicializar posición
@@ -481,4 +517,4 @@ function checkWhatsAppLinks() {
 checkWhatsAppLinks();
 
 // ===== MENSAJE DE CONSOLA =====
-console.log('Versión móvil compacta y optimizada - Planes especializados actualizados');
+console.log('✅ Versión ultra optimizada - Todas las animaciones activas y fluidas en móvil');
