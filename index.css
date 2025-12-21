@@ -910,7 +910,7 @@ footer {
     display: none;
 }
 
-/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
+/* === CORRECCIÓN CRÍTICA: FLECHAS PERFECTAS PARA MÓVIL === */
 .carousel-arrow,
 .process-carousel-arrow {
     position: absolute !important;
@@ -931,6 +931,14 @@ footer {
     transition: var(--transition) !important;
     opacity: 0.9 !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    
+    /* CORRECCIÓN 1: ELIMINAR EFECTO AZUL EN MÓVIL */
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
 }
 
 .carousel-arrow:hover,
@@ -1390,11 +1398,11 @@ footer {
         overflow: visible;
     }
     
-    /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE y al límite */
+    /* === CORRECCIÓN CRÍTICA: FLECHAS PERFECTAMENTE ALINEADAS === */
     .carousel-arrow,
     .process-carousel-arrow {
         position: absolute !important;
-        top: 50% !important;
+        top: calc(50% + 20px) !important; /* AJUSTADO: Alineación perfecta vertical */
         transform: translateY(-50%) !important;
         z-index: 100 !important;
         width: 40px !important;
@@ -1404,26 +1412,37 @@ footer {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        
+        /* Eliminar todos los efectos no deseados */
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+        outline: none !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
     }
     
-    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
+    /* Posición corregida de las flechas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
+        left: 0 !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -25px !important; /* AJUSTADO: -25px en lugar de -50px */
+        right: 0 !important;
         left: auto !important;
     }
     
-    /* Asegurar que el contenedor no corte las flechas */
+    /* Contenedor sin padding que afecte la alineación */
     .carousel-container,
     .process-carousel-container {
         overflow: visible !important;
-        padding: 0 5px !important;
+        padding: 0 !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 30px;
     }
     
     /* Ajustes de altura en móvil */
@@ -1500,17 +1519,7 @@ footer {
         width: 36px !important;
         height: 36px !important;
         font-size: 1rem !important;
-    }
-    
-    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
-    .carousel-arrow.prev-arrow,
-    .process-carousel-arrow.prev-arrow {
-        left: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
-    }
-    
-    .carousel-arrow.next-arrow,
-    .process-carousel-arrow.next-arrow {
-        right: -20px !important; /* AJUSTADO: -20px en lugar de -40px */
+        top: calc(50% + 15px) !important; /* Ajuste proporcional para pantallas pequeñas */
     }
 }
 
