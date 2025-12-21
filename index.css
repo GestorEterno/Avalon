@@ -1642,6 +1642,47 @@ footer {
     }
 }
 
+/* CORRECCIÓN 2: Footer escritorio - redes a la derecha */
+@media (min-width: 992px) {
+    .footer-mobile {
+        display: none;
+    }
+    
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        display: flex;
+        align-items: center;
+    }
+    
+    /* CORRECCIÓN CRÍTICA: Redes sociales a la derecha en PC */
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        gap: 2rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .footer-left {
+        flex: 1;
+        justify-content: flex-start;
+    }
+    
+    .footer-center {
+        flex: 1;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .footer-right {
+        flex: 1;
+        justify-content: flex-end;
+    }
+}
+
 /* Escritorio - ocultar carruseles */
 @media (min-width: 769px) {
     .carousel-container,
@@ -1657,28 +1698,6 @@ footer {
     
     .process-steps {
         display: flex;
-    }
-}
-
-/* Footer escritorio */
-@media (min-width: 992px) {
-    .footer-mobile {
-        display: none;
-    }
-    
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        display: flex;
-        align-items: center;
-    }
-    
-    .footer-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
     }
 }
 
