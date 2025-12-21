@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA COMPLETAMENTE */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - CORREGIDA Y MEJORADA */
 
 :root {
     --primary: #0f3460;
@@ -40,15 +40,25 @@ body {
     position: relative;
 }
 
-/* === ANIMACIONES MINIMIZADAS === */
+/* === ANIMACIONES OPTIMIZADAS === */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes ultraFloat {
+    0%, 100% { 
+        transform: translateY(0) translateZ(0); 
+    }
+    25% { 
+        transform: translateY(-4px) translateZ(0); 
+    }
+    50% { 
+        transform: translateY(-8px) translateZ(0); 
+    }
+    75% { 
+        transform: translateY(-4px) translateZ(0); 
+    }
 }
 
 @keyframes gentleGlow {
@@ -330,7 +340,7 @@ body {
     border-color: var(--accent);
 }
 
-/* === HERO IMAGE === */
+/* === HERO IMAGE - ANIMACIÓN CORREGIDA === */
 .hero-image {
     flex: 1;
     display: flex;
@@ -349,21 +359,24 @@ body {
     text-align: center;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: float 6s ease-in-out infinite;
+    animation: ultraFloat 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
     transition: var(--transition);
     height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .floating-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) translateZ(0);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .floating-card:nth-child(2) {
-    animation-delay: 1s;
+    animation-delay: 0s;
 }
 
 .card-icon {
@@ -910,7 +923,7 @@ footer {
     display: none;
 }
 
-/* === CORRECCIÓN CRÍTICA: FLECHAS PERFECTAS PARA MÓVIL === */
+/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow,
 .process-carousel-arrow {
     position: absolute !important;
@@ -931,14 +944,6 @@ footer {
     transition: var(--transition) !important;
     opacity: 0.9 !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
-    
-    /* CORRECCIÓN 1: ELIMINAR EFECTO AZUL EN MÓVIL */
-    -webkit-tap-highlight-color: transparent !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-    outline: none !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
 }
 
 .carousel-arrow:hover,
@@ -1237,6 +1242,18 @@ footer {
         padding: 90px 0 40px;
     }
     
+    /* CORRECCIÓN CRÍTICA: Desactivar animación de flotación en móvil */
+    .floating-card {
+        animation: none !important;
+        transform: translateY(0) !important;
+        will-change: auto;
+    }
+    
+    .floating-card:hover {
+        transform: none !important;
+        box-shadow: var(--shadow-lg);
+    }
+    
     /* Asegurar que todas las secciones tengan fondo transparente */
     section {
         background: transparent;
@@ -1353,7 +1370,6 @@ footer {
         height: auto;
         min-height: 180px;
         margin: 0;
-        animation: float 6s ease-in-out infinite;
     }
     
     /* Section titles móvil */
@@ -1398,11 +1414,11 @@ footer {
         overflow: visible;
     }
     
-    /* === CORRECCIÓN CRÍTICA: FLECHAS PERFECTAMENTE ALINEADAS === */
+    /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE y al límite */
     .carousel-arrow,
     .process-carousel-arrow {
         position: absolute !important;
-        top: calc(50% + 20px) !important; /* AJUSTADO: Alineación perfecta vertical */
+        top: 50% !important;
         transform: translateY(-50%) !important;
         z-index: 100 !important;
         width: 40px !important;
@@ -1412,37 +1428,26 @@ footer {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        
-        /* Eliminar todos los efectos no deseados */
-        -webkit-tap-highlight-color: transparent !important;
-        -webkit-user-select: none !important;
-        user-select: none !important;
-        outline: none !important;
-        -webkit-appearance: none !important;
-        appearance: none !important;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
     }
     
-    /* Posición corregida de las flechas */
+    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 0 !important;
+        left: -25px !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 0 !important;
+        right: -25px !important;
         left: auto !important;
     }
     
-    /* Contenedor sin padding que afecte la alineación */
+    /* Asegurar que el contenedor no corte las flechas */
     .carousel-container,
     .process-carousel-container {
         overflow: visible !important;
-        padding: 0 !important;
-        padding-bottom: 20px !important;
-        margin-bottom: 30px;
+        padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -1468,7 +1473,6 @@ footer {
     /* Desactivar hover en móvil para mejor rendimiento */
     .service-card:hover,
     .plan-card:hover,
-    .floating-card:hover,
     .step:hover {
         transform: none;
     }
@@ -1519,7 +1523,17 @@ footer {
         width: 36px !important;
         height: 36px !important;
         font-size: 1rem !important;
-        top: calc(50% + 15px) !important; /* Ajuste proporcional para pantallas pequeñas */
+    }
+    
+    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
+        left: -20px !important;
+    }
+    
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
+        right: -20px !important;
     }
 }
 
@@ -1538,6 +1552,11 @@ footer {
     
     .process-steps {
         display: flex;
+    }
+    
+    /* Asegurar animación de flotación solo en PC */
+    .floating-card {
+        animation: ultraFloat 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
     }
 }
 
