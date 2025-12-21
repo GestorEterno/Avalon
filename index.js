@@ -1,4 +1,4 @@
-// index.js - Versión Ultra Optimizada para Móvil
+// index.js - Versión Ultra Optimizada para Móvil - CORREGIDA COMPLETAMENTE
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
@@ -93,7 +93,7 @@ function initMobileCarousels() {
     initProcessCarousel();
 }
 
-// Carrusel de Planes
+// Carrusel de Planes - MEJORADO PARA FLUIDEZ
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
@@ -105,6 +105,9 @@ function initPlansCarousel() {
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
+    let isScrolling = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     function updateCarousel(smooth = true) {
         // Actualizar indicadores
@@ -117,8 +120,8 @@ function initPlansCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll
-        const cardWidth = planCards[0].offsetWidth;
+        // Scroll con mejor precisión
+        const cardWidth = planCards[0].offsetWidth + 20;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
@@ -131,12 +134,12 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas
+    // Flechas - MEJOR RESPONSIVIDAD
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
     }
@@ -145,7 +148,7 @@ function initPlansCarousel() {
         nextArrow.addEventListener('click', () => {
             if (currentIndex < totalSlides - 1) {
                 currentIndex++;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
     }
@@ -154,29 +157,58 @@ function initPlansCarousel() {
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             currentIndex = index;
-            updateCarousel();
+            updateCarousel(true);
         });
     });
     
-    // Scroll automático
-    let scrollTimeout;
+    // Scroll automático MEJORADO
     carousel.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const cardWidth = planCards[0].offsetWidth;
-            const newIndex = Math.round(carousel.scrollLeft / cardWidth);
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
-                currentIndex = newIndex;
-                updateCarousel(false);
-            }
-        }, 100);
+        if (!isScrolling) {
+            isScrolling = true;
+            setTimeout(() => {
+                const cardWidth = planCards[0].offsetWidth + 20;
+                const newIndex = Math.round(carousel.scrollLeft / cardWidth);
+                if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+                    currentIndex = newIndex;
+                    updateCarousel(false);
+                }
+                isScrolling = false;
+            }, 150);
+        }
     });
+    
+    // Touch events para mejor experiencia móvil
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && currentIndex < totalSlides - 1) {
+                // Swipe izquierda
+                currentIndex++;
+                updateCarousel(true);
+            } else if (diff < 0 && currentIndex > 0) {
+                // Swipe derecha
+                currentIndex--;
+                updateCarousel(true);
+            }
+        }
+    }
     
     // Inicializar
     updateCarousel(false);
 }
 
-// Carrusel de Proceso
+// Carrusel de Proceso - MEJORADO
 function initProcessCarousel() {
     const carousel = document.querySelector('.process-carousel');
     const steps = document.querySelectorAll('.step-mobile');
@@ -188,6 +220,9 @@ function initProcessCarousel() {
     
     let currentIndex = 0;
     const totalSlides = steps.length;
+    let isScrolling = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     function updateCarousel(smooth = true) {
         indicators.forEach((indicator, index) => {
@@ -198,7 +233,7 @@ function initProcessCarousel() {
             step.classList.toggle('active', index === currentIndex);
         });
         
-        const stepWidth = steps[0].offsetWidth;
+        const stepWidth = steps[0].offsetWidth + 20;
         const scrollPosition = currentIndex * stepWidth;
         
         if (smooth) {
@@ -216,7 +251,7 @@ function initProcessCarousel() {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
     }
@@ -225,7 +260,7 @@ function initProcessCarousel() {
         nextArrow.addEventListener('click', () => {
             if (currentIndex < totalSlides - 1) {
                 currentIndex++;
-                updateCarousel();
+                updateCarousel(true);
             }
         });
     }
@@ -234,23 +269,50 @@ function initProcessCarousel() {
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             currentIndex = index;
-            updateCarousel();
+            updateCarousel(true);
         });
     });
     
-    // Scroll automático
-    let scrollTimeout;
+    // Scroll mejorado
     carousel.addEventListener('scroll', () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            const stepWidth = steps[0].offsetWidth;
-            const newIndex = Math.round(carousel.scrollLeft / stepWidth);
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
-                currentIndex = newIndex;
-                updateCarousel(false);
-            }
-        }, 100);
+        if (!isScrolling) {
+            isScrolling = true;
+            setTimeout(() => {
+                const stepWidth = steps[0].offsetWidth + 20;
+                const newIndex = Math.round(carousel.scrollLeft / stepWidth);
+                if (newIndex !== currentIndex && newIndex >= 0 && newIndex < totalSlides) {
+                    currentIndex = newIndex;
+                    updateCarousel(false);
+                }
+                isScrolling = false;
+            }, 150);
+        }
     });
+    
+    // Touch events
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && currentIndex < totalSlides - 1) {
+                currentIndex++;
+                updateCarousel(true);
+            } else if (diff < 0 && currentIndex > 0) {
+                currentIndex--;
+                updateCarousel(true);
+            }
+        }
+    }
     
     updateCarousel(false);
 }
@@ -324,16 +386,22 @@ function setupSocialNotifications() {
 }
 
 // ===== RESPONSIVE JS =====
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    // Re-inicializar carruseles si cambiamos a móvil
-    if (window.innerWidth <= 768) {
-        const carouselsInitialized = document.querySelector('.plans-carousel').dataset.initialized;
-        if (!carouselsInitialized) {
-            initMobileCarousels();
-            document.querySelector('.plans-carousel').dataset.initialized = true;
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        // Re-inicializar carruseles si cambiamos a móvil
+        if (window.innerWidth <= 768) {
+            const carouselsInitialized = document.querySelector('.plans-carousel')?.dataset.initialized;
+            if (!carouselsInitialized) {
+                initMobileCarousels();
+                if (document.querySelector('.plans-carousel')) {
+                    document.querySelector('.plans-carousel').dataset.initialized = true;
+                }
+            }
         }
-    }
+    }, 250);
 });
 
 // ===== CONSOLE LOG =====
-console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC');
+console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC - CORREGIDO');
