@@ -47,12 +47,18 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { 
-        transform: translateY(0px) translateZ(0);
-    }
-    50% { 
-        transform: translateY(-12px) translateZ(0);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes floatCard1 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes floatCard2 {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 @keyframes gentleGlow {
@@ -353,30 +359,44 @@ body {
     text-align: center;
     box-shadow: var(--shadow-lg);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: float 6s ease-in-out infinite;
     transition: var(--transition);
     height: 240px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* ACELERACIÓN POR HARDWARE PARA FLUIDEZ PERFECTA */
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+    will-change: transform;
 }
 
-/* SEGUNDO PANEL CON DELAY PERO MISMA FLUIDEZ */
+/* ANIMACIONES PERFECTAMENTE FLUIDAS Y SINCRONIZADAS */
 .floating-card:nth-child(1) {
-    animation: float 6s ease-in-out infinite;
+    animation: floatCard1 6s ease-in-out infinite;
 }
 
 .floating-card:nth-child(2) {
-    animation: float 6s ease-in-out infinite 0.5s;
+    animation: floatCard2 6s ease-in-out infinite 3s;
 }
 
 .floating-card:hover {
-    transform: translateY(-10px) translateZ(0);
+    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.floating-card h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.floating-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.4;
 }
 
 /* === SECTION COMMON === */
@@ -1165,7 +1185,6 @@ footer {
     margin-bottom: 1.2rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
     transition: var(--transition);
-    animation: float 4s ease-in-out infinite;
 }
 
 .step-number-mobile::before {
@@ -1204,7 +1223,6 @@ footer {
     /* DESACTIVAR ANIMACIÓN DE LEVITACIÓN EN MÓVIL */
     .floating-card {
         animation: none !important;
-        transform: none !important;
     }
     
     .floating-card:hover {
