@@ -1293,84 +1293,89 @@ footer {
     }
 }
 
-/* ===== FOOTER ESCRITORIO - COMPACTADO AL MÁXIMO Y OPTIMIZADO ===== */
+/* ===== FOOTER ESCRITORIO - SOLO CORRECCIONES NECESARIAS ===== */
 @media (min-width: 992px) {
     footer {
-        padding: 0.15rem 0 0.1rem !important; /* Reducido al máximo */
+        padding: 0.15rem 0 0.1rem !important;
     }
     
     .footer-mobile {
         display: none;
     }
     
-    /* Cambiar a 2 columnas: logo a la izquierda, redes a la derecha */
+    /* FOOTER EN PC DEBE MOSTRAR EL CONTENIDO NORMAL */
     .footer-content {
-        display: grid !important;
-        grid-template-columns: 1fr auto !important; /* Logo | Redes */
-        align-items: center !important;
-        gap: 0 !important; /* Sin espacio entre columnas */
-        margin-bottom: 0 !important;
-        padding: 0 !important;
-        min-height: 40px !important; /* Altura mínima reducida */
-    }
-    
-    /* Mostrar el centro en PC */
-    .footer-center {
-        display: block !important;
-        text-align: center;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        line-height: 1.3;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    /* Izquierda: solo logo */
-    .footer-left {
         display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        justify-content: flex-start !important;
+        gap: 1rem !important;
+        margin-bottom: 0.3rem !important;
         padding: 0 !important;
-        margin: 0 !important;
-        height: 40px !important;
+        min-height: 40px !important;
     }
     
-    /* Derecha: solo redes sociales */
+    /* MOSTRAR LAS TRES COLUMNAS EN PC */
+    .footer-left,
+    .footer-center,
     .footer-right {
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-end !important;
         padding: 0 !important;
         margin: 0 !important;
         height: 40px !important;
     }
     
-    /* Logo ultra compacto */
+    .footer-left {
+        justify-content: flex-start !important;
+        flex: 1;
+    }
+    
+    .footer-center {
+        justify-content: center !important;
+        flex: 1;
+    }
+    
+    .footer-right {
+        justify-content: flex-end !important;
+        flex: 1;
+    }
+    
+    /* Logo compacto */
     .footer-logo {
         margin: 0 !important;
         padding: 0 !important;
-        gap: 0.4rem !important; /* Reducido espacio entre logo y texto */
-        height: 32px !important; /* Altura fija */
+        gap: 0.4rem !important;
+        height: 32px !important;
     }
     
     .footer-logo .logo-img {
-        height: 28px !important; /* Logo ligeramente más pequeño */
+        height: 28px !important;
         width: auto !important;
     }
     
     .footer-logo h3 {
-        font-size: 0.85rem !important; /* Texto más compacto */
+        font-size: 0.85rem !important;
         font-weight: 700 !important;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1 !important;
     }
     
-    /* Redes sociales ultra compactas */
+    /* Centro: mostrar la frase en PC */
+    .footer-center .footer-tagline {
+        opacity: 0.8;
+        line-height: 1.3 !important;
+        font-size: 0.85rem !important;
+        margin: 0 !important;
+        text-align: center;
+    }
+    
+    /* Redes sociales */
     .social-links {
         margin: 0 !important;
         padding: 0 !important;
-        gap: 0.3rem !important; /* Espacio mínimo entre iconos */
+        gap: 0.3rem !important;
         height: 32px !important;
         display: flex !important;
         align-items: center !important;
@@ -1386,7 +1391,7 @@ footer {
         justify-content: center !important;
     }
     
-    /* Footer bottom ultra compacto - TEXTO MÁS GRANDE (1rem) */
+    /* Footer bottom - TEXTO MÁS GRANDE EN PC (1rem) */
     .footer-bottom {
         padding: 0.15rem 0 0.1rem !important;
         margin: 0 !important;
@@ -1395,7 +1400,7 @@ footer {
         line-height: 1 !important;
     }
     
-    /* Asegurar que el contenedor no agregue padding extra */
+    /* Contenedor */
     footer .container {
         padding: 0 20px !important;
         margin: 0 auto !important;
@@ -1679,6 +1684,17 @@ footer:last-child {
     /* Footer móvil - COMPACTADO AL MÁXIMO */
     footer {
         padding: 0.2rem 0 0.1rem !important;
+    }
+    
+    /* OCULTAR FOOTER DE PC EN MÓVIL */
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        display: none !important;
+    }
+    
+    .footer-mobile {
+        display: block !important;
     }
     
     .footer-content {
