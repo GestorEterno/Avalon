@@ -421,7 +421,7 @@ function initPlansCarousel() {
         });
         
         planCards.forEach(card => {
-            card.style.height = maxHeight + 'px';
+            card.style.height = (maxHeight + 20) + 'px';
         });
     }
     
@@ -481,4 +481,4 @@ function checkWhatsAppLinks() {
 checkWhatsAppLinks();
 
 // ===== MENSAJE DE CONSOLA =====
-console.log('Versión móvil compacta y optimizada');
+console.log('Versión móvil compacta y optimizada - Planes especializados actualizados');
