@@ -176,9 +176,11 @@ body {
     color: var(--light);
     font-weight: 600;
     font-size: 0.9rem;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1), 
+                color 0.2s ease !important;
     position: relative;
     padding: 0.5rem 0;
+    display: inline-block;
 }
 
 .nav-link::after {
@@ -194,6 +196,11 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px) !important;
+    color: var(--accent) !important;
 }
 
 .nav-link.active {
@@ -388,10 +395,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    will-change: transform;
 }
 
-/* ANIMACIONES PERFECTAMENTE FLUIDAS Y SINCRONIZADAS */
 .floating-card:nth-child(1) {
     animation: floatCard1 6s ease-in-out infinite;
 }
@@ -813,18 +818,21 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.3rem !important;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
     margin-bottom: 0.1rem !important;
+    cursor: pointer;
 }
 
 .footer-logo .logo-img {
     height: 32px !important;
     width: auto;
+    transition: filter 0.2s ease !important;
 }
 
 .footer-logo h3 {
     font-size: 0.95rem !important;
     font-weight: 700;
+    transition: color 0.2s ease, text-shadow 0.2s ease !important;
 }
 
 .footer-tagline {
@@ -851,13 +859,15 @@ footer {
     background: rgba(255, 255, 255, 0.08);
     color: var(--light);
     text-decoration: none;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
+                background 0.2s ease,
+                color 0.2s ease !important;
 }
 
 .social-links a:hover {
     background: var(--accent);
     color: var(--dark);
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
 }
 
 .footer-bottom {
@@ -1344,46 +1354,46 @@ footer {
         flex: 1;
     }
     
-    /* 5. LOGO MÁS GRANDE Y CON ANIMACIÓN LIGERA */
+    /* 5. LOGO MÁS GRANDE Y CON EFECTO FLUIDO IDÉNTICO AL MENÚ */
     .footer-logo {
         margin: 0 !important;
         padding: 0 !important;
         gap: 0.6rem !important;
         height: 40px !important;
-        transition: var(--transition) !important;
+        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
         cursor: pointer;
         padding: 2px 4px !important;
         border-radius: 4px !important;
     }
     
     .footer-logo .logo-img {
-        height: 36px !important; /* Aumentado de 32px a 36px */
+        height: 36px !important;
         width: auto !important;
-        transition: var(--transition) !important;
+        transition: filter 0.2s ease !important;
     }
     
     .footer-logo h3 {
-        font-size: 1rem !important; /* Aumentado de 0.9rem a 1rem */
+        font-size: 1rem !important;
         font-weight: 800 !important;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1 !important;
-        transition: var(--transition) !important;
+        transition: color 0.2s ease, text-shadow 0.2s ease !important;
     }
     
-    /* ANIMACIÓN LIGERA AL HOVER DEL LOGO - SIN FONDO, SOLO LEVANTAR Y BRILLO */
+    /* EFECTO HOVER IDÉNTICO AL MENÚ - ULTRA FLUIDO */
     .footer-logo:hover {
-        transform: translateY(-2px) !important; /* Solo levantar un poco */
-        background: transparent !important; /* Sin fondo */
+        transform: translateY(-2px) !important;
+        background: transparent !important;
     }
     
     .footer-logo:hover .logo-img {
-        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.2)) !important; /* Brillo sutil */
+        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
     }
     
     .footer-logo:hover h3 {
-        color: var(--accent) !important; /* Solo cambia a dorado */
-        text-shadow: none !important; /* Sin sombra de texto */
+        color: var(--accent) !important;
+        text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
     }
     
     /* 6. CENTRO: FRASE SIN LÍNEAS LATERALES Y QUE NO BAJE DE LÍNEA */
@@ -1396,15 +1406,15 @@ footer {
         padding: 0 10px !important;
         border-left: none !important;
         border-right: none !important;
-        max-width: none !important; /* Eliminar límite de ancho */
-        white-space: nowrap !important; /* Evitar salto de línea */
-        overflow: hidden !important; /* Por si acaso */
-        text-overflow: ellipsis !important; /* Si no cabe, mostrar ... */
-        min-width: 0 !important; /* Permitir que se reduzca */
-        flex-shrink: 1 !important; /* Permitir que se encoja si es necesario */
+        max-width: none !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        min-width: 0 !important;
+        flex-shrink: 1 !important;
     }
     
-    /* 7. REDES SOCIALES */
+    /* 7. REDES SOCIALES CON EFECTO FLUIDO IDÉNTICO */
     .social-links {
         margin: 0 !important;
         padding: 0 !important;
@@ -1422,13 +1432,22 @@ footer {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
+                    background 0.2s ease,
+                    color 0.2s ease !important;
+    }
+    
+    .social-links a:hover {
+        background: var(--accent) !important;
+        color: var(--dark) !important;
+        transform: translateY(-2px) !important;
     }
     
     /* 8. FOOTER BOTTON MÁS COMPACTO */
     .footer-bottom {
-        padding: 0.4rem 0 0.2rem !important; /* Reducido aún más */
+        padding: 0.4rem 0 0.2rem !important;
         margin-top: 0.1rem !important;
-        font-size: 0.75rem !important; /* Un poco más pequeño */
+        font-size: 0.75rem !important;
         border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
         line-height: 1.2 !important;
     }
@@ -1437,6 +1456,25 @@ footer {
     footer .container {
         padding: 0 20px !important;
         margin: 0 auto !important;
+    }
+    
+    /* 10. OPTIMIZACIONES DE RENDIMIENTO PARA HOVER FLUIDO */
+    .footer-logo,
+    .nav-link,
+    .social-links a,
+    .btn-primary,
+    .btn-secondary,
+    .service-card,
+    .plan-card,
+    .step,
+    .floating-card {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    .nav-menu {
+        transform: translateZ(0);
     }
 }
 
