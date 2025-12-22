@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 768) {
         console.log('📱 Inicializando carruseles móviles...');
         initMobileCarousels();
-        fixCarouselScroll(); // CORRECCIÓN: Añadir scroll vertical
     }
     
     // Setup social notifications
@@ -97,7 +96,7 @@ function initMobileCarousels() {
     initProcessCarousel();
 }
 
-// Carrusel de Planes - VERSIÓN CORREGIDA
+// Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
@@ -132,7 +131,7 @@ function initPlansCarousel() {
         });
         
         // Scroll suave
-        const cardWidth = planCards[0].offsetWidth + 20; // +20 por el margin
+        const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
@@ -152,24 +151,13 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas - SIN EFECTOS NO DESEADOS
+    // Flechas - SIN FEEDBACK TÁCTIL DE BAJAR/SUBIR
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        // CORRECCIÓN: Sin efectos de escala en móvil
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.opacity = '0.8';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.opacity = '';
-            }, 150);
         });
     }
     
@@ -179,17 +167,6 @@ function initPlansCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        // CORRECCIÓN: Sin efectos de escala en móvil
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.opacity = '0.8';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.opacity = '';
-            }, 150);
         });
     }
     
@@ -212,8 +189,9 @@ function initPlansCarousel() {
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
-            const cardWidth = planCards[0].offsetWidth + 20;
+            const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
+            const tolerance = cardWidth * 0.1;
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
@@ -242,7 +220,7 @@ function initPlansCarousel() {
     }
 }
 
-// Carrusel de Proceso - VERSIÓN CORREGIDA
+// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA
 function initProcessCarousel() {
     const carousel = document.querySelector('.process-carousel');
     const steps = document.querySelectorAll('.step-mobile');
@@ -277,7 +255,7 @@ function initProcessCarousel() {
         });
         
         // Scroll suave
-        const stepWidth = steps[0].offsetWidth + 20; // +20 por el margin
+        const stepWidth = steps[0].offsetWidth;
         const scrollPosition = currentIndex * stepWidth;
         
         if (smooth) {
@@ -297,24 +275,13 @@ function initProcessCarousel() {
         }
     }
     
-    // Flechas - SIN EFECTOS NO DESEADOS
+    // Flechas SIN feedback táctil
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        // CORRECCIÓN: Sin efectos de escala en móvil
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.opacity = '0.8';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.opacity = '';
-            }, 150);
         });
     }
     
@@ -324,17 +291,6 @@ function initProcessCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        // CORRECCIÓN: Sin efectos de escala en móvil
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.opacity = '0.8';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.opacity = '';
-            }, 150);
         });
     }
     
@@ -357,8 +313,9 @@ function initProcessCarousel() {
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
-            const stepWidth = steps[0].offsetWidth + 20;
+            const stepWidth = steps[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
+            const tolerance = stepWidth * 0.1;
             
             let newIndex = Math.round(scrollLeft / stepWidth);
             
@@ -381,49 +338,6 @@ function initProcessCarousel() {
         prevArrow.style.display = 'flex';
         nextArrow.style.display = 'flex';
     }
-}
-
-// ===== CORRECCIÓN SCROLL VERTICAL EN CARRUSELES =====
-function fixCarouselScroll() {
-    const carousels = document.querySelectorAll('.plans-carousel, .process-carousel');
-    
-    carousels.forEach(carousel => {
-        let startY = 0;
-        let startX = 0;
-        let isScrolling = false;
-        
-        carousel.addEventListener('touchstart', (e) => {
-            startY = e.touches[0].clientY;
-            startX = e.touches[0].clientX;
-            isScrolling = false;
-        }, { passive: true });
-        
-        carousel.addEventListener('touchmove', (e) => {
-            if (!carousel) return;
-            
-            const currentY = e.touches[0].clientY;
-            const currentX = e.touches[0].clientX;
-            const diffY = Math.abs(currentY - startY);
-            const diffX = Math.abs(currentX - startX);
-            
-            // Si el movimiento es más vertical que horizontal, permitir scroll de página
-            if (diffY > diffX && diffY > 10) {
-                isScrolling = true;
-                // Permitir comportamiento por defecto (scroll vertical de página)
-                return;
-            }
-            
-            // Si es movimiento horizontal, prevenir el comportamiento por defecto
-            // para que solo el carrusel se mueva horizontalmente
-            if (!isScrolling && diffX > 5) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
-        carousel.addEventListener('touchend', () => {
-            isScrolling = false;
-        }, { passive: true });
-    });
 }
 
 // ===== CONTADORES ANIMADOS =====
@@ -512,7 +426,6 @@ window.addEventListener('resize', () => {
             if (carouselsExist && !carouselsExist.dataset.initialized) {
                 console.log('📱 Re-inicializando carruseles para móvil...');
                 initMobileCarousels();
-                fixCarouselScroll(); // CORRECCIÓN: Añadir scroll vertical
                 carouselsExist.dataset.initialized = true;
             }
         }
@@ -571,26 +484,22 @@ document.addEventListener('dragstart', function(e) {
     }
 }, false);
 
-// Mejorar feedback táctil en botones (pero NO en flechas)
+// Mejorar feedback táctil en botones
 if (isTouchDevice) {
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link');
     
     buttons.forEach(button => {
-        // Excluir flechas de carrusel
-        if (!button.classList.contains('carousel-arrow') && 
-            !button.classList.contains('process-carousel-arrow')) {
-            button.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.98)';
-                this.style.opacity = '0.9';
-            });
-            
-            button.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.style.transform = '';
-                    this.style.opacity = '';
-                }, 150);
-            });
-        }
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+            this.style.opacity = '0.9';
+        });
+        
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 150);
+        });
     });
 }
 
