@@ -1,4 +1,5 @@
 /* index.css - Versión Ultra Optimizada para Móvil y PC - FOOTER CORREGIDO Y OPTIMIZADO */
+/* MODIFICACIÓN: Eliminada animación de levitación de paneles del hero */
 
 :root {
     --primary: #0f3460;
@@ -47,16 +48,6 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes floatCard1 {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes floatCard2 {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
 }
@@ -410,14 +401,7 @@ body {
     justify-content: center;
 }
 
-.floating-card:nth-child(1) {
-    animation: floatCard1 6s ease-in-out infinite;
-}
-
-.floating-card:nth-child(2) {
-    animation: floatCard2 6s ease-in-out infinite 3s;
-}
-
+/* MODIFICACIÓN: Eliminadas animaciones de levitación */
 .floating-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -1526,7 +1510,7 @@ footer:last-child {
         transform: none !important;
     }
     
-    /* DESACTIVAR ANIMACIÓN DE LEVITACIÓN EN MÓVIL */
+    /* MODIFICACIÓN: Eliminada animación de levitación en móvil */
     .floating-card {
         animation: none !important;
     }
