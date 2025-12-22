@@ -1199,19 +1199,19 @@ footer {
     display: none;
 }
 
-/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
+/* CORRECCIÓN TOTAL: Flechas POSICIONADAS CORRECTAMENTE EN LOS ESPACIOS LATERALES */
 .carousel-arrow,
 .process-carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     background: rgba(15, 52, 96, 0.95);
     border: 2px solid var(--accent);
     border-radius: 50%;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1219,41 +1219,43 @@ footer {
     z-index: 100;
     transition: var(--transition);
     opacity: 0.9;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     -webkit-touch-callout: none;
     user-select: none;
     outline: none;
     border: none;
 }
 
-/* CORRECCIÓN: Eliminar efectos hover/active no deseados en móvil */
+/* CORRECCIÓN TOTAL: Eliminar efectos hover/active no deseados */
 .carousel-arrow:hover,
-.process-carousel-arrow:hover {
-    background: rgba(15, 52, 96, 0.95);
-    color: white;
-    opacity: 1;
-    transform: translateY(-50%);
+.process-carousel-arrow:hover,
+.carousel-arrow:active,
+.process-carousel-arrow:active {
+    background: rgba(15, 52, 96, 0.95) !important;
+    color: white !important;
+    transform: translateY(-50%) !important;
+    opacity: 1 !important;
 }
 
 .carousel-arrow.prev-arrow,
 .process-carousel-arrow.prev-arrow {
-    left: 10px;
+    left: 0;
     right: auto;
 }
 
 .carousel-arrow.next-arrow,
 .process-carousel-arrow.next-arrow {
-    right: 10px;
+    right: 0;
     left: auto;
 }
 
 /* Plan cards móvil */
 .plan-card-mobile {
-    flex: 0 0 85%;
-    width: 85%;
-    min-width: 85%;
-    max-width: 85%;
-    margin: 0 7.5%;
+    flex: 0 0 calc(100% - 40px); /* CORRECCIÓN: Reducir ancho para dar espacio a flechas */
+    width: calc(100% - 40px);
+    min-width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    margin: 0 20px; /* CORRECCIÓN: Margen para que no choque con flechas */
     scroll-snap-align: center;
     scroll-snap-stop: always;
     box-shadow: var(--shadow);
@@ -1465,11 +1467,11 @@ footer {
 
 /* Step móvil */
 .step-mobile {
-    flex: 0 0 85%;
-    width: 85%;
-    min-width: 85%;
-    max-width: 85%;
-    margin: 0 7.5%;
+    flex: 0 0 calc(100% - 40px); /* CORRECCIÓN: Reducir ancho para dar espacio a flechas */
+    width: calc(100% - 40px);
+    min-width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    margin: 0 20px; /* CORRECCIÓN: Margen para que no choque con flechas */
     scroll-snap-align: center;
     scroll-snap-stop: always;
     padding: 25px 20px;
@@ -2466,7 +2468,7 @@ footer:last-child {
         overflow: visible;
     }
     
-    /* Flechas posicionadas ABSOLUTAMENTE y al límite - CORREGIDAS */
+    /* CORRECCIÓN TOTAL: Flechas bien posicionadas en los espacios laterales */
     .carousel-arrow,
     .process-carousel-arrow {
         position: absolute !important;
@@ -2480,18 +2482,11 @@ footer:last-child {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
-    /* FLECHAS CORREGIDAS: Sin efectos hover/active no deseados */
-    .carousel-arrow:hover,
-    .carousel-arrow:active,
-    .process-carousel-arrow:hover,
-    .process-carousel-arrow:active {
-        background: rgba(15, 52, 96, 0.95) !important;
-        color: white !important;
-        transform: translateY(-50%) !important;
-    }
-    
+    /* FLECHAS CORREGIDAS: En los bordes del contenedor, donde HAY ESPACIO */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
         left: 5px !important;
@@ -2504,11 +2499,30 @@ footer:last-child {
         left: auto !important;
     }
     
-    /* Asegurar que el contenedor no corte las flechas */
+    /* Contenedor con padding para que el contenido no choque con flechas */
     .carousel-container,
     .process-carousel-container {
-        overflow: visible !important;
-        padding: 0 10px !important;
+        overflow: hidden !important;
+        padding: 0 5px !important; /* Espacio mínimo para flechas */
+    }
+    
+    /* Ajustar carrusel para que no se solape con flechas */
+    .plans-carousel,
+    .process-carousel {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    
+    /* Ajustar márgenes de las cards para que no choquen */
+    .plan-card-mobile,
+    .step-mobile {
+        margin: 0 10px !important;
+        flex: 0 0 calc(100% - 60px) !important;
+        width: calc(100% - 60px) !important;
+        min-width: calc(100% - 60px) !important;
+        max-width: calc(100% - 60px) !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -2657,41 +2671,42 @@ footer:last-child {
         font-size: 1.6rem;
     }
     
+    /* CORRECCIÓN: Ajustes para pantallas muy pequeñas */
     .plan-card-mobile {
-        flex: 0 0 90%;
-        width: 90%;
-        min-width: 90%;
-        max-width: 90%;
-        margin: 0 5%;
+        flex: 0 0 calc(100% - 40px) !important;
+        width: calc(100% - 40px) !important;
+        min-width: calc(100% - 40px) !important;
+        max-width: calc(100% - 40px) !important;
+        margin: 0 10px !important;
         min-height: 500px;
         padding: 1rem;
     }
     
     .step-mobile {
-        flex: 0 0 90%;
-        width: 90%;
-        min-width: 90%;
-        max-width: 90%;
-        margin: 0 5%;
+        flex: 0 0 calc(100% - 40px) !important;
+        width: calc(100% - 40px) !important;
+        min-width: calc(100% - 40px) !important;
+        max-width: calc(100% - 40px) !important;
+        margin: 0 10px !important;
         padding: 1.2rem;
     }
     
     .carousel-arrow,
     .process-carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 0.9rem !important;
     }
     
-    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
+    /* FLECHAS CORREGIDAS: En pantallas pequeñas, más cerca del borde */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 0px;
+        left: 2px !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 0px;
+        right: 2px !important;
     }
 }
 
