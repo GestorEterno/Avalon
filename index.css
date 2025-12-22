@@ -1191,7 +1191,7 @@ footer {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    touch-action: pan-x;
+    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
 }
 
 .plans-carousel::-webkit-scrollbar,
@@ -1226,12 +1226,13 @@ footer {
     border: none;
 }
 
+/* CORRECCIÓN: Eliminar efectos hover/active no deseados en móvil */
 .carousel-arrow:hover,
 .process-carousel-arrow:hover {
-    background: var(--accent);
-    color: var(--dark);
+    background: rgba(15, 52, 96, 0.95);
+    color: white;
     opacity: 1;
-    transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%);
 }
 
 .carousel-arrow.prev-arrow,
@@ -1269,6 +1270,7 @@ footer {
     justify-content: space-between;
     -webkit-touch-callout: none;
     user-select: none;
+    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
 }
 
 .plan-card-mobile.active {
@@ -1481,6 +1483,7 @@ footer {
     backdrop-filter: blur(10px);
     -webkit-touch-callout: none;
     user-select: none;
+    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
 }
 
 .step-mobile.active {
@@ -2139,10 +2142,27 @@ footer:last-child {
         text-decoration: none !important;
     }
     
-    /* 10. MEJORAR RENDIMIENTO TÁCTIL */
+    /* 10. CORRECCIÓN CRÍTICA: MEJORAR SCROLL VERTICAL EN CARRUSELES */
     .plans-carousel,
     .process-carousel {
-        touch-action: pan-x pinch-zoom;
+        touch-action: pan-y;
+    }
+    
+    .plan-card-mobile,
+    .step-mobile {
+        touch-action: pan-y;
+        pointer-events: auto;
+    }
+    
+    .carousel-container,
+    .process-carousel-container {
+        touch-action: pan-y;
+        pointer-events: none;
+    }
+    
+    .carousel-container *,
+    .process-carousel-container * {
+        pointer-events: auto;
     }
     
     /* 11. CORRECCIÓN: Botones del hero en columna en móvil */
@@ -2446,7 +2466,7 @@ footer:last-child {
         overflow: visible;
     }
     
-    /* Flechas posicionadas ABSOLUTAMENTE y al límite */
+    /* Flechas posicionadas ABSOLUTAMENTE y al límite - CORREGIDAS */
     .carousel-arrow,
     .process-carousel-arrow {
         position: absolute !important;
@@ -2462,16 +2482,25 @@ footer:last-child {
         justify-content: center !important;
     }
     
-    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
+    /* FLECHAS CORREGIDAS: Sin efectos hover/active no deseados */
+    .carousel-arrow:hover,
+    .carousel-arrow:active,
+    .process-carousel-arrow:hover,
+    .process-carousel-arrow:active {
+        background: rgba(15, 52, 96, 0.95) !important;
+        color: white !important;
+        transform: translateY(-50%) !important;
+    }
+    
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -25px !important;
+        left: 5px !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -25px !important;
+        right: 5px !important;
         left: auto !important;
     }
     
@@ -2479,7 +2508,7 @@ footer:last-child {
     .carousel-container,
     .process-carousel-container {
         overflow: visible !important;
-        padding: 0 5px !important;
+        padding: 0 10px !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -2657,12 +2686,12 @@ footer:last-child {
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px;
+        left: 0px;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px;
+        right: 0px;
     }
 }
 
