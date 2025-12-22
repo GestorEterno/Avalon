@@ -1,5 +1,5 @@
-/* index.css - Versión Ultra Optimizada sin Pantalla Negra Inicial */
-/* LOADER ULTRA FLUIDO + ANIMACIONES PERFECTAS */
+/* index.css - Versión Ultra Optimizada - CARGA INSTANTÁNEA */
+/* SIN LOADER - ANIMACIONES PERFECTAS DESDE EL INICIO */
 
 :root {
     --primary: #0f3460;
@@ -40,10 +40,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
-    /* ELIMINADO: opacity: 0 y animación que causaba pantalla negra */
-    /* Ahora el body es visible inmediatamente */
     opacity: 1;
     visibility: visible;
+    /* Carga instantánea - sin efectos de entrada */
+    animation: none !important;
 }
 
 /* ===== ANIMACIONES MINIMIZADAS Y OPTIMIZADAS ===== */
@@ -91,207 +91,48 @@ body {
     100% { transform: translateY(-30px) translateX(20px); }
 }
 
-/* ===== LOADER ULTRA FLUIDO - SIN PANTALLA NEGRA ===== */
-.page-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.page-loader.loaded {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-content {
-    text-align: center;
-    transform: translateY(-30px);
-    animation: loaderContentIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.logo-loader {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: logoSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
-}
-
-.logo-loader img {
-    height: 50px;
-    width: auto;
-    animation: gentleGlow 2s ease-in-out infinite;
-}
-
-.logo-loader h2 {
-    color: var(--light);
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
-
-.loader-bar {
-    width: 200px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    overflow: hidden;
-    position: relative;
-    transform: scaleX(0.8);
-    opacity: 0;
-    animation: barReveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-}
-
-.loader-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-light));
-    border-radius: 3px;
-    animation: progressFill 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
-}
-
-/* Animaciones del loader */
-@keyframes loaderContentIn {
-    to {
-        transform: translateY(0);
-    }
-}
-
-@keyframes logoSlideIn {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes barReveal {
-    to {
-        transform: scaleX(1);
-        opacity: 1;
-    }
-}
-
-@keyframes progressFill {
-    0% {
-        width: 0%;
-        transform: translateX(-10%);
-    }
-    50% {
-        width: 70%;
-    }
-    100% {
-        width: 100%;
-        transform: translateX(0%);
-    }
-}
-
-/* ELIMINADO: keyframes bodyFadeIn que causaba pantalla negra */
-
-/* ===== ANIMACIONES DE ENTRADA DE CONTENIDO ===== */
+/* ===== ANIMACIONES DE ENTRADA INSTANTÁNEAS ===== */
 .navbar {
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: navbarReveal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+    opacity: 1;
+    transform: translateY(0);
+    /* Animación instantánea pero con delay mínimo para secuencia */
+    animation: none;
 }
 
 .hero-content h1 {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: titleReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
 }
 
 .hero-content p {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: textReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
 }
 
 .hero-stats {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: statsReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
 }
 
 .hero-buttons {
-    opacity: 0;
-    transform: translateY(15px);
-    animation: buttonsReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
 }
 
 .hero-image .floating-card:nth-child(1) {
-    opacity: 0;
-    transform: translateY(20px) rotate(-3deg);
-    animation: cardRevealLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    animation: none;
 }
 
 .hero-image .floating-card:nth-child(2) {
-    opacity: 0;
-    transform: translateY(20px) rotate(3deg);
-    animation: cardRevealRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
-}
-
-@keyframes navbarReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes titleReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes textReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes statsReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes buttonsReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes cardRevealLeft {
-    to {
-        opacity: 1;
-        transform: translateY(0) rotate(0);
-    }
-}
-
-@keyframes cardRevealRight {
-    to {
-        opacity: 1;
-        transform: translateY(0) rotate(0);
-    }
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    animation: none;
 }
 
 /* ===== BACKGROUND OPTIMIZADO ===== */
@@ -2099,7 +1940,7 @@ section:last-of-type {
     padding-bottom: 40px !important;
 }
 
-/* Animaciones de entrada */
+/* Animaciones de entrada para elementos que se revelan al scroll */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
