@@ -1,68 +1,186 @@
-// index.js - Versión Ultra Optimizada para Móvil y PC - REESCRITA COMPLETAMENTE
+// index.js - Versión Ultra Optimizada con Loader Fluido
+// ANIMACIONES PERFECTAS PARA MÓVIL Y PC
 
-// ===== NAVEGACIÓN MÓVIL =====
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// ===== NAVEGACIÓN ACTIVA SUAVE =====
-const sections = document.querySelectorAll('section');
-
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}, { threshold: 0.3 });
-
-sections.forEach(section => {
-    sectionObserver.observe(section);
-});
-
-// ===== EFECTO SCROLL NAVBAR =====
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    const currentScroll = window.scrollY;
+// ===== LOADER ULTRA FLUIDO Y ANIMACIONES DE ENTRADA =====
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ AVALON CREATORS - Inicializando con animaciones fluidas');
     
-    if (currentScroll > 50) {
-        navbar.style.background = 'rgba(15, 52, 96, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
-    } else {
-        navbar.style.background = 'rgba(15, 52, 96, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    // Ocultar loader después de que todo esté listo
+    const pageLoader = document.getElementById('page-loader');
+    
+    // Función optimizada para ocultar el loader
+    function hideLoader() {
+        // Esperar a que las fuentes estén cargadas
+        document.fonts.ready.then(() => {
+            // Pequeña pausa para asegurar que todo se renderizó
+            setTimeout(() => {
+                if (pageLoader) {
+                    pageLoader.classList.add('loaded');
+                    
+                    // Remover el loader del DOM después de la animación
+                    setTimeout(() => {
+                        pageLoader.style.display = 'none';
+                        document.body.classList.add('loaded');
+                        console.log('🎉 Loader ocultado - Animaciones completadas');
+                        
+                        // Iniciar el resto de funcionalidades
+                        initAllFunctionalities();
+                    }, 300);
+                }
+            }, 100);
+        });
     }
     
-    lastScroll = currentScroll;
+    // Manejar precarga de imágenes críticas
+    const criticalImages = [
+        'Logo Avalon.png'
+    ];
+    
+    let imagesLoaded = 0;
+    const totalCriticalImages = criticalImages.length;
+    
+    if (totalCriticalImages > 0) {
+        criticalImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+            img.onload = img.onerror = () => {
+                imagesLoaded++;
+                if (imagesLoaded === totalCriticalImages) {
+                    hideLoader();
+                }
+            };
+        });
+    } else {
+        // Si no hay imágenes críticas, esperar un momento
+        setTimeout(hideLoader, 400);
+    }
+    
+    // Timeout de seguridad
+    setTimeout(hideLoader, 1500);
 });
 
-// ===== INICIALIZACIÓN =====
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ AVALON CREATORS - Sitio optimizado para móvil y PC');
+// ===== INICIALIZAR TODAS LAS FUNCIONALIDADES =====
+function initAllFunctionalities() {
+    console.log('🚀 Inicializando todas las funcionalidades');
     
-    // Animar elementos al cargar
+    // 1. Navegación móvil
+    initMobileNavigation();
+    
+    // 2. Navegación activa suave
+    initActiveNavigation();
+    
+    // 3. Efecto scroll navbar
+    initScrollEffect();
+    
+    // 4. Animar elementos al cargar
+    initRevealAnimations();
+    
+    // 5. Inicializar carruseles solo en móvil
+    if (window.innerWidth <= 768) {
+        console.log('📱 Inicializando carruseles móviles...');
+        initMobileCarousels();
+    }
+    
+    // 6. Setup social notifications
+    setupSocialNotifications();
+    
+    // 7. Contadores animados
+    initCounters();
+    
+    // 8. Responsive JS
+    initResponsive();
+    
+    // 9. Detección de táctil
+    detectTouchDevice();
+    
+    console.log('✅ Todas las funcionalidades inicializadas');
+}
+
+// ===== NAVEGACIÓN MÓVIL =====
+function initMobileNavigation() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (!hamburger || !navMenu) return;
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
+
+// ===== NAVEGACIÓN ACTIVA SUAVE =====
+function initActiveNavigation() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (sections.length === 0 || navLinks.length === 0) return;
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+}
+
+// ===== EFECTO SCROLL NAVBAR =====
+function initScrollEffect() {
+    let lastScroll = 0;
+    let ticking = false;
+    
+    function updateNavbar() {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+        
+        const currentScroll = window.scrollY;
+        
+        if (currentScroll > 50) {
+            navbar.style.background = 'rgba(15, 52, 96, 0.98)';
+            navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+        } else {
+            navbar.style.background = 'rgba(15, 52, 96, 0.95)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        }
+        
+        lastScroll = currentScroll;
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    });
+}
+
+// ===== ANIMACIONES DE REVELADO =====
+function initRevealAnimations() {
     const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
+    
+    if (elementsToAnimate.length === 0) return;
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -76,19 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('reveal');
         revealObserver.observe(el);
     });
-    
-    // Inicializar carruseles solo en móvil
-    if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando carruseles móviles...');
-        initMobileCarousels();
-    }
-    
-    // Setup social notifications
-    setupSocialNotifications();
-    
-    // Contadores animados
-    initCounters();
-});
+}
 
 // ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
 function initMobileCarousels() {
@@ -111,7 +217,6 @@ function initPlansCarousel() {
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
-    let isScrolling = false;
     let isAnimating = false;
     
     console.log(`📊 Carrusel de planes: ${totalSlides} slides encontrados`);
@@ -142,12 +247,12 @@ function initPlansCarousel() {
             
             setTimeout(() => {
                 isAnimating = false;
-                isScrolling = false;
             }, 300);
         } else {
             carousel.scrollLeft = scrollPosition;
-            isAnimating = false;
-            isScrolling = false;
+            setTimeout(() => {
+                isAnimating = false;
+            }, 50);
         }
     }
     
@@ -207,13 +312,11 @@ function initPlansCarousel() {
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
         
-        isScrolling = true;
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = cardWidth * 0.1;
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
@@ -222,13 +325,11 @@ function initPlansCarousel() {
             if (newIndex < 0) newIndex = 0;
             if (newIndex >= totalSlides) newIndex = totalSlides - 1;
             
-            // Solo actualizar si hay cambio significativo
+            // Solo actualizar si hay cambio
             if (newIndex !== currentIndex && !isAnimating) {
                 currentIndex = newIndex;
                 updateCarousel(false);
             }
-            
-            isScrolling = false;
         }, 150);
     });
     
@@ -257,7 +358,6 @@ function initProcessCarousel() {
     
     let currentIndex = 0;
     const totalSlides = steps.length;
-    let isScrolling = false;
     let isAnimating = false;
     
     console.log(`📊 Carrusel de proceso: ${totalSlides} steps encontrados`);
@@ -288,12 +388,12 @@ function initProcessCarousel() {
             
             setTimeout(() => {
                 isAnimating = false;
-                isScrolling = false;
             }, 300);
         } else {
             carousel.scrollLeft = scrollPosition;
-            isAnimating = false;
-            isScrolling = false;
+            setTimeout(() => {
+                isAnimating = false;
+            }, 50);
         }
     }
     
@@ -351,13 +451,11 @@ function initProcessCarousel() {
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
         
-        isScrolling = true;
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
             const stepWidth = steps[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = stepWidth * 0.1;
             
             let newIndex = Math.round(scrollLeft / stepWidth);
             
@@ -368,8 +466,6 @@ function initProcessCarousel() {
                 currentIndex = newIndex;
                 updateCarousel(false);
             }
-            
-            isScrolling = false;
         }, 150);
     });
     
@@ -385,6 +481,8 @@ function initProcessCarousel() {
 // ===== CONTADORES ANIMADOS =====
 function initCounters() {
     const stats = document.querySelectorAll('.stat');
+    
+    if (stats.length === 0) return;
     
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -407,7 +505,7 @@ function animateCounter(element) {
     const text = element.textContent;
     const target = parseInt(text.replace('+', '').replace('%', ''));
     const suffix = text.includes('+') ? '+' : text.includes('%') ? '%' : '';
-    const duration = 2000;
+    const duration = 1800;
     let start = null;
     
     function step(timestamp) {
@@ -455,49 +553,41 @@ function setupSocialNotifications() {
 }
 
 // ===== RESPONSIVE JS =====
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
+function initResponsive() {
+    let resizeTimeout;
     
-    resizeTimeout = setTimeout(() => {
-        console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
         
-        // Re-inicializar carruseles si cambiamos a móvil
-        if (window.innerWidth <= 768) {
-            const carouselsExist = document.querySelector('.plans-carousel');
-            if (carouselsExist && !carouselsExist.dataset.initialized) {
-                console.log('📱 Re-inicializando carruseles para móvil...');
-                initMobileCarousels();
-                carouselsExist.dataset.initialized = true;
+        resizeTimeout = setTimeout(() => {
+            console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
+            
+            // Re-inicializar carruseles si cambiamos a móvil
+            if (window.innerWidth <= 768) {
+                const carouselsExist = document.querySelector('.plans-carousel');
+                if (carouselsExist && !carouselsExist.dataset.initialized) {
+                    console.log('📱 Re-inicializando carruseles para móvil...');
+                    initMobileCarousels();
+                    carouselsExist.dataset.initialized = true;
+                }
             }
-        }
-    }, 250);
-});
-
-// ===== MEJORAS DE PERFORMANCE =====
-// Evitar layout thrashing
-let scheduledAnimationFrame = false;
-function readAndWriteDom() {
-    if (!scheduledAnimationFrame) {
-        scheduledAnimationFrame = true;
-        requestAnimationFrame(() => {
-            // Operaciones de DOM aquí
-            scheduledAnimationFrame = false;
-        });
-    }
+        }, 250);
+    });
 }
 
 // ===== DETECCIÓN DE TÁCTIL =====
-const isTouchDevice = 'ontouchstart' in window || 
-    navigator.maxTouchPoints > 0 || 
-    navigator.msMaxTouchPoints > 0;
-
-if (isTouchDevice) {
-    document.body.classList.add('touch-device');
-    console.log('📱 Dispositivo táctil detectado');
-} else {
-    document.body.classList.add('no-touch-device');
-    console.log('💻 Dispositivo no táctil detectado');
+function detectTouchDevice() {
+    const isTouchDevice = 'ontouchstart' in window || 
+        navigator.maxTouchPoints > 0 || 
+        navigator.msMaxTouchPoints > 0;
+    
+    if (isTouchDevice) {
+        document.body.classList.add('touch-device');
+        console.log('📱 Dispositivo táctil detectado');
+    } else {
+        document.body.classList.add('no-touch-device');
+        console.log('💻 Dispositivo no táctil detectado');
+    }
 }
 
 // ===== POLYFILL PARA SMOOTH SCROLL =====
@@ -511,10 +601,30 @@ window.addEventListener('error', function(e) {
     console.error('❌ Error en la aplicación:', e.error);
 });
 
+// ===== PERFORMANCE OPTIMIZATIONS =====
+// Evitar layout thrashing
+let scheduledAnimationFrame = false;
+function readAndWriteDom() {
+    if (!scheduledAnimationFrame) {
+        scheduledAnimationFrame = true;
+        requestAnimationFrame(() => {
+            // Operaciones de DOM aquí
+            scheduledAnimationFrame = false;
+        });
+    }
+}
+
 // ===== LOADING STATES =====
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
         console.log('🎉 Página completamente cargada y lista');
-        document.body.classList.add('loaded');
+        document.body.classList.add('fully-loaded');
     }
 });
+
+// Exportar funciones globales si es necesario
+window.AvalonCreators = {
+    initAllFunctionalities,
+    initMobileCarousels,
+    initCounters
+};
