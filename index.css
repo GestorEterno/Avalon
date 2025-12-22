@@ -1,6 +1,5 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES CRÍTICAS APLICADAS */
-/* MODIFICACIÓN: Eliminada animación de levitación de paneles del hero */
-/* MEJORAS APLICADAS: Iconos más fluidos, planes con animación uniforme, elementos de lista con hover */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES APLICADAS */
+/* CORRECCIÓN CRÍTICA: Botones del hero en misma línea en escritorio */
 
 :root {
     --primary: #0f3460;
@@ -134,39 +133,39 @@ body {
     padding: 0 5%;
 }
 
-/* === LOGO DEL NAVBAR CON EFECTO IDÉNTICO AL FOOTER === */
+/* === LOGO DEL NAVBAR === */
 .logo {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
     cursor: pointer;
 }
 
 .logo:hover {
-    transform: translateY(-2px) !important;
+    transform: translateY(-2px);
 }
 
 .logo-img {
     height: 45px;
     width: auto;
-    transition: filter 0.2s ease !important;
+    transition: filter 0.2s ease;
 }
 
 .logo:hover .logo-img {
-    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
+    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3));
 }
 
 .logo h2 {
     color: var(--light);
     font-weight: 800;
     font-size: 1.3rem;
-    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .logo:hover h2 {
-    color: var(--accent) !important;
-    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
+    color: var(--accent);
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
 }
 
 .nav-menu {
@@ -182,7 +181,7 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1), 
-                color 0.2s ease !important;
+                color 0.2s ease;
     position: relative;
     padding: 0.5rem 0;
     display: inline-block;
@@ -204,8 +203,8 @@ body {
 }
 
 .nav-link:hover {
-    transform: translateY(-2px) !important;
-    color: var(--accent) !important;
+    transform: translateY(-2px);
+    color: var(--accent);
 }
 
 .nav-link.active {
@@ -272,7 +271,7 @@ body {
 
 .hero-content {
     flex: 1;
-    max-width: 500px;
+    max-width: 600px;
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -330,13 +329,36 @@ body {
     opacity: 0.8;
 }
 
+/* ===== CORRECCIÓN CRÍTICA: BOTONES DEL HERO EN MISMA LÍNEA ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 2rem;
 }
 
-.btn-primary, .btn-secondary {
+/* En escritorio: mantener botones en línea horizontal */
+@media (min-width: 769px) {
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+    .btn-primary {
+        flex: 1;
+        min-width: 280px;
+        max-width: 320px;
+    }
+    
+    .btn-secondary {
+        flex: 0 0 auto;
+        min-width: 180px;
+    }
+}
+
+/* Botón primario */
+.btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
@@ -348,14 +370,11 @@ body {
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
     background: var(--accent);
     color: var(--dark);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary:hover {
@@ -374,6 +393,7 @@ body {
 .btn-main-text {
     font-size: 1rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .btn-sub-text {
@@ -383,10 +403,22 @@ body {
     margin-top: 0.2rem;
 }
 
+/* Botón secundario - CORREGIDO para estar en línea */
 .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    font-size: 0.95rem;
     background: transparent;
     color: var(--light);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
 }
 
 .btn-secondary:hover {
@@ -429,7 +461,7 @@ body {
 /* === MEJORAS DE FLUIDEZ PARA ICONOS === */
 .service-card .service-icon,
 .floating-card .card-icon {
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: center center;
     will-change: transform;
     filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
@@ -438,10 +470,10 @@ body {
 
 .service-card:hover .service-icon,
 .floating-card:hover .card-icon {
-    transform: scale(1.18) !important;
-    color: var(--accent-light) !important;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
-    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
+    transform: scale(1.18);
+    color: var(--accent-light);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
 }
 
 .card-icon {
@@ -729,7 +761,7 @@ section {
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     position: relative;
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
@@ -740,18 +772,17 @@ section {
 
 /* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
 .plan-card.featured {
-    /* SOLO DIFERENCIAS VISUALES, NO DE TAMAÑO */
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* ANIMACIÓN HOVER IDÉNTICA PARA LOS 3 PLANES (IGUAL QUE BOTONES HERO) */
+/* ANIMACIÓN HOVER IDÉNTICA PARA LOS 3 PLANES */
 .plan-card:hover,
 .plan-card.featured:hover {
-    transform: translateY(-8px) scale(1.02) !important;
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 
         0 15px 35px rgba(0, 0, 0, 0.25),
-        0 5px 15px rgba(255, 215, 0, 0.25) !important;
+        0 5px 15px rgba(255, 215, 0, 0.25);
     border-color: rgba(255, 215, 0, 0.4);
     background: rgba(255, 255, 255, 0.09);
 }
@@ -760,7 +791,7 @@ section {
     border-color: var(--accent);
     box-shadow: 
         0 15px 35px rgba(0, 0, 0, 0.3),
-        0 5px 20px rgba(255, 215, 0, 0.35) !important;
+        0 5px 20px rgba(255, 215, 0, 0.35);
 }
 
 .plan-badge {
@@ -843,29 +874,29 @@ section {
 }
 
 .plan-features li {
-    padding: 0.6rem 0.5rem !important;
+    padding: 0.6rem 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 0.6rem;
     font-size: 0.95rem;
-    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: left center;
-    margin: 0 -0.5rem !important;
-    border-radius: 4px !important;
+    margin: 0 -0.5rem;
+    border-radius: 4px;
 }
 
 .plan-features li:hover {
-    transform: scale(1.03) translateX(3px) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: var(--accent-light) !important;
-    border-bottom-color: rgba(255, 215, 0, 0.3) !important;
+    transform: scale(1.03) translateX(3px);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-light);
+    border-bottom-color: rgba(255, 215, 0, 0.3);
 }
 
 .plan-features li:hover i {
-    transform: scale(1.15) !important;
-    color: var(--accent-light) !important;
-    transition: transform 0.2s ease !important;
+    transform: scale(1.15);
+    color: var(--accent-light);
+    transition: transform 0.2s ease;
 }
 
 .plan-features i {
@@ -890,7 +921,7 @@ section {
     color: var(--light);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.95rem;
     display: flex;
@@ -901,8 +932,8 @@ section {
 
 .btn-plan:hover,
 .btn-plan.featured:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
 }
 
 .btn-plan.featured {
@@ -965,7 +996,7 @@ section {
 footer {
     background: transparent;
     color: var(--light);
-    padding: 0.3rem 0 0.2rem !important;
+    padding: 0.3rem 0 0.2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 1;
@@ -977,87 +1008,87 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.5rem !important;
-    margin-bottom: 0.3rem !important;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .footer-mobile {
     display: block;
     width: 100%;
-    padding: 0.3rem 0 !important;
+    padding: 0.3rem 0;
 }
 
 .footer-brand {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem !important;
-    padding: 0.1rem 0 !important;
+    gap: 0.5rem;
+    padding: 0.1rem 0;
 }
 
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 0.3rem !important;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
-    margin-bottom: 0.1rem !important;
+    gap: 0.3rem;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
+    margin-bottom: 0.1rem;
     cursor: pointer;
 }
 
 .footer-logo .logo-img {
-    height: 32px !important;
+    height: 32px;
     width: auto;
-    transition: filter 0.2s ease !important;
+    transition: filter 0.2s ease;
 }
 
 .footer-logo h3 {
-    font-size: 0.95rem !important;
+    font-size: 0.95rem;
     font-weight: 700;
-    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-tagline {
     opacity: 0.8;
-    line-height: 1.3 !important;
-    font-size: 0.8rem !important;
+    line-height: 1.3;
+    font-size: 0.8rem;
     max-width: 300px;
-    margin: 0.1rem 0 !important;
+    margin: 0.1rem 0;
 }
 
 .social-links {
     display: flex;
-    gap: 0.6rem !important;
-    margin-top: 0.2rem !important;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px !important;
-    height: 30px !important;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
     color: var(--light);
     text-decoration: none;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
                 background 0.2s ease,
-                color 0.2s ease !important;
+                color 0.2s ease;
 }
 
 .social-links a:hover {
     background: var(--accent);
     color: var(--dark);
-    transform: translateY(-2px) !important;
+    transform: translateY(-2px);
 }
 
 .footer-bottom {
     text-align: center;
-    padding-top: 0.5rem !important;
+    padding-top: 0.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 0.7rem !important;
+    font-size: 0.7rem;
     opacity: 0.7;
-    margin-top: 0.2rem !important;
+    margin-top: 0.2rem;
 }
 
 /* === SOCIAL NOTIFICATION === */
@@ -1140,44 +1171,44 @@ footer {
 /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow,
 .process-carousel-arrow {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 44px !important;
-    height: 44px !important;
-    background: rgba(15, 52, 96, 0.95) !important;
-    border: 2px solid var(--accent) !important;
-    border-radius: 50% !important;
-    color: white !important;
-    font-size: 1.2rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    z-index: 100 !important;
-    transition: var(--transition) !important;
-    opacity: 0.9 !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(15, 52, 96, 0.95);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: var(--transition);
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-arrow:hover,
 .process-carousel-arrow:hover {
-    background: var(--accent) !important;
-    color: var(--dark) !important;
-    opacity: 1 !important;
-    transform: translateY(-50%) scale(1.1) !important;
+    background: var(--accent);
+    color: var(--dark);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-arrow.prev-arrow,
 .process-carousel-arrow.prev-arrow {
-    left: 10px !important;
-    right: auto !important;
+    left: 10px;
+    right: auto;
 }
 
 .carousel-arrow.next-arrow,
 .process-carousel-arrow.next-arrow {
-    right: 10px !important;
-    left: auto !important;
+    right: 10px;
+    left: auto;
 }
 
 /* Plan cards móvil */
@@ -1459,9 +1490,9 @@ footer {
     max-width: 100%;
 }
 
-/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC (CON CORRECCIONES) ===== */
+/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
 @media (min-width: 769px) {
-    /* Animación escalonada para elementos del hero - CORREGIDA MÁS FLUIDA */
+    /* Animación escalonada para elementos del hero */
     .hero-content h1 {
         opacity: 0;
         transform: translateY(30px) scale(0.95);
@@ -1492,7 +1523,7 @@ footer {
         animation: heroStatLoad 0.6s ease-out 1.4s forwards;
     }
     
-    /* CORRECCIÓN CRÍTICA: Botones del hero con animación más suave */
+    /* Botones del hero con animación más suave */
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
@@ -1511,7 +1542,7 @@ footer {
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
-    /* Animaciones específicas para hero - CORREGIDAS */
+    /* Animaciones específicas para hero */
     @keyframes heroTitleLoad {
         to {
             opacity: 1;
@@ -1534,7 +1565,7 @@ footer {
         }
     }
     
-    /* CORRECCIÓN CRÍTICA: Animación suavizada para botones del hero */
+    /* Animación suavizada para botones del hero */
     @keyframes heroButtonsLoadCorrected {
         0% {
             opacity: 0;
@@ -1561,12 +1592,12 @@ footer {
     .btn-primary::before,
     .btn-plan::before,
     .btn-plan.featured::before {
-        content: none !important;
+        content: none;
     }
     
-    /* Botón "Descubre Planes Escalables" - CORREGIDO DEFINITIVAMENTE */
+    /* Botón "Descubre Planes Escalables" */
     .btn-primary {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         background: var(--accent);
         color: var(--dark);
         position: relative;
@@ -1580,7 +1611,7 @@ footer {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
-    /* 2. CORRECCIÓN CRÍTICA: "Quiero mi Web Corporativa" - SIN PARPADEO */
+    /* 2. CORRECCIÓN CRÍTICA: "Quiero mi Web Corporativa" */
     .btn-plan.featured {
         background: var(--accent);
         color: var(--dark);
@@ -1612,30 +1643,30 @@ footer {
     
     /* 4. Servicios - ICONOS CON EFECTO FLUIDO MEJORADO */
     .service-card .service-icon {
-        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
         transform-origin: center center;
     }
     
     .service-card:hover .service-icon {
-        transform: scale(1.18) !important;
-        color: var(--accent-light) !important;
-        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
+        transform: scale(1.18);
+        color: var(--accent-light);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
     
     /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO CON EFECTO FLUIDO */
     .floating-card .card-icon {
-        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
         transform-origin: center center;
     }
     
     .floating-card:hover .card-icon {
-        transform: scale(1.18) !important;
-        color: var(--accent-light) !important;
-        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
+        transform: scale(1.18);
+        color: var(--accent-light);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
     
     .floating-card {
@@ -1658,7 +1689,7 @@ footer {
         transition: all 0.3s ease;
     }
     
-    /* 6. CORRECCIÓN: Planes - TODOS CON LA MISMA ANIMACIÓN (YA APLICADO ARRIBA) */
+    /* 6. CORRECCIÓN: Planes */
     .plan-card:hover .price-amount {
         transform: scale(1.05);
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1680,7 +1711,7 @@ footer {
         background: rgba(255, 255, 255, 0.08);
     }
     
-    /* 8. Pasos del proceso - hover ajustado (ANIMACIONES ORIGINALES RESTAURADAS) */
+    /* 8. Pasos del proceso - hover ajustado */
     .step {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -1741,181 +1772,162 @@ footer {
 @media (min-width: 992px) {
     /* 1. REDUCIR ESPACIO INNECESARIO EN EL FOOTER */
     footer {
-        padding: 0.1rem 0 !important;
-        margin-top: -5px !important;
+        padding: 0.1rem 0;
+        margin-top: -5px;
     }
     
     /* 2. MEJORAR ESPACIADO Y ALINEACIÓN */
     .footer-content {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 0 !important;
-        margin-bottom: 0.2rem !important;
-        padding: 0.1rem 0 !important;
-        min-height: 40px !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 0.2rem;
+        padding: 0.1rem 0;
+        min-height: 40px;
     }
     
     /* 3. OCULTAR FOOTER MÓVIL EN PC */
     .footer-mobile {
-        display: none !important;
+        display: none;
     }
     
     /* 4. MOSTRAR LAS TRES COLUMNAS EN PC */
     .footer-left,
     .footer-center,
     .footer-right {
-        display: flex !important;
-        align-items: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        height: 40px !important;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        height: 40px;
     }
     
     .footer-left {
-        justify-content: flex-start !important;
+        justify-content: flex-start;
         flex: 1;
     }
     
     .footer-center {
-        justify-content: center !important;
+        justify-content: center;
         flex: 1;
     }
     
     .footer-right {
-        justify-content: flex-end !important;
+        justify-content: flex-end;
         flex: 1;
     }
     
     /* 5. LOGO MÁS GRANDE Y CON EFECTO FLUIDO IDÉNTICO AL MENÚ */
     .footer-logo {
-        margin: 0 !important;
-        padding: 0 !important;
-        gap: 0.6rem !important;
-        height: 40px !important;
-        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+        margin: 0;
+        padding: 0;
+        gap: 0.6rem;
+        height: 40px;
+        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
         cursor: pointer;
-        padding: 2px 4px !important;
-        border-radius: 4px !important;
+        padding: 2px 4px;
+        border-radius: 4px;
     }
     
     .footer-logo .logo-img {
-        height: 36px !important;
-        width: auto !important;
-        transition: filter 0.2s ease !important;
+        height: 36px;
+        width: auto;
+        transition: filter 0.2s ease;
     }
     
     .footer-logo h3 {
-        font-size: 1rem !important;
-        font-weight: 800 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        line-height: 1 !important;
-        transition: color 0.2s ease, text-shadow 0.2s ease !important;
+        font-size: 1rem;
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
     }
     
     /* EFECTO HOVER IDÉNTICO AL MENÚ - ULTRA FLUIDO */
     .footer-logo:hover {
-        transform: translateY(-2px) !important;
-        background: transparent !important;
+        transform: translateY(-2px);
+        background: transparent;
     }
     
     .footer-logo:hover .logo-img {
-        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
+        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3));
     }
     
     .footer-logo:hover h3 {
-        color: var(--accent) !important;
-        text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
+        color: var(--accent);
+        text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
     }
     
     /* 6. CENTRO: FRASE SIN LÍNEAS LATERALES Y QUE NO BAJE DE LÍNEA */
     .footer-center .footer-tagline {
         opacity: 0.9;
-        line-height: 1.3 !important;
-        font-size: 0.85rem !important;
-        margin: 0 !important;
+        line-height: 1.3;
+        font-size: 0.85rem;
+        margin: 0;
         text-align: center;
-        padding: 0 10px !important;
-        border-left: none !important;
-        border-right: none !important;
-        max-width: none !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        min-width: 0 !important;
-        flex-shrink: 1 !important;
+        padding: 0 10px;
+        border-left: none;
+        border-right: none;
+        max-width: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+        flex-shrink: 1;
     }
     
     /* 7. REDES SOCIALES CON EFECTO FLUIDO IDÉNTICO */
     .social-links {
-        margin: 0 !important;
-        padding: 0 !important;
-        gap: 0.4rem !important;
-        height: 32px !important;
-        display: flex !important;
-        align-items: center !important;
+        margin: 0;
+        padding: 0;
+        gap: 0.4rem;
+        height: 32px;
+        display: flex;
+        align-items: center;
     }
     
     .social-links a {
-        width: 30px !important;
-        height: 30px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
                     background 0.2s ease,
-                    color 0.2s ease !important;
+                    color 0.2s ease;
     }
     
     .social-links a:hover {
-        background: var(--accent) !important;
-        color: var(--dark) !important;
-        transform: translateY(-2px) !important;
+        background: var(--accent);
+        color: var(--dark);
+        transform: translateY(-2px);
     }
     
     /* 8. FOOTER BOTTON MÁS COMPACTO */
     .footer-bottom {
-        padding: 0.4rem 0 0.2rem !important;
-        margin-top: 0.1rem !important;
-        font-size: 0.75rem !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-        line-height: 1.2 !important;
+        padding: 0.4rem 0 0.2rem;
+        margin-top: 0.1rem;
+        font-size: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        line-height: 1.2;
     }
     
     /* 9. CONTENEDOR */
     footer .container {
-        padding: 0 20px !important;
-        margin: 0 auto !important;
-    }
-    
-    /* 10. OPTIMIZACIONES DE RENDIMIENTO PARA HOVER FLUIDO */
-    .footer-logo,
-    .nav-link,
-    .social-links a,
-    .btn-primary,
-    .btn-secondary,
-    .service-card,
-    .plan-card,
-    .step,
-    .floating-card {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        -webkit-font-smoothing: antialiased;
-    }
-    
-    .nav-menu {
-        transform: translateZ(0);
+        padding: 0 20px;
+        margin: 0 auto;
     }
 }
 
 /* Eliminar cualquier espacio adicional en el último elemento */
 footer:last-child {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* === OPTIMIZACIÓN GENERAL DE FLUIDEZ === */
@@ -1926,17 +1938,28 @@ footer:last-child {
 .btn-primary,
 .btn-secondary,
 .btn-plan {
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-    perspective: 1000px !important;
-    -webkit-perspective: 1000px !important;
-    transform-style: preserve-3d !important;
-    -webkit-transform-style: preserve-3d !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     will-change: transform, box-shadow;
 }
 
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
 @media (max-width: 768px) {
+    /* CORRECCIÓN CRÍTICA: Botones del hero en columna en móvil */
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
     /* Desactivar todas las animaciones de carga del hero en móvil */
     .hero-content h1,
     .hero-content p,
@@ -1987,7 +2010,6 @@ footer:last-child {
         box-shadow: var(--shadow) !important;
     }
     
-    /* MODIFICACIÓN: Eliminada animación de levitación en móvil */
     .floating-card {
         animation: none !important;
     }
@@ -2262,40 +2284,40 @@ footer:last-child {
     
     /* Footer móvil - COMPACTADO AL MÁXIMO */
     footer {
-        padding: 0.2rem 0 0.1rem !important;
+        padding: 0.2rem 0 0.1rem;
     }
     
     /* OCULTAR FOOTER DE PC EN MÓVIL */
     .footer-left,
     .footer-center,
     .footer-right {
-        display: none !important;
+        display: none;
     }
     
     .footer-mobile {
-        display: block !important;
+        display: block;
     }
     
     .footer-content {
-        gap: 0.3rem !important;
-        margin-bottom: 0.2rem !important;
+        gap: 0.3rem;
+        margin-bottom: 0.2rem;
     }
     
     .footer-mobile {
-        padding: 0.2rem 0 !important;
+        padding: 0.2rem 0;
     }
     
     .footer-brand {
-        gap: 0.3rem !important;
+        gap: 0.3rem;
     }
     
     .footer-tagline {
-        margin: 0.05rem 0 !important;
-        font-size: 0.75rem !important;
+        margin: 0.05rem 0;
+        font-size: 0.75rem;
     }
     
     .social-links {
-        margin-top: 0.1rem !important;
+        margin-top: 0.1rem;
     }
     
     /* Desactivar hover en móvil para mejor rendimiento */
@@ -2349,20 +2371,20 @@ footer:last-child {
     
     .carousel-arrow,
     .process-carousel-arrow {
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 1rem !important;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
     
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: -20px !important;
+        left: -20px;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: -20px !important;
+        right: -20px;
     }
 }
 
@@ -2386,12 +2408,12 @@ footer:last-child {
 
 /* Asegurar que las secciones previas no agreguen espacio extra */
 section:last-of-type {
-    margin-bottom: 0 !important;
-    padding-bottom: 40px !important;
+    margin-bottom: 0;
+    padding-bottom: 40px;
 }
 
 .plans {
-    padding-bottom: 40px !important;
+    padding-bottom: 40px;
 }
 
 /* Animaciones de entrada */
