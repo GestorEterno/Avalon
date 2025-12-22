@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada con Loader Fluido */
+/* index.css - Versión Ultra Optimizada sin Pantalla Negra Inicial */
 /* LOADER ULTRA FLUIDO + ANIMACIONES PERFECTAS */
 
 :root {
@@ -40,9 +40,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
-    /* Prevenir FOUC */
-    opacity: 0;
-    animation: bodyFadeIn 0.3s ease 0.5s forwards;
+    /* ELIMINADO: opacity: 0 y animación que causaba pantalla negra */
+    /* Ahora el body es visible inmediatamente */
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ===== ANIMACIONES MINIMIZADAS Y OPTIMIZADAS ===== */
@@ -90,7 +91,7 @@ body {
     100% { transform: translateY(-30px) translateX(20px); }
 }
 
-/* ===== LOADER ULTRA FLUIDO ===== */
+/* ===== LOADER ULTRA FLUIDO - SIN PANTALLA NEGRA ===== */
 .page-loader {
     position: fixed;
     top: 0;
@@ -199,11 +200,7 @@ body {
     }
 }
 
-@keyframes bodyFadeIn {
-    to {
-        opacity: 1;
-    }
-}
+/* ELIMINADO: keyframes bodyFadeIn que causaba pantalla negra */
 
 /* ===== ANIMACIONES DE ENTRADA DE CONTENIDO ===== */
 .navbar {
