@@ -1,4 +1,4 @@
-// index.js - Versión Ultra Optimizada para Móvil y PC - REESCRITA COMPLETAMENTE
+// index.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA MÓVIL
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
@@ -498,6 +498,51 @@ if (isTouchDevice) {
 } else {
     document.body.classList.add('no-touch-device');
     console.log('💻 Dispositivo no táctil detectado');
+}
+
+// ===== MEJORAS PARA MÓVIL - ELIMINAR EFECTOS NO DESEADOS =====
+// Prevenir menú contextual en móvil
+document.addEventListener('contextmenu', function(e) {
+    if (window.innerWidth <= 768) {
+        e.preventDefault();
+        return false;
+    }
+}, false);
+
+// Prevenir zoom con doble tap en móvil
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Prevenir arrastre de imágenes en móvil
+document.addEventListener('dragstart', function(e) {
+    if (window.innerWidth <= 768 && e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
+
+// Mejorar feedback táctil en botones
+if (isTouchDevice) {
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link');
+    
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+            this.style.opacity = '0.9';
+        });
+        
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 150);
+        });
+    });
 }
 
 // ===== POLYFILL PARA SMOOTH SCROLL =====
