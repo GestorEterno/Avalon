@@ -142,26 +142,39 @@ body {
     padding: 0 5%;
 }
 
+/* === LOGO DEL NAVBAR CON EFECTO IDÉNTICO AL FOOTER === */
 .logo {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+    cursor: pointer;
 }
 
 .logo:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
 }
 
 .logo-img {
     height: 45px;
     width: auto;
+    transition: filter 0.2s ease !important;
+}
+
+.logo:hover .logo-img {
+    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
 }
 
 .logo h2 {
     color: var(--light);
     font-weight: 800;
     font-size: 1.3rem;
+    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+.logo:hover h2 {
+    color: var(--accent) !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
 }
 
 .nav-menu {
@@ -1594,6 +1607,20 @@ footer:last-child {
         padding: 1rem;
         font-size: 1.1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Desactivar hover en logo del navbar en móvil */
+    .logo:hover {
+        transform: none !important;
+    }
+    
+    .logo:hover .logo-img {
+        filter: none !important;
+    }
+    
+    .logo:hover h2 {
+        color: var(--light) !important;
+        text-shadow: none !important;
     }
     
     /* Hero móvil */
