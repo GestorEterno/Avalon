@@ -1,5 +1,5 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES APLICADAS */
-/* CORRECCIÓN CRÍTICA: Botones del hero perfectamente equilibrados en escritorio */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS APLICADAS */
+/* MEJORA CRÍTICA: Eliminar efectos azules de tap en móvil y sensación tipo app */
 
 :root {
     --primary: #0f3460;
@@ -23,11 +23,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent !important;
+    tap-highlight-color: transparent !important;
 }
 
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -39,6 +43,16 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Permitir selección solo en contenido de texto real */
+p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .step-content p {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 /* === ANIMACIONES MINIMIZADAS === */
@@ -140,6 +154,8 @@ body {
     gap: 0.8rem;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
     cursor: pointer;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .logo:hover {
@@ -150,6 +166,7 @@ body {
     height: 45px;
     width: auto;
     transition: filter 0.2s ease;
+    pointer-events: none;
 }
 
 .logo:hover .logo-img {
@@ -185,6 +202,8 @@ body {
     position: relative;
     padding: 0.5rem 0;
     display: inline-block;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .nav-link::after {
@@ -223,6 +242,8 @@ body {
     width: 24px;
     height: 18px;
     justify-content: space-between;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .hamburger span {
@@ -329,14 +350,14 @@ body {
     opacity: 0.8;
 }
 
-/* ===== CORRECCIÓN CRÍTICA: BOTONES DEL HERO PERFECTAMENTE EQUILIBRADOS ===== */
+/* ===== BOTONES DEL HERO PERFECTAMENTE EQUILIBRADOS ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
 }
 
-/* CORRECCIÓN: Botones flexibles que se adaptan al contenido sin presionarse */
+/* Botones flexibles que se adaptan al contenido sin presionarse */
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -349,14 +370,17 @@ body {
     cursor: pointer;
     font-size: 0.95rem;
     white-space: nowrap;
+    -webkit-touch-callout: none;
+    user-select: none;
+    border: none;
+    outline: none;
 }
 
-/* Botón primario - SOLUCIÓN CORREGIDA */
+/* Botón primario */
 .btn-primary {
     background: var(--accent);
     color: var(--dark);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-    border: none;
     padding-left: 1.8rem;
     padding-right: 1.8rem;
 }
@@ -388,7 +412,7 @@ body {
     margin-top: 0.2rem;
 }
 
-/* Botón secundario - SOLUCIÓN CORREGIDA */
+/* Botón secundario */
 .btn-secondary {
     background: transparent;
     color: var(--light);
@@ -429,6 +453,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .floating-card:hover {
@@ -529,6 +555,9 @@ body {
     transition: var(--transition);
     background: rgba(255, 255, 255, 0.05);
     flex-shrink: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
 }
 
 .context-link:hover {
@@ -594,6 +623,8 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .service-card:hover {
@@ -646,6 +677,8 @@ section {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.9rem;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .service-features i {
@@ -672,6 +705,8 @@ section {
     z-index: 2;
     flex: 1;
     padding: 0 15px;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .step-number {
@@ -746,6 +781,8 @@ section {
     height: 100%;
     min-height: 580px;
     transform-origin: center center;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 /* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
@@ -862,6 +899,8 @@ section {
     transform-origin: left center;
     margin: 0 -0.5rem;
     border-radius: 4px;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .plan-features li:hover {
@@ -906,6 +945,10 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .btn-plan:hover,
@@ -963,6 +1006,9 @@ section {
     gap: 0.5rem;
     font-size: 0.9rem;
     transition: var(--transition);
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
 }
 
 .disclaimer-link:hover {
@@ -1011,12 +1057,15 @@ footer {
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
     margin-bottom: 0.1rem;
     cursor: pointer;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .footer-logo .logo-img {
     height: 32px;
     width: auto;
     transition: filter 0.2s ease;
+    pointer-events: none;
 }
 
 .footer-logo h3 {
@@ -1052,6 +1101,9 @@ footer {
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
                 background 0.2s ease,
                 color 0.2s ease;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
 }
 
 .social-links a:hover {
@@ -1139,6 +1191,7 @@ footer {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    touch-action: pan-x;
 }
 
 .plans-carousel::-webkit-scrollbar,
@@ -1167,6 +1220,10 @@ footer {
     transition: var(--transition);
     opacity: 0.9;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+    border: none;
 }
 
 .carousel-arrow:hover,
@@ -1210,6 +1267,8 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .plan-card-mobile.active {
@@ -1307,6 +1366,7 @@ footer {
     max-height: 230px;
     overflow-y: auto;
     padding-right: 5px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .plan-features-mobile li {
@@ -1317,6 +1377,8 @@ footer {
     gap: 0.6rem;
     font-size: 0.85rem;
     line-height: 1.4;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .plan-features-mobile i {
@@ -1351,6 +1413,10 @@ footer {
     justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .btn-plan-mobile:hover {
@@ -1385,6 +1451,8 @@ footer {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .indicator.active,
@@ -1411,6 +1479,8 @@ footer {
     flex-direction: column;
     align-items: center;
     backdrop-filter: blur(10px);
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
 .step-mobile.active {
@@ -1513,21 +1583,21 @@ footer {
     
     /* BOTONES PERFECTAMENTE EQUILIBRADOS - SIN APLASTARSE */
     .btn-primary, .btn-secondary {
-        flex: none; /* No permitir que se estiren */
-        min-width: auto; /* Eliminar mínimo forzado */
-        max-width: none; /* Eliminar máximo forzado */
-        width: auto; /* Ancho automático basado en contenido */
-        padding: 0.9rem 2.2rem; /* Padding equilibrado */
+        flex: none;
+        min-width: auto;
+        max-width: none;
+        width: auto;
+        padding: 0.9rem 2.2rem;
     }
     
     /* Botón primario con espacio adecuado */
     .btn-primary {
-        min-width: 280px; /* Ancho mínimo generoso */
+        min-width: 280px;
     }
     
     /* Botón secundario con espacio adecuado */
     .btn-secondary {
-        min-width: 200px; /* Ancho mínimo para balance */
+        min-width: 200px;
     }
     
     .floating-card:nth-child(1) {
@@ -1588,7 +1658,6 @@ footer {
 /* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
 @media (min-width: 769px) {
     /* 1. CORRECCIÓN CRÍTICA: ELIMINAR PARPADEO NEGRO EN TODOS LOS BOTONES */
-    /* Eliminar efectos ::before que causan parpadeo */
     .btn-primary::before,
     .btn-plan::before,
     .btn-plan.featured::before {
@@ -1947,9 +2016,136 @@ footer:last-child {
     will-change: transform, box-shadow;
 }
 
-/* ===== MEDIA QUERIES PARA MÓVIL ===== */
+/* ===== MEJORAS CRÍTICAS PARA MÓVIL - ELIMINAR EFECTOS AZULES Y MEJORAR SENSACIÓN APP ===== */
 @media (max-width: 768px) {
-    /* CORRECCIÓN: Botones del hero en columna en móvil */
+    /* 1. DESACTIVAR COMPLETAMENTE LA SELECCIÓN DE TEXTO EN ELEMENTOS INTERACTIVOS */
+    .btn-primary,
+    .btn-secondary,
+    .btn-plan,
+    .btn-plan-mobile,
+    .nav-link,
+    .logo,
+    .footer-logo,
+    .social-links a,
+    .carousel-arrow,
+    .process-carousel-arrow,
+    .context-link,
+    .disclaimer-link,
+    .plan-card,
+    .plan-card-mobile,
+    .service-card,
+    .step,
+    .step-mobile,
+    .floating-card,
+    .hamburger,
+    .indicator,
+    .process-indicator {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+        -webkit-touch-callout: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        tap-highlight-color: transparent !important;
+    }
+    
+    /* 2. ELIMINAR COMPLETAMENTE EL EFECTO AZUL DE TAP EN TODOS LOS ELEMENTOS */
+    * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+        -webkit-tap-highlight-color: transparent !important;
+        tap-highlight-color: transparent !important;
+    }
+    
+    /* 3. REMOVER OUTLINES EN FOCUS PARA MÓVIL */
+    .btn-primary:focus,
+    .btn-secondary:focus,
+    .btn-plan:focus,
+    .btn-plan-mobile:focus,
+    .nav-link:focus,
+    .context-link:focus,
+    .disclaimer-link:focus,
+    .carousel-arrow:focus,
+    .process-carousel-arrow:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* 4. EFECTOS DE TAP MEJORADOS - SENSACIÓN MÁS APP */
+    .btn-primary:active,
+    .btn-secondary:active,
+    .btn-plan:active,
+    .btn-plan-mobile:active,
+    .nav-link:active,
+    .social-links a:active,
+    .carousel-arrow:active,
+    .process-carousel-arrow:active,
+    .context-link:active,
+    .disclaimer-link:active,
+    .indicator:active,
+    .process-indicator:active {
+        transform: scale(0.96) !important;
+        transition: transform 0.1s ease !important;
+        opacity: 0.9 !important;
+    }
+    
+    /* 5. QUITAR EFECTOS HOVER EN MÓVIL (se activan con tap prolongado) */
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-plan:hover,
+    .btn-plan-mobile:hover,
+    .service-card:hover,
+    .plan-card:hover,
+    .plan-card-mobile:hover,
+    .floating-card:hover,
+    .step:hover,
+    .step-mobile:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* 6. QUITAR ANIMACIONES DE HOVER EN MÓVIL PARA MEJOR RENDIMIENTO */
+    .service-card .service-icon,
+    .floating-card .card-icon,
+    .plan-features li,
+    .step-number,
+    .step-number-mobile {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .service-card:hover .service-icon,
+    .floating-card:hover .card-icon,
+    .plan-features li:hover {
+        transform: none !important;
+        filter: none !important;
+    }
+    
+    /* 7. DESACTIVAR MENÚ CONTEXTUAL LARGO PRESS EN IMÁGENES */
+    img {
+        pointer-events: none;
+    }
+    
+    /* 8. PERMITIR SOLO SCROLL NATIVO, NO ZOOM NO DESEADO */
+    .hero-content,
+    .section-header,
+    .plan-card-mobile,
+    .step-mobile {
+        touch-action: pan-y;
+    }
+    
+    /* 9. EVITAR ACCIÓN DE LLAMADA EN NÚMEROS DE TELÉFONO */
+    a[href^="tel"] {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+    
+    /* 10. MEJORAR RENDIMIENTO TÁCTIL */
+    .plans-carousel,
+    .process-carousel {
+        touch-action: pan-x pinch-zoom;
+    }
+    
+    /* 11. CORRECCIÓN: Botones del hero en columna en móvil */
     .hero-buttons {
         flex-direction: column;
         width: 100%;
@@ -2352,6 +2548,73 @@ footer:last-child {
     body {
         overflow-x: hidden;
         position: relative;
+    }
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA iOS ===== */
+@supports (-webkit-touch-callout: none) {
+    /* iOS-specific styles */
+    @media (max-width: 768px) {
+        /* Remover estilos nativos de iOS */
+        input,
+        textarea,
+        button,
+        select,
+        a {
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+        
+        /* Evitar zoom en inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea {
+            font-size: 16px; /* Evita zoom automático en iOS */
+        }
+        
+        /* Mejorar scrolling en iOS */
+        .plans-carousel,
+        .process-carousel,
+        .plan-features-mobile {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Prevenir bounce en iOS */
+        body {
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Fix para botones en iOS */
+        button,
+        .btn-primary,
+        .btn-secondary,
+        .btn-plan,
+        .btn-plan-mobile {
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    }
+}
+
+/* ===== AJUSTES PARA ANDROID ===== */
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
+    /* Remover highlights en Chrome Android */
+    *:focus {
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    /* Mejorar renderizado en Android */
+    .btn-primary,
+    .btn-secondary,
+    .btn-plan,
+    .btn-plan-mobile {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }
 
