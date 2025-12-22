@@ -1,4 +1,4 @@
-/* index.css - Versión Ultra Optimizada para Móvil y PC - FOOTER CORREGIDO Y OPTIMIZADO */
+/* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES CRÍTICAS APLICADAS */
 /* MODIFICACIÓN: Eliminada animación de levitación de paneles del hero */
 
 :root {
@@ -1336,35 +1336,89 @@ footer {
     }
 }
 
-/* ===== MEJORAS HOVER PARA PC - CON CORRECCIONES CRÍTICAS ===== */
+/* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
 @media (min-width: 769px) {
-    /* 1. CORRECCIÓN CRÍTICA: Botón "Ver Planes desde $1/año" - ELIMINAR EFECTO SHINE QUE CAUSA PARPADEO */
+    /* 1. CORRECCIÓN CRÍTICA: ELIMINAR PARPADEO NEGRO EN TODOS LOS BOTONES */
+    /* Eliminar efectos ::before que causan parpadeo */
+    .btn-primary::before,
+    .btn-plan::before,
+    .btn-plan.featured::before {
+        content: none !important;
+    }
+    
+    /* Botón "Ver Planes desde $1/año" - CORREGIDO DEFINITIVAMENTE */
     .btn-primary {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        background: var(--accent);
+        color: var(--dark);
         position: relative;
         overflow: hidden;
         z-index: 1;
     }
     
-    /* ELIMINAR EL EFECTO ::before QUE CAUSABA EL PARPADEO NEGRO */
-    .btn-primary::before {
-        content: none !important;
-    }
-    
     .btn-primary:hover {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        background: var(--accent-light);
         transform: translateY(-3px);
-        box-shadow: 
-            0 10px 25px rgba(255, 215, 0, 0.4),
-            0 0 15px rgba(255, 215, 0, 0.3);
+        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
-    /* Transición suave al quitar el hover */
-    .btn-primary {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* 2. CORRECCIÓN CRÍTICA: "Quiero mi Web Corporativa" - SIN PARPADEO */
+    .btn-plan.featured {
+        background: var(--accent);
+        color: var(--dark);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
     }
     
-    /* 2. CORRECCIÓN CRÍTICA: Paneles flotantes del hero - ICONO MENOS AGRESIVO */
+    .btn-plan.featured:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+    }
+    
+    /* 3. CORRECCIÓN CRÍTICA: Botones de planes normales */
+    .btn-plan {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .btn-plan:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        border-color: rgba(255, 215, 0, 0.4);
+    }
+    
+    /* 4. CORRECCIÓN CRÍTICA: SERVICIOS - ICONOS QUE NO SE MUEVAN, SOLO ESCALEN LIGERAMENTE */
+    /* TODOS LOS SERVICIOS CON EL MISMO EFECTO */
+    .service-card .service-icon {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: inline-block;
+        transform-origin: center center;
+    }
+    
+    .service-card:hover .service-icon {
+        transform: scale(1.15); /* Solo escala ligeramente, sin moverse */
+        color: var(--accent-light);
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+    }
+    
+    /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO SIN MOVERSE */
+    .floating-card .card-icon {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: inline-block;
+        transform-origin: center center;
+    }
+    
+    .floating-card:hover .card-icon {
+        transform: scale(1.15); /* Solo escala ligeramente */
+        color: var(--accent-light);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    
     .floating-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -1378,14 +1432,6 @@ footer {
         background: rgba(255, 255, 255, 0.12);
     }
     
-    /* Icono solo se escala ligeramente y brilla - SIN ROTACIÓN EXCESIVA */
-    .floating-card:hover .card-icon {
-        transform: scale(1.15);
-        color: var(--accent-light);
-        text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
     .floating-card:hover h3 {
         color: var(--accent-light);
         text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
@@ -1393,7 +1439,7 @@ footer {
         transition: all 0.3s ease;
     }
     
-    /* 3. CORRECCIÓN CRÍTICA: Planes - TODOS CON LA MISMA ANIMACIÓN */
+    /* 6. CORRECCIÓN: Planes - TODOS CON LA MISMA ANIMACIÓN */
     .plan-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -1424,51 +1470,7 @@ footer {
         text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
     }
     
-    /* 4. CORRECCIÓN: Botones de planes mantienen efecto shine pero optimizado */
-    .btn-plan {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-    
-    .btn-plan::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-        transition: left 0.6s ease;
-        z-index: -1;
-    }
-    
-    .btn-plan:hover {
-        transform: translateY(-5px);
-        box-shadow: 
-            0 10px 25px rgba(0, 0, 0, 0.25),
-            0 0 15px rgba(255, 215, 0, 0.25);
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 215, 0, 0.4);
-    }
-    
-    .btn-plan:hover::before {
-        left: 100%;
-    }
-    
-    .btn-plan.featured {
-        box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-    }
-    
-    .btn-plan.featured:hover {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-        box-shadow: 
-            0 15px 35px rgba(255, 215, 0, 0.5),
-            0 0 20px rgba(255, 215, 0, 0.3);
-    }
-    
-    /* 5. Servicios - hover ajustado */
+    /* 7. Servicios - hover ajustado */
     .service-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -1482,14 +1484,7 @@ footer {
         background: rgba(255, 255, 255, 0.08);
     }
     
-    .service-card:hover .service-icon {
-        transform: scale(1.15);
-        color: var(--accent-light);
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    /* 6. Pasos del proceso - hover ajustado */
+    /* 8. Pasos del proceso - hover ajustado */
     .step {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -1537,7 +1532,7 @@ footer {
         filter: blur(6px);
     }
     
-    /* 7. Botón secundario del hero - hover ajustado */
+    /* 9. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
         background: rgba(255, 215, 0, 0.08);
