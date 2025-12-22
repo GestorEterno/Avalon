@@ -97,7 +97,7 @@ function initMobileCarousels() {
     initProcessCarousel();
 }
 
-// Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
+// Carrusel de Planes - VERSIÓN CORREGIDA
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
@@ -132,7 +132,7 @@ function initPlansCarousel() {
         });
         
         // Scroll suave
-        const cardWidth = planCards[0].offsetWidth;
+        const cardWidth = planCards[0].offsetWidth + 20; // +20 por el margin
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
@@ -152,13 +152,24 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas - SIN FEEDBACK TÁCTIL DE ESCALA (CORRECCIÓN)
+    // Flechas - SIN EFECTOS NO DESEADOS
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
+        });
+        
+        // CORRECCIÓN: Sin efectos de escala en móvil
+        prevArrow.addEventListener('touchstart', () => {
+            prevArrow.style.opacity = '0.8';
+        });
+        
+        prevArrow.addEventListener('touchend', () => {
+            setTimeout(() => {
+                prevArrow.style.opacity = '';
+            }, 150);
         });
     }
     
@@ -168,6 +179,17 @@ function initPlansCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
+        });
+        
+        // CORRECCIÓN: Sin efectos de escala en móvil
+        nextArrow.addEventListener('touchstart', () => {
+            nextArrow.style.opacity = '0.8';
+        });
+        
+        nextArrow.addEventListener('touchend', () => {
+            setTimeout(() => {
+                nextArrow.style.opacity = '';
+            }, 150);
         });
     }
     
@@ -190,9 +212,8 @@ function initPlansCarousel() {
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
-            const cardWidth = planCards[0].offsetWidth;
+            const cardWidth = planCards[0].offsetWidth + 20;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = cardWidth * 0.1;
             
             // Calcular índice basado en scroll con snap
             let newIndex = Math.round(scrollLeft / cardWidth);
@@ -221,7 +242,7 @@ function initPlansCarousel() {
     }
 }
 
-// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA
+// Carrusel de Proceso - VERSIÓN CORREGIDA
 function initProcessCarousel() {
     const carousel = document.querySelector('.process-carousel');
     const steps = document.querySelectorAll('.step-mobile');
@@ -256,7 +277,7 @@ function initProcessCarousel() {
         });
         
         // Scroll suave
-        const stepWidth = steps[0].offsetWidth;
+        const stepWidth = steps[0].offsetWidth + 20; // +20 por el margin
         const scrollPosition = currentIndex * stepWidth;
         
         if (smooth) {
@@ -276,13 +297,24 @@ function initProcessCarousel() {
         }
     }
     
-    // Flechas SIN feedback táctil (CORRECCIÓN)
+    // Flechas - SIN EFECTOS NO DESEADOS
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
+        });
+        
+        // CORRECCIÓN: Sin efectos de escala en móvil
+        prevArrow.addEventListener('touchstart', () => {
+            prevArrow.style.opacity = '0.8';
+        });
+        
+        prevArrow.addEventListener('touchend', () => {
+            setTimeout(() => {
+                prevArrow.style.opacity = '';
+            }, 150);
         });
     }
     
@@ -292,6 +324,17 @@ function initProcessCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
+        });
+        
+        // CORRECCIÓN: Sin efectos de escala en móvil
+        nextArrow.addEventListener('touchstart', () => {
+            nextArrow.style.opacity = '0.8';
+        });
+        
+        nextArrow.addEventListener('touchend', () => {
+            setTimeout(() => {
+                nextArrow.style.opacity = '';
+            }, 150);
         });
     }
     
@@ -314,9 +357,8 @@ function initProcessCarousel() {
         clearTimeout(scrollTimeout);
         
         scrollTimeout = setTimeout(() => {
-            const stepWidth = steps[0].offsetWidth;
+            const stepWidth = steps[0].offsetWidth + 20;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = stepWidth * 0.1;
             
             let newIndex = Math.round(scrollLeft / stepWidth);
             
