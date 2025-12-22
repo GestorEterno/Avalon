@@ -1,4 +1,4 @@
-// index.js - Versión Ultra Optimizada con Loader Fluido
+// index.js - Versión Ultra Optimizada sin Pantalla Negra
 // ANIMACIONES PERFECTAS PARA MÓVIL Y PC
 
 // ===== LOADER ULTRA FLUIDO Y ANIMACIONES DE ENTRADA =====
@@ -10,53 +10,50 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Función optimizada para ocultar el loader
     function hideLoader() {
-        // Esperar a que las fuentes estén cargadas
-        document.fonts.ready.then(() => {
-            // Pequeña pausa para asegurar que todo se renderizó
-            setTimeout(() => {
-                if (pageLoader) {
-                    pageLoader.classList.add('loaded');
-                    
-                    // Remover el loader del DOM después de la animación
-                    setTimeout(() => {
-                        pageLoader.style.display = 'none';
-                        document.body.classList.add('loaded');
-                        console.log('🎉 Loader ocultado - Animaciones completadas');
-                        
-                        // Iniciar el resto de funcionalidades
-                        initAllFunctionalities();
-                    }, 300);
-                }
-            }, 100);
-        });
+        if (!pageLoader) return;
+        
+        // Ocultar el loader con una transición suave
+        pageLoader.classList.add('loaded');
+        
+        // Remover el loader del DOM después de la animación
+        setTimeout(() => {
+            pageLoader.style.display = 'none';
+            console.log('🎉 Loader ocultado');
+            
+            // Inicializar el resto de funcionalidades
+            initAllFunctionalities();
+        }, 300);
     }
     
-    // Manejar precarga de imágenes críticas
-    const criticalImages = [
-        'Logo Avalon.png'
-    ];
+    // Mostrar contenido inmediatamente (el body ya es visible)
+    document.body.style.visibility = 'visible';
     
+    // Manejar precarga de imágenes críticas de forma optimizada
+    const criticalImages = ['Logo Avalon.png'];
     let imagesLoaded = 0;
     const totalCriticalImages = criticalImages.length;
+    
+    function checkAndHideLoader() {
+        imagesLoaded++;
+        if (imagesLoaded >= totalCriticalImages) {
+            // Pequeño delay para mostrar la animación del loader
+            setTimeout(hideLoader, 400);
+        }
+    }
     
     if (totalCriticalImages > 0) {
         criticalImages.forEach(src => {
             const img = new Image();
             img.src = src;
-            img.onload = img.onerror = () => {
-                imagesLoaded++;
-                if (imagesLoaded === totalCriticalImages) {
-                    hideLoader();
-                }
-            };
+            img.onload = checkAndHideLoader;
+            img.onerror = checkAndHideLoader; // Continuar incluso si falla
         });
     } else {
-        // Si no hay imágenes críticas, esperar un momento
         setTimeout(hideLoader, 400);
     }
     
-    // Timeout de seguridad
-    setTimeout(hideLoader, 1500);
+    // Timeout de seguridad reducido
+    setTimeout(hideLoader, 1200);
 });
 
 // ===== INICIALIZAR TODAS LAS FUNCIONALIDADES =====
