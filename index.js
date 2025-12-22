@@ -1,59 +1,12 @@
-// index.js - Versión Ultra Optimizada sin Pantalla Negra
-// ANIMACIONES PERFECTAS PARA MÓVIL Y PC
+// index.js - Versión Ultra Simplificada - CARGA INSTANTÁNEA
+// SIN LOADER - INICIALIZACIÓN INMEDIATA
 
-// ===== LOADER ULTRA FLUIDO Y ANIMACIONES DE ENTRADA =====
+// ===== INICIALIZACIÓN INMEDIATA AL CARGAR EL DOM =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ AVALON CREATORS - Inicializando con animaciones fluidas');
+    console.log('✅ AVALON CREATORS - Carga instantánea activada');
     
-    // Ocultar loader después de que todo esté listo
-    const pageLoader = document.getElementById('page-loader');
-    
-    // Función optimizada para ocultar el loader
-    function hideLoader() {
-        if (!pageLoader) return;
-        
-        // Ocultar el loader con una transición suave
-        pageLoader.classList.add('loaded');
-        
-        // Remover el loader del DOM después de la animación
-        setTimeout(() => {
-            pageLoader.style.display = 'none';
-            console.log('🎉 Loader ocultado');
-            
-            // Inicializar el resto de funcionalidades
-            initAllFunctionalities();
-        }, 300);
-    }
-    
-    // Mostrar contenido inmediatamente (el body ya es visible)
-    document.body.style.visibility = 'visible';
-    
-    // Manejar precarga de imágenes críticas de forma optimizada
-    const criticalImages = ['Logo Avalon.png'];
-    let imagesLoaded = 0;
-    const totalCriticalImages = criticalImages.length;
-    
-    function checkAndHideLoader() {
-        imagesLoaded++;
-        if (imagesLoaded >= totalCriticalImages) {
-            // Pequeño delay para mostrar la animación del loader
-            setTimeout(hideLoader, 400);
-        }
-    }
-    
-    if (totalCriticalImages > 0) {
-        criticalImages.forEach(src => {
-            const img = new Image();
-            img.src = src;
-            img.onload = checkAndHideLoader;
-            img.onerror = checkAndHideLoader; // Continuar incluso si falla
-        });
-    } else {
-        setTimeout(hideLoader, 400);
-    }
-    
-    // Timeout de seguridad reducido
-    setTimeout(hideLoader, 1200);
+    // Inicializar todo inmediatamente
+    initAllFunctionalities();
 });
 
 // ===== INICIALIZAR TODAS LAS FUNCIONALIDADES =====
@@ -199,7 +152,7 @@ function initMobileCarousels() {
     initProcessCarousel();
 }
 
-// Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
+// Carrusel de Planes
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
@@ -207,16 +160,11 @@ function initPlansCarousel() {
     const prevArrow = document.querySelector('.carousel-arrow.prev-arrow');
     const nextArrow = document.querySelector('.carousel-arrow.next-arrow');
     
-    if (!carousel || planCards.length === 0) {
-        console.log('❌ No se encontró carrusel de planes');
-        return;
-    }
+    if (!carousel || planCards.length === 0) return;
     
     let currentIndex = 0;
     const totalSlides = planCards.length;
     let isAnimating = false;
-    
-    console.log(`📊 Carrusel de planes: ${totalSlides} slides encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
@@ -253,24 +201,13 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas - CON MEJOR FEEDBACK TÁCTIL
+    // Flechas
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        // Feedback táctil para móvil
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -280,17 +217,6 @@ function initPlansCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        // Feedback táctil para móvil
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -304,7 +230,7 @@ function initPlansCarousel() {
         });
     });
     
-    // Scroll automático con debounce mejorado
+    // Scroll automático
     let scrollTimeout;
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
@@ -315,7 +241,7 @@ function initPlansCarousel() {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
             
-            // Calcular índice basado en scroll con snap
+            // Calcular índice basado en scroll
             let newIndex = Math.round(scrollLeft / cardWidth);
             
             // Validar y ajustar índice
@@ -332,15 +258,9 @@ function initPlansCarousel() {
     
     // Inicializar
     updateCarousel(false);
-    
-    // Asegurar que las flechas sean visibles
-    if (prevArrow && nextArrow) {
-        prevArrow.style.display = 'flex';
-        nextArrow.style.display = 'flex';
-    }
 }
 
-// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA
+// Carrusel de Proceso
 function initProcessCarousel() {
     const carousel = document.querySelector('.process-carousel');
     const steps = document.querySelectorAll('.step-mobile');
@@ -348,16 +268,11 @@ function initProcessCarousel() {
     const prevArrow = document.querySelector('.process-carousel-arrow.prev-arrow');
     const nextArrow = document.querySelector('.process-carousel-arrow.next-arrow');
     
-    if (!carousel || steps.length === 0) {
-        console.log('❌ No se encontró carrusel de proceso');
-        return;
-    }
+    if (!carousel || steps.length === 0) return;
     
     let currentIndex = 0;
     const totalSlides = steps.length;
     let isAnimating = false;
-    
-    console.log(`📊 Carrusel de proceso: ${totalSlides} steps encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
@@ -394,23 +309,13 @@ function initProcessCarousel() {
         }
     }
     
-    // Flechas con feedback táctil
+    // Flechas
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -420,16 +325,6 @@ function initProcessCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -467,12 +362,6 @@ function initProcessCarousel() {
     });
     
     updateCarousel(false);
-    
-    // Asegurar visibilidad de flechas
-    if (prevArrow && nextArrow) {
-        prevArrow.style.display = 'flex';
-        nextArrow.style.display = 'flex';
-    }
 }
 
 // ===== CONTADORES ANIMADOS =====
@@ -557,13 +446,10 @@ function initResponsive() {
         clearTimeout(resizeTimeout);
         
         resizeTimeout = setTimeout(() => {
-            console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
-            
             // Re-inicializar carruseles si cambiamos a móvil
             if (window.innerWidth <= 768) {
                 const carouselsExist = document.querySelector('.plans-carousel');
                 if (carouselsExist && !carouselsExist.dataset.initialized) {
-                    console.log('📱 Re-inicializando carruseles para móvil...');
                     initMobileCarousels();
                     carouselsExist.dataset.initialized = true;
                 }
@@ -580,17 +466,9 @@ function detectTouchDevice() {
     
     if (isTouchDevice) {
         document.body.classList.add('touch-device');
-        console.log('📱 Dispositivo táctil detectado');
     } else {
         document.body.classList.add('no-touch-device');
-        console.log('💻 Dispositivo no táctil detectado');
     }
-}
-
-// ===== POLYFILL PARA SMOOTH SCROLL =====
-if (!('scrollBehavior' in document.documentElement.style)) {
-    console.log('🔧 Aplicando polyfill para scroll suave');
-    // Podríamos cargar un polyfill aquí si es necesario
 }
 
 // ===== ERROR HANDLING =====
@@ -605,7 +483,6 @@ function readAndWriteDom() {
     if (!scheduledAnimationFrame) {
         scheduledAnimationFrame = true;
         requestAnimationFrame(() => {
-            // Operaciones de DOM aquí
             scheduledAnimationFrame = false;
         });
     }
@@ -615,11 +492,10 @@ function readAndWriteDom() {
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
         console.log('🎉 Página completamente cargada y lista');
-        document.body.classList.add('fully-loaded');
     }
 });
 
-// Exportar funciones globales si es necesario
+// Exportar funciones globales
 window.AvalonCreators = {
     initAllFunctionalities,
     initMobileCarousels,
