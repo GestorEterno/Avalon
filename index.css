@@ -95,6 +95,46 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     }
 }
 
+@keyframes heroTitleLoad {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@keyframes heroTextLoad {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroStatLoad {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroButtonsLoadCorrected {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroCardLoad {
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
+    }
+}
+
 /* === BACKGROUND OPTIMIZADO === */
 .animated-background {
     position: fixed;
@@ -1627,48 +1667,6 @@ footer {
         transform: translateX(30px) rotate(-2deg);
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
-    
-    /* Animaciones específicas para hero */
-    @keyframes heroTitleLoad {
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-    }
-    
-    @keyframes heroTextLoad {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes heroStatLoad {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Animación suavizada para botones del hero */
-    @keyframes heroButtonsLoadCorrected {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes heroCardLoad {
-        to {
-            opacity: 1;
-            transform: translateX(0) rotate(0);
-        }
-    }
 }
 
 /* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
@@ -2206,15 +2204,53 @@ footer:last-child {
         text-align: center;
     }
     
-    /* Desactivar todas las animaciones de carga del hero en móvil */
-    .hero-content h1,
-    .hero-content p,
-    .hero-stats .stat,
-    .hero-buttons,
-    .floating-card {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
+    /* ===== ANIMACIONES DEL HERO PARA MÓVIL - CARGAR IGUAL DE FACHERO QUE EN PC ===== */
+    .hero-content h1 {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
+    }
+    
+    .hero-content p {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
+    }
+    
+    .hero-stats .stat:nth-child(1) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1s forwards;
+    }
+    
+    .hero-stats .stat:nth-child(2) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
+    }
+    
+    .hero-stats .stat:nth-child(3) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
+    }
+    
+    .hero-buttons {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
+    }
+    
+    .floating-card:nth-child(1) {
+        opacity: 0;
+        transform: translateX(30px) rotate(2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
+    }
+    
+    .floating-card:nth-child(2) {
+        opacity: 0;
+        transform: translateX(30px) rotate(-2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
     /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
