@@ -1,5 +1,5 @@
 /* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES APLICADAS */
-/* CORRECCIÓN CRÍTICA: Botones del hero en misma línea en escritorio */
+/* CORRECCIÓN CRÍTICA: Botones del hero del mismo tamaño en escritorio */
 
 :root {
     --primary: #0f3460;
@@ -329,7 +329,7 @@ body {
     opacity: 0.8;
 }
 
-/* ===== CORRECCIÓN CRÍTICA: BOTONES DEL HERO EN MISMA LÍNEA ===== */
+/* ===== CORRECCIÓN CRÍTICA: BOTONES DEL HERO DEL MISMO TAMAÑO ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -338,29 +338,52 @@ body {
     margin-top: 2rem;
 }
 
-/* En escritorio: mantener botones en línea horizontal */
+/* En escritorio: botones del mismo tamaño */
 @media (min-width: 769px) {
     .hero-buttons {
         flex-direction: row;
-        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: stretch; /* Para que ambos botones tengan misma altura */
     }
     
-    .btn-primary {
-        flex: 1;
-        min-width: 280px;
-        max-width: 320px;
+    /* AMBOS BOTONES CON EL MISMO TAMAÑO */
+    .btn-primary, .btn-secondary {
+        flex: 1; /* Ambos crecen igual */
+        min-width: 250px;
+        max-width: 300px;
+        height: 60px; /* Misma altura fija */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
-    .btn-secondary {
-        flex: 0 0 auto;
-        min-width: 180px;
+    /* Ajustar contenido interno del botón primario */
+    .btn-primary .btn-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+    
+    /* Asegurar que el texto no se desborde */
+    .btn-main-text {
+        white-space: nowrap;
+        font-size: 1rem;
+    }
+    
+    .btn-sub-text {
+        font-size: 0.75rem;
+        white-space: nowrap;
     }
 }
 
-/* Botón primario */
+/* Botón primario - CORREGIDO PARA SER DEL MISMO TAMAÑO */
 .btn-primary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.8rem;
     padding: 0.9rem 2rem;
     border-radius: 30px;
@@ -386,14 +409,15 @@ body {
 .btn-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     line-height: 1.2;
+    text-align: center;
+    width: 100%;
 }
 
 .btn-main-text {
     font-size: 1rem;
     font-weight: 700;
-    white-space: nowrap;
 }
 
 .btn-sub-text {
@@ -403,12 +427,13 @@ body {
     margin-top: 0.2rem;
 }
 
-/* Botón secundario - CORREGIDO para estar en línea */
+/* Botón secundario - CORREGIDO PARA SER DEL MISMO TAMAÑO */
 .btn-secondary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.8rem;
-    padding: 0.9rem 1.8rem;
+    padding: 0.9rem 2rem;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
@@ -418,7 +443,7 @@ body {
     font-size: 0.95rem;
     background: transparent;
     color: var(--light);
-    white-space: nowrap;
+    height: 60px; /* Misma altura que el primario */
 }
 
 .btn-secondary:hover {
@@ -1523,7 +1548,7 @@ footer {
         animation: heroStatLoad 0.6s ease-out 1.4s forwards;
     }
     
-    /* Botones del hero con animación más suave */
+    /* CORRECCIÓN: Botones del hero del mismo tamaño */
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
@@ -1953,11 +1978,20 @@ footer:last-child {
     .hero-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 0.8rem;
     }
     
     .btn-primary, .btn-secondary {
         width: 100%;
         justify-content: center;
+        height: auto;
+        min-height: 60px;
+    }
+    
+    /* Ajustar contenido del botón primario en móvil */
+    .btn-primary .btn-content {
+        text-align: center;
+        align-items: center;
     }
     
     /* Desactivar todas las animaciones de carga del hero en móvil */
