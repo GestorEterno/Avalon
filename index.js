@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 768) {
         console.log('📱 Inicializando carruseles móviles...');
         initMobileCarousels();
+        fixCarouselScroll(); // CORRECCIÓN: Añadir scroll vertical
     }
     
     // Setup social notifications
@@ -151,24 +152,13 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas - CON MEJOR FEEDBACK TÁCTIL
+    // Flechas - SIN FEEDBACK TÁCTIL DE ESCALA (CORRECCIÓN)
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        // Feedback táctil para móvil
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -178,17 +168,6 @@ function initPlansCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        // Feedback táctil para móvil
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -297,23 +276,13 @@ function initProcessCarousel() {
         }
     }
     
-    // Flechas con feedback táctil
+    // Flechas SIN feedback táctil (CORRECCIÓN)
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
                 currentIndex--;
                 updateCarousel();
             }
-        });
-        
-        prevArrow.addEventListener('touchstart', () => {
-            prevArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        prevArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                prevArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -323,16 +292,6 @@ function initProcessCarousel() {
                 currentIndex++;
                 updateCarousel();
             }
-        });
-        
-        nextArrow.addEventListener('touchstart', () => {
-            nextArrow.style.transform = 'translateY(-50%) scale(0.95)';
-        });
-        
-        nextArrow.addEventListener('touchend', () => {
-            setTimeout(() => {
-                nextArrow.style.transform = 'translateY(-50%) scale(1)';
-            }, 150);
         });
     }
     
@@ -380,6 +339,49 @@ function initProcessCarousel() {
         prevArrow.style.display = 'flex';
         nextArrow.style.display = 'flex';
     }
+}
+
+// ===== CORRECCIÓN SCROLL VERTICAL EN CARRUSELES =====
+function fixCarouselScroll() {
+    const carousels = document.querySelectorAll('.plans-carousel, .process-carousel');
+    
+    carousels.forEach(carousel => {
+        let startY = 0;
+        let startX = 0;
+        let isScrolling = false;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+            startX = e.touches[0].clientX;
+            isScrolling = false;
+        }, { passive: true });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!carousel) return;
+            
+            const currentY = e.touches[0].clientY;
+            const currentX = e.touches[0].clientX;
+            const diffY = Math.abs(currentY - startY);
+            const diffX = Math.abs(currentX - startX);
+            
+            // Si el movimiento es más vertical que horizontal, permitir scroll de página
+            if (diffY > diffX && diffY > 10) {
+                isScrolling = true;
+                // Permitir comportamiento por defecto (scroll vertical de página)
+                return;
+            }
+            
+            // Si es movimiento horizontal, prevenir el comportamiento por defecto
+            // para que solo el carrusel se mueva horizontalmente
+            if (!isScrolling && diffX > 5) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        carousel.addEventListener('touchend', () => {
+            isScrolling = false;
+        }, { passive: true });
+    });
 }
 
 // ===== CONTADORES ANIMADOS =====
@@ -468,6 +470,7 @@ window.addEventListener('resize', () => {
             if (carouselsExist && !carouselsExist.dataset.initialized) {
                 console.log('📱 Re-inicializando carruseles para móvil...');
                 initMobileCarousels();
+                fixCarouselScroll(); // CORRECCIÓN: Añadir scroll vertical
                 carouselsExist.dataset.initialized = true;
             }
         }
@@ -526,22 +529,26 @@ document.addEventListener('dragstart', function(e) {
     }
 }, false);
 
-// Mejorar feedback táctil en botones
+// Mejorar feedback táctil en botones (pero NO en flechas)
 if (isTouchDevice) {
     const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link');
     
     buttons.forEach(button => {
-        button.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.98)';
-            this.style.opacity = '0.9';
-        });
-        
-        button.addEventListener('touchend', function() {
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.opacity = '';
-            }, 150);
-        });
+        // Excluir flechas de carrusel
+        if (!button.classList.contains('carousel-arrow') && 
+            !button.classList.contains('process-carousel-arrow')) {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+                this.style.opacity = '0.9';
+            });
+            
+            button.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.opacity = '';
+                }, 150);
+            });
+        }
     });
 }
 
