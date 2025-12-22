@@ -1191,7 +1191,7 @@ footer {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
+    touch-action: pan-x pan-y; /* PERMITE SCROLL VERTICAL */
 }
 
 .plans-carousel::-webkit-scrollbar,
@@ -1199,19 +1199,19 @@ footer {
     display: none;
 }
 
-/* CORRECCIÓN TOTAL: Flechas POSICIONADAS CORRECTAMENTE EN LOS ESPACIOS LATERALES */
+/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow,
 .process-carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: rgba(15, 52, 96, 0.95);
     border: 2px solid var(--accent);
     border-radius: 50%;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1219,43 +1219,51 @@ footer {
     z-index: 100;
     transition: var(--transition);
     opacity: 0.9;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     -webkit-touch-callout: none;
     user-select: none;
     outline: none;
     border: none;
 }
 
-/* CORRECCIÓN TOTAL: Eliminar efectos hover/active no deseados */
+/* CORRECCIÓN: Iconos de flechas sin oscurecerse */
+.carousel-arrow i,
+.process-carousel-arrow i {
+    color: var(--accent);
+    transition: none !important;
+}
+
 .carousel-arrow:hover,
-.process-carousel-arrow:hover,
-.carousel-arrow:active,
-.process-carousel-arrow:active {
-    background: rgba(15, 52, 96, 0.95) !important;
-    color: white !important;
-    transform: translateY(-50%) !important;
-    opacity: 1 !important;
+.process-carousel-arrow:hover {
+    background: rgba(15, 52, 96, 0.98);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-arrow:hover i,
+.process-carousel-arrow:hover i {
+    color: var(--accent-light);
 }
 
 .carousel-arrow.prev-arrow,
 .process-carousel-arrow.prev-arrow {
-    left: 0;
+    left: 10px;
     right: auto;
 }
 
 .carousel-arrow.next-arrow,
 .process-carousel-arrow.next-arrow {
-    right: 0;
+    right: 10px;
     left: auto;
 }
 
 /* Plan cards móvil */
 .plan-card-mobile {
-    flex: 0 0 calc(100% - 40px); /* CORRECCIÓN: Reducir ancho para dar espacio a flechas */
-    width: calc(100% - 40px);
-    min-width: calc(100% - 40px);
-    max-width: calc(100% - 40px);
-    margin: 0 20px; /* CORRECCIÓN: Margen para que no choque con flechas */
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     box-shadow: var(--shadow);
@@ -1272,7 +1280,8 @@ footer {
     justify-content: space-between;
     -webkit-touch-callout: none;
     user-select: none;
-    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
+    touch-action: pan-y; /* PERMITE SCROLL VERTICAL SOBRE EL PANEL */
+    pointer-events: auto; /* ASEGURA QUE LOS EVENTOS FUNCIONEN */
 }
 
 .plan-card-mobile.active {
@@ -1371,6 +1380,7 @@ footer {
     overflow-y: auto;
     padding-right: 5px;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y; /* PERMITE SCROLL VERTICAL EN LA LISTA */
 }
 
 .plan-features-mobile li {
@@ -1467,11 +1477,11 @@ footer {
 
 /* Step móvil */
 .step-mobile {
-    flex: 0 0 calc(100% - 40px); /* CORRECCIÓN: Reducir ancho para dar espacio a flechas */
-    width: calc(100% - 40px);
-    min-width: calc(100% - 40px);
-    max-width: calc(100% - 40px);
-    margin: 0 20px; /* CORRECCIÓN: Margen para que no choque con flechas */
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
     scroll-snap-align: center;
     scroll-snap-stop: always;
     padding: 25px 20px;
@@ -1485,7 +1495,8 @@ footer {
     backdrop-filter: blur(10px);
     -webkit-touch-callout: none;
     user-select: none;
-    touch-action: pan-y; /* CORRECCIÓN: Permitir scroll vertical */
+    touch-action: pan-y; /* PERMITE SCROLL VERTICAL SOBRE EL PANEL */
+    pointer-events: auto; /* ASEGURA QUE LOS EVENTOS FUNCIONEN */
 }
 
 .step-mobile.active {
@@ -2093,6 +2104,18 @@ footer:last-child {
         opacity: 0.9 !important;
     }
     
+    /* CORRECCIÓN ESPECÍFICA: Flechas sin animación de bajar/subir */
+    .carousel-arrow:active,
+    .process-carousel-arrow:active {
+        transform: translateY(-50%) scale(0.96) !important;
+        background: rgba(15, 52, 96, 0.95) !important;
+    }
+    
+    .carousel-arrow:active i,
+    .process-carousel-arrow:active i {
+        color: var(--accent-light) !important;
+    }
+    
     /* 5. QUITAR EFECTOS HOVER EN MÓVIL (se activan con tap prolongado) */
     .btn-primary:hover,
     .btn-secondary:hover,
@@ -2144,26 +2167,16 @@ footer:last-child {
         text-decoration: none !important;
     }
     
-    /* 10. CORRECCIÓN CRÍTICA: MEJORAR SCROLL VERTICAL EN CARRUSELES */
+    /* 10. MEJORAR RENDIMIENTO TÁCTIL */
     .plans-carousel,
     .process-carousel {
-        touch-action: pan-y;
+        touch-action: pan-x pan-y; /* PERMITE AMBOS DESPLAZAMIENTOS */
     }
     
+    /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
     .plan-card-mobile,
     .step-mobile {
         touch-action: pan-y;
-        pointer-events: auto;
-    }
-    
-    .carousel-container,
-    .process-carousel-container {
-        touch-action: pan-y;
-        pointer-events: none;
-    }
-    
-    .carousel-container *,
-    .process-carousel-container * {
         pointer-events: auto;
     }
     
@@ -2468,7 +2481,7 @@ footer:last-child {
         overflow: visible;
     }
     
-    /* CORRECCIÓN TOTAL: Flechas bien posicionadas en los espacios laterales */
+    /* Flechas posicionadas ABSOLUTAMENTE y al límite */
     .carousel-arrow,
     .process-carousel-arrow {
         position: absolute !important;
@@ -2482,47 +2495,26 @@ footer:last-child {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
     
-    /* FLECHAS CORREGIDAS: En los bordes del contenedor, donde HAY ESPACIO */
+    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 5px !important;
+        left: -25px !important;
         right: auto !important;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 5px !important;
+        right: -25px !important;
         left: auto !important;
     }
     
-    /* Contenedor con padding para que el contenido no choque con flechas */
+    /* Asegurar que el contenedor no corte las flechas */
     .carousel-container,
     .process-carousel-container {
-        overflow: hidden !important;
-        padding: 0 5px !important; /* Espacio mínimo para flechas */
-    }
-    
-    /* Ajustar carrusel para que no se solape con flechas */
-    .plans-carousel,
-    .process-carousel {
-        width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        box-sizing: border-box;
-    }
-    
-    /* Ajustar márgenes de las cards para que no choquen */
-    .plan-card-mobile,
-    .step-mobile {
-        margin: 0 10px !important;
-        flex: 0 0 calc(100% - 60px) !important;
-        width: calc(100% - 60px) !important;
-        min-width: calc(100% - 60px) !important;
-        max-width: calc(100% - 60px) !important;
+        overflow: visible !important;
+        padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -2671,42 +2663,41 @@ footer:last-child {
         font-size: 1.6rem;
     }
     
-    /* CORRECCIÓN: Ajustes para pantallas muy pequeñas */
     .plan-card-mobile {
-        flex: 0 0 calc(100% - 40px) !important;
-        width: calc(100% - 40px) !important;
-        min-width: calc(100% - 40px) !important;
-        max-width: calc(100% - 40px) !important;
-        margin: 0 10px !important;
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
         min-height: 500px;
         padding: 1rem;
     }
     
     .step-mobile {
-        flex: 0 0 calc(100% - 40px) !important;
-        width: calc(100% - 40px) !important;
-        min-width: calc(100% - 40px) !important;
-        max-width: calc(100% - 40px) !important;
-        margin: 0 10px !important;
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
         padding: 1.2rem;
     }
     
     .carousel-arrow,
     .process-carousel-arrow {
-        width: 36px !important;
-        height: 36px !important;
-        font-size: 0.9rem !important;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
     
-    /* FLECHAS CORREGIDAS: En pantallas pequeñas, más cerca del borde */
+    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow,
     .process-carousel-arrow.prev-arrow {
-        left: 2px !important;
+        left: -20px;
     }
     
     .carousel-arrow.next-arrow,
     .process-carousel-arrow.next-arrow {
-        right: 2px !important;
+        right: -20px;
     }
 }
 
