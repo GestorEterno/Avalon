@@ -1,5 +1,6 @@
 /* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS CORRECCIONES CRÍTICAS APLICADAS */
 /* MODIFICACIÓN: Eliminada animación de levitación de paneles del hero */
+/* MEJORAS APLICADAS: Iconos más fluidos, planes con animación uniforme, elementos de lista con hover */
 
 :root {
     --primary: #0f3460;
@@ -407,6 +408,27 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* === MEJORAS DE FLUIDEZ PARA ICONOS === */
+.service-card .service-icon,
+.floating-card .card-icon,
+.plan-card .service-icon {
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform-origin: center center;
+    will-change: transform;
+    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
+    display: inline-block;
+}
+
+/* Hover suavizado para todos los iconos */
+.service-card:hover .service-icon,
+.floating-card:hover .card-icon,
+.plan-card:hover .service-icon {
+    transform: scale(1.18) !important;
+    color: var(--accent-light) !important;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
+}
+
 .card-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
@@ -620,28 +642,45 @@ section {
     align-items: stretch;
 }
 
+/* === CORRECCIÓN CRÍTICA: PLANES - MISMA ANIMACIÓN PARA TODOS === */
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     position: relative;
-    transition: var(--transition);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     height: 100%;
     min-height: 580px;
+    transform-origin: center center;
 }
 
-.plan-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
-
+/* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
 .plan-card.featured {
+    /* SOLO DIFERENCIAS VISUALES, NO DE TAMAÑO */
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
+}
+
+/* ANIMACIÓN HOVER IDÉNTICA PARA LOS 3 PLANES (IGUAL QUE BOTONES HERO) */
+.plan-card:hover,
+.plan-card.featured:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        0 5px 15px rgba(255, 215, 0, 0.25) !important;
+    border-color: rgba(255, 215, 0, 0.4);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.plan-card.featured:hover {
+    border-color: var(--accent);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 5px 20px rgba(255, 215, 0, 0.35) !important;
 }
 
 .plan-badge {
@@ -696,13 +735,31 @@ section {
     flex-grow: 1;
 }
 
+/* === CORRECCIÓN: ELEMENTOS DE LISTA DENTRO DE PLANES === */
 .plan-features li {
-    padding: 0.6rem 0;
+    padding: 0.6rem 0.5rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     gap: 0.6rem;
     font-size: 0.95rem;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transform-origin: left center;
+    margin: 0 -0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.plan-features li:hover {
+    transform: scale(1.03) translateX(3px) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--accent-light) !important;
+    border-bottom-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.plan-features li:hover i {
+    transform: scale(1.15) !important;
+    color: var(--accent-light) !important;
+    transition: transform 0.2s ease !important;
 }
 
 .plan-features i {
@@ -726,7 +783,7 @@ section {
     color: var(--light);
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.95rem;
     display: flex;
@@ -735,9 +792,10 @@ section {
     gap: 0.5rem;
 }
 
-.btn-plan:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+.btn-plan:hover,
+.btn-plan.featured:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4) !important;
 }
 
 .btn-plan.featured {
@@ -1374,7 +1432,7 @@ footer {
     
     .btn-plan.featured:hover {
         background: var(--accent-light);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
@@ -1388,35 +1446,36 @@ footer {
     
     .btn-plan:hover {
         background: rgba(255, 255, 255, 0.15);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         border-color: rgba(255, 215, 0, 0.4);
     }
     
-    /* 4. CORRECCIÓN CRÍTICA: SERVICIOS - ICONOS QUE NO SE MUEVAN, SOLO ESCALEN LIGERAMENTE */
-    /* TODOS LOS SERVICIOS CON EL MISMO EFECTO */
+    /* 4. Servicios - ICONOS CON EFECTO FLUIDO MEJORADO */
     .service-card .service-icon {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
         display: inline-block;
         transform-origin: center center;
     }
     
     .service-card:hover .service-icon {
-        transform: scale(1.15); /* Solo escala ligeramente, sin moverse */
-        color: var(--accent-light);
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+        transform: scale(1.18) !important;
+        color: var(--accent-light) !important;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
     }
     
-    /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO SIN MOVERSE */
+    /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO CON EFECTO FLUIDO */
     .floating-card .card-icon {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
         display: inline-block;
         transform-origin: center center;
     }
     
     .floating-card:hover .card-icon {
-        transform: scale(1.15); /* Solo escala ligeramente */
-        color: var(--accent-light);
-        text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        transform: scale(1.18) !important;
+        color: var(--accent-light) !important;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4)) !important;
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5) !important;
     }
     
     .floating-card {
@@ -1439,30 +1498,7 @@ footer {
         transition: all 0.3s ease;
     }
     
-    /* 6. CORRECCIÓN: Planes - TODOS CON LA MISMA ANIMACIÓN */
-    .plan-card {
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    /* TODOS LOS PLANES (incluido el featured) con la misma elevación */
-    .plan-card:hover,
-    .plan-card.featured:hover {
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 
-            0 25px 50px rgba(0, 0, 0, 0.25),
-            0 0 20px rgba(255, 215, 0, 0.25);
-        border-color: rgba(255, 215, 0, 0.4);
-        background: rgba(255, 255, 255, 0.07);
-    }
-    
-    /* El plan featured mantiene su borde especial pero misma animación */
-    .plan-card.featured:hover {
-        border-color: var(--accent);
-        box-shadow: 
-            0 25px 50px rgba(0, 0, 0, 0.3),
-            0 0 25px rgba(255, 215, 0, 0.35);
-    }
-    
+    /* 6. CORRECCIÓN: Planes - TODOS CON LA MISMA ANIMACIÓN (YA APLICADO ARRIBA) */
     .plan-card:hover .price {
         transform: scale(1.05);
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1720,6 +1756,23 @@ footer {
 footer:last-child {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+}
+
+/* === OPTIMIZACIÓN GENERAL DE FLUIDEZ === */
+.service-card,
+.plan-card,
+.floating-card,
+.step,
+.btn-primary,
+.btn-secondary,
+.btn-plan {
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000px !important;
+    -webkit-perspective: 1000px !important;
+    transform-style: preserve-3d !important;
+    -webkit-transform-style: preserve-3d !important;
+    will-change: transform, box-shadow;
 }
 
 /* ===== MEDIA QUERIES PARA MÓVIL ===== */
