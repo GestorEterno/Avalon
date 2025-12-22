@@ -1241,58 +1241,59 @@ footer {
     max-width: 100%;
 }
 
-/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
+/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC (CON CORRECCIONES) ===== */
 @media (min-width: 769px) {
-    /* Animación escalonada para elementos del hero */
+    /* Animación escalonada para elementos del hero - CORREGIDA MÁS FLUIDA */
     .hero-content h1 {
         opacity: 0;
         transform: translateY(30px) scale(0.95);
-        animation: heroTitleLoad 0.8s cubic-bezier(0.215, 0.610, 0.355, 1) 0.3s forwards;
+        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
     }
     
     .hero-content p {
         opacity: 0;
         transform: translateY(20px);
-        animation: heroTextLoad 0.8s ease-out 0.8s forwards;
+        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
     }
     
     .hero-stats .stat:nth-child(1) {
         opacity: 0;
         transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.1s forwards;
+        animation: heroStatLoad 0.6s ease-out 1s forwards;
     }
     
     .hero-stats .stat:nth-child(2) {
         opacity: 0;
         transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.3s forwards;
+        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
     }
     
     .hero-stats .stat:nth-child(3) {
         opacity: 0;
         transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.5s forwards;
+        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
     }
     
+    /* CORRECCIÓN CRÍTICA: Botones del hero con animación más suave */
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
-        animation: heroButtonsLoad 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.8s forwards;
+        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
     }
     
     .floating-card:nth-child(1) {
         opacity: 0;
-        transform: translateX(30px) rotate(3deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s forwards;
+        transform: translateX(30px) rotate(2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
     }
     
     .floating-card:nth-child(2) {
         opacity: 0;
-        transform: translateX(30px) rotate(-3deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s forwards;
+        transform: translateX(30px) rotate(-2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
-    /* Animaciones específicas para hero */
+    /* Animaciones específicas para hero - CORREGIDAS */
     @keyframes heroTitleLoad {
         to {
             opacity: 1;
@@ -1315,17 +1316,15 @@ footer {
         }
     }
     
-    @keyframes heroButtonsLoad {
+    /* CORRECCIÓN CRÍTICA: Animación suavizada para botones del hero */
+    @keyframes heroButtonsLoadCorrected {
         0% {
             opacity: 0;
-            transform: translateY(20px) scale(0.95);
-        }
-        70% {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(20px);
         }
         100% {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
     }
     
@@ -1337,65 +1336,100 @@ footer {
     }
 }
 
-/* ===== MEJORAS HOVER PARA PC - ELEMENTOS "FACHEROS" ===== */
+/* ===== MEJORAS HOVER PARA PC - CON CORRECCIONES CRÍTICAS ===== */
 @media (min-width: 769px) {
-    /* 1. EFECTO SUPERIOR AL HOVER EN LOS PASOS DEL PROCESO */
-    .step {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .step:hover {
-        transform: translateY(-15px) scale(1.05);
-    }
-    
-    .step:hover .step-number {
-        transform: translateY(-10px) scale(1.2);
-        animation: levitate 2s ease-in-out infinite;
-        border-color: var(--accent-light);
-        box-shadow: 
-            0 0 30px rgba(255, 215, 0, 0.4),
-            0 15px 40px rgba(255, 215, 0, 0.2),
-            inset 0 0 20px rgba(255, 255, 255, 0.1);
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.15), 
-            rgba(255, 255, 255, 0.05));
-    }
-    
-    /* Brillar el texto en hover */
-    .step:hover .step-content h3 {
-        color: var(--accent-light);
-        animation: textGlow 2s ease-in-out infinite;
-        transform: translateY(-3px);
-        transition: all 0.4s ease;
-    }
-    
-    .step:hover .step-content p {
-        opacity: 1;
-        color: var(--light);
-        transform: translateY(-2px);
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        transition: all 0.4s ease 0.1s;
-    }
-    
-    /* Mejorar la aureola del número (solo PC) */
-    .step:hover .step-number::before {
-        animation: gentleGlow 2s ease-in-out infinite;
-        background: radial-gradient(
-            circle at 50% 50%, 
-            rgba(255, 215, 0, 0.4) 0%, 
-            rgba(255, 215, 0, 0.25) 40%, 
-            transparent 70%
-        );
-        filter: blur(8px);
-    }
-    
-    /* 2. BOTONES DE PLANES - EFECTOS MEJORADOS */
-    .btn-plan {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 1. CORRECCIÓN CRÍTICA: Botón "Ver Planes desde $1/año" - ELIMINAR EFECTO SHINE QUE CAUSA PARPADEO */
+    .btn-primary {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
         position: relative;
         overflow: hidden;
         z-index: 1;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* ELIMINAR EL EFECTO ::before QUE CAUSABA EL PARPADEO NEGRO */
+    .btn-primary::before {
+        content: none !important;
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        transform: translateY(-3px);
+        box-shadow: 
+            0 10px 25px rgba(255, 215, 0, 0.4),
+            0 0 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* Transición suave al quitar el hover */
+    .btn-primary {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
+    
+    /* 2. CORRECCIÓN CRÍTICA: Paneles flotantes del hero - ICONO MENOS AGRESIVO */
+    .floating-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .floating-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.25),
+            0 0 20px rgba(255, 215, 0, 0.2);
+        border-color: rgba(255, 215, 0, 0.4);
+        background: rgba(255, 255, 255, 0.12);
+    }
+    
+    /* Icono solo se escala ligeramente y brilla - SIN ROTACIÓN EXCESIVA */
+    .floating-card:hover .card-icon {
+        transform: scale(1.15);
+        color: var(--accent-light);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .floating-card:hover h3 {
+        color: var(--accent-light);
+        text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    
+    /* 3. CORRECCIÓN CRÍTICA: Planes - TODOS CON LA MISMA ANIMACIÓN */
+    .plan-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* TODOS LOS PLANES (incluido el featured) con la misma elevación */
+    .plan-card:hover,
+    .plan-card.featured:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.25),
+            0 0 20px rgba(255, 215, 0, 0.25);
+        border-color: rgba(255, 215, 0, 0.4);
+        background: rgba(255, 255, 255, 0.07);
+    }
+    
+    /* El plan featured mantiene su borde especial pero misma animación */
+    .plan-card.featured:hover {
+        border-color: var(--accent);
+        box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.3),
+            0 0 25px rgba(255, 215, 0, 0.35);
+    }
+    
+    .plan-card:hover .price {
+        transform: scale(1.05);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        color: var(--accent-light);
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* 4. CORRECCIÓN: Botones de planes mantienen efecto shine pero optimizado */
+    .btn-plan {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
     }
     
     .btn-plan::before {
@@ -1405,18 +1439,18 @@ footer {
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.7s ease;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: left 0.6s ease;
         z-index: -1;
     }
     
     .btn-plan:hover {
-        transform: translateY(-8px) scale(1.03);
+        transform: translateY(-5px);
         box-shadow: 
-            0 15px 30px rgba(0, 0, 0, 0.3),
-            0 0 20px rgba(255, 215, 0, 0.3);
+            0 10px 25px rgba(0, 0, 0, 0.25),
+            0 0 15px rgba(255, 215, 0, 0.25);
         background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 215, 0, 0.5);
+        border-color: rgba(255, 215, 0, 0.4);
     }
     
     .btn-plan:hover::before {
@@ -1428,110 +1462,87 @@ footer {
     }
     
     .btn-plan.featured:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 
-            0 20px 40px rgba(255, 215, 0, 0.5),
-            0 0 30px rgba(255, 215, 0, 0.4);
         background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        box-shadow: 
+            0 15px 35px rgba(255, 215, 0, 0.5),
+            0 0 20px rgba(255, 215, 0, 0.3);
     }
     
-    /* 3. PANELES DE SERVICIOS - HOVER MÁS DRAMÁTICO */
+    /* 5. Servicios - hover ajustado */
     .service-card {
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .service-card:hover {
-        transform: translateY(-15px) scale(1.03);
+        transform: translateY(-12px) scale(1.02);
         box-shadow: 
-            0 25px 50px rgba(0, 0, 0, 0.25),
-            0 0 30px rgba(255, 215, 0, 0.2);
-        border-color: rgba(255, 215, 0, 0.4);
+            0 20px 40px rgba(0, 0, 0, 0.2),
+            0 0 20px rgba(255, 215, 0, 0.15);
+        border-color: rgba(255, 215, 0, 0.3);
         background: rgba(255, 255, 255, 0.08);
     }
     
     .service-card:hover .service-icon {
-        transform: scale(1.2) rotate(5deg);
+        transform: scale(1.15);
         color: var(--accent-light);
-        text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    /* 4. PANELES DE PLANES - HOVER MEJORADO */
-    .plan-card {
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 6. Pasos del proceso - hover ajustado */
+    .step {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .plan-card:hover {
-        transform: translateY(-15px) scale(1.02);
+    .step:hover {
+        transform: translateY(-12px) scale(1.03);
+    }
+    
+    .step:hover .step-number {
+        transform: translateY(-8px) scale(1.15);
+        animation: levitate 2s ease-in-out infinite;
+        border-color: var(--accent-light);
         box-shadow: 
-            0 30px 60px rgba(0, 0, 0, 0.3),
-            0 0 25px rgba(255, 215, 0, 0.3);
-        border-color: rgba(255, 215, 0, 0.5);
-        background: rgba(255, 255, 255, 0.07);
+            0 0 25px rgba(255, 215, 0, 0.35),
+            0 10px 30px rgba(255, 215, 0, 0.15),
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.12), 
+            rgba(255, 255, 255, 0.05));
     }
     
-    .plan-card.featured:hover {
-        transform: translateY(-18px) scale(1.04);
-        box-shadow: 
-            0 35px 70px rgba(0, 0, 0, 0.35),
-            0 0 35px rgba(255, 215, 0, 0.5),
-            inset 0 0 20px rgba(255, 215, 0, 0.1);
-        border-color: var(--accent);
-    }
-    
-    .plan-card:hover .price {
-        transform: scale(1.1);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .step:hover .step-content h3 {
         color: var(--accent-light);
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-    }
-    
-    /* 5. FLOATING CARDS EN HERO - HOVER MEJORADO */
-    .floating-card {
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .floating-card:hover {
-        transform: translateY(-20px) scale(1.08);
-        box-shadow: 
-            0 30px 60px rgba(0, 0, 0, 0.35),
-            0 0 30px rgba(255, 215, 0, 0.4);
-        border-color: rgba(255, 215, 0, 0.6);
-        background: rgba(255, 255, 255, 0.12);
-    }
-    
-    .floating-card:hover .card-icon {
-        transform: scale(1.3) rotate(10deg);
-        color: var(--accent-light);
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .floating-card:hover h3 {
-        color: var(--accent-light);
-        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-        transform: translateY(-3px);
+        animation: textGlow 2s ease-in-out infinite;
+        transform: translateY(-2px);
         transition: all 0.3s ease;
     }
     
-    /* 6. BOTONES PRINCIPALES DEL HERO - HOVER MEJORADO */
-    .btn-primary:hover, .btn-secondary:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 
-            0 15px 30px rgba(0, 0, 0, 0.25),
-            0 0 20px rgba(255, 215, 0, 0.3);
+    .step:hover .step-content p {
+        opacity: 1;
+        color: var(--light);
+        transform: translateY(-1px);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease 0.1s;
     }
     
-    .btn-primary:hover {
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-        box-shadow: 
-            0 20px 40px rgba(255, 215, 0, 0.4),
-            0 0 25px rgba(255, 215, 0, 0.3);
+    .step:hover .step-number::before {
+        animation: gentleGlow 2s ease-in-out infinite;
+        background: radial-gradient(
+            circle at 50% 50%, 
+            rgba(255, 215, 0, 0.35) 0%, 
+            rgba(255, 215, 0, 0.2) 40%, 
+            transparent 70%
+        );
+        filter: blur(6px);
     }
     
+    /* 7. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
-        background: rgba(255, 215, 0, 0.1);
+        background: rgba(255, 215, 0, 0.08);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 }
 
