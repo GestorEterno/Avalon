@@ -1,7 +1,7 @@
-// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA ECOMMERCE
-// LOGICA IDÉNTICA AL INDEX PARA CARRUSELES Y NAVEGACIÓN
+// ecommerce.js - Versión Optimizada para Móvil y PC
+// Lógica idéntica a index.js para carruseles + mantenimiento específico
 
-// ===== NAVEGACIÓN MÓVIL =====
+// ===== NAVEGACIÓN MÓBIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         logo.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Cerrar menú móvil si está abierto
             if (window.innerWidth <= 768) {
                 if (hamburger && navMenu) {
                     hamburger.classList.remove('active');
@@ -37,19 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Scroll suave al inicio de la página ecommerce
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-            
-            // Actualizar navegación activa
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === 'ecommerce.html') {
-                    link.classList.add('active');
-                }
-            });
+            const inicioSection = document.getElementById('ecommerce-hero');
+            if (inicioSection) {
+                inicioSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                history.replaceState(null, null, '#ecommerce-hero');
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === 'ecommerce.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }
         });
     });
 });
@@ -64,7 +66,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${id}` || 
-                    (link.getAttribute('href') === 'ecommerce.html' && id === 'ecommerce-hero')) {
+                    link.getAttribute('href') === 'ecommerce.html') {
                     link.classList.add('active');
                 }
             });
@@ -95,10 +97,10 @@ window.addEventListener('scroll', () => {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🛒 AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
+    console.log('✅ AVALON CREATORS - Ecommerce optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.benefit-card, .plan-card, .faq-item, .floating-card, .table-row');
+    const elementsToAnimate = document.querySelectorAll('.feature-card, .plan-card, .floating-card');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -113,20 +115,25 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // Inicializar carrusel solo en móvil
+    // Inicializar carruseles solo en móvil
     if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando carrusel ecommerce móvil...');
+        console.log('📱 Inicializando carrusel de planes ecommerce...');
         initEcommerceCarousel();
     }
     
-    // Setup purchase notifications
-    setupPurchaseNotifications();
-    
-    // Contadores animados (opcional para ecommerce)
-    initEcommerceCounters();
+    // Setup maintenance notifications
+    setupMaintenanceNotifications();
 });
 
-// ===== CARRUSEL ECOMMERCE OPTIMIZADO Y FLUIDO - LOGICA IDÉNTICA AL INDEX =====
+// ===== CARRUSEL ECOMMERCE - VERSIÓN IDÉNTICA A INDEX =====
+const CAROUSEL_CONFIG = {
+    scrollDuration: 300,
+    scrollBehavior: 'smooth',
+    scrollSnapType: 'x mandatory',
+    arrowTransition: 0.15,
+    indicatorTransition: 0.2
+};
+
 function initEcommerceCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
@@ -144,7 +151,7 @@ function initEcommerceCarousel() {
     let isScrolling = false;
     let isAnimating = false;
     
-    console.log(`📊 Carrusel ecommerce: ${totalSlides} planes encontrados`);
+    console.log(`📊 Carrusel ecommerce: ${totalSlides} slides encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
@@ -160,21 +167,21 @@ function initEcommerceCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave con MISMA DURACIÓN QUE EL INDEX
+        // Scroll suave con MISMA DURACIÓN
         const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: 'smooth',
-                duration: 300
+                behavior: CAROUSEL_CONFIG.scrollBehavior,
+                duration: CAROUSEL_CONFIG.scrollDuration
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, 300);
+            }, CAROUSEL_CONFIG.scrollDuration);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -182,7 +189,7 @@ function initEcommerceCarousel() {
         }
     }
     
-    // Flechas - SIN FEEDBACK TÁCTIL DE BAJAR/SUBIR (IDÉNTICO AL INDEX)
+    // Flechas
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
@@ -211,7 +218,7 @@ function initEcommerceCarousel() {
         });
     });
     
-    // Scroll automático con debounce mejorado (IDÉNTICO AL INDEX)
+    // Scroll automático con debounce mejorado
     let scrollTimeout;
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
@@ -250,194 +257,60 @@ function initEcommerceCarousel() {
     }
 }
 
-// ===== CONTADORES ANIMADOS PARA ECOMMERCE =====
-function initEcommerceCounters() {
-    const stats = document.querySelectorAll('.stat');
-    
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumber = entry.target.querySelector('.stat-number');
-                if (statNumber && !statNumber.classList.contains('animated')) {
-                    animateEcommerceCounter(statNumber);
-                    statNumber.classList.add('animated');
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    stats.forEach(stat => {
-        counterObserver.observe(stat);
-    });
-}
-
-function animateEcommerceCounter(element) {
-    const text = element.textContent;
-    let target = 0;
-    let suffix = '';
-    
-    // Analizar el contenido para extraer número y sufijo
-    if (text.includes('+')) {
-        target = parseInt(text.replace('+', '').replace('M', '').replace('K', ''));
-        suffix = text.includes('M') ? 'M' : text.includes('K') ? 'K' : '+';
-        if (text.includes('M')) target *= 1000000;
-        if (text.includes('K')) target *= 1000;
-    } else if (text.includes('%')) {
-        target = parseInt(text.replace('%', ''));
-        suffix = '%';
-    } else {
-        target = parseInt(text);
-    }
-    
-    const duration = 2000;
-    let start = null;
-    
-    function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const percentage = Math.min(progress / duration, 1);
-        
-        // Easing function para animación más suave
-        const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-        let current = Math.floor(easeOutQuart * target);
-        
-        // Formatear según el sufijo
-        if (suffix === 'M' && current >= 1000000) {
-            element.textContent = (current / 1000000).toFixed(1) + 'M';
-        } else if (suffix === 'K' && current >= 1000) {
-            element.textContent = (current / 1000).toFixed(0) + 'K';
-        } else if (suffix === '+') {
-            element.textContent = current + '+';
-        } else if (suffix === '%') {
-            element.textContent = current + '%';
-        } else {
-            element.textContent = current;
-        }
-        
-        if (percentage < 1) {
-            requestAnimationFrame(step);
-        } else {
-            // Valor final
-            if (suffix === 'M') {
-                element.textContent = (target / 1000000).toFixed(1) + 'M';
-            } else if (suffix === 'K') {
-                element.textContent = (target / 1000).toFixed(0) + 'K';
-            } else if (suffix === '+') {
-                element.textContent = target + '+';
-            } else if (suffix === '%') {
-                element.textContent = target + '%';
-            } else {
-                element.textContent = target;
-            }
-        }
-    }
-    
-    requestAnimationFrame(step);
-}
-
-// ===== NOTIFICACIONES DE COMPRA - NUEVA FUNCIONALIDAD ESPECÍFICA =====
-function setupPurchaseNotifications() {
+// ===== NOTIFICACIONES DE MANTENIMIENTO =====
+function setupMaintenanceNotifications() {
     const maintenanceNotification = document.getElementById('maintenance-notification');
-    const purchaseButtons = document.querySelectorAll('.purchase-btn');
-    const notificationClose = document.querySelector('.notification-close');
-    const socialUnderConstruction = document.querySelectorAll('.social-under-construction');
+    const planButtons = document.querySelectorAll('.ecommerce-btn, .ecommerce-btn-mobile');
     
-    if (!maintenanceNotification || purchaseButtons.length === 0) return;
+    if (!maintenanceNotification || planButtons.length === 0) return;
     
-    // Función para mostrar notificación de mantenimiento
     function showMaintenanceNotification(planName) {
-        // Actualizar mensaje con el plan seleccionado
+        // Actualizar mensaje según plan
         const notificationText = maintenanceNotification.querySelector('.notification-text p');
         if (notificationText) {
-            notificationText.textContent = `Estamos optimizando nuestra plataforma para el plan "${planName}". Por favor, inténtalo más tarde o contáctanos por WhatsApp para reservar tu plan.`;
+            notificationText.innerHTML = `
+                Estamos optimizando nuestros sistemas para el plan <strong>${planName}</strong>. 
+                Por favor, inténtalo más tarde o contáctanos por WhatsApp para reservar tu plan.
+            `;
         }
         
         // Mostrar notificación
         maintenanceNotification.classList.add('active');
         
-        // Auto-ocultar después de 8 segundos
+        // Ocultar después de 5 segundos
         setTimeout(() => {
             maintenanceNotification.classList.remove('active');
-        }, 8000);
+        }, 5000);
     }
     
-    // Event listeners para botones de compra
-    purchaseButtons.forEach(button => {
+    planButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            const planName = this.getAttribute('data-plan') || 'Plan Seleccionado';
+            e.stopPropagation();
             
-            // Animar el botón clickeado (feedback táctil)
-            this.style.transform = 'scale(0.95)';
-            this.style.opacity = '0.9';
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.opacity = '';
-            }, 200);
+            const plan = this.getAttribute('data-plan');
+            let planName = '';
             
-            // Mostrar notificación
-            showMaintenanceNotification(planName);
-            
-            // Analytics simulado
-            console.log(`🛒 Intento de compra: ${planName}`);
-            
-            // Enviar evento a Google Analytics (simulado)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'purchase_attempt', {
-                    'event_category': 'Ecommerce',
-                    'event_label': planName,
-                    'value': 1
-                });
+            switch(plan) {
+                case 'base':
+                    planName = 'Ecommerce Base ($10/mes)';
+                    break;
+                case 'pro':
+                    planName = 'Ecommerce Pro ($50/mes)';
+                    break;
+                case 'elite':
+                    planName = 'Ecommerce Elite ($100/mes)';
+                    break;
+                default:
+                    planName = 'Ecommerce';
             }
-        });
-        
-        // Mejorar feedback táctil en móvil
-        if ('ontouchstart' in window) {
-            button.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.98)';
-                this.style.opacity = '0.9';
-            });
             
-            button.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.style.transform = '';
-                    this.style.opacity = '';
-                }, 150);
-            });
-        }
-    });
-    
-    // Cerrar notificación manualmente
-    if (notificationClose) {
-        notificationClose.addEventListener('click', () => {
-            maintenanceNotification.classList.remove('active');
-        });
-    }
-    
-    // Cerrar notificación al hacer clic fuera (opcional)
-    document.addEventListener('click', (e) => {
-        if (maintenanceNotification.classList.contains('active') &&
-            !maintenanceNotification.contains(e.target) &&
-            !Array.from(purchaseButtons).some(btn => btn.contains(e.target))) {
-            maintenanceNotification.classList.remove('active');
-        }
-    });
-    
-    // Notificación para redes sociales en construcción (heredada del index)
-    function showSocialNotification() {
-        // Podríamos reutilizar la misma notificación o crear una específica
-        console.log('🔧 Redes sociales en construcción - Función heredada del index');
-    }
-    
-    socialUnderConstruction.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            showSocialNotification();
+            showMaintenanceNotification(planName);
         });
     });
 }
 
-// ===== RESPONSIVE JS (IDÉNTICA AL INDEX) =====
+// ===== RESPONSIVE JS =====
 let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
@@ -447,43 +320,30 @@ window.addEventListener('resize', () => {
         
         // Re-inicializar carrusel si cambiamos a móvil
         if (window.innerWidth <= 768) {
-            const carouselExist = document.querySelector('.plans-carousel');
-            if (carouselExist && !carouselExist.dataset.initialized) {
+            const carouselExists = document.querySelector('.plans-carousel');
+            if (carouselExists && !carouselExists.dataset.initialized) {
                 console.log('📱 Re-inicializando carrusel ecommerce para móvil...');
                 initEcommerceCarousel();
-                carouselExist.dataset.initialized = true;
+                carouselExists.dataset.initialized = true;
             }
         }
     }, 250);
 });
 
-// ===== MEJORAS DE PERFORMANCE (IDÉNTICAS AL INDEX) =====
-// Evitar layout thrashing
-let scheduledAnimationFrame = false;
-function readAndWriteDom() {
-    if (!scheduledAnimationFrame) {
-        scheduledAnimationFrame = true;
-        requestAnimationFrame(() => {
-            // Operaciones de DOM aquí
-            scheduledAnimationFrame = false;
-        });
-    }
-}
-
-// ===== DETECCIÓN DE TÁCTIL (IDÉNTICA AL INDEX) =====
+// ===== DETECCIÓN DE TÁCTIL =====
 const isTouchDevice = 'ontouchstart' in window || 
     navigator.maxTouchPoints > 0 || 
     navigator.msMaxTouchPoints > 0;
 
 if (isTouchDevice) {
     document.body.classList.add('touch-device');
-    console.log('📱 Dispositivo táctil detectado para ecommerce');
+    console.log('📱 Dispositivo táctil detectado');
 } else {
     document.body.classList.add('no-touch-device');
-    console.log('💻 Dispositivo no táctil detectado para ecommerce');
+    console.log('💻 Dispositivo no táctil detectado');
 }
 
-// ===== MEJORAS PARA MÓVIL - ELIMINAR EFECTOS NO DESEADOS (IDÉNTICAS AL INDEX) =====
+// ===== MEJORAS PARA MÓVIL - ELIMINAR EFECTOS NO DESEADOS =====
 // Prevenir menú contextual en móvil
 document.addEventListener('contextmenu', function(e) {
     if (window.innerWidth <= 768) {
@@ -502,16 +362,9 @@ document.addEventListener('touchend', function(event) {
     lastTouchEnd = now;
 }, false);
 
-// Prevenir arrastre de imágenes en móvil
-document.addEventListener('dragstart', function(e) {
-    if (window.innerWidth <= 768 && e.target.tagName === 'IMG') {
-        e.preventDefault();
-    }
-}, false);
-
-// Mejorar feedback táctil en botones (específico para ecommerce)
+// Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link, .purchase-btn');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .ecommerce-btn, .ecommerce-btn-mobile, .nav-link, .context-link');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -528,126 +381,67 @@ if (isTouchDevice) {
     });
 }
 
-// ===== POLYFILL PARA SMOOTH SCROLL (IDÉNTICA AL INDEX) =====
-if (!('scrollBehavior' in document.documentElement.style)) {
-    console.log('🔧 Aplicando polyfill para scroll suave en ecommerce');
-    // Podríamos cargar un polyfill aquí si es necesario
-}
-
-// ===== ERROR HANDLING (IDÉNTICA AL INDEX) =====
-window.addEventListener('error', function(e) {
-    console.error('❌ Error en la aplicación ecommerce:', e.error);
-});
-
-// ===== LOADING STATES (IDÉNTICA AL INDEX) =====
+// ===== LOADING STATES =====
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
         console.log('🎉 Página ecommerce completamente cargada y lista');
         document.body.classList.add('loaded');
-        
-        // Animar tabla comparativa después de cargar
-        const tableRows = document.querySelectorAll('.table-row');
-        const tableObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('active');
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        tableRows.forEach(row => {
-            tableObserver.observe(row);
-        });
     }
 });
 
-// ===== ANIMACIÓN PARA TABLA COMPARATIVA =====
-function initComparisonTableAnimations() {
-    const tableRows = document.querySelectorAll('.table-row');
+// ===== ANIMACIÓN DE CONTADORES PARA ESTADÍSTICAS =====
+function initStatsCounters() {
+    const stats = document.querySelectorAll('.stat');
     
-    const tableObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('active');
-                }, index * 100);
+                const statNumber = entry.target.querySelector('.stat-number');
+                if (statNumber && !statNumber.classList.contains('animated')) {
+                    animateCounter(statNumber);
+                    statNumber.classList.add('animated');
+                }
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.5 });
     
-    tableRows.forEach(row => {
-        tableObserver.observe(row);
+    stats.forEach(stat => {
+        counterObserver.observe(stat);
     });
 }
 
-// Inicializar animaciones de tabla cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initComparisonTableAnimations);
-} else {
-    initComparisonTableAnimations();
-}
-
-// ===== FUNCIÓN ESPECIAL PARA ECOMMERCE: SIMULADOR DE CONVERSIÓN =====
-function initConversionSimulator() {
-    const conversionElements = document.querySelectorAll('.stat-number');
+function animateCounter(element) {
+    const text = element.textContent;
+    const target = parseInt(text.replace('+', '').replace('%', '').replace('s', ''));
+    const suffix = text.includes('+') ? '+' : 
+                   text.includes('%') ? '%' : 
+                   text.includes('s') ? 's' : '';
+    const duration = 1500;
+    let start = null;
     
-    // Simular aumento de conversión en tiempo real (solo demostración)
-    setInterval(() => {
-        conversionElements.forEach(el => {
-            if (el.textContent.includes('%') && Math.random() > 0.7) {
-                // Efecto sutil de parpadeo para indicar actividad
-                el.style.textShadow = '0 0 10px rgba(16, 185, 129, 0.5)';
-                setTimeout(() => {
-                    el.style.textShadow = '';
-                }, 300);
-            }
-        });
-    }, 5000);
-}
-
-// Iniciar simulador después de 3 segundos
-setTimeout(() => {
-    initConversionSimulator();
-    console.log('📈 Simulador de conversión ecommerce iniciado');
-}, 3000);
-
-// ===== MEJORA ESPECÍFICA: DETECCIÓN DE INTERÉS EN PLANES =====
-document.addEventListener('DOMContentLoaded', () => {
-    const planCards = document.querySelectorAll('.plan-card, .plan-card-mobile');
-    
-    planCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            if (!isTouchDevice) {
-                const planTitle = this.querySelector('h3');
-                if (planTitle) {
-                    planTitle.style.transform = 'translateY(-3px)';
-                    planTitle.style.transition = 'transform 0.3s ease';
-                }
-            }
-        });
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percentage = Math.min(progress / duration, 1);
         
-        card.addEventListener('mouseleave', function() {
-            if (!isTouchDevice) {
-                const planTitle = this.querySelector('h3');
-                if (planTitle) {
-                    planTitle.style.transform = '';
-                }
-            }
-        });
+        const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
+        const current = suffix === 's' ? 
+            (easeOutQuart * target).toFixed(1) : 
+            Math.floor(easeOutQuart * target);
         
-        // Para móvil: efecto de tap mejorado
-        if (isTouchDevice) {
-            card.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.99)';
-            });
-            
-            card.addEventListener('touchend', function() {
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
+        element.textContent = current + suffix;
+        
+        if (percentage < 1) {
+            requestAnimationFrame(step);
+        } else {
+            element.textContent = target + suffix;
         }
-    });
-});
+    }
+    
+    requestAnimationFrame(step);
+}
+
+// Inicializar contadores después de cargar
+setTimeout(() => {
+    initStatsCounters();
+}, 500);
