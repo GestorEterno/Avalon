@@ -1,7 +1,7 @@
-// ecommerce.js - Versión Específica para Ecommerce - BASADO EN index.js
-// MANTIENE TODAS LAS MEJORAS Y CONFIGURACIONES IDÉNTICAS DE CARRUSELES
+// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA ECOMMERCE
+// LOGICA IDÉNTICA AL INDEX PARA CARRUSELES Y NAVEGACIÓN
 
-// ===== NAVEGACIÓN MÓBIL =====
+// ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -22,7 +22,6 @@ navLinks.forEach(link => {
 
 // ===== SCROLL SUAVE AL INICIO =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleccionar todos los logos que ahora son enlaces
     const logos = document.querySelectorAll('a.logo, a.footer-logo');
     
     logos.forEach(logo => {
@@ -38,26 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Scroll suave al inicio (sección con id="inicio")
-            const inicioSection = document.getElementById('inicio');
-            if (inicioSection) {
-                inicioSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // También actualizar URL sin recargar
-                history.replaceState(null, null, '#inicio');
-                
-                // Actualizar navegación activa
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#inicio' || 
-                        link.getAttribute('href') === 'ecommerce.html') {
-                        link.classList.add('active');
-                    }
-                });
-            }
+            // Scroll suave al inicio de la página ecommerce
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Actualizar navegación activa
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === 'ecommerce.html') {
+                    link.classList.add('active');
+                }
+            });
         });
     });
 });
@@ -71,7 +63,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
             const id = entry.target.getAttribute('id');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
+                if (link.getAttribute('href') === `#${id}` || 
+                    (link.getAttribute('href') === 'ecommerce.html' && id === 'ecommerce-hero')) {
                     link.classList.add('active');
                 }
             });
@@ -102,10 +95,10 @@ window.addEventListener('scroll', () => {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
+    console.log('🛒 AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.plan-card, .step, .floating-card');
+    const elementsToAnimate = document.querySelectorAll('.benefit-card, .plan-card, .faq-item, .floating-card, .table-row');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -120,36 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // Inicializar carruseles solo en móvil
+    // Inicializar carrusel solo en móvil
     if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando carruseles móviles para ecommerce...');
-        initMobileCarousels();
+        console.log('📱 Inicializando carrusel ecommerce móvil...');
+        initEcommerceCarousel();
     }
     
     // Setup purchase notifications
     setupPurchaseNotifications();
     
-    // Contadores animados
-    initCounters();
+    // Contadores animados (opcional para ecommerce)
+    initEcommerceCounters();
 });
 
-// ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS - CONFIGURACIÓN IDÉNTICA A INDEX =====
-function initMobileCarousels() {
-    initPlansCarousel();
-    initProcessCarousel();
-}
-
-// MODIFICACIÓN CRÍTICA: Configuración idéntica para ambos carruseles (COPIADO EXACTO)
-const CAROUSEL_CONFIG = {
-    scrollDuration: 300, // MISMA DURACIÓN PARA AMBOS
-    scrollBehavior: 'smooth', // MISMO COMPORTAMIENTO
-    scrollSnapType: 'x mandatory', // MISMO SNAP
-    arrowTransition: 0.15, // MISMA TRANSICIÓN DE FLECHAS
-    indicatorTransition: 0.2 // MISMA TRANSICIÓN DE INDICADORES
-};
-
-// Carrusel de Planes Ecommerce - VERSIÓN MEJORADA Y FLUIDA (IDÉNTICA A INDEX)
-function initPlansCarousel() {
+// ===== CARRUSEL ECOMMERCE OPTIMIZADO Y FLUIDO - LOGICA IDÉNTICA AL INDEX =====
+function initEcommerceCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
@@ -166,7 +144,7 @@ function initPlansCarousel() {
     let isScrolling = false;
     let isAnimating = false;
     
-    console.log(`📊 Carrusel de planes ecommerce: ${totalSlides} slides encontrados`);
+    console.log(`📊 Carrusel ecommerce: ${totalSlides} planes encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
@@ -182,21 +160,21 @@ function initPlansCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave con MISMA DURACIÓN
+        // Scroll suave con MISMA DURACIÓN QUE EL INDEX
         const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: CAROUSEL_CONFIG.scrollBehavior,
-                duration: CAROUSEL_CONFIG.scrollDuration
+                behavior: 'smooth',
+                duration: 300
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, CAROUSEL_CONFIG.scrollDuration);
+            }, 300);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -204,7 +182,7 @@ function initPlansCarousel() {
         }
     }
     
-    // Flechas - SIN FEEDBACK TÁCTIL DE BAJAR/SUBIR
+    // Flechas - SIN FEEDBACK TÁCTIL DE BAJAR/SUBIR (IDÉNTICO AL INDEX)
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
@@ -233,7 +211,7 @@ function initPlansCarousel() {
         });
     });
     
-    // Scroll automático con debounce mejorado
+    // Scroll automático con debounce mejorado (IDÉNTICO AL INDEX)
     let scrollTimeout;
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
@@ -272,189 +250,8 @@ function initPlansCarousel() {
     }
 }
 
-// Carrusel de Proceso Ecommerce - VERSIÓN MEJORADA Y FLUIDA (IDÉNTICA A PLANS)
-function initProcessCarousel() {
-    const carousel = document.querySelector('.process-carousel');
-    const steps = document.querySelectorAll('.step-mobile');
-    const indicators = document.querySelectorAll('.process-indicator');
-    const prevArrow = document.querySelector('.process-carousel-arrow.prev-arrow');
-    const nextArrow = document.querySelector('.process-carousel-arrow.next-arrow');
-    
-    if (!carousel || steps.length === 0) {
-        console.log('❌ No se encontró carrusel de proceso ecommerce');
-        return;
-    }
-    
-    let currentIndex = 0;
-    const totalSlides = steps.length;
-    let isScrolling = false;
-    let isAnimating = false;
-    
-    console.log(`📊 Carrusel de proceso ecommerce: ${totalSlides} steps encontrados`);
-    
-    function updateCarousel(smooth = true) {
-        if (isAnimating) return;
-        isAnimating = true;
-        
-        // Actualizar indicadores
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
-        
-        // Actualizar steps
-        steps.forEach((step, index) => {
-            step.classList.toggle('active', index === currentIndex);
-        });
-        
-        // Scroll suave con MISMA DURACIÓN
-        const stepWidth = steps[0].offsetWidth;
-        const scrollPosition = currentIndex * stepWidth;
-        
-        if (smooth) {
-            carousel.scrollTo({
-                left: scrollPosition,
-                behavior: CAROUSEL_CONFIG.scrollBehavior,
-                duration: CAROUSEL_CONFIG.scrollDuration
-            });
-            
-            setTimeout(() => {
-                isAnimating = false;
-                isScrolling = false;
-            }, CAROUSEL_CONFIG.scrollDuration);
-        } else {
-            carousel.scrollLeft = scrollPosition;
-            isAnimating = false;
-            isScrolling = false;
-        }
-    }
-    
-    // Flechas IDÉNTICAS al carrusel de planes
-    if (prevArrow) {
-        prevArrow.addEventListener('click', () => {
-            if (currentIndex > 0 && !isAnimating) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
-    }
-    
-    if (nextArrow) {
-        nextArrow.addEventListener('click', () => {
-            if (currentIndex < totalSlides - 1 && !isAnimating) {
-                currentIndex++;
-                updateCarousel();
-            }
-        });
-    }
-    
-    // Indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            if (!isAnimating) {
-                currentIndex = index;
-                updateCarousel();
-            }
-        });
-    });
-    
-    // Scroll automático IDÉNTICO al carrusel de planes
-    let scrollTimeout;
-    carousel.addEventListener('scroll', () => {
-        if (isAnimating) return;
-        
-        isScrolling = true;
-        clearTimeout(scrollTimeout);
-        
-        scrollTimeout = setTimeout(() => {
-            const stepWidth = steps[0].offsetWidth;
-            const scrollLeft = carousel.scrollLeft;
-            
-            // MISMO CÁLCULO DE ÍNDICE
-            let newIndex = Math.round(scrollLeft / stepWidth);
-            
-            if (newIndex < 0) newIndex = 0;
-            if (newIndex >= totalSlides) newIndex = totalSlides - 1;
-            
-            if (newIndex !== currentIndex && !isAnimating) {
-                currentIndex = newIndex;
-                updateCarousel(false);
-            }
-            
-            isScrolling = false;
-        }, 100); // MISMO DEBOUNCE TIME
-    });
-    
-    updateCarousel(false);
-    
-    // Asegurar visibilidad de flechas
-    if (prevArrow && nextArrow) {
-        prevArrow.style.display = 'flex';
-        nextArrow.style.display = 'flex';
-    }
-}
-
-// ===== NOTIFICACIONES DE COMPRA =====
-function setupPurchaseNotifications() {
-    const purchaseNotification = document.getElementById('purchase-notification');
-    const purchaseButtons = document.querySelectorAll('.ecommerce-purchase, .ecommerce-purchase-mobile');
-    const closeNotification = document.querySelector('.notification-close');
-    
-    if (!purchaseNotification || purchaseButtons.length === 0) return;
-    
-    function showNotification(plan) {
-        // Puedes personalizar el mensaje según el plan si lo deseas
-        purchaseNotification.classList.add('active');
-        
-        // Auto-ocultar después de 8 segundos
-        setTimeout(() => {
-            if (purchaseNotification.classList.contains('active')) {
-                purchaseNotification.classList.remove('active');
-            }
-        }, 8000);
-    }
-    
-    purchaseButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const planType = this.getAttribute('data-plan') || 'desconocido';
-            console.log(`🛒 Intento de compra del plan: ${planType}`);
-            
-            // Mostrar notificación
-            showNotification(planType);
-            
-            // Feedback táctil en móvil
-            if (window.innerWidth <= 768) {
-                this.style.transform = 'scale(0.96)';
-                this.style.opacity = '0.9';
-                setTimeout(() => {
-                    this.style.transform = '';
-                    this.style.opacity = '';
-                }, 150);
-            }
-        });
-    });
-    
-    // Cerrar notificación
-    if (closeNotification) {
-        closeNotification.addEventListener('click', () => {
-            purchaseNotification.classList.remove('active');
-        });
-    }
-    
-    // Cerrar notificación al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (purchaseNotification.classList.contains('active') && 
-            !purchaseNotification.contains(e.target) && 
-            !Array.from(purchaseButtons).some(btn => btn.contains(e.target))) {
-            purchaseNotification.classList.remove('active');
-        }
-    });
-}
-
-// ===== CONTADORES ANIMADOS =====
-function initCounters() {
+// ===== CONTADORES ANIMADOS PARA ECOMMERCE =====
+function initEcommerceCounters() {
     const stats = document.querySelectorAll('.stat');
     
     const counterObserver = new IntersectionObserver((entries) => {
@@ -462,7 +259,7 @@ function initCounters() {
             if (entry.isIntersecting) {
                 const statNumber = entry.target.querySelector('.stat-number');
                 if (statNumber && !statNumber.classList.contains('animated')) {
-                    animateCounter(statNumber);
+                    animateEcommerceCounter(statNumber);
                     statNumber.classList.add('animated');
                 }
             }
@@ -474,10 +271,24 @@ function initCounters() {
     });
 }
 
-function animateCounter(element) {
+function animateEcommerceCounter(element) {
     const text = element.textContent;
-    const target = parseInt(text.replace('+', '').replace('%', ''));
-    const suffix = text.includes('+') ? '+' : text.includes('%') ? '%' : '';
+    let target = 0;
+    let suffix = '';
+    
+    // Analizar el contenido para extraer número y sufijo
+    if (text.includes('+')) {
+        target = parseInt(text.replace('+', '').replace('M', '').replace('K', ''));
+        suffix = text.includes('M') ? 'M' : text.includes('K') ? 'K' : '+';
+        if (text.includes('M')) target *= 1000000;
+        if (text.includes('K')) target *= 1000;
+    } else if (text.includes('%')) {
+        target = parseInt(text.replace('%', ''));
+        suffix = '%';
+    } else {
+        target = parseInt(text);
+    }
+    
     const duration = 2000;
     let start = null;
     
@@ -488,21 +299,145 @@ function animateCounter(element) {
         
         // Easing function para animación más suave
         const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-        const current = Math.floor(easeOutQuart * target);
+        let current = Math.floor(easeOutQuart * target);
         
-        element.textContent = current + suffix;
+        // Formatear según el sufijo
+        if (suffix === 'M' && current >= 1000000) {
+            element.textContent = (current / 1000000).toFixed(1) + 'M';
+        } else if (suffix === 'K' && current >= 1000) {
+            element.textContent = (current / 1000).toFixed(0) + 'K';
+        } else if (suffix === '+') {
+            element.textContent = current + '+';
+        } else if (suffix === '%') {
+            element.textContent = current + '%';
+        } else {
+            element.textContent = current;
+        }
         
         if (percentage < 1) {
             requestAnimationFrame(step);
         } else {
-            element.textContent = target + suffix;
+            // Valor final
+            if (suffix === 'M') {
+                element.textContent = (target / 1000000).toFixed(1) + 'M';
+            } else if (suffix === 'K') {
+                element.textContent = (target / 1000).toFixed(0) + 'K';
+            } else if (suffix === '+') {
+                element.textContent = target + '+';
+            } else if (suffix === '%') {
+                element.textContent = target + '%';
+            } else {
+                element.textContent = target;
+            }
         }
     }
     
     requestAnimationFrame(step);
 }
 
-// ===== RESPONSIVE JS =====
+// ===== NOTIFICACIONES DE COMPRA - NUEVA FUNCIONALIDAD ESPECÍFICA =====
+function setupPurchaseNotifications() {
+    const maintenanceNotification = document.getElementById('maintenance-notification');
+    const purchaseButtons = document.querySelectorAll('.purchase-btn');
+    const notificationClose = document.querySelector('.notification-close');
+    const socialUnderConstruction = document.querySelectorAll('.social-under-construction');
+    
+    if (!maintenanceNotification || purchaseButtons.length === 0) return;
+    
+    // Función para mostrar notificación de mantenimiento
+    function showMaintenanceNotification(planName) {
+        // Actualizar mensaje con el plan seleccionado
+        const notificationText = maintenanceNotification.querySelector('.notification-text p');
+        if (notificationText) {
+            notificationText.textContent = `Estamos optimizando nuestra plataforma para el plan "${planName}". Por favor, inténtalo más tarde o contáctanos por WhatsApp para reservar tu plan.`;
+        }
+        
+        // Mostrar notificación
+        maintenanceNotification.classList.add('active');
+        
+        // Auto-ocultar después de 8 segundos
+        setTimeout(() => {
+            maintenanceNotification.classList.remove('active');
+        }, 8000);
+    }
+    
+    // Event listeners para botones de compra
+    purchaseButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const planName = this.getAttribute('data-plan') || 'Plan Seleccionado';
+            
+            // Animar el botón clickeado (feedback táctil)
+            this.style.transform = 'scale(0.95)';
+            this.style.opacity = '0.9';
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 200);
+            
+            // Mostrar notificación
+            showMaintenanceNotification(planName);
+            
+            // Analytics simulado
+            console.log(`🛒 Intento de compra: ${planName}`);
+            
+            // Enviar evento a Google Analytics (simulado)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'purchase_attempt', {
+                    'event_category': 'Ecommerce',
+                    'event_label': planName,
+                    'value': 1
+                });
+            }
+        });
+        
+        // Mejorar feedback táctil en móvil
+        if ('ontouchstart' in window) {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+                this.style.opacity = '0.9';
+            });
+            
+            button.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.opacity = '';
+                }, 150);
+            });
+        }
+    });
+    
+    // Cerrar notificación manualmente
+    if (notificationClose) {
+        notificationClose.addEventListener('click', () => {
+            maintenanceNotification.classList.remove('active');
+        });
+    }
+    
+    // Cerrar notificación al hacer clic fuera (opcional)
+    document.addEventListener('click', (e) => {
+        if (maintenanceNotification.classList.contains('active') &&
+            !maintenanceNotification.contains(e.target) &&
+            !Array.from(purchaseButtons).some(btn => btn.contains(e.target))) {
+            maintenanceNotification.classList.remove('active');
+        }
+    });
+    
+    // Notificación para redes sociales en construcción (heredada del index)
+    function showSocialNotification() {
+        // Podríamos reutilizar la misma notificación o crear una específica
+        console.log('🔧 Redes sociales en construcción - Función heredada del index');
+    }
+    
+    socialUnderConstruction.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showSocialNotification();
+        });
+    });
+}
+
+// ===== RESPONSIVE JS (IDÉNTICA AL INDEX) =====
 let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
@@ -510,19 +445,19 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
         
-        // Re-inicializar carruseles si cambiamos a móvil
+        // Re-inicializar carrusel si cambiamos a móvil
         if (window.innerWidth <= 768) {
-            const carouselsExist = document.querySelector('.plans-carousel');
-            if (carouselsExist && !carouselsExist.dataset.initialized) {
-                console.log('📱 Re-inicializando carruseles para móvil...');
-                initMobileCarousels();
-                carouselsExist.dataset.initialized = true;
+            const carouselExist = document.querySelector('.plans-carousel');
+            if (carouselExist && !carouselExist.dataset.initialized) {
+                console.log('📱 Re-inicializando carrusel ecommerce para móvil...');
+                initEcommerceCarousel();
+                carouselExist.dataset.initialized = true;
             }
         }
     }, 250);
 });
 
-// ===== MEJORAS DE PERFORMANCE =====
+// ===== MEJORAS DE PERFORMANCE (IDÉNTICAS AL INDEX) =====
 // Evitar layout thrashing
 let scheduledAnimationFrame = false;
 function readAndWriteDom() {
@@ -535,20 +470,20 @@ function readAndWriteDom() {
     }
 }
 
-// ===== DETECCIÓN DE TÁCTIL =====
+// ===== DETECCIÓN DE TÁCTIL (IDÉNTICA AL INDEX) =====
 const isTouchDevice = 'ontouchstart' in window || 
     navigator.maxTouchPoints > 0 || 
     navigator.msMaxTouchPoints > 0;
 
 if (isTouchDevice) {
     document.body.classList.add('touch-device');
-    console.log('📱 Dispositivo táctil detectado');
+    console.log('📱 Dispositivo táctil detectado para ecommerce');
 } else {
     document.body.classList.add('no-touch-device');
-    console.log('💻 Dispositivo no táctil detectado');
+    console.log('💻 Dispositivo no táctil detectado para ecommerce');
 }
 
-// ===== MEJORAS PARA MÓVIL - ELIMINAR EFECTOS NO DESEADOS =====
+// ===== MEJORAS PARA MÓVIL - ELIMINAR EFECTOS NO DESEADOS (IDÉNTICAS AL INDEX) =====
 // Prevenir menú contextual en móvil
 document.addEventListener('contextmenu', function(e) {
     if (window.innerWidth <= 768) {
@@ -574,9 +509,9 @@ document.addEventListener('dragstart', function(e) {
     }
 }, false);
 
-// Mejorar feedback táctil en botones
+// Mejorar feedback táctil en botones (específico para ecommerce)
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .ecommerce-purchase, .ecommerce-purchase-mobile, .nav-link, .context-link, .disclaimer-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link, .purchase-btn');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -593,21 +528,126 @@ if (isTouchDevice) {
     });
 }
 
-// ===== POLYFILL PARA SMOOTH SCROLL =====
+// ===== POLYFILL PARA SMOOTH SCROLL (IDÉNTICA AL INDEX) =====
 if (!('scrollBehavior' in document.documentElement.style)) {
-    console.log('🔧 Aplicando polyfill para scroll suave');
+    console.log('🔧 Aplicando polyfill para scroll suave en ecommerce');
     // Podríamos cargar un polyfill aquí si es necesario
 }
 
-// ===== ERROR HANDLING =====
+// ===== ERROR HANDLING (IDÉNTICA AL INDEX) =====
 window.addEventListener('error', function(e) {
     console.error('❌ Error en la aplicación ecommerce:', e.error);
 });
 
-// ===== LOADING STATES =====
+// ===== LOADING STATES (IDÉNTICA AL INDEX) =====
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
         console.log('🎉 Página ecommerce completamente cargada y lista');
         document.body.classList.add('loaded');
+        
+        // Animar tabla comparativa después de cargar
+        const tableRows = document.querySelectorAll('.table-row');
+        const tableObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        tableRows.forEach(row => {
+            tableObserver.observe(row);
+        });
     }
+});
+
+// ===== ANIMACIÓN PARA TABLA COMPARATIVA =====
+function initComparisonTableAnimations() {
+    const tableRows = document.querySelectorAll('.table-row');
+    
+    const tableObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    tableRows.forEach(row => {
+        tableObserver.observe(row);
+    });
+}
+
+// Inicializar animaciones de tabla cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initComparisonTableAnimations);
+} else {
+    initComparisonTableAnimations();
+}
+
+// ===== FUNCIÓN ESPECIAL PARA ECOMMERCE: SIMULADOR DE CONVERSIÓN =====
+function initConversionSimulator() {
+    const conversionElements = document.querySelectorAll('.stat-number');
+    
+    // Simular aumento de conversión en tiempo real (solo demostración)
+    setInterval(() => {
+        conversionElements.forEach(el => {
+            if (el.textContent.includes('%') && Math.random() > 0.7) {
+                // Efecto sutil de parpadeo para indicar actividad
+                el.style.textShadow = '0 0 10px rgba(16, 185, 129, 0.5)';
+                setTimeout(() => {
+                    el.style.textShadow = '';
+                }, 300);
+            }
+        });
+    }, 5000);
+}
+
+// Iniciar simulador después de 3 segundos
+setTimeout(() => {
+    initConversionSimulator();
+    console.log('📈 Simulador de conversión ecommerce iniciado');
+}, 3000);
+
+// ===== MEJORA ESPECÍFICA: DETECCIÓN DE INTERÉS EN PLANES =====
+document.addEventListener('DOMContentLoaded', () => {
+    const planCards = document.querySelectorAll('.plan-card, .plan-card-mobile');
+    
+    planCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            if (!isTouchDevice) {
+                const planTitle = this.querySelector('h3');
+                if (planTitle) {
+                    planTitle.style.transform = 'translateY(-3px)';
+                    planTitle.style.transition = 'transform 0.3s ease';
+                }
+            }
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            if (!isTouchDevice) {
+                const planTitle = this.querySelector('h3');
+                if (planTitle) {
+                    planTitle.style.transform = '';
+                }
+            }
+        });
+        
+        // Para móvil: efecto de tap mejorado
+        if (isTouchDevice) {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.99)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        }
+    });
 });
