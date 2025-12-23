@@ -1,5 +1,6 @@
-/* ecommerce.css - Versión Optimizada IDÉNTICA a index.css */
-/* Correcciones: Botones idénticos, footer idéntico, 3 paneles de ventajas, comparativa con Shopify */
+/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE */
+/* MEJORA CRÍTICA: Eliminar efectos azules de tap en móvil y sensación tipo app */
+/* MEJORA ESPECÍFICA: Animación de cambio de panel IDÉNTICA en ambos carruseles móviles */
 
 :root {
     --primary: #0f3460;
@@ -17,6 +18,42 @@
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --border-radius-lg: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent !important;
+    tap-highlight-color: transparent !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--light);
+    overflow-x: hidden;
+    background: var(--dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Permitir selección solo en contenido de texto real */
+p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .step-content p {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 /* === ANIMACIONES MINIMIZADAS === */
@@ -99,48 +136,7 @@
     }
 }
 
-@keyframes particlesMove {
-    0% { transform: translateY(0px) translateX(0px); }
-    100% { transform: translateY(-30px) translateX(20px); }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent !important;
-    tap-highlight-color: transparent !important;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    color: var(--light);
-    overflow-x: hidden;
-    background: var(--dark);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* Permitir selección solo en contenido de texto real */
-p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .ventaja-card p {
-    -webkit-user-select: text;
-    user-select: text;
-}
-
-/* === BACKGROUND IDÉNTICO === */
+/* === BACKGROUND OPTIMIZADO === */
 .animated-background {
     position: fixed;
     top: 0;
@@ -166,7 +162,12 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     z-index: -9;
 }
 
-/* === NAVBAR IDÉNTICA === */
+@keyframes particlesMove {
+    0% { transform: translateY(0px) translateX(0px); }
+    100% { transform: translateY(-30px) translateX(20px); }
+}
+
+/* === NAVBAR === */
 .navbar {
     position: fixed;
     top: 0;
@@ -187,7 +188,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     padding: 0 5%;
 }
 
-/* === LOGO IDÉNTICO === */
+/* === LOGO DEL NAVBAR === */
 .logo {
     text-decoration: none !important;
     color: inherit !important;
@@ -282,6 +283,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     width: 100%;
 }
 
+/* === HAMBURGER MENU === */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -313,8 +315,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* === HERO ECOMMERCE === */
-.hero-ecommerce {
+/* === HERO SECTION === */
+.hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -397,13 +399,14 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     opacity: 0.8;
 }
 
-/* ===== BOTONES IDÉNTICOS A INDEX ===== */
+/* ===== BOTONES DEL HERO PERFECTAMENTE EQUILIBRADOS ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
 }
 
+/* Botones flexibles que se adaptan al contenido sin presionarse */
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -422,7 +425,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     outline: none;
 }
 
-/* Botón primario IDÉNTICO */
+/* Botón primario */
 .btn-primary {
     background: var(--accent);
     color: var(--dark);
@@ -458,7 +461,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     margin-top: 0.2rem;
 }
 
-/* Botón secundario IDÉNTICO */
+/* Botón secundario */
 .btn-secondary {
     background: transparent;
     color: var(--light);
@@ -475,7 +478,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     border-color: var(--accent);
 }
 
-/* === HERO IMAGE IDÉNTICA === */
+/* === HERO IMAGE === */
 .hero-image {
     flex: 1;
     display: flex;
@@ -508,10 +511,9 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* === MEJORAS DE FLUIDEZ PARA ICONOS - IDÉNTICO A INDEX === */
+/* === MEJORAS DE FLUIDEZ PARA ICONOS === */
 .service-card .service-icon,
-.floating-card .card-icon,
-.ventaja-card .ventaja-icon {
+.floating-card .card-icon {
     transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: center center;
     will-change: transform;
@@ -520,8 +522,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
 }
 
 .service-card:hover .service-icon,
-.floating-card:hover .card-icon,
-.ventaja-card:hover .ventaja-icon {
+.floating-card:hover .card-icon {
     transform: scale(1.18);
     color: var(--accent-light);
     filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
@@ -546,8 +547,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     line-height: 1.4;
 }
 
-/* === BANNER ESCALABILIDAD === */
-.scalability-banner {
+/* === BANNER DE CONTEXTO === */
+.pricing-context-banner {
     background: linear-gradient(135deg, 
         rgba(255, 215, 0, 0.1) 0%, 
         rgba(15, 52, 96, 0.2) 100%);
@@ -565,7 +566,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     flex-wrap: wrap;
 }
 
-.context-content i.fa-rocket {
+.context-content i.fa-chart-line {
     font-size: 2.5rem;
     color: var(--accent);
     flex-shrink: 0;
@@ -614,10 +615,12 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     border-color: var(--accent);
 }
 
-/* === VENTAJAS (3 PANELES) === */
-.ventajas-ecommerce {
+/* === SECTION COMMON === */
+section {
     padding: 80px 0;
+    position: relative;
     background: rgba(15, 52, 96, 0.02);
+    z-index: 1;
 }
 
 .section-header {
@@ -653,312 +656,158 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     line-height: 1.6;
 }
 
-.ventajas-grid {
+/* === SERVICES === */
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
-.ventaja-card {
+.service-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 2.5rem 2rem;
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 2rem;
+    transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
     position: relative;
     overflow: hidden;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
-.ventaja-card::before {
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.service-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
     transform: scaleX(0);
     transition: var(--transition);
 }
 
-.ventaja-card:hover::before {
+.service-card:hover::before {
     transform: scaleX(1);
 }
 
-.ventaja-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.25),
-        0 5px 15px rgba(255, 215, 0, 0.2);
-    border-color: rgba(255, 215, 0, 0.3);
-}
-
-.ventaja-icon {
-    font-size: 2.8rem;
+.service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
     color: var(--accent);
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
 }
 
-.ventaja-card:hover .ventaja-icon {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+.service-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.ventaja-card h3 {
-    font-size: 1.5rem;
+.service-card p {
     margin-bottom: 1.2rem;
-    font-weight: 700;
-    color: var(--accent-light);
+    opacity: 0.8;
+    line-height: 1.5;
 }
 
-.ventaja-card p {
-    margin-bottom: 1.8rem;
-    opacity: 0.85;
-    line-height: 1.6;
-    font-size: 1rem;
-}
-
-.ventaja-list {
+.service-features {
     list-style: none;
-    text-align: left;
 }
 
-.ventaja-list li {
-    padding: 0.6rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.ventaja-list i {
-    color: var(--accent);
-    font-size: 0.9rem;
-}
-
-/* === COMPARATIVA CON SHOPIFY/TIENDANUBE === */
-.comparativa-competencia {
-    padding: 80px 0;
-    background: rgba(26, 26, 46, 0.5);
-}
-
-.comparativa-tabla {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 3rem;
-}
-
-.tabla-header {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    background: rgba(15, 52, 96, 0.3);
-    padding: 1.8rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tabla-caracteristica {
-    font-weight: 700;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-}
-
-.tabla-plataforma {
-    text-align: center;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-}
-
-.plataforma-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.plataforma-logo i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.plataforma-logo span {
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-/* Colores específicos para cada plataforma */
-.avalon .plataforma-logo i {
-    color: var(--accent);
-}
-
-.shopify .plataforma-logo i {
-    color: #96bf48; /* Verde Shopify */
-}
-
-.tiendanube .plataforma-logo i {
-    color: #00aaff; /* Azul Tiendanube */
-}
-
-.avalon {
-    background: rgba(255, 215, 0, 0.08);
-    border-radius: 8px;
-    position: relative;
-}
-
-.avalon::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--accent), var(--secondary));
-    border-radius: 10px;
-    z-index: -1;
-    opacity: 0.5;
-}
-
-.tabla-fila {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition);
-    align-items: center;
-}
-
-.tabla-fila:hover {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.tabla-fila .tabla-caracteristica {
-    font-weight: 500;
-    color: var(--gray-light);
-}
-
-.precio-destacado {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-}
-
-.precio {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--gray-light);
-    line-height: 1;
-}
-
-.precio-periodo {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    margin-left: 0.2rem;
-}
-
-.check-destacado {
-    color: var(--accent);
-    font-size: 1.2rem;
-    font-weight: 800;
-}
-
-.cross {
-    color: #ff4444;
-    opacity: 0.7;
-    font-size: 1.1rem;
-}
-
-.texto-small {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin-top: 0.3rem;
-    display: block;
-}
-
-.comparativa-conclusion {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, 
-        rgba(15, 52, 96, 0.3) 0%, 
-        rgba(83, 52, 131, 0.2) 100%);
-    border-radius: var(--border-radius-lg);
-    border-left: 4px solid var(--accent);
-}
-
-.conclusion-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.conclusion-content i {
-    color: var(--accent);
-    font-size: 2.5rem;
-    flex-shrink: 0;
-}
-
-.conclusion-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.conclusion-text h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.conclusion-text p {
-    opacity: 0.9;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    max-width: 600px;
-}
-
-.conclusion-link {
+.service-features li {
+    padding: 0.4rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 0.9rem;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.service-features i {
     color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.8rem 1.8rem;
+    font-size: 0.8rem;
+}
+
+/* === PROCESS === */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 0 15px;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
     border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 30px;
+    backdrop-filter: blur(10px);
     transition: var(--transition);
-    background: rgba(255, 255, 255, 0.05);
-    flex-shrink: 0;
+    position: relative;
 }
 
-.conclusion-link:hover {
-    background: rgba(255, 215, 0, 0.1);
-    transform: translateX(5px);
-    border-color: var(--accent);
+.step-number::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
+    border-radius: 50%;
+    animation: gentleGlow 4s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(5px);
 }
 
-/* === PLANS ECOMMERCE === */
-.plans-ecommerce {
-    padding: 80px 0;
+.step-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--light);
 }
 
+.step-content p {
+    opacity: 0.85;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+/* === PLANS DESKTOP === */
 .plans-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -967,7 +816,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     align-items: stretch;
 }
 
-/* PLANES IDÉNTICOS A INDEX - CORRECCIÓN DE COLORES DE BOTONES */
+/* === CORRECCIÓN CRÍTICA: PLANES - MISMA ANIMACIÓN PARA TODOS === */
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -979,12 +828,13 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 620px;
+    min-height: 580px;
     transform-origin: center center;
     -webkit-touch-callout: none;
     user-select: none;
 }
 
+/* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
 .plan-card.featured {
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
@@ -1128,7 +978,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     font-style: italic;
 }
 
-/* BOTONES DE PLANES IDÉNTICOS A INDEX - CORREGIDOS */
 .btn-plan {
     display: block;
     text-align: center;
@@ -1145,11 +994,10 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    cursor: pointer;
-    border: none;
-    outline: none;
     -webkit-touch-callout: none;
     user-select: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .btn-plan:hover,
@@ -1167,28 +1015,266 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     background: var(--accent-light);
 }
 
-/* Botones específicos para ecommerce SIN COLORES RAROS */
-.ecommerce-btn {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+/* === DISCLAIMER MEJORADO === */
+.plan-disclaimer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(15, 52, 96, 0.3);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--accent);
 }
 
-.ecommerce-btn.featured {
-    background: var(--accent) !important;
-    color: var(--dark) !important;
+.disclaimer-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
-.ecommerce-btn:hover {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border-color: rgba(255, 215, 0, 0.4) !important;
+.disclaimer-content i {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
 }
 
-.ecommerce-btn.featured:hover {
-    background: var(--accent-light) !important;
+.disclaimer-text {
+    flex: 1;
 }
 
-/* === CARRUSEL MÓVIL - IDÉNTICO A INDEX === */
-.carousel-container {
+.disclaimer-text p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.disclaimer-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+}
+
+.disclaimer-link:hover {
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+/* === FOOTER CORREGIDO - ESPACIOS ELIMINADOS === */
+footer {
+    background: transparent;
+    color: var(--light);
+    padding: 0.3rem 0 0.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+    margin-top: -10px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.footer-mobile {
+    display: block;
+    width: 100%;
+    padding: 0.3rem 0;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.1rem 0;
+}
+
+.footer-logo {
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+    margin-bottom: 0.1rem;
+}
+
+.footer-logo .logo-img {
+    height: 32px;
+    width: auto;
+    transition: filter 0.2s ease;
+    pointer-events: none;
+}
+
+.footer-logo h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-tagline {
+    opacity: 0.8;
+    line-height: 1.3;
+    font-size: 0.8rem;
+    max-width: 300px;
+    margin: 0.1rem 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--light);
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
+                background 0.2s ease,
+                color 0.2s ease;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    color: var(--dark);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+}
+
+/* === SOCIAL NOTIFICATION === */
+.social-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary);
+    color: var(--light);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--accent);
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s ease;
+    max-width: 90%;
+    width: 350px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-notification.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.notification-content i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.notification-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* ===== LOGOS COMO ENLACES - ESTILOS UNIFICADOS ===== */
+a.logo,
+a.footer-logo {
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+}
+
+/* Eliminar cualquier efecto de focus no deseado */
+a.logo:focus,
+a.footer-logo:focus,
+a.logo:active,
+a.footer-logo:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Mantener el efecto hover existente */
+a.logo:hover,
+a.footer-logo:hover {
+    transform: translateY(-2px) !important;
+}
+
+a.logo:hover .logo-img,
+a.footer-logo:hover .logo-img {
+    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
+}
+
+a.logo:hover h2,
+a.logo:hover h3,
+a.footer-logo:hover h2,
+a.footer-logo:hover h3 {
+    color: var(--accent) !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* ===== CARRUSELES MÓVIL ===== */
+.carousel-container,
+.process-carousel-container {
     display: none;
     position: relative;
     width: 100%;
@@ -1198,7 +1284,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     padding-bottom: 40px;
 }
 
-.plans-carousel {
+.plans-carousel,
+.process-carousel {
     display: flex;
     width: 100%;
     transition: transform 0.3s ease;
@@ -1212,11 +1299,14 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     touch-action: pan-x pan-y;
 }
 
-.plans-carousel::-webkit-scrollbar {
+.plans-carousel::-webkit-scrollbar,
+.process-carousel::-webkit-scrollbar {
     display: none;
 }
 
-.carousel-arrow {
+/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
+.carousel-arrow,
+.process-carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1235,33 +1325,39 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     transition: var(--transition);
     opacity: 0.9;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: none;
-    outline: none;
     -webkit-touch-callout: none;
     user-select: none;
+    outline: none;
+    border: none;
 }
 
-.carousel-arrow i {
+/* CORRECCIÓN: Iconos de flechas sin oscurecerse */
+.carousel-arrow i,
+.process-carousel-arrow i {
     color: var(--accent);
     transition: none !important;
 }
 
-.carousel-arrow:hover {
+.carousel-arrow:hover,
+.process-carousel-arrow:hover {
     background: rgba(15, 52, 96, 0.98);
     opacity: 1;
     transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-arrow:hover i {
+.carousel-arrow:hover i,
+.process-carousel-arrow:hover i {
     color: var(--accent-light);
 }
 
-.carousel-arrow.prev-arrow {
+.carousel-arrow.prev-arrow,
+.process-carousel-arrow.prev-arrow {
     left: 10px;
     right: auto;
 }
 
-.carousel-arrow.next-arrow {
+.carousel-arrow.next-arrow,
+.process-carousel-arrow.next-arrow {
     right: 10px;
     left: auto;
 }
@@ -1461,18 +1557,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     background: var(--accent-light);
 }
 
-/* Botones móvil corregidos */
-.ecommerce-btn-mobile {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-
-.ecommerce-btn-mobile.featured-btn {
-    background: var(--accent) !important;
-    color: var(--dark) !important;
-}
-
-.carousel-indicators {
+.carousel-indicators,
+.process-carousel-indicators {
     display: flex;
     justify-content: center;
     gap: 12px;
@@ -1481,7 +1567,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     z-index: 5;
 }
 
-.indicator {
+.indicator,
+.process-indicator {
     width: 12px;
     height: 12px;
     background: rgba(255, 255, 255, 0.3);
@@ -1492,283 +1579,97 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     user-select: none;
 }
 
-.indicator.active {
+.indicator.active,
+.process-indicator.active {
     background: var(--accent);
     transform: scale(1.3);
 }
 
-/* === GARANTÍA === */
-.ecommerce-guarantee {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, 
-        rgba(15, 52, 96, 0.3) 0%, 
-        rgba(83, 52, 131, 0.2) 100%);
+/* Step móvil */
+.step-mobile {
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 25px 20px;
+    background: var(--darker);
     border-radius: var(--border-radius-lg);
-    border-left: 4px solid var(--accent);
-}
-
-.guarantee-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.guarantee-content i {
-    color: var(--accent);
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
-.guarantee-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.guarantee-text h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.guarantee-text p {
-    opacity: 0.9;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    max-width: 600px;
-}
-
-.whatsapp-cta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    transition: var(--transition);
-    flex-shrink: 0;
-}
-
-.whatsapp-cta:hover {
-    background: #128C7E;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-}
-
-/* === NOTIFICACIÓN MANTENIMIENTO === */
-.maintenance-notification {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--primary);
-    color: var(--light);
-    padding: 20px;
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border-left: 4px solid var(--accent);
-    z-index: 9999;
-    opacity: 0;
-    transition: all 0.4s ease;
-    max-width: 90%;
-    width: 400px;
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    display: none;
-}
-
-.maintenance-notification.active {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    display: block;
-}
-
-.notification-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.notification-content i {
-    color: var(--accent);
-    font-size: 1.5rem;
     text-align: center;
-}
-
-.notification-text h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.notification-text p {
-    margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.9;
-    line-height: 1.5;
-}
-
-.whatsapp-notification-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.8rem;
-    border-radius: 8px;
-    transition: var(--transition);
-    margin-top: 0.5rem;
-}
-
-.whatsapp-notification-btn:hover {
-    background: #128C7E;
-    transform: translateY(-2px);
-}
-
-/* === FOOTER IDÉNTICO A INDEX - CORREGIDO === */
-footer {
-    background: transparent;
-    color: var(--light);
-    padding: 0.3rem 0 0.2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 1;
-    margin-top: -10px;
-}
-
-.footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 0.5rem;
-    margin-bottom: 0.3rem;
-}
-
-.footer-mobile {
-    display: block;
-    width: 100%;
-    padding: 0.3rem 0;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.1rem 0;
-}
-
-.footer-logo {
-    text-decoration: none !important;
-    color: inherit !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    -webkit-touch-callout: none !important;
-    user-select: none !important;
-    outline: none !important;
-    all: unset;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    cursor: pointer !important;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
-    margin-bottom: 0.1rem;
-}
-
-.footer-logo .logo-img {
-    height: 32px;
-    width: auto;
-    transition: filter 0.2s ease;
-    pointer-events: none;
-}
-
-.footer-logo h3 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-tagline {
-    opacity: 0.8;
-    line-height: 1.3;
-    font-size: 0.8rem;
-    max-width: 300px;
-    margin: 0.1rem 0;
-}
-
-.social-links {
-    display: flex;
-    gap: 0.6rem;
-    margin-top: 0.2rem;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--light);
-    text-decoration: none;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
-                background 0.2s ease,
-                color 0.2s ease;
+    backdrop-filter: blur(10px);
     -webkit-touch-callout: none;
     user-select: none;
-    outline: none;
+    touch-action: pan-y;
+    pointer-events: auto;
 }
 
-.social-links a:hover {
-    background: var(--accent);
-    color: var(--dark);
-    transform: translateY(-2px);
+/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
+.step-mobile {
+    transition: none !important;
 }
 
-.whatsapp-link {
-    background: rgba(37, 211, 102, 0.2) !important;
+.step-mobile.active {
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.whatsapp-link:hover {
-    background: #25D366 !important;
+.step-number-mobile {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    transition: var(--transition);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 0.7rem;
-    opacity: 0.7;
-    margin-top: 0.2rem;
+.step-number-mobile::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
+    border-radius: 50%;
+    animation: gentleGlow 4s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(5px);
 }
 
-/* === ANIMACIONES DE ENTRADA === */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+.step-content-mobile {
+    padding: 0 10px;
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.step-content-mobile h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--light);
 }
 
-/* === MEJORAS DE CARGA PARA HERO - SOLO PC === */
+.step-content-mobile p {
+    opacity: 0.85;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    max-width: 100%;
+}
+
+/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
 @media (min-width: 769px) {
     /* Animación escalonada para elementos del hero */
     .hero-content h1 {
@@ -1868,7 +1769,7 @@ footer {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
-    /* 2. CORRECCIÓN CRÍTICA: Botones de planes destacados */
+    /* 2. CORRECCIÓN CRÍTICA: "Elegir Plan Avanzado" */
     .btn-plan.featured {
         background: var(--accent);
         color: var(--dark);
@@ -1898,14 +1799,14 @@ footer {
         border-color: rgba(255, 215, 0, 0.4);
     }
     
-    /* 4. Ventajas - ICONOS CON EFECTO FLUIDO MEJORADO */
-    .ventaja-card .ventaja-icon {
+    /* 4. Servicios - ICONOS CON EFECTO FLUIDO MEJORADO */
+    .service-card .service-icon {
         transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
         transform-origin: center center;
     }
     
-    .ventaja-card:hover .ventaja-icon {
+    .service-card:hover .service-icon {
         transform: scale(1.18);
         color: var(--accent-light);
         filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
@@ -1954,12 +1855,12 @@ footer {
         text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
     }
     
-    /* 7. Ventajas - hover ajustado */
-    .ventaja-card {
+    /* 7. Servicios - hover ajustado */
+    .service-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .ventaja-card:hover {
+    .service-card:hover {
         transform: translateY(-12px) scale(1.02);
         box-shadow: 
             0 20px 40px rgba(0, 0, 0, 0.2),
@@ -1968,7 +1869,55 @@ footer {
         background: rgba(255, 255, 255, 0.08);
     }
     
-    /* 8. Botón secundario del hero - hover ajustado */
+    /* 8. Pasos del proceso - hover ajustado */
+    .step {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .step:hover {
+        transform: translateY(-12px) scale(1.03);
+    }
+    
+    .step:hover .step-number {
+        transform: translateY(-8px) scale(1.15);
+        animation: levitate 2s ease-in-out infinite;
+        border-color: var(--accent-light);
+        box-shadow: 
+            0 0 25px rgba(255, 215, 0, 0.35),
+            0 10px 30px rgba(255, 215, 0, 0.15),
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.12), 
+            rgba(255, 255, 255, 0.05));
+    }
+    
+    .step:hover .step-content h3 {
+        color: var(--accent-light);
+        animation: textGlow 2s ease-in-out infinite;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    
+    .step:hover .step-content p {
+        opacity: 1;
+        color: var(--light);
+        transform: translateY(-1px);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease 0.1s;
+    }
+    
+    .step:hover .step-number::before {
+        animation: gentleGlow 2s ease-in-out infinite;
+        background: radial-gradient(
+            circle at 50% 50%, 
+            rgba(255, 215, 0, 0.35) 0%, 
+            rgba(255, 215, 0, 0.2) 40%, 
+            transparent 70%
+        );
+        filter: blur(6px);
+    }
+    
+    /* 9. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
         background: rgba(255, 215, 0, 0.08);
@@ -2140,9 +2089,10 @@ footer:last-child {
 }
 
 /* === OPTIMIZACIÓN GENERAL DE FLUIDEZ === */
-.ventaja-card,
+.service-card,
 .plan-card,
 .floating-card,
+.step,
 .btn-primary,
 .btn-secondary,
 .btn-plan {
@@ -2167,14 +2117,18 @@ footer:last-child {
     .footer-logo,
     .social-links a,
     .carousel-arrow,
+    .process-carousel-arrow,
     .context-link,
-    .conclusion-link,
-    .ventaja-card,
+    .disclaimer-link,
     .plan-card,
     .plan-card-mobile,
+    .service-card,
+    .step,
+    .step-mobile,
     .floating-card,
     .hamburger,
-    .indicator {
+    .indicator,
+    .process-indicator {
         -webkit-user-select: none !important;
         -moz-user-select: none !important;
         -ms-user-select: none !important;
@@ -2198,8 +2152,9 @@ footer:last-child {
     .btn-plan-mobile:focus,
     .nav-link:focus,
     .context-link:focus,
-    .conclusion-link:focus,
-    .carousel-arrow:focus {
+    .disclaimer-link:focus,
+    .carousel-arrow:focus,
+    .process-carousel-arrow:focus {
         outline: none !important;
         box-shadow: none !important;
     }
@@ -2212,21 +2167,25 @@ footer:last-child {
     .nav-link:active,
     .social-links a:active,
     .carousel-arrow:active,
+    .process-carousel-arrow:active,
     .context-link:active,
-    .conclusion-link:active,
-    .indicator:active {
+    .disclaimer-link:active,
+    .indicator:active,
+    .process-indicator:active {
         transform: scale(0.96) !important;
         transition: transform 0.1s ease !important;
         opacity: 0.9 !important;
     }
     
     /* CORRECCIÓN ESPECÍFICA: Flechas sin animación de bajar/subir */
-    .carousel-arrow:active {
+    .carousel-arrow:active,
+    .process-carousel-arrow:active {
         transform: translateY(-50%) scale(0.96) !important;
         background: rgba(15, 52, 96, 0.95) !important;
     }
     
-    .carousel-arrow:active i {
+    .carousel-arrow:active i,
+    .process-carousel-arrow:active i {
         color: var(--accent-light) !important;
     }
     
@@ -2235,27 +2194,29 @@ footer:last-child {
     .btn-secondary:hover,
     .btn-plan:hover,
     .btn-plan-mobile:hover,
-    .ventaja-card:hover,
+    .service-card:hover,
     .plan-card:hover,
     .plan-card-mobile:hover,
-    .floating-card:hover {
+    .floating-card:hover,
+    .step:hover,
+    .step-mobile:hover {
         transform: none !important;
         box-shadow: none !important;
     }
     
     /* 6. QUITAR ANIMACIONES DE HOVER EN MÓVIL PARA MEJOR RENDIMIENTO */
-    .ventaja-card .ventaja-icon,
+    .service-card .service-icon,
     .floating-card .card-icon,
     .plan-features li,
-    .plan-features-mobile li {
+    .step-number,
+    .step-number-mobile {
         transition: none !important;
         animation: none !important;
     }
     
-    .ventaja-card:hover .ventaja-icon,
+    .service-card:hover .service-icon,
     .floating-card:hover .card-icon,
-    .plan-features li:hover,
-    .plan-features-mobile li:hover {
+    .plan-features li:hover {
         transform: none !important;
         filter: none !important;
     }
@@ -2268,7 +2229,8 @@ footer:last-child {
     /* 8. PERMITIR SOLO SCROLL NATIVO, NO ZOOM NO DESEADO */
     .hero-content,
     .section-header,
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile {
         touch-action: pan-y;
     }
     
@@ -2279,12 +2241,14 @@ footer:last-child {
     }
     
     /* 10. MEJORAR RENDIMIENTO TÁCTIL */
-    .plans-carousel {
+    .plans-carousel,
+    .process-carousel {
         touch-action: pan-x pan-y;
     }
     
     /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile {
         touch-action: pan-y;
         pointer-events: auto;
     }
@@ -2364,9 +2328,37 @@ footer:last-child {
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
+    /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
+    .step-number::before,
+    .step-number-mobile::before {
+        display: none !important;
+    }
+    
+    /* Desactivar animaciones de hover en móvil */
+    .step:hover .step-number {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: rgba(255, 215, 0, 0.3) !important;
+        animation: none !important;
+    }
+    
+    .step:hover .step-content h3,
+    .step:hover .step-content p {
+        transform: none !important;
+        text-shadow: none !important;
+        color: inherit !important;
+        opacity: inherit !important;
+        animation: none !important;
+    }
+    
+    .step:hover {
+        transform: none !important;
+    }
+    
     /* Asegurar que los hover effects no se activen en móvil */
-    .ventaja-card:hover,
+    .service-card:hover,
     .plan-card:hover,
+    .step:hover,
     .floating-card:hover,
     .btn-plan:hover,
     .btn-primary:hover,
@@ -2417,7 +2409,7 @@ footer:last-child {
     }
     
     /* Hero con el mismo fondo que el resto */
-    .hero-ecommerce {
+    .hero {
         background: transparent !important;
         min-height: auto;
         padding: 90px 0 40px;
@@ -2475,7 +2467,7 @@ footer:last-child {
     }
     
     /* Hero móvil */
-    .hero-ecommerce {
+    .hero {
         flex-direction: column;
         min-height: auto;
         padding: 90px 0 40px;
@@ -2541,8 +2533,8 @@ footer:last-child {
         margin: 0;
     }
     
-    /* Banner de escalabilidad en móvil */
-    .scalability-banner {
+    /* Banner de contexto en móvil */
+    .pricing-context-banner {
         padding: 1.5rem 0;
     }
     
@@ -2571,42 +2563,28 @@ footer:last-child {
         padding: 0 1rem;
     }
     
-    /* Ventajas - 1 columna en móvil */
-    .ventajas-grid {
+    /* Services móvil */
+    .services-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
     }
     
-    .ventaja-card {
-        padding: 1.8rem 1.5rem;
-    }
-    
-    /* Comparativa tabla - ocultar en móvil, mostrar resumen */
-    .comparativa-tabla {
-        display: none;
-    }
-    
-    .comparativa-conclusion {
-        margin-top: 1rem;
+    .service-card {
         padding: 1.5rem;
     }
     
-    .conclusion-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
+    /* Process - ocultar desktop, mostrar carrusel */
+    .process-steps {
+        display: none;
     }
     
-    .conclusion-text {
-        min-width: 100%;
+    .process-carousel-container {
+        display: block;
+        position: relative;
+        overflow: visible;
     }
     
-    .conclusion-link {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    /* Mostrar carrusel en móvil */
+    /* Plans - ocultar desktop, mostrar carrusel */
     .plans-container {
         display: none;
     }
@@ -2618,7 +2596,8 @@ footer:last-child {
     }
     
     /* Flechas posicionadas ABSOLUTAMENTE y al límite */
-    .carousel-arrow {
+    .carousel-arrow,
+    .process-carousel-arrow {
         position: absolute !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
@@ -2633,18 +2612,21 @@ footer:last-child {
     }
     
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
-    .carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
         left: -25px !important;
         right: auto !important;
     }
     
-    .carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
         right: -25px !important;
         left: auto !important;
     }
     
     /* Asegurar que el contenedor no corte las flechas */
-    .carousel-container {
+    .carousel-container,
+    .process-carousel-container {
         overflow: visible !important;
         padding: 0 5px !important;
     }
@@ -2658,22 +2640,6 @@ footer:last-child {
     .plan-features-mobile {
         min-height: 180px;
         max-height: 200px;
-    }
-    
-    /* Garantía móvil */
-    .guarantee-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .guarantee-text {
-        min-width: 100%;
-    }
-    
-    .whatsapp-cta {
-        width: 100%;
-        justify-content: center;
     }
     
     /* Footer móvil - COMPACTADO AL MÁXIMO */
@@ -2715,9 +2681,10 @@ footer:last-child {
     }
     
     /* Desactivar hover en móvil para mejor rendimiento */
-    .ventaja-card:hover,
+    .service-card:hover,
     .plan-card:hover,
-    .floating-card:hover {
+    .floating-card:hover,
+    .step:hover {
         transform: none;
     }
     
@@ -2732,14 +2699,16 @@ footer:last-child {
         position: relative;
     }
     
-    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN CARRUSELES ===== */
+    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN AMBOS CARRUSELES ===== */
     /* Eliminar todas las transiciones CSS que interfieran con el scroll */
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile {
         transition: none !important;
     }
     
-    /* Igualar el scroll behavior del carrusel */
-    .plans-carousel {
+    /* Igualar el scroll behavior de ambos carruseles */
+    .plans-carousel,
+    .process-carousel {
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
@@ -2771,6 +2740,7 @@ footer:last-child {
         
         /* Mejorar scrolling en iOS */
         .plans-carousel,
+        .process-carousel,
         .plan-features-mobile {
             -webkit-overflow-scrolling: touch;
         }
@@ -2832,30 +2802,49 @@ footer:last-child {
         padding: 1rem;
     }
     
-    .carousel-arrow {
+    .step-mobile {
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
+        padding: 1.2rem;
+    }
+    
+    .carousel-arrow,
+    .process-carousel-arrow {
         width: 36px;
         height: 36px;
         font-size: 1rem;
     }
     
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
-    .carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
         left: -20px;
     }
     
-    .carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
         right: -20px;
     }
 }
 
 /* Escritorio - ocultar carruseles */
 @media (min-width: 769px) {
-    .carousel-container {
+    .carousel-container,
+    .process-carousel-container,
+    .carousel-arrow,
+    .process-carousel-arrow {
         display: none;
     }
     
     .plans-container {
         display: grid;
+    }
+    
+    .process-steps {
+        display: flex;
     }
 }
 
@@ -2865,6 +2854,18 @@ section:last-of-type {
     padding-bottom: 40px;
 }
 
-.plans-ecommerce {
+.plans {
     padding-bottom: 40px;
+}
+
+/* Animaciones de entrada */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
