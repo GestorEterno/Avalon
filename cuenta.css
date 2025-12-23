@@ -1,4 +1,4 @@
-/* cuenta.css - Estilo consistente con index.css */
+/* cuenta.css - Estilo consistente con index.css - VERSIÓN CORREGIDA */
 
 :root {
     --primary: #0f3460;
@@ -69,9 +69,15 @@ body {
     }
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+@keyframes slideInLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* === BACKGROUND === */
@@ -533,8 +539,8 @@ body {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
@@ -546,24 +552,25 @@ body {
 .user-welcome {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .user-avatar {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: var(--accent);
-    border: 3px solid rgba(255, 215, 0, 0.3);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    flex-shrink: 0;
 }
 
 .user-info h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 0.3rem;
     font-weight: 700;
 }
@@ -575,19 +582,20 @@ body {
 .user-info p {
     opacity: 0.8;
     margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .user-status {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
 }
 
 .status-badge {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -606,22 +614,24 @@ body {
 }
 
 .user-email {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     opacity: 0.8;
 }
 
 .logout-btn {
-    padding: 0.7rem 1.5rem;
+    padding: 0.7rem 1.2rem;
     background: rgba(239, 68, 68, 0.1);
     border: 1px solid rgba(239, 68, 68, 0.3);
     color: var(--danger);
     border-radius: 8px;
     font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 .logout-btn:hover {
@@ -629,37 +639,43 @@ body {
     transform: translateY(-2px);
 }
 
-/* Contenido del Dashboard */
+/* ===== BARRA LATERAL FIJA MEJORADA ===== */
 .dashboard-content {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     min-height: 600px;
+    position: relative;
 }
 
+/* Sidebar para escritorio - MEJORADO Y MÁS COMPACTO */
 .dashboard-sidebar {
-    flex: 0 0 250px;
+    flex: 0 0 220px; /* Ancho fijo más estrecho */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: fit-content;
     position: sticky;
     top: 120px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    animation: slideInLeft 0.3s ease;
 }
 
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem; /* Espacio más compacto */
 }
 
 .sidebar-link {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     text-decoration: none;
     color: var(--light);
     border-radius: 8px;
     font-weight: 600;
+    font-size: 0.9rem;
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -667,23 +683,32 @@ body {
 }
 
 .sidebar-link:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     color: var(--accent);
+    transform: translateX(5px);
 }
 
 .sidebar-link.active {
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 215, 0, 0.12);
     color: var(--accent);
-    border-left: 4px solid var(--accent);
+    border-left: 3px solid var(--accent);
 }
 
 .sidebar-link i {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .gestor-notification {
-    margin-top: 2rem;
-    padding: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.8rem;
     background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(83, 52, 131, 0.2));
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: var(--border-radius);
@@ -693,10 +718,10 @@ body {
 .gestor-badge {
     background: var(--accent);
     color: var(--dark);
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 20px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -704,18 +729,20 @@ body {
 }
 
 .gestor-notification p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     opacity: 0.9;
 }
 
+/* Contenido principal */
 .dashboard-main {
     flex: 1;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     min-height: 600px;
+    overflow: hidden;
 }
 
 .dashboard-section {
@@ -728,13 +755,13 @@ body {
 }
 
 .section-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
     color: var(--accent);
     display: flex;
@@ -744,71 +771,77 @@ body {
 
 .section-header p {
     opacity: 0.8;
+    font-size: 0.95rem;
 }
 
-/* Stats Grid */
-.stats-grid {
+/* ===== ESTADÍSTICAS OPTIMIZADAS - CUADROS MÁS COMPACTOS ===== */
+.stats-grid-compact {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.stat-card {
+.stat-card-compact {
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
+    min-height: 100px;
 }
 
-.stat-card:hover {
+.stat-card-compact:hover {
     border-color: rgba(255, 215, 0, 0.3);
     transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.stat-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+.stat-icon-compact {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--accent);
+    flex-shrink: 0;
 }
 
-.stat-content h3 {
-    font-size: 0.9rem;
+.stat-content-compact h3 {
+    font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 0.3rem;
     opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.stat-value {
-    font-size: 2rem;
+.stat-value-compact {
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
+    margin-bottom: 0.2rem;
 }
 
-.stat-subtext {
-    font-size: 0.8rem;
+.stat-subtext-compact {
+    font-size: 0.75rem;
     opacity: 0.7;
-    margin-top: 0.2rem;
 }
 
 /* Quick Actions */
 .quick-actions {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .quick-actions h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--light);
     display: flex;
@@ -818,21 +851,21 @@ body {
 
 .actions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
 }
 
 .action-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
     color: var(--light);
     transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .action-card:hover {
@@ -842,19 +875,20 @@ body {
 }
 
 .action-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--accent);
+    flex-shrink: 0;
 }
 
 .action-content h4 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
@@ -871,13 +905,13 @@ body {
 }
 
 .empty-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: rgba(255, 255, 255, 0.1);
     margin-bottom: 1rem;
 }
 
 .empty-state h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: var(--light);
 }
@@ -888,6 +922,7 @@ body {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 0.95rem;
 }
 
 .btn-primary {
@@ -900,6 +935,7 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
+    font-size: 0.9rem;
     transition: var(--transition);
     border: none;
     cursor: pointer;
@@ -913,11 +949,11 @@ body {
 
 /* Upgrade Options */
 .upgrade-options {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .upgrade-options h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--light);
     display: flex;
@@ -927,14 +963,14 @@ body {
 
 .upgrade-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
 }
 
 .upgrade-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
     transition: var(--transition);
@@ -946,40 +982,40 @@ body {
 }
 
 .upgrade-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--accent);
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.8rem;
 }
 
 .upgrade-card h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .upgrade-card p {
     opacity: 0.8;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .btn-upgrade {
     display: inline-block;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--light);
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -994,11 +1030,11 @@ body {
 
 /* Billing */
 .payment-methods {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .payment-methods h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     color: var(--light);
     display: flex;
@@ -1016,9 +1052,9 @@ body {
 .payment-method {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 0.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .payment-method:last-child {
@@ -1030,15 +1066,16 @@ body {
 }
 
 .payment-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--accent);
+    flex-shrink: 0;
 }
 
 .payment-content {
@@ -1046,7 +1083,7 @@ body {
 }
 
 .payment-content h4 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-bottom: 0.2rem;
     font-weight: 600;
 }
@@ -1057,18 +1094,19 @@ body {
 }
 
 .btn-add-payment {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.8rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--light);
     border-radius: 6px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    flex-shrink: 0;
 }
 
 .btn-add-payment:hover {
@@ -1079,14 +1117,14 @@ body {
 /* Settings */
 .settings-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
 }
 
 .settings-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1099,18 +1137,18 @@ body {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .settings-header i {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--accent);
 }
 
 .settings-header h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
@@ -1119,17 +1157,18 @@ body {
 }
 
 .settings-card form {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .btn-save {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.7rem;
     background: var(--accent);
     color: var(--dark);
     border: none;
     border-radius: 8px;
     font-weight: 700;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
@@ -1146,24 +1185,25 @@ body {
 .notifications-settings {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
 }
 
 .danger-actions {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.7rem;
     margin-bottom: 1rem;
 }
 
 .btn-danger {
-    padding: 0.8rem;
+    padding: 0.7rem;
     background: transparent;
     border: 1px solid var(--danger);
     color: var(--danger);
     border-radius: 8px;
     font-weight: 700;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: var(--transition);
     display: flex;
@@ -1178,10 +1218,10 @@ body {
 }
 
 .danger-note {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     opacity: 0.7;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
 }
 
 /* === FOOTER === */
@@ -1399,67 +1439,115 @@ footer {
     .dashboard-header {
         flex-direction: column;
         align-items: flex-start;
-        padding: 1.5rem;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
     }
     
     .user-welcome {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        width: 100%;
         gap: 1rem;
     }
     
     .user-avatar {
-        width: 60px;
-        height: 60px;
-        font-size: 2rem;
-    }
-    
-    .user-info h1 {
+        width: 50px;
+        height: 50px;
         font-size: 1.5rem;
     }
     
-    .logout-btn {
-        align-self: stretch;
-        justify-content: center;
+    .user-info h1 {
+        font-size: 1.3rem;
     }
     
+    .user-info p {
+        font-size: 0.85rem;
+    }
+    
+    .logout-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    /* ===== BARRA LATERAL EN MÓVIL ===== */
     .dashboard-content {
         flex-direction: column;
+        gap: 1rem;
     }
     
     .dashboard-sidebar {
         flex: none;
         position: static;
         width: 100%;
-        margin-bottom: 1rem;
+        margin-bottom: 0;
+        padding: 1rem;
+        top: auto;
+        max-height: none;
     }
     
     .sidebar-nav {
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
     }
     
     .sidebar-link {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .sidebar-link:hover {
+        transform: translateY(-2px);
+    }
+    
+    .sidebar-link.active {
+        border-left: none;
+        border-color: var(--accent);
+    }
+    
+    .sidebar-text {
+        display: inline;
+    }
+    
+    .gestor-notification {
+        margin-top: 1rem;
+        padding: 0.7rem;
     }
     
     .dashboard-main {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
     
-    .stats-grid {
+    /* Estadísticas en móvil */
+    .stats-grid-compact {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 0.8rem;
     }
     
-    .stat-card {
+    .stat-card-compact {
         padding: 1rem;
+        min-height: 90px;
     }
     
-    .stat-value {
-        font-size: 1.5rem;
+    .stat-icon-compact {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .stat-value-compact {
+        font-size: 1.3rem;
+    }
+    
+    .stat-content-compact h3 {
+        font-size: 0.8rem;
     }
     
     .actions-grid {
@@ -1482,12 +1570,12 @@ footer {
     }
     
     .upgrade-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
 }
 
 @media (max-width: 480px) {
-    .stats-grid {
+    .stats-grid-compact {
         grid-template-columns: 1fr;
     }
     
@@ -1506,5 +1594,29 @@ footer {
     
     .credential-item {
         font-size: 0.8rem;
+    }
+    
+    .sidebar-nav {
+        gap: 0.3rem;
+    }
+    
+    .sidebar-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .sidebar-link i {
+        font-size: 0.9rem;
+    }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1200px) {
+    .dashboard-sidebar {
+        flex: 0 0 240px;
+    }
+    
+    .dashboard-main {
+        padding: 1.8rem;
     }
 }
