@@ -1,5 +1,5 @@
-/* ecommerce.css - Versión Optimizada para Móvil y PC */
-/* Basado en index.css con modificaciones específicas para Ecommerce */
+/* ecommerce.css - Versión Optimizada IDÉNTICA a index.css */
+/* Correcciones: Botones idénticos, footer idéntico, 3 paneles de ventajas, comparativa con Shopify */
 
 :root {
     --primary: #0f3460;
@@ -9,9 +9,8 @@
     --dark: #1a1a2e;
     --darker: #16213e;
     --light: #ffffff;
-    --success: #4CAF50;
-    --warning: #ff9800;
-    --info: #2196F3;
+    --gray-light: rgba(255, 255, 255, 0.7);
+    --gray: rgba(255, 255, 255, 0.5);
     --transition: all 0.3s ease;
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -98,6 +97,7 @@ body {
     padding: 0 5%;
 }
 
+/* === LOGO IDÉNTICO === */
 .logo {
     text-decoration: none !important;
     color: inherit !important;
@@ -108,6 +108,11 @@ body {
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
 }
 
@@ -221,7 +226,6 @@ body {
     align-items: center;
     padding: 100px 0 50px;
     position: relative;
-    background: transparent;
 }
 
 .container {
@@ -299,6 +303,7 @@ body {
     opacity: 0.8;
 }
 
+/* ===== BOTONES IDÉNTICOS A INDEX ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -317,14 +322,19 @@ body {
     cursor: pointer;
     font-size: 0.95rem;
     white-space: nowrap;
+    -webkit-touch-callout: none;
+    user-select: none;
     border: none;
     outline: none;
 }
 
+/* Botón primario IDÉNTICO */
 .btn-primary {
     background: var(--accent);
     color: var(--dark);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
 }
 
 .btn-primary:hover {
@@ -354,10 +364,13 @@ body {
     margin-top: 0.2rem;
 }
 
+/* Botón secundario IDÉNTICO */
 .btn-secondary {
     background: transparent;
     color: var(--light);
     border: 2px solid rgba(255, 255, 255, 0.3);
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
     min-width: 160px;
     justify-content: center;
 }
@@ -368,6 +381,7 @@ body {
     border-color: var(--accent);
 }
 
+/* === HERO IMAGE IDÉNTICA === */
 .hero-image {
     flex: 1;
     display: flex;
@@ -402,12 +416,6 @@ body {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--accent);
-    transition: var(--transition);
-}
-
-.floating-card:hover .card-icon {
-    transform: scale(1.1);
-    color: var(--accent-light);
 }
 
 .floating-card h3 {
@@ -426,7 +434,7 @@ body {
 .scalability-banner {
     background: linear-gradient(135deg, 
         rgba(255, 215, 0, 0.1) 0%, 
-        rgba(83, 52, 131, 0.2) 100%);
+        rgba(15, 52, 96, 0.2) 100%);
     padding: 2rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -487,8 +495,8 @@ body {
     border-color: var(--accent);
 }
 
-/* === FEATURES === */
-.features-ecommerce {
+/* === VENTAJAS (3 PANELES) === */
+.ventajas-ecommerce {
     padding: 80px 0;
     background: rgba(15, 52, 96, 0.02);
 }
@@ -526,140 +534,305 @@ body {
     line-height: 1.6;
 }
 
-.features-grid {
+.ventajas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.feature-card {
+.ventaja-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    transition: var(--transition);
+    padding: 2.5rem 2rem;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.feature-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 215, 0, 0.2);
-    box-shadow: var(--shadow-lg);
+.ventaja-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    transform: scaleX(0);
+    transition: var(--transition);
 }
 
-.feature-icon {
-    font-size: 2.2rem;
+.ventaja-card:hover::before {
+    transform: scaleX(1);
+}
+
+.ventaja-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.25),
+        0 5px 15px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.ventaja-icon {
+    font-size: 2.8rem;
     color: var(--accent);
     margin-bottom: 1.5rem;
+    transition: var(--transition);
 }
 
-.feature-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+.ventaja-card:hover .ventaja-icon {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
 }
 
-.feature-card p {
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
-    line-height: 1.5;
+.ventaja-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-light);
 }
 
-.feature-list {
+.ventaja-card p {
+    margin-bottom: 1.8rem;
+    opacity: 0.85;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.ventaja-list {
     list-style: none;
     text-align: left;
 }
 
-.feature-list li {
-    padding: 0.5rem 0;
+.ventaja-list li {
+    padding: 0.6rem 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ventaja-list i {
+    color: var(--accent);
     font-size: 0.9rem;
 }
 
-.feature-list i {
-    color: var(--accent);
-    font-size: 0.8rem;
-}
-
-/* === COMPARISON TABLE === */
-.comparison {
+/* === COMPARATIVA CON SHOPIFY/TIENDANUBE === */
+.comparativa-competencia {
     padding: 80px 0;
     background: rgba(26, 26, 46, 0.5);
 }
 
-.comparison-table {
-    max-width: 1000px;
+.comparativa-tabla {
+    max-width: 1200px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 3rem;
 }
 
-.table-header {
+.tabla-header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     background: rgba(15, 52, 96, 0.3);
-    padding: 1.5rem;
+    padding: 1.8rem 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.table-feature {
+.tabla-caracteristica {
     font-weight: 700;
     color: var(--accent);
-}
-
-.table-plan {
-    text-align: center;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
     font-size: 1.1rem;
 }
 
-.plan-base {
-    color: var(--info);
+.tabla-plataforma {
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
 }
 
-.plan-pro {
-    color: var(--warning);
+.plataforma-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
 }
 
-.plan-elite {
-    color: var(--success);
+.plataforma-logo i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-.table-row {
+.plataforma-logo span {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Colores específicos para cada plataforma */
+.avalon .plataforma-logo i {
+    color: var(--accent);
+}
+
+.shopify .plataforma-logo i {
+    color: #96bf48; /* Verde Shopify */
+}
+
+.tiendanube .plataforma-logo i {
+    color: #00aaff; /* Azul Tiendanube */
+}
+
+.avalon {
+    background: rgba(255, 215, 0, 0.08);
+    border-radius: 8px;
+    position: relative;
+}
+
+.avalon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--accent), var(--secondary));
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.tabla-fila {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: 1.2rem 1.5rem;
+    padding: 1.5rem 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: var(--transition);
+    align-items: center;
 }
 
-.table-row:hover {
+.tabla-fila:hover {
     background: rgba(255, 255, 255, 0.02);
 }
 
-.table-row .table-feature {
-    display: flex;
-    align-items: center;
+.tabla-fila .tabla-caracteristica {
+    font-weight: 500;
+    color: var(--gray-light);
 }
 
-.table-row .table-plan {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.precio-destacado {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
 }
 
-.table-row i.fa-check {
-    color: var(--success);
+.precio {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-light);
+    line-height: 1;
 }
 
-.table-row i.fa-times {
+.precio-periodo {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-left: 0.2rem;
+}
+
+.check-destacado {
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.cross {
     color: #ff4444;
     opacity: 0.7;
+    font-size: 1.1rem;
+}
+
+.texto-small {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.comparativa-conclusion {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, 
+        rgba(15, 52, 96, 0.3) 0%, 
+        rgba(83, 52, 131, 0.2) 100%);
+    border-radius: var(--border-radius-lg);
+    border-left: 4px solid var(--accent);
+}
+
+.conclusion-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.conclusion-content i {
+    color: var(--accent);
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.conclusion-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.conclusion-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.conclusion-text p {
+    opacity: 0.9;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.conclusion-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 30px;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.conclusion-link:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateX(5px);
+    border-color: var(--accent);
 }
 
 /* === PLANS ECOMMERCE === */
@@ -675,7 +848,7 @@ body {
     align-items: stretch;
 }
 
-/* CORRECCIÓN: MISMA ANIMACIÓN PARA LOS 3 PLANES */
+/* PLANES IDÉNTICOS A INDEX - CORRECCIÓN DE COLORES DE BOTONES */
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -689,19 +862,6 @@ body {
     height: 100%;
     min-height: 620px;
     transform-origin: center center;
-}
-
-/* Colores específicos para cada plan */
-.plan-card.ecommerce-base {
-    border-top: 4px solid var(--info);
-}
-
-.plan-card.ecommerce-pro {
-    border-top: 4px solid var(--warning);
-}
-
-.plan-card.ecommerce-elite {
-    border-top: 4px solid var(--success);
 }
 
 .plan-card.featured {
@@ -845,6 +1005,7 @@ body {
     font-style: italic;
 }
 
+/* BOTONES DE PLANES IDÉNTICOS A INDEX - CORREGIDOS */
 .btn-plan {
     display: block;
     text-align: center;
@@ -881,25 +1042,24 @@ body {
     background: var(--accent-light);
 }
 
-/* Botones específicos por plan */
-.ecommerce-btn[data-plan="base"] {
-    background: rgba(33, 150, 243, 0.2);
-    border: 1px solid rgba(33, 150, 243, 0.3);
+/* Botones específicos para ecommerce SIN COLORES RAROS */
+.ecommerce-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-.ecommerce-btn[data-plan="pro"] {
-    background: rgba(255, 152, 0, 0.2);
-    border: 1px solid rgba(255, 152, 0, 0.3);
-}
-
-.ecommerce-btn[data-plan="elite"] {
-    background: rgba(76, 175, 80, 0.2);
-    border: 1px solid rgba(76, 175, 80, 0.3);
+.ecommerce-btn.featured {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
 }
 
 .ecommerce-btn:hover {
-    background: rgba(255, 215, 0, 0.2);
-    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 215, 0, 0.4) !important;
+}
+
+.ecommerce-btn.featured:hover {
+    background: var(--accent-light) !important;
 }
 
 /* === CARRUSEL MÓVIL - IDÉNTICO A INDEX === */
@@ -1012,19 +1172,6 @@ body {
 .plan-card-mobile.active {
     border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: var(--shadow-lg);
-}
-
-/* Colores para móvil */
-.ecommerce-base-mobile {
-    border-top: 4px solid var(--info);
-}
-
-.ecommerce-pro-mobile {
-    border-top: 4px solid var(--warning);
-}
-
-.ecommerce-elite-mobile {
-    border-top: 4px solid var(--success);
 }
 
 .plan-card-mobile.featured-mobile {
@@ -1182,20 +1329,15 @@ body {
     background: var(--accent-light);
 }
 
-/* Botones específicos móvil */
-.ecommerce-btn-mobile[data-plan="base"] {
-    background: rgba(33, 150, 243, 0.2);
-    border: 1px solid rgba(33, 150, 243, 0.3);
+/* Botones móvil corregidos */
+.ecommerce-btn-mobile {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-.ecommerce-btn-mobile[data-plan="pro"] {
-    background: rgba(255, 152, 0, 0.2);
-    border: 1px solid rgba(255, 152, 0, 0.3);
-}
-
-.ecommerce-btn-mobile[data-plan="elite"] {
-    background: rgba(76, 175, 80, 0.2);
-    border: 1px solid rgba(76, 175, 80, 0.3);
+.ecommerce-btn-mobile.featured-btn {
+    background: var(--accent) !important;
+    color: var(--dark) !important;
 }
 
 .carousel-indicators {
@@ -1359,7 +1501,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* === FOOTER IDÉNTICO === */
+/* === FOOTER IDÉNTICO A INDEX - CORREGIDO === */
 footer {
     background: transparent;
     color: var(--light);
@@ -1403,6 +1545,11 @@ footer {
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
     margin-bottom: 0.1rem;
 }
@@ -1416,7 +1563,7 @@ footer {
 
 .footer-logo h3 {
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 800;
     transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
@@ -1453,6 +1600,14 @@ footer {
     background: var(--accent);
     color: var(--dark);
     transform: translateY(-2px);
+}
+
+.whatsapp-link {
+    background: rgba(37, 211, 102, 0.2) !important;
+}
+
+.whatsapp-link:hover {
+    background: #25D366 !important;
 }
 
 .footer-bottom {
@@ -1609,19 +1764,39 @@ footer {
         justify-content: center;
     }
     
-    /* Features grid */
-    .features-grid {
+    /* Ventajas - 1 columna en móvil */
+    .ventajas-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
+        gap: 1.5rem;
     }
     
-    .feature-card {
+    .ventaja-card {
+        padding: 1.8rem 1.5rem;
+    }
+    
+    /* Comparativa tabla - ocultar en móvil, mostrar resumen */
+    .comparativa-tabla {
+        display: none;
+    }
+    
+    .comparativa-conclusion {
+        margin-top: 1rem;
         padding: 1.5rem;
     }
     
-    /* Comparison table oculta en móvil */
-    .comparison-table {
-        display: none;
+    .conclusion-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .conclusion-text {
+        min-width: 100%;
+    }
+    
+    .conclusion-link {
+        width: 100%;
+        justify-content: center;
     }
     
     /* Mostrar carrusel en móvil */
@@ -1682,7 +1857,7 @@ footer {
     
     /* Eliminar hover en móvil */
     .plan-card:hover,
-    .feature-card:hover,
+    .ventaja-card:hover,
     .floating-card:hover,
     .btn-plan:hover,
     .btn-primary:hover,
@@ -1702,38 +1877,145 @@ footer {
         display: grid;
     }
     
-    /* Footer desktop */
-    .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0;
-    }
-    
-    .footer-mobile {
-        display: none;
-    }
-    
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        display: flex;
-        align-items: center;
-    }
-    
-    .footer-left {
-        justify-content: flex-start;
-        flex: 1;
-    }
-    
-    .footer-center {
-        justify-content: center;
-        flex: 1;
-    }
-    
-    .footer-right {
-        justify-content: flex-end;
-        flex: 1;
+    /* Footer desktop - IDÉNTICO A INDEX */
+    @media (min-width: 992px) {
+        footer {
+            padding: 0.1rem 0;
+            margin-top: -5px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 0.2rem;
+            padding: 0.1rem 0;
+            min-height: 40px;
+        }
+        
+        .footer-mobile {
+            display: none;
+        }
+        
+        .footer-left,
+        .footer-center,
+        .footer-right {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            height: 40px;
+        }
+        
+        .footer-left {
+            justify-content: flex-start;
+            flex: 1;
+        }
+        
+        .footer-center {
+            justify-content: center;
+            flex: 1;
+        }
+        
+        .footer-right {
+            justify-content: flex-end;
+            flex: 1;
+        }
+        
+        .footer-logo {
+            margin: 0;
+            padding: 0;
+            gap: 0.6rem;
+            height: 40px;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .footer-logo .logo-img {
+            height: 36px;
+            width: auto;
+            transition: filter 0.2s ease;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
+        }
+        
+        .footer-logo:hover {
+            transform: translateY(-2px);
+            background: transparent;
+        }
+        
+        .footer-logo:hover .logo-img {
+            filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3));
+        }
+        
+        .footer-logo:hover h3 {
+            color: var(--accent);
+            text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
+        }
+        
+        .footer-center .footer-tagline {
+            opacity: 0.9;
+            line-height: 1.3;
+            font-size: 0.85rem;
+            margin: 0;
+            text-align: center;
+            padding: 0 10px;
+            border-left: none;
+            border-right: none;
+            max-width: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex-shrink: 1;
+        }
+        
+        .social-links {
+            margin: 0;
+            padding: 0;
+            gap: 0.4rem;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
+                        background 0.2s ease,
+                        color 0.2s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            padding: 0.4rem 0 0.2rem;
+            margin-top: 0.1rem;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            line-height: 1.2;
+        }
     }
 }
 
@@ -1770,4 +2052,25 @@ footer {
     .carousel-arrow.next-arrow {
         right: 5px;
     }
+}
+
+/* Escritorio - ocultar carruseles */
+@media (min-width: 769px) {
+    .carousel-container {
+        display: none;
+    }
+    
+    .plans-container {
+        display: grid;
+    }
+}
+
+/* Asegurar que las secciones previas no agreguen espacio extra */
+section:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+.plans-ecommerce {
+    padding-bottom: 40px;
 }
