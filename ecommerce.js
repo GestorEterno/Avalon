@@ -1,7 +1,8 @@
 // ecommerce.js - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE
 // MODIFICACIÓN ESPECÍFICA: Igualar completamente la animación de cambio de panel entre ambos carruseles
+// NUEVA MODIFICACIÓN: Sección comparativa agregada con animaciones
 
-// ===== NAVEGACIÓN MÓBIL =====
+// ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -104,8 +105,8 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS - Página de Ecommerce optimizada para móvil y PC');
     
-    // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card');
+    // Animar elementos al cargar - INCLUYENDO NUEVA SECCIÓN COMPARATIVA
+    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card, .comparison');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -131,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Contadores animados
     initCounters();
+    
+    // Inicializar efectos de la sección comparativa
+    initComparisonSection();
 });
 
 // ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
@@ -393,6 +397,43 @@ function initProcessCarousel() {
     }
 }
 
+// ===== SECCIÓN COMPARATIVA =====
+function initComparisonSection() {
+    const comparisonPanel = document.querySelector('.comparison-panel');
+    if (!comparisonPanel) return;
+    
+    console.log('📊 Inicializando sección comparativa');
+    
+    // Añadir efecto de scroll suave para el cuerpo de la tabla en móvil
+    if (window.innerWidth <= 768) {
+        const comparisonBody = document.querySelector('.comparison-body');
+        if (comparisonBody) {
+            comparisonBody.style.maxHeight = '400px';
+            comparisonBody.style.overflowY = 'auto';
+            comparisonBody.style.WebkitOverflowScrolling = 'touch';
+        }
+    }
+    
+    // Efectos de hover para PC
+    if (window.innerWidth > 768) {
+        const comparisonRows = document.querySelectorAll('.comparison-row');
+        
+        comparisonRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(5px)';
+                row.style.background = 'rgba(255, 255, 255, 0.05)';
+                row.style.borderLeft = '3px solid var(--accent)';
+            });
+            
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+                row.style.background = '';
+                row.style.borderLeft = '';
+            });
+        });
+    }
+}
+
 // ===== CONTADORES ANIMADOS =====
 function initCounters() {
     const stats = document.querySelectorAll('.stat');
@@ -482,6 +523,9 @@ window.addEventListener('resize', () => {
                 carouselsExist.dataset.initialized = true;
             }
         }
+        
+        // Re-inicializar efectos de comparativa
+        initComparisonSection();
     }, 250);
 });
 
@@ -573,4 +617,32 @@ document.addEventListener('readystatechange', () => {
         console.log('🎉 Página de Ecommerce completamente cargada y lista');
         document.body.classList.add('loaded');
     }
+});
+
+// ===== ANIMACIONES PARA LA NUEVA SECCIÓN COMPARATIVA =====
+function initComparisonAnimations() {
+    const comparisonRows = document.querySelectorAll('.comparison-row');
+    
+    const rowObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    comparisonRows.forEach(row => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateY(20px)';
+        row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        rowObserver.observe(row);
+    });
+}
+
+// Inicializar animaciones de comparativa cuando la página esté lista
+window.addEventListener('load', () => {
+    setTimeout(initComparisonAnimations, 1000);
 });
