@@ -19,6 +19,48 @@ navLinks.forEach(link => {
     });
 });
 
+// ===== SCROLL SUAVE AL INICIO =====
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los logos que ahora son enlaces
+    const logos = document.querySelectorAll('a.logo, a.footer-logo');
+    
+    logos.forEach(logo => {
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Cerrar menú móvil si está abierto
+            if (window.innerWidth <= 768) {
+                if (hamburger && navMenu) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            // Scroll suave al inicio (sección con id="inicio")
+            const inicioSection = document.getElementById('inicio');
+            if (inicioSection) {
+                inicioSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // También actualizar URL sin recargar
+                history.replaceState(null, null, '#inicio');
+                
+                // Actualizar navegación activa
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#inicio' || 
+                        link.getAttribute('href') === 'index.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+});
+
 // ===== NAVEGACIÓN ACTIVA SUAVE =====
 const sections = document.querySelectorAll('section');
 
