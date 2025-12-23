@@ -1,5 +1,5 @@
-// ecommerce.js - Versión Optimizada para Móvil y PC
-// Lógica idéntica a index.js para carruseles + mantenimiento específico
+// ecommerce.js - Versión Optimizada IDÉNTICA a index.js
+// Lógica idéntica con correcciones específicas para ecommerce
 
 // ===== NAVEGACIÓN MÓBIL =====
 const hamburger = document.querySelector('.hamburger');
@@ -97,10 +97,10 @@ window.addEventListener('scroll', () => {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ AVALON CREATORS - Ecommerce optimizado para móvil y PC');
+    console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.feature-card, .plan-card, .floating-card');
+    const elementsToAnimate = document.querySelectorAll('.ventaja-card, .plan-card, .floating-card');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -123,9 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Setup maintenance notifications
     setupMaintenanceNotifications();
+    
+    // Contadores animados para estadísticas
+    initStatsCounters();
 });
 
-// ===== CARRUSEL ECOMMERCE - VERSIÓN IDÉNTICA A INDEX =====
+// ===== CARRUSEL ECOMMERCE - CONFIGURACIÓN IDÉNTICA A INDEX =====
 const CAROUSEL_CONFIG = {
     scrollDuration: 300,
     scrollBehavior: 'smooth',
@@ -189,7 +192,7 @@ function initEcommerceCarousel() {
         }
     }
     
-    // Flechas
+    // Flechas - SIN FEEDBACK TÁCTIL DE BAJAR/SUBIR
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
@@ -244,7 +247,7 @@ function initEcommerceCarousel() {
             }
             
             isScrolling = false;
-        }, 100); // MISMO DEBOUNCE TIME
+        }, 100);
     });
     
     // Inicializar
@@ -257,12 +260,65 @@ function initEcommerceCarousel() {
     }
 }
 
+// ===== CONTADORES ANIMADOS PARA ESTADÍSTICAS =====
+function initStatsCounters() {
+    const stats = document.querySelectorAll('.stat');
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target.querySelector('.stat-number');
+                if (statNumber && !statNumber.classList.contains('animated')) {
+                    animateCounter(statNumber);
+                    statNumber.classList.add('animated');
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(stat => {
+        counterObserver.observe(stat);
+    });
+}
+
+function animateCounter(element) {
+    const text = element.textContent;
+    const target = parseInt(text.replace('+', '').replace('%', '').replace('s', ''));
+    const suffix = text.includes('+') ? '+' : 
+                   text.includes('%') ? '%' : 
+                   text.includes('s') ? 's' : '';
+    const duration = 1500;
+    let start = null;
+    
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percentage = Math.min(progress / duration, 1);
+        
+        const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
+        const current = suffix === 's' ? 
+            (easeOutQuart * target).toFixed(1) : 
+            Math.floor(easeOutQuart * target);
+        
+        element.textContent = current + suffix;
+        
+        if (percentage < 1) {
+            requestAnimationFrame(step);
+        } else {
+            element.textContent = target + suffix;
+        }
+    }
+    
+    requestAnimationFrame(step);
+}
+
 // ===== NOTIFICACIONES DE MANTENIMIENTO =====
 function setupMaintenanceNotifications() {
     const maintenanceNotification = document.getElementById('maintenance-notification');
     const planButtons = document.querySelectorAll('.ecommerce-btn, .ecommerce-btn-mobile');
+    const socialLinks = document.querySelectorAll('.social-under-construction');
     
-    if (!maintenanceNotification || planButtons.length === 0) return;
+    if (!maintenanceNotification) return;
     
     function showMaintenanceNotification(planName) {
         // Actualizar mensaje según plan
@@ -283,6 +339,7 @@ function setupMaintenanceNotifications() {
         }, 5000);
     }
     
+    // Para botones de planes
     planButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -308,6 +365,24 @@ function setupMaintenanceNotifications() {
             showMaintenanceNotification(planName);
         });
     });
+    
+    // Para enlaces sociales en construcción
+    if (socialLinks.length > 0) {
+        socialLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const notificationText = maintenanceNotification.querySelector('.notification-text p');
+                if (notificationText) {
+                    notificationText.textContent = 'Estamos trabajando en las redes sociales, pronto estarán disponibles. Mientras tanto, contáctanos por WhatsApp.';
+                }
+                maintenanceNotification.classList.add('active');
+                
+                setTimeout(() => {
+                    maintenanceNotification.classList.remove('active');
+                }, 3000);
+            });
+        });
+    }
 }
 
 // ===== RESPONSIVE JS =====
@@ -362,9 +437,16 @@ document.addEventListener('touchend', function(event) {
     lastTouchEnd = now;
 }, false);
 
+// Prevenir arrastre de imágenes en móvil
+document.addEventListener('dragstart', function(e) {
+    if (window.innerWidth <= 768 && e.target.tagName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
+
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .ecommerce-btn, .ecommerce-btn-mobile, .nav-link, .context-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .conclusion-link');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -381,6 +463,32 @@ if (isTouchDevice) {
     });
 }
 
+// ===== ANIMACIONES DE ENTRADA PARA VENTAJAS =====
+function initVentajasAnimation() {
+    const ventajas = document.querySelectorAll('.ventaja-card');
+    
+    const ventajaObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    ventajas.forEach(ventaja => {
+        ventaja.classList.add('reveal');
+        ventajaObserver.observe(ventaja);
+    });
+}
+
+// Inicializar animaciones de ventajas después de cargar
+setTimeout(() => {
+    initVentajasAnimation();
+    initStatsCounters();
+}, 500);
+
 // ===== LOADING STATES =====
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
@@ -389,59 +497,12 @@ document.addEventListener('readystatechange', () => {
     }
 });
 
-// ===== ANIMACIÓN DE CONTADORES PARA ESTADÍSTICAS =====
-function initStatsCounters() {
-    const stats = document.querySelectorAll('.stat');
-    
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumber = entry.target.querySelector('.stat-number');
-                if (statNumber && !statNumber.classList.contains('animated')) {
-                    animateCounter(statNumber);
-                    statNumber.classList.add('animated');
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    stats.forEach(stat => {
-        counterObserver.observe(stat);
-    });
-}
+// ===== ERROR HANDLING =====
+window.addEventListener('error', function(e) {
+    console.error('❌ Error en la aplicación ecommerce:', e.error);
+});
 
-function animateCounter(element) {
-    const text = element.textContent;
-    const target = parseInt(text.replace('+', '').replace('%', '').replace('s', ''));
-    const suffix = text.includes('+') ? '+' : 
-                   text.includes('%') ? '%' : 
-                   text.includes('s') ? 's' : '';
-    const duration = 1500;
-    let start = null;
-    
-    function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const percentage = Math.min(progress / duration, 1);
-        
-        const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-        const current = suffix === 's' ? 
-            (easeOutQuart * target).toFixed(1) : 
-            Math.floor(easeOutQuart * target);
-        
-        element.textContent = current + suffix;
-        
-        if (percentage < 1) {
-            requestAnimationFrame(step);
-        } else {
-            element.textContent = target + suffix;
-        }
-    }
-    
-    requestAnimationFrame(step);
+// ===== POLYFILL PARA SMOOTH SCROLL =====
+if (!('scrollBehavior' in document.documentElement.style)) {
+    console.log('🔧 Aplicando polyfill para scroll suave');
 }
-
-// Inicializar contadores después de cargar
-setTimeout(() => {
-    initStatsCounters();
-}, 500);
