@@ -1,29 +1,24 @@
-/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MECÁNICAS IDÉNTICAS AL INDEX */
-/* ESTILOS ESPECÍFICOS PARA ECOMMERCE CON PSICOLOGÍA AVANZADA */
+/* ecommerce.css - Versión Optimizada para Móvil y PC */
+/* Basado en index.css con modificaciones específicas para Ecommerce */
 
 :root {
     --primary: #0f3460;
     --secondary: #533483;
     --accent: #ffd700;
     --accent-light: #ffed4a;
-    --success: #10b981;
-    --success-light: #34d399;
-    --warning: #f59e0b;
-    --danger: #ef4444;
     --dark: #1a1a2e;
     --darker: #16213e;
     --light: #ffffff;
-    --gray-light: rgba(255, 255, 255, 0.7);
-    --gray: rgba(255, 255, 255, 0.5);
+    --success: #4CAF50;
+    --warning: #ff9800;
+    --info: #2196F3;
     --transition: all 0.3s ease;
-    --transition-fast: all 0.2s ease;
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --border-radius-lg: 20px;
 }
 
-/* ===== COPIAR ABSOLUTAMENTE TODAS LAS REGLAS BASE DEL INDEX ===== */
 * {
     margin: 0;
     padding: 0;
@@ -49,98 +44,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
     position: relative;
     touch-action: manipulation;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
 }
 
-/* Permitir selección solo en contenido de texto real */
-p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .step-content p, .faq-item p, .guarantee-text p {
-    -webkit-user-select: text;
-    user-select: text;
-}
-
-/* === ANIMACIONES MINIMIZADAS === */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes gentleGlow {
-    0%, 100% { 
-        opacity: 0.4; 
-        transform: scale(1);
-    }
-    50% { 
-        opacity: 0.7; 
-        transform: scale(1.05);
-    }
-}
-
-@keyframes levitate {
-    0%, 100% { 
-        transform: translateY(0px); 
-    }
-    50% { 
-        transform: translateY(-12px); 
-    }
-}
-
-@keyframes textGlow {
-    0%, 100% { 
-        text-shadow: 0 0 0px rgba(255, 215, 0, 0);
-    }
-    50% { 
-        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    }
-}
-
-@keyframes heroTitleLoad {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-}
-
-@keyframes heroTextLoad {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroStatLoad {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroButtonsLoadCorrected {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroCardLoad {
-    to {
-        opacity: 1;
-        transform: translateX(0) rotate(0);
-    }
-}
-
-/* === BACKGROUND OPTIMIZADO === */
+/* === BACKGROUND IDÉNTICO === */
 .animated-background {
     position: fixed;
     top: 0;
@@ -171,7 +77,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     100% { transform: translateY(-30px) translateX(20px); }
 }
 
-/* === NAVBAR === */
+/* === NAVBAR IDÉNTICA === */
 .navbar {
     position: fixed;
     top: 0;
@@ -192,7 +98,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     padding: 0 5%;
 }
 
-/* === LOGO DEL NAVBAR === */
 .logo {
     text-decoration: none !important;
     color: inherit !important;
@@ -203,11 +108,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
-    all: unset;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    cursor: pointer !important;
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
 }
 
@@ -255,8 +155,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     position: relative;
     padding: 0.5rem 0;
     display: inline-block;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .nav-link::after {
@@ -287,7 +185,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     width: 100%;
 }
 
-/* === HAMBURGER MENU === */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -295,8 +192,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     width: 24px;
     height: 18px;
     justify-content: space-between;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .hamburger span {
@@ -319,13 +214,14 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* === HERO SECTION === */
-.hero {
+/* === HERO ECOMMERCE === */
+.hero-ecommerce {
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: 100px 0 50px;
     position: relative;
+    background: transparent;
 }
 
 .container {
@@ -403,14 +299,12 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     opacity: 0.8;
 }
 
-/* ===== BOTONES DEL HERO PERFECTAMENTE EQUILIBRADOS ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
 }
 
-/* Botones flexibles que se adaptan al contenido sin presionarse */
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -423,19 +317,14 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     cursor: pointer;
     font-size: 0.95rem;
     white-space: nowrap;
-    -webkit-touch-callout: none;
-    user-select: none;
     border: none;
     outline: none;
 }
 
-/* Botón primario */
 .btn-primary {
     background: var(--accent);
     color: var(--dark);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
 }
 
 .btn-primary:hover {
@@ -465,13 +354,10 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     margin-top: 0.2rem;
 }
 
-/* Botón secundario */
 .btn-secondary {
     background: transparent;
     color: var(--light);
     border: 2px solid rgba(255, 255, 255, 0.3);
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
     min-width: 160px;
     justify-content: center;
 }
@@ -482,7 +368,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     border-color: var(--accent);
 }
 
-/* === HERO IMAGE === */
 .hero-image {
     flex: 1;
     display: flex;
@@ -506,8 +391,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     display: flex;
     flex-direction: column;
     justify-content: center;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .floating-card:hover {
@@ -515,30 +398,16 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* === MEJORAS DE FLUIDEZ PARA ICONOS === */
-.service-card .service-icon,
-.floating-card .card-icon,
-.benefit-card .benefit-icon {
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-origin: center center;
-    will-change: transform;
-    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
-    display: inline-block;
-}
-
-.service-card:hover .service-icon,
-.floating-card:hover .card-icon,
-.benefit-card:hover .benefit-icon {
-    transform: scale(1.18);
-    color: var(--accent-light);
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
-}
-
 .card-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--accent);
+    transition: var(--transition);
+}
+
+.floating-card:hover .card-icon {
+    transform: scale(1.1);
+    color: var(--accent-light);
 }
 
 .floating-card h3 {
@@ -553,11 +422,11 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     line-height: 1.4;
 }
 
-/* === BANNER DE CONTEXTO === */
-.pricing-context-banner {
+/* === BANNER ESCALABILIDAD === */
+.scalability-banner {
     background: linear-gradient(135deg, 
         rgba(255, 215, 0, 0.1) 0%, 
-        rgba(15, 52, 96, 0.2) 100%);
+        rgba(83, 52, 131, 0.2) 100%);
     padding: 2rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -572,7 +441,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     flex-wrap: wrap;
 }
 
-.context-content i.fa-layer-group {
+.context-content i.fa-rocket {
     font-size: 2.5rem;
     color: var(--accent);
     flex-shrink: 0;
@@ -610,9 +479,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     transition: var(--transition);
     background: rgba(255, 255, 255, 0.05);
     flex-shrink: 0;
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
 }
 
 .context-link:hover {
@@ -621,12 +487,10 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     border-color: var(--accent);
 }
 
-/* === SECTION COMMON === */
-section {
+/* === FEATURES === */
+.features-ecommerce {
     padding: 80px 0;
-    position: relative;
     background: rgba(15, 52, 96, 0.02);
-    z-index: 1;
 }
 
 .section-header {
@@ -662,7 +526,147 @@ section {
     line-height: 1.6;
 }
 
-/* === PLANS DESKTOP === */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.2);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.feature-list {
+    list-style: none;
+    text-align: left;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.feature-list i {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+/* === COMPARISON TABLE === */
+.comparison {
+    padding: 80px 0;
+    background: rgba(26, 26, 46, 0.5);
+}
+
+.comparison-table {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    background: rgba(15, 52, 96, 0.3);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-feature {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.table-plan {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.plan-base {
+    color: var(--info);
+}
+
+.plan-pro {
+    color: var(--warning);
+}
+
+.plan-elite {
+    color: var(--success);
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.table-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.table-row .table-feature {
+    display: flex;
+    align-items: center;
+}
+
+.table-row .table-plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-row i.fa-check {
+    color: var(--success);
+}
+
+.table-row i.fa-times {
+    color: #ff4444;
+    opacity: 0.7;
+}
+
+/* === PLANS ECOMMERCE === */
+.plans-ecommerce {
+    padding: 80px 0;
+}
+
 .plans-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -671,7 +675,7 @@ section {
     align-items: stretch;
 }
 
-/* === CORRECCIÓN CRÍTICA: PLANES - MISMA ANIMACIÓN PARA TODOS === */
+/* CORRECCIÓN: MISMA ANIMACIÓN PARA LOS 3 PLANES */
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -683,13 +687,23 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 580px;
+    min-height: 620px;
     transform-origin: center center;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
-/* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
+/* Colores específicos para cada plan */
+.plan-card.ecommerce-base {
+    border-top: 4px solid var(--info);
+}
+
+.plan-card.ecommerce-pro {
+    border-top: 4px solid var(--warning);
+}
+
+.plan-card.ecommerce-elite {
+    border-top: 4px solid var(--success);
+}
+
 .plan-card.featured {
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
@@ -803,8 +817,6 @@ section {
     transform-origin: left center;
     margin: 0 -0.5rem;
     border-radius: 4px;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .plan-features li:hover {
@@ -849,10 +861,9 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .btn-plan:hover,
@@ -870,264 +881,28 @@ section {
     background: var(--accent-light);
 }
 
-/* === DISCLAIMER MEJORADO === */
-.plan-disclaimer {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background: rgba(15, 52, 96, 0.3);
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--accent);
+/* Botones específicos por plan */
+.ecommerce-btn[data-plan="base"] {
+    background: rgba(33, 150, 243, 0.2);
+    border: 1px solid rgba(33, 150, 243, 0.3);
 }
 
-.disclaimer-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+.ecommerce-btn[data-plan="pro"] {
+    background: rgba(255, 152, 0, 0.2);
+    border: 1px solid rgba(255, 152, 0, 0.3);
 }
 
-.disclaimer-content i {
-    color: var(--accent);
-    font-size: 1.2rem;
-    margin-top: 0.2rem;
+.ecommerce-btn[data-plan="elite"] {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
-.disclaimer-text {
-    flex: 1;
+.ecommerce-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: var(--accent);
 }
 
-.disclaimer-text p {
-    margin-bottom: 0.8rem;
-    line-height: 1.5;
-    font-size: 0.95rem;
-}
-
-.disclaimer-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
-}
-
-.disclaimer-link:hover {
-    text-decoration: underline;
-    transform: translateX(3px);
-}
-
-/* === FOOTER CORREGIDO - ESPACIOS ELIMINADOS === */
-footer {
-    background: transparent;
-    color: var(--light);
-    padding: 0.3rem 0 0.2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 1;
-    margin-top: -10px;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.5rem;
-    margin-bottom: 0.3rem;
-}
-
-.footer-mobile {
-    display: block;
-    width: 100%;
-    padding: 0.3rem 0;
-}
-
-.footer-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.1rem 0;
-}
-
-.footer-logo {
-    text-decoration: none !important;
-    color: inherit !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    -webkit-touch-callout: none !important;
-    user-select: none !important;
-    outline: none !important;
-    all: unset;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    cursor: pointer !important;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
-    margin-bottom: 0.1rem;
-}
-
-.footer-logo .logo-img {
-    height: 32px;
-    width: auto;
-    transition: filter 0.2s ease;
-    pointer-events: none;
-}
-
-.footer-logo h3 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    transition: color 0.2s ease, text-shadow 0.2s ease;
-}
-
-.footer-tagline {
-    opacity: 0.8;
-    line-height: 1.3;
-    font-size: 0.8rem;
-    max-width: 300px;
-    margin: 0.1rem 0;
-}
-
-.social-links {
-    display: flex;
-    gap: 0.6rem;
-    margin-top: 0.2rem;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--light);
-    text-decoration: none;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
-                background 0.2s ease,
-                color 0.2s ease;
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
-}
-
-.social-links a:hover {
-    background: var(--accent);
-    color: var(--dark);
-    transform: translateY(-2px);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 0.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 0.7rem;
-    opacity: 0.7;
-    margin-top: 0.2rem;
-}
-
-/* === SOCIAL NOTIFICATION === */
-.social-notification {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--primary);
-    color: var(--light);
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    border-left: 4px solid var(--accent);
-    z-index: 9999;
-    opacity: 0;
-    transition: all 0.4s ease;
-    max-width: 90%;
-    width: 350px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-notification.active {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-.notification-content {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    justify-content: center;
-}
-
-.notification-content i {
-    color: var(--accent);
-    font-size: 1.2rem;
-}
-
-.notification-content p {
-    margin: 0;
-    font-size: 0.85rem;
-    font-weight: 500;
-    line-height: 1.3;
-}
-
-/* ===== LOGOS COMO ENLACES - ESTILOS UNIFICADOS ===== */
-a.logo,
-a.footer-logo {
-    text-decoration: none !important;
-    color: inherit !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    -webkit-touch-callout: none !important;
-    user-select: none !important;
-    outline: none !important;
-    all: unset;
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.8rem !important;
-    cursor: pointer !important;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
-}
-
-/* Eliminar cualquier efecto de focus no deseado */
-a.logo:focus,
-a.footer-logo:focus,
-a.logo:active,
-a.footer-logo:active {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* Mantener el efecto hover existente */
-a.logo:hover,
-a.footer-logo:hover {
-    transform: translateY(-2px) !important;
-}
-
-a.logo:hover .logo-img,
-a.footer-logo:hover .logo-img {
-    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
-}
-
-a.logo:hover h2,
-a.logo:hover h3,
-a.footer-logo:hover h2,
-a.footer-logo:hover h3 {
-    color: var(--accent) !important;
-    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
-}
-
-/* ===== CARRUSELES MÓVIL ===== */
+/* === CARRUSEL MÓVIL - IDÉNTICO A INDEX === */
 .carousel-container {
     display: none;
     position: relative;
@@ -1156,7 +931,6 @@ a.footer-logo:hover h3 {
     display: none;
 }
 
-/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -1176,13 +950,10 @@ a.footer-logo:hover h3 {
     transition: var(--transition);
     opacity: 0.9;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
     border: none;
+    outline: none;
 }
 
-/* CORRECCIÓN: Iconos de flechas sin oscurecerse */
 .carousel-arrow i {
     color: var(--accent);
     transition: none !important;
@@ -1229,8 +1000,6 @@ a.footer-logo:hover h3 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    -webkit-touch-callout: none;
-    user-select: none;
     touch-action: pan-y;
     pointer-events: auto;
 }
@@ -1243,6 +1012,19 @@ a.footer-logo:hover h3 {
 .plan-card-mobile.active {
     border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: var(--shadow-lg);
+}
+
+/* Colores para móvil */
+.ecommerce-base-mobile {
+    border-top: 4px solid var(--info);
+}
+
+.ecommerce-pro-mobile {
+    border-top: 4px solid var(--warning);
+}
+
+.ecommerce-elite-mobile {
+    border-top: 4px solid var(--success);
 }
 
 .plan-card-mobile.featured-mobile {
@@ -1347,8 +1129,6 @@ a.footer-logo:hover h3 {
     gap: 0.6rem;
     font-size: 0.85rem;
     line-height: 1.4;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .plan-features-mobile i {
@@ -1383,10 +1163,9 @@ a.footer-logo:hover h3 {
     justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .btn-plan-mobile:hover {
@@ -1401,6 +1180,22 @@ a.footer-logo:hover h3 {
 
 .btn-plan-mobile.featured-btn:hover {
     background: var(--accent-light);
+}
+
+/* Botones específicos móvil */
+.ecommerce-btn-mobile[data-plan="base"] {
+    background: rgba(33, 150, 243, 0.2);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.ecommerce-btn-mobile[data-plan="pro"] {
+    background: rgba(255, 152, 0, 0.2);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.ecommerce-btn-mobile[data-plan="elite"] {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .carousel-indicators {
@@ -1419,8 +1214,6 @@ a.footer-logo:hover h3 {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .indicator.active {
@@ -1428,975 +1221,269 @@ a.footer-logo:hover h3 {
     transform: scale(1.3);
 }
 
-/* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
-@media (min-width: 769px) {
-    /* Animación escalonada para elementos del hero */
-    .hero-content h1 {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
-    }
-    
-    .hero-content p {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(1) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(2) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(3) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
-    }
-    
-    /* CORRECCIÓN: Botones del hero perfectamente equilibrados */
-    .hero-buttons {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: nowrap;
-    }
-    
-    /* BOTONES PERFECTAMENTE EQUILIBRADOS - SIN APLASTARSE */
-    .btn-primary, .btn-secondary {
-        flex: none;
-        min-width: auto;
-        max-width: none;
-        width: auto;
-        padding: 0.9rem 2.2rem;
-    }
-    
-    /* Botón primario con espacio adecuado */
-    .btn-primary {
-        min-width: 280px;
-    }
-    
-    /* Botón secundario con espacio adecuado */
-    .btn-secondary {
-        min-width: 200px;
-    }
-    
-    .floating-card:nth-child(1) {
-        opacity: 0;
-        transform: translateX(30px) rotate(2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
-    }
-    
-    .floating-card:nth-child(2) {
-        opacity: 0;
-        transform: translateX(30px) rotate(-2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
-    }
-}
-
-/* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
-@media (min-width: 769px) {
-    /* 1. CORRECCIÓN CRÍTICA: ELIMINAR PARPADEO NEGRO EN TODOS LOS BOTONES */
-    .btn-primary::before,
-    .btn-plan::before,
-    .btn-plan.featured::before {
-        content: none;
-    }
-    
-    /* Botón "Descubre Planes Escalables" */
-    .btn-primary {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        background: var(--accent);
-        color: var(--dark);
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-    
-    .btn-primary:hover {
-        background: var(--accent-light);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-    }
-    
-    /* 2. CORRECCIÓN CRÍTICA: Botones de planes normales */
-    .btn-plan {
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-    
-    .btn-plan:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: translateY(-3px);
-        border-color: rgba(255, 215, 0, 0.4);
-    }
-    
-    /* 3. CORRECCIÓN: Paneles flotantes del hero - ICONO CON EFECTO FLUIDO */
-    .floating-card .card-icon {
-        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        display: inline-block;
-        transform-origin: center center;
-    }
-    
-    .floating-card:hover .card-icon {
-        transform: scale(1.18);
-        color: var(--accent-light);
-        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
-        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
-    }
-    
-    .floating-card {
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .floating-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.25),
-            0 0 20px rgba(255, 215, 0, 0.2);
-        border-color: rgba(255, 215, 0, 0.4);
-        background: rgba(255, 255, 255, 0.12);
-    }
-    
-    .floating-card:hover h3 {
-        color: var(--accent-light);
-        text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
-        transform: translateY(-2px);
-        transition: all 0.3s ease;
-    }
-    
-    /* 4. CORRECCIÓN: Planes */
-    .plan-card:hover .price-amount {
-        transform: scale(1.05);
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        color: var(--accent-light);
-        text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
-    }
-    
-    /* 5. Botón secundario del hero - hover ajustado */
-    .btn-secondary:hover {
-        border-color: var(--accent);
-        background: rgba(255, 215, 0, 0.08);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-}
-
-/* ===== FOOTER ESCRITORIO - MEJORAS ESPECÍFICAS PARA PC ===== */
-@media (min-width: 992px) {
-    /* 1. REDUCIR ESPACIO INNECESARIO EN EL FOOTER */
-    footer {
-        padding: 0.1rem 0;
-        margin-top: -5px;
-    }
-    
-    /* 2. MEJORAR ESPACIADO Y ALINEACIÓN */
-    .footer-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0;
-        margin-bottom: 0.2rem;
-        padding: 0.1rem 0;
-        min-height: 40px;
-    }
-    
-    /* 3. OCULTAR FOOTER MÓVIL EN PC */
-    .footer-mobile {
-        display: none;
-    }
-    
-    /* 4. MOSTRAR LAS TRES COLUMNAS EN PC */
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        display: flex;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        height: 40px;
-    }
-    
-    .footer-left {
-        justify-content: flex-start;
-        flex: 1;
-    }
-    
-    .footer-center {
-        justify-content: center;
-        flex: 1;
-    }
-    
-    .footer-right {
-        justify-content: flex-end;
-        flex: 1;
-    }
-    
-    /* 5. LOGO MÁS GRANDE Y CON EFECTO FLUIDO IDÉNTICO AL MENÚ */
-    .footer-logo {
-        margin: 0;
-        padding: 0;
-        gap: 0.6rem;
-        height: 40px;
-        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
-        cursor: pointer;
-        padding: 2px 4px;
-        border-radius: 4px;
-    }
-    
-    .footer-logo .logo-img {
-        height: 36px;
-        width: auto;
-        transition: filter 0.2s ease;
-    }
-    
-    .footer-logo h3 {
-        font-size: 1rem;
-        font-weight: 800;
-        margin: 0;
-        padding: 0;
-        line-height: 1;
-        transition: color 0.2s ease, text-shadow 0.2s ease;
-    }
-    
-    /* EFECTO HOVER IDÉNTICO AL MENÚ - ULTRA FLUIDO */
-    .footer-logo:hover {
-        transform: translateY(-2px);
-        background: transparent;
-    }
-    
-    .footer-logo:hover .logo-img {
-        filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3));
-    }
-    
-    .footer-logo:hover h3 {
-        color: var(--accent);
-        text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
-    }
-    
-    /* 6. CENTRO: FRASE SIN LÍNEAS LATERALES Y QUE NO BAJE DE LÍNEA */
-    .footer-center .footer-tagline {
-        opacity: 0.9;
-        line-height: 1.3;
-        font-size: 0.85rem;
-        margin: 0;
-        text-align: center;
-        padding: 0 10px;
-        border-left: none;
-        border-right: none;
-        max-width: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-width: 0;
-        flex-shrink: 1;
-    }
-    
-    /* 7. REDES SOCIALES CON EFECTO FLUIDO IDÉNTICO */
-    .social-links {
-        margin: 0;
-        padding: 0;
-        gap: 0.4rem;
-        height: 32px;
-        display: flex;
-        align-items: center;
-    }
-    
-    .social-links a {
-        width: 30px;
-        height: 30px;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
-                    background 0.2s ease,
-                    color 0.2s ease;
-    }
-    
-    .social-links a:hover {
-        background: var(--accent);
-        color: var(--dark);
-        transform: translateY(-2px);
-    }
-    
-    /* 8. FOOTER BOTTON MÁS COMPACTO */
-    .footer-bottom {
-        padding: 0.4rem 0 0.2rem;
-        margin-top: 0.1rem;
-        font-size: 0.75rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        line-height: 1.2;
-    }
-    
-    /* 9. CONTENEDOR */
-    footer .container {
-        padding: 0 20px;
-        margin: 0 auto;
-    }
-}
-
-/* Eliminar cualquier espacio adicional en el último elemento */
-footer:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-/* === OPTIMIZACIÓN GENERAL DE FLUIDEZ === */
-.plan-card,
-.floating-card,
-.btn-primary,
-.btn-secondary,
-.btn-plan {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    will-change: transform, box-shadow;
-}
-
-/* ===== ESTILOS ESPECÍFICOS PARA ECOMMERCE ===== */
-
-/* Hero específico para ecommerce */
-.ecommerce-hero .hero-content h1 {
-    font-size: 2.8rem;
-    line-height: 1.2;
-}
-
-.ecommerce-hero .highlight {
-    color: var(--accent);
-    background: linear-gradient(135deg, var(--accent) 0%, #ffed4a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* Banner de contexto ecommerce */
-.ecommerce-context {
-    background: linear-gradient(135deg, 
-        rgba(16, 185, 129, 0.1) 0%, 
-        rgba(15, 52, 96, 0.2) 100%);
-    border-top: 1px solid rgba(16, 185, 129, 0.2);
-    border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-/* Sección beneficios ecommerce */
-.ecommerce-benefits {
-    background: rgba(15, 52, 96, 0.03);
-    padding: 80px 0;
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.benefit-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    height: 100%;
-}
-
-.benefit-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(16, 185, 129, 0.3);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.benefit-icon {
-    font-size: 2.5rem;
-    color: var(--success);
-    margin-bottom: 1.5rem;
-    display: inline-block;
-}
-
-.benefit-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--light);
-}
-
-.benefit-card p {
-    opacity: 0.8;
-    line-height: 1.5;
-    font-size: 0.95rem;
-}
-
-/* Tabla comparativa */
-.comparison-section {
-    padding: 60px 0;
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.comparison-table {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.table-header {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    background: rgba(15, 52, 96, 0.3);
-    padding: 1.2rem;
-    font-weight: 700;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.table-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    padding: 1rem 1.2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    align-items: center;
-}
-
-.table-row:last-child {
-    border-bottom: none;
-}
-
-.table-row:nth-child(even) {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.table-feature {
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.table-plan {
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.table-plan i.fa-check {
-    color: var(--success);
-}
-
-.table-plan i.fa-times {
-    color: var(--danger);
-    opacity: 0.5;
-}
-
-/* Planes ecommerce específicos */
-.ecommerce-plans .plan-card {
-    min-height: 620px;
-}
-
-.ecommerce-plans .plan-card.featured {
-    border-color: var(--success);
-    background: rgba(16, 185, 129, 0.05);
-}
-
-.ecommerce-plans .plan-card.featured .plan-badge {
-    background: var(--success);
-    color: var(--light);
-}
-
-.ecommerce-plans .btn-plan.featured {
-    background: var(--success);
-    color: var(--light);
-}
-
-.ecommerce-plans .btn-plan.featured:hover {
-    background: var(--success-light);
-}
-
-/* Botones específicos de planes ecommerce */
-.btn-ecommerce-base {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: var(--light);
-}
-
-.btn-ecommerce-pro {
-    background: linear-gradient(135deg, var(--warning) 0%, #f97316 100%);
-    color: var(--light);
-}
-
-.btn-ecommerce-elite {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    color: var(--light);
-}
-
-/* Garantía ecommerce */
+/* === GARANTÍA === */
 .ecommerce-guarantee {
     margin-top: 3rem;
-    padding: 2rem;
+    padding: 1.5rem;
     background: linear-gradient(135deg, 
-        rgba(16, 185, 129, 0.1) 0%, 
-        rgba(15, 52, 96, 0.2) 100%);
+        rgba(15, 52, 96, 0.3) 0%, 
+        rgba(83, 52, 131, 0.2) 100%);
     border-radius: var(--border-radius-lg);
-    border-left: 4px solid var(--success);
+    border-left: 4px solid var(--accent);
 }
 
 .guarantee-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .guarantee-content i {
-    color: var(--success);
+    color: var(--accent);
     font-size: 2rem;
-    margin-top: 0.5rem;
+    flex-shrink: 0;
 }
 
 .guarantee-text {
     flex: 1;
+    min-width: 300px;
 }
 
 .guarantee-text h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-    color: var(--light);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .guarantee-text p {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
     opacity: 0.9;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 600px;
 }
 
-.guarantee-note {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    font-style: italic;
-    margin-top: 0.5rem;
-}
-
-/* FAQ Section */
-.faq-section {
-    padding: 80px 0;
-}
-
-.faq-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.faq-item {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.faq-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--accent);
+.whatsapp-cta {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    transition: var(--transition);
+    flex-shrink: 0;
 }
 
-.faq-item p {
-    opacity: 0.85;
-    line-height: 1.5;
-    font-size: 0.95rem;
+.whatsapp-cta:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
 }
 
-/* Notificación de mantenimiento */
+/* === NOTIFICACIÓN MANTENIMIENTO === */
 .maintenance-notification {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    background: var(--darker);
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary);
     color: var(--light);
     padding: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    border-left: 4px solid var(--warning);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--accent);
     z-index: 9999;
     opacity: 0;
-    transform: translateY(100px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    max-width: 400px;
-    width: 90%;
+    transition: all 0.4s ease;
+    max-width: 90%;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: none;
 }
 
 .maintenance-notification.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     display: block;
 }
 
 .notification-content {
     display: flex;
+    flex-direction: column;
     gap: 15px;
-    align-items: flex-start;
 }
 
 .notification-content i {
-    color: var(--warning);
+    color: var(--accent);
     font-size: 1.5rem;
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-}
-
-.notification-text {
-    flex: 1;
+    text-align: center;
 }
 
 .notification-text h4 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: var(--light);
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .notification-text p {
+    margin: 0;
     font-size: 0.9rem;
     opacity: 0.9;
-    line-height: 1.4;
-    margin-bottom: 1rem;
+    line-height: 1.5;
 }
 
-.notification-whatsapp {
-    display: inline-flex;
+.whatsapp-notification-btn {
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     background: #25D366;
     color: white;
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.85rem;
+    padding: 0.8rem;
+    border-radius: 8px;
     transition: var(--transition);
+    margin-top: 0.5rem;
 }
 
-.notification-whatsapp:hover {
+.whatsapp-notification-btn:hover {
     background: #128C7E;
     transform: translateY(-2px);
 }
 
-.notification-close {
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0;
-    transition: var(--transition);
-}
-
-.notification-close:hover {
+/* === FOOTER IDÉNTICO === */
+footer {
+    background: transparent;
     color: var(--light);
+    padding: 0.3rem 0 0.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+    margin-top: -10px;
 }
 
-/* ===== MEJORAS CRÍTICAS PARA MÓVIL - ELIMINAR EFECTOS AZULES Y MEJORAR SENSACIÓN APP ===== */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.footer-mobile {
+    display: block;
+    width: 100%;
+    padding: 0.3rem 0;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.1rem 0;
+}
+
+.footer-logo {
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+    margin-bottom: 0.1rem;
+}
+
+.footer-logo .logo-img {
+    height: 32px;
+    width: auto;
+    transition: filter 0.2s ease;
+    pointer-events: none;
+}
+
+.footer-logo h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.footer-tagline {
+    opacity: 0.8;
+    line-height: 1.3;
+    font-size: 0.8rem;
+    max-width: 300px;
+    margin: 0.1rem 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--light);
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1),
+                background 0.2s ease,
+                color 0.2s ease;
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    color: var(--dark);
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-    /* 1. DESACTIVAR COMPLETAMENTE LA SELECCIÓN DE TEXTO EN ELEMENTOS INTERACTIVOS */
-    .btn-primary,
-    .btn-secondary,
-    .btn-plan,
-    .btn-plan-mobile,
-    .nav-link,
-    .logo,
-    .footer-logo,
-    .social-links a,
-    .carousel-arrow,
-    .context-link,
-    .disclaimer-link,
-    .plan-card,
-    .plan-card-mobile,
-    .benefit-card,
-    .floating-card,
-    .hamburger,
-    .indicator,
-    .purchase-btn {
-        -webkit-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
-        user-select: none !important;
-        -webkit-touch-callout: none !important;
-        -webkit-tap-highlight-color: transparent !important;
-        tap-highlight-color: transparent !important;
-    }
-    
-    /* 2. ELIMINAR COMPLETAMENTE EL EFECTO AZUL DE TAP EN TODOS LOS ELEMENTOS */
-    * {
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-        -webkit-tap-highlight-color: transparent !important;
-        tap-highlight-color: transparent !important;
-    }
-    
-    /* 3. REMOVER OUTLINES EN FOCUS PARA MÓVIL */
-    .btn-primary:focus,
-    .btn-secondary:focus,
-    .btn-plan:focus,
-    .btn-plan-mobile:focus,
-    .nav-link:focus,
-    .context-link:focus,
-    .disclaimer-link:focus,
-    .carousel-arrow:focus,
-    .purchase-btn:focus {
-        outline: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* 4. EFECTOS DE TAP MEJORADOS - SENSACIÓN MÁS APP */
-    .btn-primary:active,
-    .btn-secondary:active,
-    .btn-plan:active,
-    .btn-plan-mobile:active,
-    .nav-link:active,
-    .social-links a:active,
-    .carousel-arrow:active,
-    .context-link:active,
-    .disclaimer-link:active,
-    .indicator:active,
-    .purchase-btn:active {
-        transform: scale(0.96) !important;
-        transition: transform 0.1s ease !important;
-        opacity: 0.9 !important;
-    }
-    
-    /* CORRECCIÓN ESPECÍFICA: Flechas sin animación de bajar/subir */
-    .carousel-arrow:active {
-        transform: translateY(-50%) scale(0.96) !important;
-        background: rgba(15, 52, 96, 0.95) !important;
-    }
-    
-    .carousel-arrow:active i {
-        color: var(--accent-light) !important;
-    }
-    
-    /* 5. QUITAR EFECTOS HOVER EN MÓVIL (se activan con tap prolongado) */
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-plan:hover,
-    .btn-plan-mobile:hover,
-    .benefit-card:hover,
-    .plan-card:hover,
-    .plan-card-mobile:hover,
-    .floating-card:hover {
-        transform: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* 6. QUITAR ANIMACIONES DE HOVER EN MÓVIL PARA MEJOR RENDIMIENTO */
-    .floating-card .card-icon,
-    .benefit-card .benefit-icon,
-    .plan-features li,
-    .table-row {
-        transition: none !important;
-        animation: none !important;
-    }
-    
-    .floating-card:hover .card-icon,
-    .benefit-card:hover .benefit-icon,
-    .plan-features li:hover {
-        transform: none !important;
-        filter: none !important;
-    }
-    
-    /* 7. DESACTIVAR MENÚ CONTEXTUAL LARGO PRESS EN IMÁGENES */
-    img {
-        pointer-events: none;
-    }
-    
-    /* 8. PERMITIR SOLO SCROLL NATIVO, NO ZOOM NO DESEADO */
-    .hero-content,
-    .section-header,
-    .plan-card-mobile {
-        touch-action: pan-y;
-    }
-    
-    /* 9. EVITAR ACCIÓN DE LLAMADA EN NÚMEROS DE TELÉFONO */
-    a[href^="tel"] {
-        color: inherit !important;
-        text-decoration: none !important;
-    }
-    
-    /* 10. MEJORAR RENDIMIENTO TÁCTIL */
-    .plans-carousel {
-        touch-action: pan-x pan-y;
-    }
-    
-    /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
-    .plan-card-mobile {
-        touch-action: pan-y;
-        pointer-events: auto;
-    }
-    
-    /* 11. CORRECCIÓN: Botones del hero en columna en móvil */
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.8rem;
-    }
-    
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        justify-content: center;
-        padding: 0.9rem 1.5rem;
-    }
-    
-    .btn-primary {
-        min-width: 100%;
-    }
-    
-    .btn-secondary {
-        min-width: 100%;
-    }
-    
-    .btn-content {
-        align-items: center;
-        text-align: center;
-    }
-    
-    /* ===== ANIMACIONES DEL HERO PARA MÓVIL - CARGAR IGUAL DE FACHERO QUE EN PC ===== */
-    .hero-content h1 {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
-    }
-    
-    .hero-content p {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(1) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(2) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
-    }
-    
-    .hero-stats .stat:nth-child(3) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
-    }
-    
-    .hero-buttons {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
-    }
-    
-    .floating-card:nth-child(1) {
-        opacity: 0;
-        transform: translateX(30px) rotate(2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
-    }
-    
-    .floating-card:nth-child(2) {
-        opacity: 0;
-        transform: translateX(30px) rotate(-2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
-    }
-    
-    /* Asegurar que los hover effects no se activen en móvil */
-    .benefit-card:hover,
-    .plan-card:hover,
-    .floating-card:hover,
-    .btn-plan:hover,
-    .btn-primary:hover,
-    .btn-secondary:hover {
-        transform: none !important;
-        box-shadow: var(--shadow) !important;
-    }
-    
-    .floating-card {
-        animation: none !important;
-    }
-    
-    .floating-card:hover {
-        transform: none !important;
-    }
-    
-    /* Para móvil - eliminar efectos hover en logos */
-    a.logo:hover,
-    a.footer-logo:hover {
-        transform: none !important;
-    }
-    
-    a.logo:hover .logo-img,
-    a.footer-logo:hover .logo-img {
-        filter: none !important;
-    }
-    
-    a.logo:hover h2,
-    a.footer-logo:hover h3 {
-        color: var(--light) !important;
-        text-shadow: none !important;
-    }
-    
-    /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
-    .animated-background {
-        background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
-        position: fixed;
-        height: 100vh;
-        z-index: -10;
-    }
-    
-    .particles-container {
-        opacity: 0.2;
-        animation: particlesMove 120s linear infinite;
-        position: fixed;
-        height: 100vh;
-        z-index: -9;
-    }
-    
-    /* Hero con el mismo fondo que el resto */
-    .hero {
-        background: transparent !important;
-        min-height: auto;
-        padding: 90px 0 40px;
-    }
-    
-    /* Asegurar que todas las secciones tengan fondo transparente */
-    section {
-        background: transparent;
-        position: relative;
-        z-index: 1;
-    }
-    
     /* Navbar móvil */
-    .navbar {
-        background: rgba(15, 52, 96, 0.98);
-        backdrop-filter: blur(5px);
-        padding: 0.4rem 0;
-    }
-    
     .hamburger {
         display: flex;
         z-index: 1001;
@@ -2435,7 +1522,7 @@ footer:last-child {
     }
     
     /* Hero móvil */
-    .hero {
+    .hero-ecommerce {
         flex-direction: column;
         min-height: auto;
         padding: 90px 0 40px;
@@ -2465,6 +1552,7 @@ footer:last-child {
     .hero-stats {
         gap: 1.5rem;
         justify-content: center;
+        flex-wrap: wrap;
     }
     
     .stat-number {
@@ -2501,8 +1589,8 @@ footer:last-child {
         margin: 0;
     }
     
-    /* Banner de contexto en móvil */
-    .pricing-context-banner {
+    /* Banner escalabilidad */
+    .scalability-banner {
         padding: 1.5rem 0;
     }
     
@@ -2521,32 +1609,22 @@ footer:last-child {
         justify-content: center;
     }
     
-    /* Section titles móvil */
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .section-subtitle {
-        font-size: 0.95rem;
-        padding: 0 1rem;
-    }
-    
-    /* Benefits en móvil */
-    .benefits-grid {
+    /* Features grid */
+    .features-grid {
         grid-template-columns: 1fr;
         gap: 1.2rem;
     }
     
-    .benefit-card {
+    .feature-card {
         padding: 1.5rem;
     }
     
-    /* Tabla comparativa en móvil - ocultar, mostrar contenido alternativo */
+    /* Comparison table oculta en móvil */
     .comparison-table {
         display: none;
     }
     
-    /* Plans - ocultar desktop, mostrar carrusel */
+    /* Mostrar carrusel en móvil */
     .plans-container {
         display: none;
     }
@@ -2555,38 +1633,6 @@ footer:last-child {
         display: block;
         position: relative;
         overflow: visible;
-    }
-    
-    /* Flechas posicionadas ABSOLUTAMENTE y al límite */
-    .carousel-arrow {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        z-index: 100 !important;
-        width: 40px !important;
-        height: 40px !important;
-        background: rgba(15, 52, 96, 0.95) !important;
-        border: 2px solid var(--accent) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    
-    /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
-    .carousel-arrow.prev-arrow {
-        left: -25px !important;
-        right: auto !important;
-    }
-    
-    .carousel-arrow.next-arrow {
-        right: -25px !important;
-        left: auto !important;
-    }
-    
-    /* Asegurar que el contenedor no corte las flechas */
-    .carousel-container {
-        overflow: visible !important;
-        padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
@@ -2601,42 +1647,29 @@ footer:last-child {
     }
     
     /* Garantía móvil */
-    .ecommerce-guarantee {
-        padding: 1.5rem;
-        margin-top: 2rem;
-    }
-    
     .guarantee-content {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
     
-    /* FAQ móvil */
-    .faq-grid {
-        grid-template-columns: 1fr;
+    .guarantee-text {
+        min-width: 100%;
     }
     
-    .faq-item {
-        padding: 1.2rem;
+    .whatsapp-cta {
+        width: 100%;
+        justify-content: center;
     }
     
-    /* Notificación móvil */
+    /* Notificación mantenimiento móvil */
     .maintenance-notification {
-        left: 5%;
-        right: 5%;
         width: 90%;
-        max-width: none;
-        bottom: 10px;
-        right: 5%;
+        max-width: 90%;
+        padding: 15px;
     }
     
-    /* Footer móvil - COMPACTADO AL MÁXIMO */
-    footer {
-        padding: 0.2rem 0 0.1rem;
-    }
-    
-    /* OCULTAR FOOTER DE PC EN MÓVIL */
+    /* Footer móvil */
     .footer-left,
     .footer-center,
     .footer-right {
@@ -2647,118 +1680,60 @@ footer:last-child {
         display: block;
     }
     
+    /* Eliminar hover en móvil */
+    .plan-card:hover,
+    .feature-card:hover,
+    .floating-card:hover,
+    .btn-plan:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none !important;
+        box-shadow: var(--shadow) !important;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Ocultar carrusel en desktop */
+    .carousel-container {
+        display: none;
+    }
+    
+    .plans-container {
+        display: grid;
+    }
+    
+    /* Footer desktop */
     .footer-content {
-        gap: 0.3rem;
-        margin-bottom: 0.2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
     
     .footer-mobile {
-        padding: 0.2rem 0;
+        display: none;
     }
     
-    .footer-brand {
-        gap: 0.3rem;
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        display: flex;
+        align-items: center;
     }
     
-    .footer-tagline {
-        margin: 0.05rem 0;
-        font-size: 0.75rem;
+    .footer-left {
+        justify-content: flex-start;
+        flex: 1;
     }
     
-    .social-links {
-        margin-top: 0.1rem;
+    .footer-center {
+        justify-content: center;
+        flex: 1;
     }
     
-    /* Mejorar scroll en móvil */
-    html {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    body {
-        overflow-x: hidden;
-        position: relative;
-    }
-    
-    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN CARRUSEL ===== */
-    /* Eliminar todas las transiciones CSS que interfieran con el scroll */
-    .plan-card-mobile {
-        transition: none !important;
-    }
-    
-    /* Igualar el scroll behavior del carrusel */
-    .plans-carousel {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-    }
-}
-
-/* ===== AJUSTES ESPECÍFICOS PARA iOS ===== */
-@supports (-webkit-touch-callout: none) {
-    /* iOS-specific styles */
-    @media (max-width: 768px) {
-        /* Remover estilos nativos de iOS */
-        input,
-        textarea,
-        button,
-        select,
-        a {
-            -webkit-appearance: none;
-            border-radius: 0;
-        }
-        
-        /* Evitar zoom en inputs */
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="number"],
-        textarea {
-            font-size: 16px; /* Evita zoom automático en iOS */
-        }
-        
-        /* Mejorar scrolling en iOS */
-        .plans-carousel,
-        .plan-features-mobile {
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Prevenir bounce en iOS */
-        body {
-            overflow-y: scroll;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Fix para botones en iOS */
-        button,
-        .btn-primary,
-        .btn-secondary,
-        .btn-plan,
-        .btn-plan-mobile,
-        .purchase-btn {
-            cursor: pointer;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-    }
-}
-
-/* ===== AJUSTES PARA ANDROID ===== */
-@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
-    /* Remover highlights en Chrome Android */
-    *:focus {
-        outline: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    
-    /* Mejorar renderizado en Android */
-    .btn-primary,
-    .btn-secondary,
-    .btn-plan,
-    .btn-plan-mobile,
-    .purchase-btn {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    .footer-right {
+        justify-content: flex-end;
+        flex: 1;
     }
 }
 
@@ -2788,65 +1763,11 @@ footer:last-child {
         font-size: 1rem;
     }
     
-    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow {
-        left: -20px;
+        left: 5px;
     }
     
     .carousel-arrow.next-arrow {
-        right: -20px;
+        right: 5px;
     }
-}
-
-/* Escritorio - ocultar carrusel */
-@media (min-width: 769px) {
-    .carousel-container,
-    .carousel-arrow {
-        display: none;
-    }
-    
-    .plans-container {
-        display: grid;
-    }
-}
-
-/* Asegurar que las secciones previas no agreguen espacio extra */
-section:last-of-type {
-    margin-bottom: 0;
-    padding-bottom: 40px;
-}
-
-.plans {
-    padding-bottom: 40px;
-}
-
-/* Animaciones de entrada */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Animaciones para tabla comparativa */
-.table-row {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.table-row:nth-child(1) { transition-delay: 0.1s; }
-.table-row:nth-child(2) { transition-delay: 0.2s; }
-.table-row:nth-child(3) { transition-delay: 0.3s; }
-.table-row:nth-child(4) { transition-delay: 0.4s; }
-.table-row:nth-child(5) { transition-delay: 0.5s; }
-.table-row:nth-child(6) { transition-delay: 0.6s; }
-
-.table-row.active {
-    opacity: 1;
-    transform: translateX(0);
 }
