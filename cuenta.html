@@ -233,23 +233,28 @@
 
                 <!-- Contenido del Dashboard -->
                 <div class="dashboard-content">
-                    <!-- Sidebar para escritorio -->
+                    <!-- Sidebar para escritorio - MEJORADO -->
                     <aside class="dashboard-sidebar">
                         <nav class="sidebar-nav">
                             <a href="#overview" class="sidebar-link active">
-                                <i class="fas fa-tachometer-alt"></i> Resumen
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span class="sidebar-text">Resumen</span>
                             </a>
                             <a href="#projects" class="sidebar-link">
-                                <i class="fas fa-rocket"></i> Mis Proyectos
+                                <i class="fas fa-rocket"></i>
+                                <span class="sidebar-text">Mis Proyectos</span>
                             </a>
                             <a href="#plans" class="sidebar-link">
-                                <i class="fas fa-layer-group"></i> Mis Planes
+                                <i class="fas fa-layer-group"></i>
+                                <span class="sidebar-text">Mis Planes</span>
                             </a>
                             <a href="#billing" class="sidebar-link">
-                                <i class="fas fa-credit-card"></i> Facturación
+                                <i class="fas fa-credit-card"></i>
+                                <span class="sidebar-text">Facturación</span>
                             </a>
                             <a href="#settings" class="sidebar-link">
-                                <i class="fas fa-cog"></i> Configuración
+                                <i class="fas fa-cog"></i>
+                                <span class="sidebar-text">Configuración</span>
                             </a>
                         </nav>
                         
@@ -271,48 +276,49 @@
                                 <p>Vista general de tu actividad y proyectos</p>
                             </div>
                             
-                            <div class="stats-grid">
-                                <div class="stat-card">
-                                    <div class="stat-icon">
+                            <!-- ESTADÍSTICAS OPTIMIZADAS - CUADROS MÁS COMPACTOS -->
+                            <div class="stats-grid-compact">
+                                <div class="stat-card-compact">
+                                    <div class="stat-icon-compact">
                                         <i class="fas fa-rocket"></i>
                                     </div>
-                                    <div class="stat-content">
+                                    <div class="stat-content-compact">
                                         <h3>Proyectos Activos</h3>
-                                        <div class="stat-value" id="active-projects">0</div>
-                                        <p class="stat-subtext">de 5 disponibles</p>
+                                        <div class="stat-value-compact" id="active-projects">0</div>
+                                        <p class="stat-subtext-compact">de 5 disponibles</p>
                                     </div>
                                 </div>
                                 
-                                <div class="stat-card">
-                                    <div class="stat-icon">
+                                <div class="stat-card-compact">
+                                    <div class="stat-icon-compact">
                                         <i class="fas fa-calendar-check"></i>
                                     </div>
-                                    <div class="stat-content">
+                                    <div class="stat-content-compact">
                                         <h3>Días Restantes</h3>
-                                        <div class="stat-value" id="days-remaining">30</div>
-                                        <p class="stat-subtext">en tu plan actual</p>
+                                        <div class="stat-value-compact" id="days-remaining">30</div>
+                                        <p class="stat-subtext-compact">en tu plan</p>
                                     </div>
                                 </div>
                                 
-                                <div class="stat-card">
-                                    <div class="stat-icon">
+                                <div class="stat-card-compact">
+                                    <div class="stat-icon-compact">
                                         <i class="fas fa-chart-line"></i>
                                     </div>
-                                    <div class="stat-content">
-                                        <h3>Tráfico Mensual</h3>
-                                        <div class="stat-value">0</div>
-                                        <p class="stat-subtext">visitas este mes</p>
+                                    <div class="stat-content-compact">
+                                        <h3>Tráfico</h3>
+                                        <div class="stat-value-compact">0</div>
+                                        <p class="stat-subtext-compact">visitas/mes</p>
                                     </div>
                                 </div>
                                 
-                                <div class="stat-card">
-                                    <div class="stat-icon">
+                                <div class="stat-card-compact">
+                                    <div class="stat-icon-compact">
                                         <i class="fas fa-headset"></i>
                                     </div>
-                                    <div class="stat-content">
-                                        <h3>Soporte Activo</h3>
-                                        <div class="stat-value">24/7</div>
-                                        <p class="stat-subtext">disponible</p>
+                                    <div class="stat-content-compact">
+                                        <h3>Soporte</h3>
+                                        <div class="stat-value-compact">24/7</div>
+                                        <p class="stat-subtext-compact">disponible</p>
                                     </div>
                                 </div>
                             </div>
