@@ -1,5 +1,6 @@
 /* index.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS APLICADAS */
 /* MEJORA CRÍTICA: Eliminar efectos azules de tap en móvil y sensación tipo app */
+/* MEJORA ESPECÍFICA: Animación de cambio de panel IDÉNTICA en ambos carruseles móviles */
 
 :root {
     --primary: #0f3460;
@@ -1388,6 +1389,11 @@ a.footer-logo:hover h3 {
     pointer-events: auto;
 }
 
+/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
+.plan-card-mobile {
+    transition: none !important;
+}
+
 .plan-card-mobile.active {
     border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: var(--shadow-lg);
@@ -1601,6 +1607,11 @@ a.footer-logo:hover h3 {
     user-select: none;
     touch-action: pan-y;
     pointer-events: auto;
+}
+
+/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
+.step-mobile {
+    transition: none !important;
 }
 
 .step-mobile.active {
@@ -2686,6 +2697,21 @@ footer:last-child {
     body {
         overflow-x: hidden;
         position: relative;
+    }
+    
+    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN AMBOS CARRUSELES ===== */
+    /* Eliminar todas las transiciones CSS que interfieran con el scroll */
+    .plan-card-mobile,
+    .step-mobile {
+        transition: none !important;
+    }
+    
+    /* Igualar el scroll behavior de ambos carruseles */
+    .plans-carousel,
+    .process-carousel {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
     }
 }
 
