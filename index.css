@@ -189,13 +189,21 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
 
 /* === LOGO DEL NAVBAR === */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    user-select: none;
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
 }
 
 .logo:hover {
@@ -1091,14 +1099,22 @@ footer {
 }
 
 .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
     margin-bottom: 0.1rem;
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    user-select: none;
 }
 
 .footer-logo .logo-img {
@@ -1207,6 +1223,54 @@ footer {
     line-height: 1.3;
 }
 
+/* ===== LOGOS COMO ENLACES - ESTILOS UNIFICADOS ===== */
+a.logo,
+a.footer-logo {
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    -webkit-touch-callout: none !important;
+    user-select: none !important;
+    outline: none !important;
+    all: unset;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    cursor: pointer !important;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+}
+
+/* Eliminar cualquier efecto de focus no deseado */
+a.logo:focus,
+a.footer-logo:focus,
+a.logo:active,
+a.footer-logo:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Mantener el efecto hover existente */
+a.logo:hover,
+a.footer-logo:hover {
+    transform: translateY(-2px) !important;
+}
+
+a.logo:hover .logo-img,
+a.footer-logo:hover .logo-img {
+    filter: drop-shadow(0 3px 5px rgba(255, 215, 0, 0.3)) !important;
+}
+
+a.logo:hover h2,
+a.logo:hover h3,
+a.footer-logo:hover h2,
+a.footer-logo:hover h3 {
+    color: var(--accent) !important;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2) !important;
+}
+
 /* ===== CARRUSELES MÓVIL ===== */
 .carousel-container,
 .process-carousel-container {
@@ -1231,7 +1295,7 @@ footer {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    touch-action: pan-x pan-y; /* PERMITE SCROLL VERTICAL */
+    touch-action: pan-x pan-y;
 }
 
 .plans-carousel::-webkit-scrollbar,
@@ -1320,8 +1384,8 @@ footer {
     justify-content: space-between;
     -webkit-touch-callout: none;
     user-select: none;
-    touch-action: pan-y; /* PERMITE SCROLL VERTICAL SOBRE EL PANEL */
-    pointer-events: auto; /* ASEGURA QUE LOS EVENTOS FUNCIONEN */
+    touch-action: pan-y;
+    pointer-events: auto;
 }
 
 .plan-card-mobile.active {
@@ -1420,7 +1484,7 @@ footer {
     overflow-y: auto;
     padding-right: 5px;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y; /* PERMITE SCROLL VERTICAL EN LA LISTA */
+    touch-action: pan-y;
 }
 
 .plan-features-mobile li {
@@ -1535,8 +1599,8 @@ footer {
     backdrop-filter: blur(10px);
     -webkit-touch-callout: none;
     user-select: none;
-    touch-action: pan-y; /* PERMITE SCROLL VERTICAL SOBRE EL PANEL */
-    pointer-events: auto; /* ASEGURA QUE LOS EVENTOS FUNCIONEN */
+    touch-action: pan-y;
+    pointer-events: auto;
 }
 
 .step-mobile.active {
@@ -2168,7 +2232,7 @@ footer:last-child {
     /* 10. MEJORAR RENDIMIENTO TÁCTIL */
     .plans-carousel,
     .process-carousel {
-        touch-action: pan-x pan-y; /* PERMITE AMBOS DESPLAZAMIENTOS */
+        touch-action: pan-x pan-y;
     }
     
     /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
@@ -2300,6 +2364,23 @@ footer:last-child {
         transform: none !important;
     }
     
+    /* Para móvil - eliminar efectos hover en logos */
+    a.logo:hover,
+    a.footer-logo:hover {
+        transform: none !important;
+    }
+    
+    a.logo:hover .logo-img,
+    a.footer-logo:hover .logo-img {
+        filter: none !important;
+    }
+    
+    a.logo:hover h2,
+    a.footer-logo:hover h3 {
+        color: var(--light) !important;
+        text-shadow: none !important;
+    }
+    
     /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
     .animated-background {
         background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
@@ -2372,20 +2453,6 @@ footer:last-child {
         padding: 1rem;
         font-size: 1.1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Desactivar hover en logo del navbar en móvil */
-    .logo:hover {
-        transform: none !important;
-    }
-    
-    .logo:hover .logo-img {
-        filter: none !important;
-    }
-    
-    .logo:hover h2 {
-        color: var(--light) !important;
-        text-shadow: none !important;
     }
     
     /* Hero móvil */
