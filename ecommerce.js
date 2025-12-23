@@ -95,12 +95,12 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ===== INICIALIZACIÓN =====
+// ===== INICIALIZACIÓN - IDÉNTICA A INDEX =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
-    // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.ventaja-card, .plan-card, .floating-card');
+    // Animar elementos al cargar - AÑADIR VENTAJAS
+    const elementsToAnimate = document.querySelectorAll('.ventaja-card, .plan-card, .floating-card, .plan-card-mobile');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // Inicializar carruseles solo en móvil
+    // Inicializar carruseles solo en móvil - IGUAL QUE INDEX
     if (window.innerWidth <= 768) {
         console.log('📱 Inicializando carrusel de planes ecommerce...');
         initEcommerceCarousel();
@@ -124,9 +124,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup maintenance notifications
     setupMaintenanceNotifications();
     
-    // Contadores animados para estadísticas
+    // Contadores animados para estadísticas - INICIALIZAR INMEDIATAMENTE
     initStatsCounters();
+    
+    // ===== AÑADIR: INICIALIZAR ANIMACIONES DE VENTAJAS COMO EN INDEX =====
+    initVentajasAnimation();
 });
+
+// ===== AÑADIR NUEVA FUNCIÓN: ANIMACIONES DE VENTAJAS =====
+function initVentajasAnimation() {
+    const ventajas = document.querySelectorAll('.ventaja-card');
+    
+    const ventajaObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    ventajas.forEach(ventaja => {
+        ventaja.classList.add('reveal');
+        ventajaObserver.observe(ventaja);
+    });
+}
 
 // ===== CARRUSEL ECOMMERCE - CONFIGURACIÓN IDÉNTICA A INDEX =====
 const CAROUSEL_CONFIG = {
@@ -315,7 +338,7 @@ function animateCounter(element) {
 // ===== NOTIFICACIONES DE MANTENIMIENTO =====
 function setupMaintenanceNotifications() {
     const maintenanceNotification = document.getElementById('maintenance-notification');
-    const planButtons = document.querySelectorAll('.ecommerce-btn, .ecommerce-btn-mobile');
+    const planButtons = document.querySelectorAll('.ecommerce-btn, .ecommerce-btn-mobile, .btn-plan, .btn-plan-mobile');
     const socialLinks = document.querySelectorAll('.social-under-construction');
     
     if (!maintenanceNotification) return;
@@ -345,7 +368,7 @@ function setupMaintenanceNotifications() {
             e.preventDefault();
             e.stopPropagation();
             
-            const plan = this.getAttribute('data-plan');
+            const plan = this.getAttribute('data-plan') || 'ecommerce';
             let planName = '';
             
             switch(plan) {
@@ -413,6 +436,23 @@ const isTouchDevice = 'ontouchstart' in window ||
 if (isTouchDevice) {
     document.body.classList.add('touch-device');
     console.log('📱 Dispositivo táctil detectado');
+    
+    // Aplicar mejoras táctiles a botones de ecommerce también
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .conclusion-link, .ecommerce-btn, .ecommerce-btn-mobile');
+    
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+            this.style.opacity = '0.9';
+        });
+        
+        button.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.opacity = '';
+            }, 150);
+        });
+    });
 } else {
     document.body.classList.add('no-touch-device');
     console.log('💻 Dispositivo no táctil detectado');
@@ -443,51 +483,6 @@ document.addEventListener('dragstart', function(e) {
         e.preventDefault();
     }
 }, false);
-
-// Mejorar feedback táctil en botones
-if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .conclusion-link');
-    
-    buttons.forEach(button => {
-        button.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.98)';
-            this.style.opacity = '0.9';
-        });
-        
-        button.addEventListener('touchend', function() {
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.opacity = '';
-            }, 150);
-        });
-    });
-}
-
-// ===== ANIMACIONES DE ENTRADA PARA VENTAJAS =====
-function initVentajasAnimation() {
-    const ventajas = document.querySelectorAll('.ventaja-card');
-    
-    const ventajaObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('active');
-                }, index * 200);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    ventajas.forEach(ventaja => {
-        ventaja.classList.add('reveal');
-        ventajaObserver.observe(ventaja);
-    });
-}
-
-// Inicializar animaciones de ventajas después de cargar
-setTimeout(() => {
-    initVentajasAnimation();
-    initStatsCounters();
-}, 500);
 
 // ===== LOADING STATES =====
 document.addEventListener('readystatechange', () => {
