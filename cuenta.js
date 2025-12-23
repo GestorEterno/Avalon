@@ -1,4 +1,4 @@
-// cuenta.js - Sistema de autenticación y panel de control
+// cuenta.js - Sistema de autenticación y panel de control - VERSIÓN CORREGIDA
 
 // ===== CONFIGURACIÓN INICIAL =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -108,22 +108,35 @@ function initAuthForms() {
     // Rellenar credenciales de prueba
     if (fillDemoBtn) {
         fillDemoBtn.addEventListener('click', () => {
-            document.getElementById('login-email').value = 'gestor@avalon.com';
-            document.getElementById('login-password').value = '1234';
-            document.getElementById('remember-me').checked = true;
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+            const rememberCheckbox = document.getElementById('remember-me');
             
-            // Feedback visual
-            fillDemoBtn.innerHTML = '<i class="fas fa-check"></i> Credenciales cargadas';
-            fillDemoBtn.style.background = 'rgba(16, 185, 129, 0.1)';
-            fillDemoBtn.style.borderColor = 'var(--success)';
-            fillDemoBtn.style.color = 'var(--success)';
-            
-            setTimeout(() => {
-                fillDemoBtn.innerHTML = '<i class="fas fa-magic"></i> Rellenar automáticamente';
-                fillDemoBtn.style.background = '';
-                fillDemoBtn.style.borderColor = '';
-                fillDemoBtn.style.color = '';
-            }, 2000);
+            if (emailInput && passwordInput) {
+                emailInput.value = 'gestor@avalon.com';
+                passwordInput.value = '1234';
+                if (rememberCheckbox) rememberCheckbox.checked = true;
+                
+                // Feedback visual mejorado
+                fillDemoBtn.innerHTML = '<i class="fas fa-check"></i> Credenciales cargadas';
+                fillDemoBtn.style.background = 'rgba(16, 185, 129, 0.1)';
+                fillDemoBtn.style.borderColor = 'var(--success)';
+                fillDemoBtn.style.color = 'var(--success)';
+                
+                // Efecto de vibración suave
+                fillDemoBtn.style.animation = 'vibrate 0.3s linear';
+                setTimeout(() => {
+                    fillDemoBtn.style.animation = '';
+                }, 300);
+                
+                // Restaurar después de 2 segundos
+                setTimeout(() => {
+                    fillDemoBtn.innerHTML = '<i class="fas fa-magic"></i> Rellenar automáticamente';
+                    fillDemoBtn.style.background = '';
+                    fillDemoBtn.style.borderColor = '';
+                    fillDemoBtn.style.color = '';
+                }, 2000);
+            }
         });
     }
 
@@ -226,12 +239,17 @@ function initDashboard() {
                 }
             });
             
-            // Scroll suave en móvil
+            // Scroll suave en móvil hacia la sección
             if (window.innerWidth <= 768) {
-                document.querySelector('.dashboard-main').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                const sectionElement = document.getElementById(targetId);
+                if (sectionElement) {
+                    setTimeout(() => {
+                        sectionElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 100);
+                }
             }
         });
     });
@@ -260,95 +278,169 @@ function checkAuthStatus() {
     const userData = localStorage.getItem('avalon_user');
     
     if (userData) {
-        const user = JSON.parse(userData);
-        showDashboard(user);
-    } else {
-        showAuthForms();
+        try {
+            const user = JSON.parse(userData);
+            if (user && user.loggedIn) {
+                showDashboard(user);
+                return;
+            }
+        } catch (e) {
+            console.error('Error al parsear datos de usuario:', e);
+        }
     }
+    
+    showAuthForms();
 }
 
 function simulateLogin(email, name, remember, isGestor = false) {
-    // Simular delay de red
-    showNotification('Iniciando sesión...', 'info');
+    // Simular delay de red con animación
+    const submitBtn = document.querySelector('#loginForm .btn-submit');
+    if (submitBtn) {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Iniciando sesión...';
+        submitBtn.disabled = true;
+    }
     
     setTimeout(() => {
         const user = {
             email,
-            name,
+            name: name.charAt(0).toUpperCase() + name.slice(1),
             isGestor,
             loggedIn: true,
-            remember
+            remember,
+            lastLogin: new Date().toISOString()
         };
         
         // Guardar en localStorage
         localStorage.setItem('avalon_user', JSON.stringify(user));
         
+        // Restaurar botón
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Iniciar Sesión';
+            submitBtn.disabled = false;
+        }
+        
         // Mostrar dashboard
         showDashboard(user);
         
-        showNotification(`¡Bienvenido ${name}!`, 'success');
-    }, 1000);
+        showNotification(`¡Bienvenido ${user.name}!`, 'success');
+    }, 1500);
 }
 
 function simulateRegistration(name, email, password) {
-    showNotification('Creando cuenta...', 'info');
+    const submitBtn = document.querySelector('#registerForm .btn-submit');
+    if (submitBtn) {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creando cuenta...';
+        submitBtn.disabled = true;
+    }
     
     setTimeout(() => {
         const user = {
             email,
-            name,
+            name: name.charAt(0).toUpperCase() + name.slice(1),
             isGestor: false,
             loggedIn: true,
-            remember: false
+            remember: false,
+            createdAt: new Date().toISOString()
         };
         
         // Guardar en localStorage
         localStorage.setItem('avalon_user', JSON.stringify(user));
         
+        // Restaurar botón
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Crear Cuenta';
+            submitBtn.disabled = false;
+        }
+        
         // Mostrar dashboard
         showDashboard(user);
         
-        showNotification(`¡Cuenta creada exitosamente, ${name}!`, 'success');
+        showNotification(`¡Cuenta creada exitosamente, ${user.name}!`, 'success');
     }, 1500);
 }
 
 function logout() {
-    // Eliminar datos de sesión
-    localStorage.removeItem('avalon_user');
+    // Animación de salida
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cerrando...';
+        logoutBtn.disabled = true;
+    }
     
-    // Mostrar formularios de autenticación
-    showAuthForms();
-    
-    showNotification('Sesión cerrada exitosamente', 'info');
+    setTimeout(() => {
+        // Eliminar datos de sesión
+        localStorage.removeItem('avalon_user');
+        
+        // Restaurar botón
+        if (logoutBtn) {
+            logoutBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Cerrar Sesión';
+            logoutBtn.disabled = false;
+        }
+        
+        // Mostrar formularios de autenticación
+        showAuthForms();
+        
+        showNotification('Sesión cerrada exitosamente', 'info');
+    }, 1000);
 }
 
 function showAuthForms() {
-    document.getElementById('auth-forms').style.display = 'block';
-    document.getElementById('dashboard').style.display = 'none';
+    const authForms = document.getElementById('auth-forms');
+    const dashboard = document.getElementById('dashboard');
+    
+    if (authForms) authForms.style.display = 'block';
+    if (dashboard) dashboard.style.display = 'none';
     
     // Resetear formularios
     const forms = document.querySelectorAll('form');
     forms.forEach(form => form.reset());
     
     // Mostrar pestaña de login
-    document.querySelector('.auth-tab[data-tab="login"]').click();
+    const loginTab = document.querySelector('.auth-tab[data-tab="login"]');
+    if (loginTab) loginTab.click();
+    
+    // Resetear iconos de contraseña
+    document.querySelectorAll('.toggle-password i').forEach(icon => {
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    });
 }
 
 function showDashboard(user) {
-    document.getElementById('auth-forms').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
+    const authForms = document.getElementById('auth-forms');
+    const dashboard = document.getElementById('dashboard');
+    
+    if (authForms) authForms.style.display = 'none';
+    if (dashboard) dashboard.style.display = 'block';
     
     // Actualizar información del usuario
-    document.getElementById('user-name').textContent = user.name;
-    document.getElementById('user-email').textContent = user.email;
+    const userNameElement = document.getElementById('user-name');
+    const userEmailElement = document.getElementById('user-email');
+    const userStatusElement = document.getElementById('user-status');
+    
+    if (userNameElement) userNameElement.textContent = user.name;
+    if (userEmailElement) userEmailElement.textContent = user.email;
     
     // Mostrar notificación de gestor si corresponde
-    if (user.isGestor) {
-        document.getElementById('gestor-notification').style.display = 'block';
-        document.getElementById('user-status').innerHTML = `
-            <span class="status-badge premium">Usuario Gestor</span>
-            <span class="user-email">${user.email}</span>
-        `;
+    const gestorNotification = document.getElementById('gestor-notification');
+    if (gestorNotification) {
+        if (user.isGestor) {
+            gestorNotification.style.display = 'block';
+            if (userStatusElement) {
+                userStatusElement.innerHTML = `
+                    <span class="status-badge premium">Usuario Gestor</span>
+                    <span class="user-email">${user.email}</span>
+                `;
+            }
+        } else {
+            gestorNotification.style.display = 'none';
+            if (userStatusElement) {
+                userStatusElement.innerHTML = `
+                    <span class="status-badge free">Cuenta Free</span>
+                    <span class="user-email">${user.email}</span>
+                `;
+            }
+        }
     }
     
     // Cargar datos del usuario
@@ -367,20 +459,31 @@ function loadUserData(user) {
     
     // Cargar planes (vacío por ahora)
     updatePlans([]);
+    
+    // Actualizar formulario de perfil
+    updateProfileForm(user);
 }
 
 function updateStats(user) {
     // Actualizar proyectos activos
-    document.getElementById('active-projects').textContent = '0';
+    const activeProjectsElement = document.getElementById('active-projects');
+    if (activeProjectsElement) {
+        activeProjectsElement.textContent = '0';
+    }
     
     // Días restantes según tipo de usuario
-    const days = user.isGestor ? '∞' : '30';
-    document.getElementById('days-remaining').textContent = days;
+    const daysRemainingElement = document.getElementById('days-remaining');
+    if (daysRemainingElement) {
+        const days = user.isGestor ? '∞' : '30';
+        daysRemainingElement.textContent = days;
+    }
 }
 
 function updateProjects(projects) {
     const emptyState = document.getElementById('projects-empty');
     const projectsGrid = document.getElementById('projects-grid');
+    
+    if (!emptyState || !projectsGrid) return;
     
     if (projects.length === 0) {
         emptyState.style.display = 'block';
@@ -398,6 +501,8 @@ function updatePlans(plans) {
     const emptyState = document.getElementById('plans-empty');
     const activePlans = document.getElementById('active-plans');
     
+    if (!emptyState || !activePlans) return;
+    
     if (plans.length === 0) {
         emptyState.style.display = 'block';
         activePlans.style.display = 'none';
@@ -408,6 +513,14 @@ function updatePlans(plans) {
         // Generar HTML de planes
         // activePlans.innerHTML = ...
     }
+}
+
+function updateProfileForm(user) {
+    const profileName = document.getElementById('profile-name');
+    const profileEmail = document.getElementById('profile-email');
+    
+    if (profileName) profileName.value = user.name;
+    if (profileEmail) profileEmail.value = user.email;
 }
 
 // ===== NOTIFICACIONES =====
@@ -434,9 +547,15 @@ function initSocialNotifications() {
 }
 
 function showNotification(message, type = 'info') {
+    // Verificar si ya hay una notificación activa
+    const existingNotification = document.querySelector('.notification-temporary');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
     // Crear notificación temporal
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
+    notification.className = `notification-temporary notification-${type}`;
     notification.innerHTML = `
         <div class="notification-content">
             <i class="fas fa-${getNotificationIcon(type)}"></i>
@@ -451,35 +570,52 @@ function showNotification(message, type = 'info') {
         right: 20px;
         background: ${getNotificationColor(type)};
         color: white;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         z-index: 9999;
-        max-width: 300px;
+        max-width: 280px;
         animation: slideInRight 0.3s ease;
-        border-left: 4px solid ${getNotificationBorderColor(type)};
+        border-left: 3px solid ${getNotificationBorderColor(type)};
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: 'Montserrat', sans-serif;
     `;
     
-    // Animación CSS
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOutRight {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
+    // Añadir animación CSS si no existe
+    if (!document.querySelector('#notification-animation')) {
+        const style = document.createElement('style');
+        style.id = 'notification-animation';
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            @keyframes vibrate {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-2px); }
+                50% { transform: translateX(2px); }
+                75% { transform: translateX(-2px); }
+                100% { transform: translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
     
     document.body.appendChild(notification);
     
     // Remover después de 3 segundos
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease forwards';
-        setTimeout(() => notification.remove(), 300);
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
     }, 3000);
 }
 
@@ -524,22 +660,32 @@ function initMobileEnhancements() {
     // Prevenir efectos de tap azul
     document.addEventListener('touchstart', function() {}, {passive: true});
     
-    // Mejorar feedback táctil
+    // Mejorar feedback táctil en elementos interactivos
     const interactiveElements = document.querySelectorAll(
-        'button, .auth-tab, .sidebar-link, .action-card, .btn-submit, .demo-btn, .logout-btn'
+        'button, .auth-tab, .sidebar-link, .action-card, .btn-submit, .demo-btn, .logout-btn, .btn-primary, .btn-upgrade'
     );
     
     interactiveElements.forEach(el => {
         el.addEventListener('touchstart', function() {
             this.style.opacity = '0.8';
+            this.style.transform = 'scale(0.98)';
         });
         
         el.addEventListener('touchend', function() {
             setTimeout(() => {
                 this.style.opacity = '';
+                this.style.transform = '';
             }, 150);
         });
     });
+    
+    // Asegurar que la barra lateral en móvil sea desplazable
+    const sidebarNav = document.querySelector('.sidebar-nav');
+    if (sidebarNav && window.innerWidth <= 768) {
+        sidebarNav.style.overflowX = 'auto';
+        sidebarNav.style.WebkitOverflowScrolling = 'touch';
+        sidebarNav.style.scrollbarWidth = 'none';
+    }
 }
 
 // ===== RESPONSIVE =====
@@ -550,9 +696,21 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         // Ajustes específicos para móvil/escritorio
         if (window.innerWidth <= 768) {
-            // Código para móvil
+            initMobileEnhancements();
+            
+            // Asegurar que la barra lateral sea horizontal en móvil
+            const sidebarNav = document.querySelector('.sidebar-nav');
+            if (sidebarNav) {
+                sidebarNav.style.flexDirection = 'row';
+                sidebarNav.style.overflowX = 'auto';
+            }
         } else {
-            // Código para escritorio
+            // Restaurar barra lateral vertical en escritorio
+            const sidebarNav = document.querySelector('.sidebar-nav');
+            if (sidebarNav) {
+                sidebarNav.style.flexDirection = 'column';
+                sidebarNav.style.overflowX = 'visible';
+            }
         }
     }, 250);
 });
@@ -585,4 +743,4 @@ window.AvalonAccount = {
     showNotification: showNotification
 };
 
-console.log('🚀 Sistema de cuenta AVALON CREATORS inicializado');
+console.log('🚀 Sistema de cuenta AVALON CREATORS inicializado - VERSIÓN CORREGIDA');
