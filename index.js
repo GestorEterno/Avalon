@@ -1,6 +1,7 @@
 // index.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA MÓVIL
+// MODIFICACIÓN ESPECÍFICA: Igualar completamente la animación de cambio de panel entre ambos carruseles
 
-// ===== NAVEGACIÓN MÓVIL =====
+// ===== NAVEGACIÓN MÓBIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -138,6 +139,15 @@ function initMobileCarousels() {
     initProcessCarousel();
 }
 
+// MODIFICACIÓN CRÍTICA: Configuración idéntica para ambos carruseles
+const CAROUSEL_CONFIG = {
+    scrollDuration: 300, // MISMA DURACIÓN PARA AMBOS
+    scrollBehavior: 'smooth', // MISMO COMPORTAMIENTO
+    scrollSnapType: 'x mandatory', // MISMO SNAP
+    arrowTransition: 0.15, // MISMA TRANSICIÓN DE FLECHAS
+    indicatorTransition: 0.2 // MISMA TRANSICIÓN DE INDICADORES
+};
+
 // Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
 function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
@@ -172,20 +182,21 @@ function initPlansCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave
+        // Scroll suave con MISMA DURACIÓN
         const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: 'smooth'
+                behavior: CAROUSEL_CONFIG.scrollBehavior,
+                duration: CAROUSEL_CONFIG.scrollDuration
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, 300);
+            }, CAROUSEL_CONFIG.scrollDuration);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -233,9 +244,8 @@ function initPlansCarousel() {
         scrollTimeout = setTimeout(() => {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = cardWidth * 0.1;
             
-            // Calcular índice basado en scroll con snap
+            // MISMO CÁLCULO DE ÍNDICE
             let newIndex = Math.round(scrollLeft / cardWidth);
             
             // Validar y ajustar índice
@@ -249,7 +259,7 @@ function initPlansCarousel() {
             }
             
             isScrolling = false;
-        }, 150);
+        }, 100); // MISMO DEBOUNCE TIME
     });
     
     // Inicializar
@@ -262,7 +272,7 @@ function initPlansCarousel() {
     }
 }
 
-// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA
+// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA (IDÉNTICA A PLANS)
 function initProcessCarousel() {
     const carousel = document.querySelector('.process-carousel');
     const steps = document.querySelectorAll('.step-mobile');
@@ -296,20 +306,21 @@ function initProcessCarousel() {
             step.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave
+        // Scroll suave con MISMA DURACIÓN
         const stepWidth = steps[0].offsetWidth;
         const scrollPosition = currentIndex * stepWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: 'smooth'
+                behavior: CAROUSEL_CONFIG.scrollBehavior,
+                duration: CAROUSEL_CONFIG.scrollDuration
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, 300);
+            }, CAROUSEL_CONFIG.scrollDuration);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -317,7 +328,7 @@ function initProcessCarousel() {
         }
     }
     
-    // Flechas SIN feedback táctil
+    // Flechas IDÉNTICAS al carrusel de planes
     if (prevArrow) {
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0 && !isAnimating) {
@@ -346,7 +357,7 @@ function initProcessCarousel() {
         });
     });
     
-    // Scroll automático
+    // Scroll automático IDÉNTICO al carrusel de planes
     let scrollTimeout;
     carousel.addEventListener('scroll', () => {
         if (isAnimating) return;
@@ -357,8 +368,8 @@ function initProcessCarousel() {
         scrollTimeout = setTimeout(() => {
             const stepWidth = steps[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
-            const tolerance = stepWidth * 0.1;
             
+            // MISMO CÁLCULO DE ÍNDICE
             let newIndex = Math.round(scrollLeft / stepWidth);
             
             if (newIndex < 0) newIndex = 0;
@@ -370,7 +381,7 @@ function initProcessCarousel() {
             }
             
             isScrolling = false;
-        }, 150);
+        }, 100); // MISMO DEBOUNCE TIME
     });
     
     updateCarousel(false);
