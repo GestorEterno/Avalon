@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=no">
+    <title>Mi Cuenta - AVALON CREATORS</title>
+    <meta name="description" content="Gestión de tu cuenta y proyectos en AVALON CREATORS">
+    
+    <!-- Meta tags adicionales -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <link rel="stylesheet" href="cuenta.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="Logo Avalon.png">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="animated-background">
+        <div class="particles-container"></div>
+    </div>
+    
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                    <h2>AVALON CREATORS</h2>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="ecommerce.html" class="nav-link">Ecommerce</a></li>
+                    <li><a href="corporativa.html" class="nav-link">Web Corporativa</a></li>
+                    <li><a href="personal.html" class="nav-link">Marca Personal</a></li>
+                    <li><a href="cuenta.html" class="nav-link active">Mi Cuenta</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="account-container">
+        <div class="container">
+            <!-- Estado Inicial: No autenticado -->
+            <div id="auth-forms" class="auth-forms-container">
+                <div class="auth-header">
+                    <h1><i class="fas fa-user-circle"></i> Mi Cuenta</h1>
+                    <p>Gestiona tus proyectos y accede a todas las funciones</p>
+                </div>
+
+                <!-- Pestañas de Login/Registro -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Iniciar Sesión</button>
+                    <button class="auth-tab" data-tab="register">Crear Cuenta</button>
+                </div>
+
+                <!-- Formulario de Login -->
+                <div id="login-form" class="auth-form active">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h2><i class="fas fa-sign-in-alt"></i> Accede a tu cuenta</h2>
+                            <p>Ingresa con tus credenciales</p>
+                        </div>
+                        
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="login-email">
+                                    <i class="fas fa-envelope"></i> Correo Electrónico
+                                </label>
+                                <input type="email" id="login-email" placeholder="tu@correo.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="login-password">
+                                    <i class="fas fa-lock"></i> Contraseña
+                                </label>
+                                <div class="password-input">
+                                    <input type="password" id="login-password" placeholder="Tu contraseña" required>
+                                    <button type="button" class="toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-options">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="remember-me">
+                                    <span>Recordar sesión</span>
+                                </label>
+                                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </button>
+                                
+                                <!-- Credenciales de prueba -->
+                                <div class="demo-credentials">
+                                    <h4><i class="fas fa-flask"></i> Credenciales de prueba:</h4>
+                                    <div class="credential-item">
+                                        <strong>Usuario Gestor:</strong> gestor@avalon.com
+                                    </div>
+                                    <div class="credential-item">
+                                        <strong>Contraseña:</strong> 1234
+                                    </div>
+                                    <button type="button" id="fill-demo" class="demo-btn">
+                                        <i class="fas fa-magic"></i> Rellenar automáticamente
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="form-footer">
+                            <p>¿No tienes cuenta? <a href="#" class="switch-to-register">Regístrate aquí</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Registro -->
+                <div id="register-form" class="auth-form">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h2><i class="fas fa-user-plus"></i> Crear nueva cuenta</h2>
+                            <p>Únete a AVALON CREATORS</p>
+                        </div>
+                        
+                        <form id="registerForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="register-name">
+                                        <i class="fas fa-user"></i> Nombre Completo
+                                    </label>
+                                    <input type="text" id="register-name" placeholder="Tu nombre" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="register-email">
+                                        <i class="fas fa-envelope"></i> Correo Electrónico
+                                    </label>
+                                    <input type="email" id="register-email" placeholder="tu@correo.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="register-password">
+                                        <i class="fas fa-lock"></i> Contraseña
+                                    </label>
+                                    <div class="password-input">
+                                        <input type="password" id="register-password" placeholder="Crea una contraseña" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="register-confirm">
+                                        <i class="fas fa-lock"></i> Confirmar Contraseña
+                                    </label>
+                                    <div class="password-input">
+                                        <input type="password" id="register-confirm" placeholder="Repite tu contraseña" required>
+                                        <button type="button" class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="register-phone">
+                                    <i class="fas fa-phone"></i> Teléfono (Opcional)
+                                </label>
+                                <input type="tel" id="register-phone" placeholder="+34 123 456 789">
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" id="terms" required>
+                                    <span>Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política de Privacidad</a></span>
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-user-plus"></i> Crear Cuenta
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="form-footer">
+                            <p>¿Ya tienes cuenta? <a href="#" class="switch-to-login">Inicia sesión aquí</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel de Control (oculto inicialmente) -->
+            <div id="dashboard" class="dashboard-container" style="display: none;">
+                <!-- Header del Dashboard -->
+                <div class="dashboard-header">
+                    <div class="user-welcome">
+                        <div class="user-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="user-info">
+                            <h1>¡Hola, <span id="user-name">Usuario</span>!</h1>
+                            <p>Bienvenido a tu panel de control</p>
+                            <div class="user-status" id="user-status">
+                                <span class="status-badge free">Cuenta Free</span>
+                                <span class="user-email" id="user-email"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
+                </div>
+
+                <!-- Contenido del Dashboard -->
+                <div class="dashboard-content">
+                    <!-- Sidebar para escritorio -->
+                    <aside class="dashboard-sidebar">
+                        <nav class="sidebar-nav">
+                            <a href="#overview" class="sidebar-link active">
+                                <i class="fas fa-tachometer-alt"></i> Resumen
+                            </a>
+                            <a href="#projects" class="sidebar-link">
+                                <i class="fas fa-rocket"></i> Mis Proyectos
+                            </a>
+                            <a href="#plans" class="sidebar-link">
+                                <i class="fas fa-layer-group"></i> Mis Planes
+                            </a>
+                            <a href="#billing" class="sidebar-link">
+                                <i class="fas fa-credit-card"></i> Facturación
+                            </a>
+                            <a href="#settings" class="sidebar-link">
+                                <i class="fas fa-cog"></i> Configuración
+                            </a>
+                        </nav>
+                        
+                        <!-- Notificación para gestor -->
+                        <div id="gestor-notification" class="gestor-notification" style="display: none;">
+                            <div class="gestor-badge">
+                                <i class="fas fa-crown"></i> Usuario Gestor
+                            </div>
+                            <p>Acceso completo al sistema</p>
+                        </div>
+                    </aside>
+
+                    <!-- Contenido principal -->
+                    <div class="dashboard-main">
+                        <!-- Sección: Resumen -->
+                        <section id="overview" class="dashboard-section active">
+                            <div class="section-header">
+                                <h2><i class="fas fa-tachometer-alt"></i> Resumen General</h2>
+                                <p>Vista general de tu actividad y proyectos</p>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>Proyectos Activos</h3>
+                                        <div class="stat-value" id="active-projects">0</div>
+                                        <p class="stat-subtext">de 5 disponibles</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>Días Restantes</h3>
+                                        <div class="stat-value" id="days-remaining">30</div>
+                                        <p class="stat-subtext">en tu plan actual</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>Tráfico Mensual</h3>
+                                        <div class="stat-value">0</div>
+                                        <p class="stat-subtext">visitas este mes</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <h3>Soporte Activo</h3>
+                                        <div class="stat-value">24/7</div>
+                                        <p class="stat-subtext">disponible</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Acciones rápidas -->
+                            <div class="quick-actions">
+                                <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
+                                <div class="actions-grid">
+                                    <a href="ecommerce.html" class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="action-content">
+                                            <h4>Crear Ecommerce</h4>
+                                            <p>Lanza tu tienda online</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="corporativa.html" class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div class="action-content">
+                                            <h4>Web Corporativa</h4>
+                                            <p>Potencia tu empresa</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="personal.html" class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <div class="action-content">
+                                            <h4>Marca Personal</h4>
+                                            <p>Destaca profesionalmente</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="#support" class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-headset"></i>
+                                        </div>
+                                        <div class="action-content">
+                                            <h4>Soporte 24/7</h4>
+                                            <p>Contacta con nosotros</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Sección: Mis Proyectos -->
+                        <section id="projects" class="dashboard-section">
+                            <div class="section-header">
+                                <h2><i class="fas fa-rocket"></i> Mis Proyectos</h2>
+                                <p>Gestiona todos tus proyectos web</p>
+                            </div>
+                            
+                            <div class="projects-empty" id="projects-empty">
+                                <div class="empty-state">
+                                    <div class="empty-icon">
+                                        <i class="fas fa-folder-open"></i>
+                                    </div>
+                                    <h3>No tienes proyectos activos</h3>
+                                    <p>Aún no has adquirido ningún plan. ¡Comienza ahora!</p>
+                                    <a href="index.html#planes" class="btn-primary">
+                                        <i class="fas fa-rocket"></i> Ver Planes Disponibles
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Proyectos se llenarán dinámicamente -->
+                            <div class="projects-grid" id="projects-grid" style="display: none;"></div>
+                        </section>
+
+                        <!-- Sección: Mis Planes -->
+                        <section id="plans" class="dashboard-section">
+                            <div class="section-header">
+                                <h2><i class="fas fa-layer-group"></i> Mis Planes</h2>
+                                <p>Planes activos y sus detalles</p>
+                            </div>
+                            
+                            <div class="plans-empty" id="plans-empty">
+                                <div class="empty-state">
+                                    <div class="empty-icon">
+                                        <i class="fas fa-box-open"></i>
+                                    </div>
+                                    <h3>Sin planes activos</h3>
+                                    <p>Actualmente no tienes ningún plan contratado.</p>
+                                    <a href="index.html#planes" class="btn-primary">
+                                        <i class="fas fa-shopping-cart"></i> Explorar Planes
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Planes se llenarán dinámicamente -->
+                            <div class="active-plans" id="active-plans" style="display: none;"></div>
+                            
+                            <!-- Opciones de upgrade -->
+                            <div class="upgrade-options">
+                                <h3><i class="fas fa-arrow-up"></i> Mejora tu Plan</h3>
+                                <div class="upgrade-cards">
+                                    <div class="upgrade-card">
+                                        <div class="upgrade-icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <h4>Plan Ecommerce</h4>
+                                        <p>Desde $10/mes</p>
+                                        <a href="ecommerce.html" class="btn-upgrade">
+                                            <i class="fas fa-shopping-cart"></i> Ver detalles
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="upgrade-card">
+                                        <div class="upgrade-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <h4>Web Corporativa</h4>
+                                        <p>Desde $10/mes</p>
+                                        <a href="corporativa.html" class="btn-upgrade">
+                                            <i class="fas fa-building"></i> Ver detalles
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="upgrade-card">
+                                        <div class="upgrade-icon">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                        <h4>Marca Personal</h4>
+                                        <p>Desde $1/año</p>
+                                        <a href="personal.html" class="btn-upgrade">
+                                            <i class="fas fa-user-tie"></i> Ver detalles
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Sección: Facturación -->
+                        <section id="billing" class="dashboard-section">
+                            <div class="section-header">
+                                <h2><i class="fas fa-credit-card"></i> Facturación</h2>
+                                <p>Gestiona tus pagos y facturas</p>
+                            </div>
+                            
+                            <div class="billing-empty" id="billing-empty">
+                                <div class="empty-state">
+                                    <div class="empty-icon">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <h3>Sin historial de facturación</h3>
+                                    <p>No tienes facturas pendientes ni historial de pagos.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Facturas se llenarán dinámicamente -->
+                            <div class="billing-history" id="billing-history" style="display: none;"></div>
+                            
+                            <!-- Métodos de pago -->
+                            <div class="payment-methods">
+                                <h3><i class="fas fa-wallet"></i> Métodos de Pago</h3>
+                                <div class="payment-methods-list">
+                                    <div class="payment-method empty">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </div>
+                                        <div class="payment-content">
+                                            <h4>Agregar método de pago</h4>
+                                            <p>Añade tarjeta de crédito/débito</p>
+                                        </div>
+                                        <button class="btn-add-payment">
+                                            <i class="fas fa-plus"></i> Agregar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Sección: Configuración -->
+                        <section id="settings" class="dashboard-section">
+                            <div class="section-header">
+                                <h2><i class="fas fa-cog"></i> Configuración</h2>
+                                <p>Gestiona tu cuenta y preferencias</p>
+                            </div>
+                            
+                            <div class="settings-grid">
+                                <div class="settings-card">
+                                    <div class="settings-header">
+                                        <i class="fas fa-user-cog"></i>
+                                        <h3>Perfil Personal</h3>
+                                    </div>
+                                    <form id="profile-form">
+                                        <div class="form-group">
+                                            <label for="profile-name">Nombre Completo</label>
+                                            <input type="text" id="profile-name" placeholder="Tu nombre">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="profile-email">Correo Electrónico</label>
+                                            <input type="email" id="profile-email" placeholder="tu@correo.com">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="profile-phone">Teléfono</label>
+                                            <input type="tel" id="profile-phone" placeholder="+34 123 456 789">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn-save">
+                                            <i class="fas fa-save"></i> Guardar Cambios
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <div class="settings-card">
+                                    <div class="settings-header">
+                                        <i class="fas fa-lock"></i>
+                                        <h3>Seguridad</h3>
+                                    </div>
+                                    <form id="security-form">
+                                        <div class="form-group">
+                                            <label for="current-password">Contraseña Actual</label>
+                                            <input type="password" id="current-password" placeholder="Contraseña actual">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="new-password">Nueva Contraseña</label>
+                                            <input type="password" id="new-password" placeholder="Nueva contraseña">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="confirm-password">Confirmar Contraseña</label>
+                                            <input type="password" id="confirm-password" placeholder="Confirmar nueva contraseña">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn-save">
+                                            <i class="fas fa-key"></i> Cambiar Contraseña
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <div class="settings-card">
+                                    <div class="settings-header">
+                                        <i class="fas fa-bell"></i>
+                                        <h3>Notificaciones</h3>
+                                    </div>
+                                    <div class="notifications-settings">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checked>
+                                            <span>Notificaciones por email</span>
+                                        </label>
+                                        
+                                        <label class="checkbox">
+                                            <input type="checkbox" checked>
+                                            <span>Actualizaciones de proyectos</span>
+                                        </label>
+                                        
+                                        <label class="checkbox">
+                                            <input type="checkbox">
+                                            <span>Ofertas especiales</span>
+                                        </label>
+                                        
+                                        <label class="checkbox">
+                                            <input type="checkbox" checked>
+                                            <span>Recordatorios de pago</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <button class="btn-save">
+                                        <i class="fas fa-bell"></i> Guardar Preferencias
+                                    </button>
+                                </div>
+                                
+                                <div class="settings-card danger">
+                                    <div class="settings-header">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <h3>Zona de Peligro</h3>
+                                    </div>
+                                    <div class="danger-actions">
+                                        <button class="btn-danger" id="export-data">
+                                            <i class="fas fa-download"></i> Exportar Mis Datos
+                                        </button>
+                                        
+                                        <button class="btn-danger" id="delete-account">
+                                            <i class="fas fa-trash"></i> Eliminar Cuenta
+                                        </button>
+                                    </div>
+                                    <p class="danger-note">Estas acciones son permanentes e irreversibles.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-mobile">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                            <h3>AVALON CREATORS</h3>
+                        </a>
+                        <p class="footer-tagline">Si es código, nosotros lo hacemos posible.</p>
+                        <div class="social-links">
+                            <a href="https://wa.me/541132863814" target="_blank" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVALON CREATORS - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificación Social -->
+    <div id="social-notification" class="social-notification">
+        <div class="notification-content">
+            <i class="fas fa-tools"></i>
+            <p>Estamos trabajando en las redes, pronto estarán disponibles</p>
+        </div>
+    </div>
+
+    <script src="cuenta.js"></script>
+</body>
+</html>
