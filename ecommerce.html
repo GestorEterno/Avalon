@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=no">
+    <title>AVALON CREATORS - Desarrollo de Ecommerce Profesional</title>
+    <meta name="description" content="Desarrollo de tiendas online profesionales con pasarelas de pago, gestión de inventario y diseño personalizado. Soluciones ecommerce escalables.">
+    
+    <!-- Meta tags adicionales para comportamiento tipo app -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <link rel="stylesheet" href="ecommerce.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="Logo Avalon.png">
+</head>
+<body>
+    <!-- Fondo animado optimizado -->
+    <div class="animated-background">
+        <div class="particles-container"></div>
+    </div>
+    
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                    <h2>AVALON CREATORS</h2>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="ecommerce.html" class="nav-link active">Ecommerce</a></li>
+                    <li><a href="corporativa.html" class="nav-link">Web Corporativa</a></li>
+                    <li><a href="personal.html" class="nav-link">Marca Personal</a></li>
+                    <li><a href="cuenta.html" class="nav-link">Mi Cuenta</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content-wrapper">
+                <div class="hero-content">
+                    <h1>Ecommerce <span class="highlight">Profesional</span></h1>
+                    <p>Creamos tiendas online que venden. Diseño optimizado para conversión, integraciones de pago seguras y sistemas de gestión que simplifican tu negocio.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">+50</span>
+                            <span class="stat-label">Tiendas Online</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Tasa de Conversión</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Soporte Técnico</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#planes" class="btn-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="btn-content">
+                                <span class="btn-main-text">Ver Planes Ecommerce</span>
+                                <span class="btn-sub-text">Desde $10/mes con todo incluido</span>
+                            </div>
+                        </a>
+                        <a href="#caracteristicas" class="btn-secondary">
+                            <i class="fas fa-list-check"></i>
+                            Ver Características
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Conversión Optimizada</h3>
+                        <p>Diseño enfocado en aumentar tus ventas con hasta 3x más conversión</p>
+                    </div>
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Seguridad Total</h3>
+                        <p>Certificados SSL, encriptación militar y protección antifraude integrada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner de Contexto -->
+    <div class="pricing-context-banner">
+        <div class="container">
+            <div class="context-content">
+                <i class="fas fa-chart-line"></i>
+                <div class="context-text">
+                    <h3>Ecommerce que Crea Resultados</h3>
+                    <p>No solo creamos tiendas bonitas, creamos máquinas de ventas. Cada elemento está diseñado para convertir visitantes en clientes.</p>
+                </div>
+                <a href="#proceso" class="context-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Ver nuestro proceso
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Características -->
+    <section id="caracteristicas" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Características del Ecommerce</h2>
+                <p class="section-subtitle">Todo lo que necesitas para vender online de forma profesional</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Diseño Personalizado</h3>
+                    <p>Diseño 100% único que refleja tu marca y optimiza la experiencia de compra.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Diseño responsive en todos los dispositivos</li>
+                        <li><i class="fas fa-check"></i> Personalización total de colores y fuentes</li>
+                        <li><i class="fas fa-check"></i> UX/UI optimizada para conversión</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Pasarelas de Pago</h3>
+                    <p>Integración con todas las pasarelas de pago principales y sistemas de facturación.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Mercado Pago, PayPal, Stripe</li>
+                        <li><i class="fas fa-check"></i> Tarjetas de crédito/débito</li>
+                        <li><i class="fas fa-check"></i> Transferencias bancarias</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Gestión de Inventario</h3>
+                    <p>Sistema avanzado de gestión de productos, stock y categorías.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Stock ilimitado de productos</li>
+                        <li><i class="fas fa-check"></i> Variaciones de productos (tallas, colores)</li>
+                        <li><i class="fas fa-check"></i> Categorías y subcategorías</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3>Envíos y Logística</h3>
+                    <p>Integración con principales transportistas y cálculo automático de envíos.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Cálculo de envíos en tiempo real</li>
+                        <li><i class="fas fa-check"></i> Seguimiento de pedidos</li>
+                        <li><i class="fas fa-check"></i> Múltiples opciones de entrega</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analytics y Reportes</h3>
+                    <p>Panel de control con métricas detalladas del rendimiento de tu tienda.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Ventas por producto/categoría</li>
+                        <li><i class="fas fa-check"></i> Tráfico y comportamiento de usuarios</li>
+                        <li><i class="fas fa-check"></i> Reportes personalizables</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>App Móvil</h3>
+                    <p>Aplicación móvil nativa para iOS y Android incluida en planes premium.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Notificaciones push a clientes</li>
+                        <li><i class="fas fa-check"></i> Experiencia de compra optimizada</li>
+                        <li><i class="fas fa-check"></i> Acceso rápido y sencillo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proceso -->
+    <section id="proceso" class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cómo Creamos Tu Ecommerce</h2>
+                <p class="section-subtitle">Proceso probado para lanzar tiendas online exitosas en tiempo récord</p>
+            </div>
+            
+            <!-- Versión escritorio -->
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Configuración Inicial</h3>
+                        <p>Configuramos dominio, hosting premium, SSL y toda la infraestructura técnica.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Diseño y Desarrollo</h3>
+                        <p>Creamos el diseño personalizado y desarrollamos todas las funcionalidades.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Integración de Pagos</h3>
+                        <p>Configuramos pasarelas de pago seguras y sistemas de facturación.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Lanzamiento y Soporte</h3>
+                        <p>Lanzamos tu tienda y brindamos soporte continuo para maximizar ventas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Versión móvil: Carrusel -->
+            <div class="process-carousel-container">
+                <button class="process-carousel-arrow prev-arrow" aria-label="Anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="process-carousel-arrow next-arrow" aria-label="Siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="process-carousel">
+                    <div class="step-mobile">
+                        <div class="step-number-mobile">01</div>
+                        <div class="step-content-mobile">
+                            <h3>Configuración Inicial</h3>
+                            <p>Configuramos dominio, hosting premium, SSL y toda la infraestructura técnica.</p>
+                        </div>
+                    </div>
+                    <div class="step-mobile">
+                        <div class="step-number-mobile">02</div>
+                        <div class="step-content-mobile">
+                            <h3>Diseño y Desarrollo</h3>
+                            <p>Creamos el diseño personalizado y desarrollamos todas las funcionalidades.</p>
+                        </div>
+                    </div>
+                    <div class="step-mobile">
+                        <div class="step-number-mobile">03</div>
+                        <div class="step-content-mobile">
+                            <h3>Integración de Pagos</h3>
+                            <p>Configuramos pasarelas de pago seguras y sistemas de facturación.</p>
+                        </div>
+                    </div>
+                    <div class="step-mobile">
+                        <div class="step-number-mobile">04</div>
+                        <div class="step-content-mobile">
+                            <h3>Lanzamiento y Soporte</h3>
+                            <p>Lanzamos tu tienda y brindamos soporte continuo para maximizar ventas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-carousel-indicators">
+                    <span class="process-indicator active" data-index="0"></span>
+                    <span class="process-indicator" data-index="1"></span>
+                    <span class="process-indicator" data-index="2"></span>
+                    <span class="process-indicator" data-index="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Planes -->
+    <section id="planes" class="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Planes de Ecommerce</h2>
+                <p class="section-subtitle">Selecciona el plan perfecto para tu negocio online</p>
+            </div>
+
+            <!-- Para escritorio: grid de 3 columnas -->
+            <div class="plans-container">
+                <!-- Plan 1: BÁSICO -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Ecommerce Básico</h3>
+                        <div class="price">
+                            <span class="price-amount">$10</span>
+                            <span class="price-period">/mes</span>
+                        </div>
+                        <div class="price-context">
+                            <span class="price-label">Para Empezar</span>
+                            <span class="price-note">Hasta 50 productos</span>
+                        </div>
+                    </div>
+                    <div class="plan-description">
+                        <p>Perfecto para emprendedores que quieren comenzar a vender online de forma profesional.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Diseño responsive personalizado</li>
+                        <li><i class="fas fa-check"></i> Hasta 50 productos</li>
+                        <li><i class="fas fa-check"></i> 1 pasarela de pago (Mercado Pago)</li>
+                        <li><i class="fas fa-check"></i> Panel de control básico</li>
+                        <li><i class="fas fa-check"></i> Dominio y hosting incluido</li>
+                        <li><i class="fas fa-check"></i> Certificado SSL gratuito</li>
+                        <li><i class="fas fa-check"></i> Soporte por email</li>
+                        <li><i class="fas fa-check"></i> SEO básico configurado</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Ideal para pequeñas tiendas y emprendimientos</p>
+                    </div>
+                    <a href="#contacto" class="btn-plan">
+                       <i class="fas fa-shopping-cart"></i> Elegir Plan Básico
+                    </a>
+                </div>
+
+                <!-- Plan 2: AVANZADO -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">Más Popular</div>
+                    <div class="plan-header">
+                        <h3>Ecommerce Avanzado</h3>
+                        <div class="price">
+                            <span class="price-amount">$25</span>
+                            <span class="price-period">/mes</span>
+                        </div>
+                        <div class="price-context">
+                            <span class="price-label">Para Crecer</span>
+                            <span class="price-note">Productos ilimitados</span>
+                        </div>
+                    </div>
+                    <div class="plan-description">
+                        <p>Para negocios en crecimiento que necesitan más funcionalidades y capacidad.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Todo del plan Básico +</li>
+                        <li><i class="fas fa-check"></i> Productos ilimitados</li>
+                        <li><i class="fas fa-check"></i> 3 pasarelas de pago</li>
+                        <li><i class="fas fa-check"></i> Sistema de cupones y descuentos</li>
+                        <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                        <li><i class="fas fa-check"></i> Gestión de inventario automática</li>
+                        <li><i class="fas fa-check"></i> SEO avanzado</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Incluye integración con Mercado Libre</p>
+                    </div>
+                    <a href="#contacto" class="btn-plan featured">
+                       <i class="fas fa-chart-line"></i> Elegir Plan Avanzado
+                    </a>
+                </div>
+
+                <!-- Plan 3: PREMIUM -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Ecommerce Premium</h3>
+                        <div class="price">
+                            <span class="price-amount">$50</span>
+                            <span class="price-period">/mes</span>
+                        </div>
+                        <div class="price-context">
+                            <span class="price-label">Empresarial</span>
+                            <span class="price-note">Todo incluido</span>
+                        </div>
+                    </div>
+                    <div class="plan-description">
+                        <p>Solución completa para empresas que buscan la excelencia en ventas online.</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Todo del plan Avanzado +</li>
+                        <li><i class="fas fa-check"></i> App móvil nativa (iOS/Android)</li>
+                        <li><i class="fas fa-check"></i> Todas las pasarelas de pago</li>
+                        <li><i class="fas fa-check"></i> Sistema de fidelización</li>
+                        <li><i class="fas fa-check"></i> Analytics avanzado con IA</li>
+                        <li><i class="fas fa-check"></i> Integración con ERP</li>
+                        <li><i class="fas fa-check"></i> Migración de datos gratuita</li>
+                        <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                    </ul>
+                    <div class="plan-note">
+                        <p>*Incluye entrenamiento para tu equipo</p>
+                    </div>
+                    <a href="#contacto" class="btn-plan">
+                       <i class="fas fa-crown"></i> Elegir Plan Premium
+                    </a>
+                </div>
+            </div>
+
+            <!-- Para móvil: carrusel -->
+            <div class="carousel-container">
+                <button class="carousel-arrow prev-arrow" aria-label="Plan anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-arrow next-arrow" aria-label="Plan siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="plans-carousel">
+                    <!-- Plan 1: BÁSICO -->
+                    <div class="plan-card-mobile">
+                        <div class="plan-header-mobile">
+                            <h3>Ecommerce Básico</h3>
+                            <div class="price-mobile">
+                                <span class="price-amount-mobile">$10</span>
+                                <span class="price-period-mobile">/mes</span>
+                            </div>
+                            <div class="price-context-mobile">
+                                <span class="price-label-mobile">Para Empezar</span>
+                                <span class="price-note-mobile">Hasta 50 productos</span>
+                            </div>
+                        </div>
+                        <div class="plan-description-mobile">
+                            <p>Perfecto para emprendedores que quieren comenzar a vender online de forma profesional.</p>
+                        </div>
+                        <ul class="plan-features-mobile">
+                            <li><i class="fas fa-check"></i> Diseño responsive personalizado</li>
+                            <li><i class="fas fa-check"></i> Hasta 50 productos</li>
+                            <li><i class="fas fa-check"></i> 1 pasarela de pago</li>
+                            <li><i class="fas fa-check"></i> Panel de control básico</li>
+                            <li><i class="fas fa-check"></i> Dominio y hosting incluido</li>
+                            <li><i class="fas fa-check"></i> Certificado SSL gratuito</li>
+                            <li><i class="fas fa-check"></i> Soporte por email</li>
+                            <li><i class="fas fa-check"></i> SEO básico configurado</li>
+                        </ul>
+                        <div class="plan-note-mobile">
+                            <p>*Ideal para pequeñas tiendas y emprendimientos</p>
+                        </div>
+                        <a href="#contacto" class="btn-plan-mobile">
+                           <i class="fas fa-shopping-cart"></i> Elegir Plan Básico
+                        </a>
+                    </div>
+
+                    <!-- Plan 2: AVANZADO -->
+                    <div class="plan-card-mobile featured-mobile">
+                        <div class="plan-badge-mobile">Más Popular</div>
+                        <div class="plan-header-mobile">
+                            <h3>Ecommerce Avanzado</h3>
+                            <div class="price-mobile">
+                                <span class="price-amount-mobile">$25</span>
+                                <span class="price-period-mobile">/mes</span>
+                            </div>
+                            <div class="price-context-mobile">
+                                <span class="price-label-mobile">Para Crecer</span>
+                                <span class="price-note-mobile">Productos ilimitados</span>
+                            </div>
+                        </div>
+                        <div class="plan-description-mobile">
+                            <p>Para negocios en crecimiento que necesitan más funcionalidades y capacidad.</p>
+                        </div>
+                        <ul class="plan-features-mobile">
+                            <li><i class="fas fa-check"></i> Todo del plan Básico +</li>
+                            <li><i class="fas fa-check"></i> Productos ilimitados</li>
+                            <li><i class="fas fa-check"></i> 3 pasarelas de pago</li>
+                            <li><i class="fas fa-check"></i> Sistema de cupones y descuentos</li>
+                            <li><i class="fas fa-check"></i> Panel de control avanzado</li>
+                            <li><i class="fas fa-check"></i> Gestión de inventario automática</li>
+                            <li><i class="fas fa-check"></i> SEO avanzado</li>
+                            <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                        </ul>
+                        <div class="plan-note-mobile">
+                            <p>*Incluye integración con Mercado Libre</p>
+                        </div>
+                        <a href="#contacto" class="btn-plan-mobile featured-btn">
+                           <i class="fas fa-chart-line"></i> Elegir Plan Avanzado
+                        </a>
+                    </div>
+
+                    <!-- Plan 3: PREMIUM -->
+                    <div class="plan-card-mobile">
+                        <div class="plan-header-mobile">
+                            <h3>Ecommerce Premium</h3>
+                            <div class="price-mobile">
+                                <span class="price-amount-mobile">$50</span>
+                                <span class="price-period-mobile">/mes</span>
+                            </div>
+                            <div class="price-context-mobile">
+                                <span class="price-label-mobile">Empresarial</span>
+                                <span class="price-note-mobile">Todo incluido</span>
+                            </div>
+                        </div>
+                        <div class="plan-description-mobile">
+                            <p>Solución completa para empresas que buscan la excelencia en ventas online.</p>
+                        </div>
+                        <ul class="plan-features-mobile">
+                            <li><i class="fas fa-check"></i> Todo del plan Avanzado +</li>
+                            <li><i class="fas fa-check"></i> App móvil nativa (iOS/Android)</li>
+                            <li><i class="fas fa-check"></i> Todas las pasarelas de pago</li>
+                            <li><i class="fas fa-check"></i> Sistema de fidelización</li>
+                            <li><i class="fas fa-check"></i> Analytics avanzado con IA</li>
+                            <li><i class="fas fa-check"></i> Integración con ERP</li>
+                            <li><i class="fas fa-check"></i> Migración de datos gratuita</li>
+                            <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                        </ul>
+                        <div class="plan-note-mobile">
+                            <p>*Incluye entrenamiento para tu equipo</p>
+                        </div>
+                        <a href="#contacto" class="btn-plan-mobile">
+                           <i class="fas fa-crown"></i> Elegir Plan Premium
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                </div>
+            </div>
+
+            <!-- Sección de contacto -->
+            <div id="contacto" class="plan-disclaimer">
+                <div class="disclaimer-content">
+                    <i class="fas fa-comments"></i>
+                    <div class="disclaimer-text">
+                        <p><strong>¿Listo para comenzar?</strong> Contáctanos para personalizar tu plan o solicitar una demostración de nuestra plataforma.</p>
+                        <a href="https://wa.me/541132863814" class="disclaimer-link" target="_blank">
+                           <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer COMPACTADO AL MÁXIMO -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="index.html" class="footer-logo">
+                        <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                        <h3>AVALON CREATORS</h3>
+                    </a>
+                </div>
+                
+                <div class="footer-center">
+                    <p class="footer-tagline">Ecommerce que convierte y escala.</p>
+                </div>
+                
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="https://wa.me/541132863814" target="_blank" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-under-construction"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-mobile">
+                    <div class="footer-brand">
+                        <a href="index.html" class="footer-logo">
+                            <img src="Logo Avalon.png" alt="AVALON CREATORS" class="logo-img">
+                            <h3>AVALON CREATORS</h3>
+                        </a>
+                        <p class="footer-tagline">Ecommerce que convierte y escala.</p>
+                        <div class="social-links">
+                            <a href="https://wa.me/541132863814" target="_blank" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-under-construction"><i class="fab fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVALON CREATORS - Especialistas en Ecommerce Profesional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificación Social -->
+    <div id="social-notification" class="social-notification">
+        <div class="notification-content">
+            <i class="fas fa-tools"></i>
+            <p>Estamos trabajando en las redes, pronto estarán disponibles</p>
+        </div>
+    </div>
+
+    <script src="ecommerce.js"></script>
+</body>
+</html>
