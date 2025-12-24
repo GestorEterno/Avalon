@@ -752,16 +752,17 @@ section {
     color: var(--light);
 }
 
-.comparison-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+/* MEJORAR ESTILO DE ÍCONOS EN TABLA */
+.comparison-avalon i {
+    color: var(--accent);
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
-.comparison-logo-img {
-    height: 28px;
-    width: auto;
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+.comparison-other i {
+    color: var(--light);
+    font-size: 1.8rem;
+    opacity: 0.8;
 }
 
 .comparison-row {
@@ -961,22 +962,22 @@ section {
     box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
 }
 
-/* Nota Comparativa */
-.comparison-note {
-    background: linear-gradient(90deg, rgba(15, 52, 96, 0.4) 0%, rgba(26, 26, 46, 0.6) 100%);
+/* ===== NUEVO HIGHLIGHT MEJORADO ===== */
+.comparison-highlight {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(15, 52, 96, 0.3) 100%);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    border-left: 5px solid var(--accent);
+    padding: 1.8rem;
+    border: 2px solid var(--accent);
     display: flex;
-    gap: 1.5rem;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    order: 3; /* DESPUÉS DE LAS VENTAJAS */
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+    order: 3;
+    backdrop-filter: blur(10px);
 }
 
-.note-icon {
-    background: rgba(255, 215, 0, 0.15);
+.highlight-icon {
+    background: var(--accent);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -984,45 +985,30 @@ section {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 2px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
-.note-icon i {
-    color: var(--accent);
+.highlight-icon i {
+    color: var(--dark);
     font-size: 1.8rem;
 }
 
-.note-content {
+.highlight-content {
     flex: 1;
 }
 
-.note-content p {
-    margin-bottom: 1.2rem;
-    line-height: 1.7;
-    font-size: 1.05rem;
-    color: var(--light);
-}
-
-.note-link {
-    color: var(--accent);
-    text-decoration: none;
+.highlight-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-light);
     font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-.note-link:hover {
-    background: rgba(255, 215, 0, 0.2);
-    transform: translateX(10px);
-    text-decoration: none;
-    border-color: var(--accent);
+.highlight-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin: 0;
 }
 
 /* === PLANS DESKTOP === */
@@ -2432,6 +2418,32 @@ footer:last-child {
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
+    /* ===== MEJORAS PARA EL NUEVO COMPARISON-HIGHLIGHT EN MÓVIL ===== */
+    .comparison-highlight {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    
+    .highlight-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    
+    .highlight-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .highlight-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .highlight-content p {
+        font-size: 0.9rem;
+    }
+    
     /* Asegurar que los hover effects no se activen en móvil */
     .service-card:hover,
     .plan-card:hover,
@@ -2698,26 +2710,6 @@ footer:last-child {
     
     .advantage-content p {
         font-size: 0.9rem;
-    }
-    
-    .comparison-note {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-    
-    .note-icon {
-        width: 50px;
-        height: 50px;
-        margin: 0 auto;
-    }
-    
-    .note-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .note-content p {
-        font-size: 0.95rem;
     }
     
     /* Plans - ocultar desktop, mostrar carrusel */
