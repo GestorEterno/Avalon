@@ -666,7 +666,7 @@ section {
     font-size: 0.8rem;
 }
 
-/* ===== SECCIÓN COMPARATIVA ===== */
+/* ===== SECCIÓN COMPARATIVA - CORREGIDA ===== */
 .comparison {
     padding: 100px 0;
     background: linear-gradient(135deg, rgba(15, 52, 96, 0.1) 0%, rgba(26, 26, 46, 0.9) 100%);
@@ -698,7 +698,7 @@ section {
     margin-bottom: 3rem;
 }
 
-/* Tabla de Comparación */
+/* Tabla de Comparación CORREGIDA - ORDEN: AVALON, TIENDANUBE, SHOPIFY */
 .comparison-table {
     background: rgba(15, 52, 96, 0.15);
     backdrop-filter: blur(20px);
@@ -720,7 +720,7 @@ section {
 
 .comparison-header {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     background: linear-gradient(90deg, var(--primary) 0%, var(--darker) 100%);
     padding: 1.5rem 2rem;
     border-bottom: 2px solid var(--accent);
@@ -733,6 +733,7 @@ section {
 .comparison-header > div {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -762,7 +763,7 @@ section {
 
 .comparison-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: 1.3rem 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.3s ease;
@@ -2037,7 +2038,7 @@ a.footer-logo:hover h3 {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
     
-    /* ===== RESPONSIVE PARA COMPARATIVA ===== */
+    /* ===== RESPONSIVE PARA COMPARATIVA - CORREGIDO ===== */
     @media (min-width: 992px) {
         .comparison-grid {
             grid-template-columns: 1fr 1fr;
@@ -2629,7 +2630,7 @@ footer:last-child {
         padding: 1.5rem;
     }
     
-    /* Comparativa móvil */
+    /* ===== COMPARATIVA MÓVIL CORREGIDA - PRIMERO TABLA, LUEGO VENTAJAS ===== */
     .comparison {
         padding: 60px 0;
     }
@@ -2640,16 +2641,16 @@ footer:last-child {
     }
     
     .comparison-table {
-        order: 2;
+        order: 1 !important; /* PRIMERO LA TABLA */
     }
     
     .advantages-box {
-        order: 1;
+        order: 2 !important; /* LUEGO LAS VENTAJAS */
     }
     
     .comparison-header,
     .comparison-row {
-        grid-template-columns: 1.5fr 1fr 1fr;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr;
         padding: 1rem;
         font-size: 0.85rem;
     }
@@ -2931,7 +2932,7 @@ footer:last-child {
     
     .comparison-header,
     .comparison-row {
-        grid-template-columns: 1.2fr 0.9fr 0.9fr;
+        grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr;
         padding: 0.8rem;
         font-size: 0.75rem;
     }
