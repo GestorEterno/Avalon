@@ -1,6 +1,5 @@
-/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE */
-/* MEJORA CRÍTICA: Eliminar efectos azules de tap en móvil y sensación tipo app */
-/* MEJORA ESPECÍFICA: Animación de cambio de panel IDÉNTICA en ambos carruseles móviles */
+/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS APLICADAS */
+/* ESPECÍFICO PARA PÁGINA ECOMMERCE */
 
 :root {
     --primary: #0f3460;
@@ -547,74 +546,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     line-height: 1.4;
 }
 
-/* === BANNER DE CONTEXTO === */
-.pricing-context-banner {
-    background: linear-gradient(135deg, 
-        rgba(255, 215, 0, 0.1) 0%, 
-        rgba(15, 52, 96, 0.2) 100%);
-    padding: 2rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 0;
-}
-
-.context-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.context-content i.fa-chart-line {
-    font-size: 2.5rem;
-    color: var(--accent);
-    flex-shrink: 0;
-}
-
-.context-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.context-text h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.context-text p {
-    opacity: 0.9;
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 600px;
-}
-
-.context-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.8rem 1.5rem;
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 30px;
-    transition: var(--transition);
-    background: rgba(255, 255, 255, 0.05);
-    flex-shrink: 0;
-    -webkit-touch-callout: none;
-    user-select: none;
-    outline: none;
-}
-
-.context-link:hover {
-    background: rgba(255, 215, 0, 0.1);
-    transform: translateX(5px);
-    border-color: var(--accent);
-}
-
 /* === SECTION COMMON === */
 section {
     padding: 80px 0;
@@ -735,78 +666,6 @@ section {
     font-size: 0.8rem;
 }
 
-/* === PROCESS === */
-.process-steps {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 60px 0;
-}
-
-.step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    flex: 1;
-    padding: 0 15px;
-    -webkit-touch-callout: none;
-    user-select: none;
-}
-
-.step-number {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.1), 
-        rgba(255, 255, 255, 0.05));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-    position: relative;
-}
-
-.step-number::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
-    border-radius: 50%;
-    animation: gentleGlow 4s ease-in-out infinite;
-    z-index: -1;
-    filter: blur(5px);
-}
-
-.step-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-    color: var(--light);
-}
-
-.step-content p {
-    opacity: 0.85;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    max-width: 220px;
-    margin: 0 auto;
-}
-
 /* === PLANS DESKTOP === */
 .plans-container {
     display: grid;
@@ -828,7 +687,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 580px;
+    min-height: 680px;
     transform-origin: center center;
     -webkit-touch-callout: none;
     user-select: none;
@@ -1224,6 +1083,52 @@ footer {
     line-height: 1.3;
 }
 
+/* === NOTIFICACIÓN DE MANTENIMIENTO === */
+.maintenance-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--primary);
+    color: var(--light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--accent);
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s ease;
+    max-width: 90%;
+    width: 400px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.maintenance-notification.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.maintenance-notification .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.maintenance-notification .notification-content i {
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.maintenance-notification .notification-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
 /* ===== LOGOS COMO ENLACES - ESTILOS UNIFICADOS ===== */
 a.logo,
 a.footer-logo {
@@ -1273,8 +1178,7 @@ a.footer-logo:hover h3 {
 }
 
 /* ===== CARRUSELES MÓVIL ===== */
-.carousel-container,
-.process-carousel-container {
+.carousel-container {
     display: none;
     position: relative;
     width: 100%;
@@ -1284,8 +1188,7 @@ a.footer-logo:hover h3 {
     padding-bottom: 40px;
 }
 
-.plans-carousel,
-.process-carousel {
+.plans-carousel {
     display: flex;
     width: 100%;
     transition: transform 0.3s ease;
@@ -1299,14 +1202,12 @@ a.footer-logo:hover h3 {
     touch-action: pan-x pan-y;
 }
 
-.plans-carousel::-webkit-scrollbar,
-.process-carousel::-webkit-scrollbar {
+.plans-carousel::-webkit-scrollbar {
     display: none;
 }
 
 /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
-.carousel-arrow,
-.process-carousel-arrow {
+.carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1332,32 +1233,27 @@ a.footer-logo:hover h3 {
 }
 
 /* CORRECCIÓN: Iconos de flechas sin oscurecerse */
-.carousel-arrow i,
-.process-carousel-arrow i {
+.carousel-arrow i {
     color: var(--accent);
     transition: none !important;
 }
 
-.carousel-arrow:hover,
-.process-carousel-arrow:hover {
+.carousel-arrow:hover {
     background: rgba(15, 52, 96, 0.98);
     opacity: 1;
     transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-arrow:hover i,
-.process-carousel-arrow:hover i {
+.carousel-arrow:hover i {
     color: var(--accent-light);
 }
 
-.carousel-arrow.prev-arrow,
-.process-carousel-arrow.prev-arrow {
+.carousel-arrow.prev-arrow {
     left: 10px;
     right: auto;
 }
 
-.carousel-arrow.next-arrow,
-.process-carousel-arrow.next-arrow {
+.carousel-arrow.next-arrow {
     right: 10px;
     left: auto;
 }
@@ -1374,7 +1270,7 @@ a.footer-logo:hover h3 {
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: auto;
-    min-height: 580px;
+    min-height: 620px;
     transition: all 0.3s ease;
     padding: 25px 20px;
     position: relative;
@@ -1485,8 +1381,8 @@ a.footer-logo:hover h3 {
     list-style: none;
     margin: 0.5rem 0;
     flex-grow: 1;
-    min-height: 200px;
-    max-height: 230px;
+    min-height: 240px;
+    max-height: 260px;
     overflow-y: auto;
     padding-right: 5px;
     -webkit-overflow-scrolling: touch;
@@ -1557,8 +1453,7 @@ a.footer-logo:hover h3 {
     background: var(--accent-light);
 }
 
-.carousel-indicators,
-.process-carousel-indicators {
+.carousel-indicators {
     display: flex;
     justify-content: center;
     gap: 12px;
@@ -1567,8 +1462,7 @@ a.footer-logo:hover h3 {
     z-index: 5;
 }
 
-.indicator,
-.process-indicator {
+.indicator {
     width: 12px;
     height: 12px;
     background: rgba(255, 255, 255, 0.3);
@@ -1579,94 +1473,9 @@ a.footer-logo:hover h3 {
     user-select: none;
 }
 
-.indicator.active,
-.process-indicator.active {
+.indicator.active {
     background: var(--accent);
     transform: scale(1.3);
-}
-
-/* Step móvil */
-.step-mobile {
-    flex: 0 0 85%;
-    width: 85%;
-    min-width: 85%;
-    max-width: 85%;
-    margin: 0 7.5%;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    padding: 25px 20px;
-    background: var(--darker);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    backdrop-filter: blur(10px);
-    -webkit-touch-callout: none;
-    user-select: none;
-    touch-action: pan-y;
-    pointer-events: auto;
-}
-
-/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
-.step-mobile {
-    transition: none !important;
-}
-
-.step-mobile.active {
-    border-color: rgba(255, 215, 0, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.step-number-mobile {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.1), 
-        rgba(255, 255, 255, 0.05));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 1.2rem;
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    transition: var(--transition);
-}
-
-.step-number-mobile::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
-    border-radius: 50%;
-    animation: gentleGlow 4s ease-in-out infinite;
-    z-index: -1;
-    filter: blur(5px);
-}
-
-.step-content-mobile {
-    padding: 0 10px;
-}
-
-.step-content-mobile h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-    color: var(--light);
-}
-
-.step-content-mobile p {
-    opacity: 0.85;
-    line-height: 1.6;
-    font-size: 0.9rem;
-    max-width: 100%;
 }
 
 /* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
@@ -1753,7 +1562,7 @@ a.footer-logo:hover h3 {
         content: none;
     }
     
-    /* Botón "Ver Planes Ecommerce" */
+    /* Botón "Descubre Planes Escalables" */
     .btn-primary {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         background: var(--accent);
@@ -1769,7 +1578,7 @@ a.footer-logo:hover h3 {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
-    /* 2. CORRECCIÓN CRÍTICA: "Elegir Plan Avanzado" */
+    /* 2. CORRECCIÓN CRÍTICA: "Quiero mi Ecommerce" */
     .btn-plan.featured {
         background: var(--accent);
         color: var(--dark);
@@ -1869,55 +1678,7 @@ a.footer-logo:hover h3 {
         background: rgba(255, 255, 255, 0.08);
     }
     
-    /* 8. Pasos del proceso - hover ajustado */
-    .step {
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .step:hover {
-        transform: translateY(-12px) scale(1.03);
-    }
-    
-    .step:hover .step-number {
-        transform: translateY(-8px) scale(1.15);
-        animation: levitate 2s ease-in-out infinite;
-        border-color: var(--accent-light);
-        box-shadow: 
-            0 0 25px rgba(255, 215, 0, 0.35),
-            0 10px 30px rgba(255, 215, 0, 0.15),
-            inset 0 0 15px rgba(255, 255, 255, 0.1);
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.12), 
-            rgba(255, 255, 255, 0.05));
-    }
-    
-    .step:hover .step-content h3 {
-        color: var(--accent-light);
-        animation: textGlow 2s ease-in-out infinite;
-        transform: translateY(-2px);
-        transition: all 0.3s ease;
-    }
-    
-    .step:hover .step-content p {
-        opacity: 1;
-        color: var(--light);
-        transform: translateY(-1px);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease 0.1s;
-    }
-    
-    .step:hover .step-number::before {
-        animation: gentleGlow 2s ease-in-out infinite;
-        background: radial-gradient(
-            circle at 50% 50%, 
-            rgba(255, 215, 0, 0.35) 0%, 
-            rgba(255, 215, 0, 0.2) 40%, 
-            transparent 70%
-        );
-        filter: blur(6px);
-    }
-    
-    /* 9. Botón secundario del hero - hover ajustado */
+    /* 8. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
         background: rgba(255, 215, 0, 0.08);
@@ -2117,18 +1878,14 @@ footer:last-child {
     .footer-logo,
     .social-links a,
     .carousel-arrow,
-    .process-carousel-arrow,
     .context-link,
     .disclaimer-link,
     .plan-card,
     .plan-card-mobile,
     .service-card,
-    .step,
-    .step-mobile,
     .floating-card,
     .hamburger,
-    .indicator,
-    .process-indicator {
+    .indicator {
         -webkit-user-select: none !important;
         -moz-user-select: none !important;
         -ms-user-select: none !important;
@@ -2153,8 +1910,7 @@ footer:last-child {
     .nav-link:focus,
     .context-link:focus,
     .disclaimer-link:focus,
-    .carousel-arrow:focus,
-    .process-carousel-arrow:focus {
+    .carousel-arrow:focus {
         outline: none !important;
         box-shadow: none !important;
     }
@@ -2167,25 +1923,21 @@ footer:last-child {
     .nav-link:active,
     .social-links a:active,
     .carousel-arrow:active,
-    .process-carousel-arrow:active,
     .context-link:active,
     .disclaimer-link:active,
-    .indicator:active,
-    .process-indicator:active {
+    .indicator:active {
         transform: scale(0.96) !important;
         transition: transform 0.1s ease !important;
         opacity: 0.9 !important;
     }
     
     /* CORRECCIÓN ESPECÍFICA: Flechas sin animación de bajar/subir */
-    .carousel-arrow:active,
-    .process-carousel-arrow:active {
+    .carousel-arrow:active {
         transform: translateY(-50%) scale(0.96) !important;
         background: rgba(15, 52, 96, 0.95) !important;
     }
     
-    .carousel-arrow:active i,
-    .process-carousel-arrow:active i {
+    .carousel-arrow:active i {
         color: var(--accent-light) !important;
     }
     
@@ -2197,9 +1949,7 @@ footer:last-child {
     .service-card:hover,
     .plan-card:hover,
     .plan-card-mobile:hover,
-    .floating-card:hover,
-    .step:hover,
-    .step-mobile:hover {
+    .floating-card:hover {
         transform: none !important;
         box-shadow: none !important;
     }
@@ -2207,9 +1957,7 @@ footer:last-child {
     /* 6. QUITAR ANIMACIONES DE HOVER EN MÓVIL PARA MEJOR RENDIMIENTO */
     .service-card .service-icon,
     .floating-card .card-icon,
-    .plan-features li,
-    .step-number,
-    .step-number-mobile {
+    .plan-features li {
         transition: none !important;
         animation: none !important;
     }
@@ -2229,8 +1977,7 @@ footer:last-child {
     /* 8. PERMITIR SOLO SCROLL NATIVO, NO ZOOM NO DESEADO */
     .hero-content,
     .section-header,
-    .plan-card-mobile,
-    .step-mobile {
+    .plan-card-mobile {
         touch-action: pan-y;
     }
     
@@ -2241,14 +1988,12 @@ footer:last-child {
     }
     
     /* 10. MEJORAR RENDIMIENTO TÁCTIL */
-    .plans-carousel,
-    .process-carousel {
+    .plans-carousel {
         touch-action: pan-x pan-y;
     }
     
     /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
-    .plan-card-mobile,
-    .step-mobile {
+    .plan-card-mobile {
         touch-action: pan-y;
         pointer-events: auto;
     }
@@ -2328,37 +2073,9 @@ footer:last-child {
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
-    /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
-    .step-number::before,
-    .step-number-mobile::before {
-        display: none !important;
-    }
-    
-    /* Desactivar animaciones de hover en móvil */
-    .step:hover .step-number {
-        transform: none !important;
-        box-shadow: none !important;
-        border-color: rgba(255, 215, 0, 0.3) !important;
-        animation: none !important;
-    }
-    
-    .step:hover .step-content h3,
-    .step:hover .step-content p {
-        transform: none !important;
-        text-shadow: none !important;
-        color: inherit !important;
-        opacity: inherit !important;
-        animation: none !important;
-    }
-    
-    .step:hover {
-        transform: none !important;
-    }
-    
     /* Asegurar que los hover effects no se activen en móvil */
     .service-card:hover,
     .plan-card:hover,
-    .step:hover,
     .floating-card:hover,
     .btn-plan:hover,
     .btn-primary:hover,
@@ -2533,26 +2250,6 @@ footer:last-child {
         margin: 0;
     }
     
-    /* Banner de contexto en móvil */
-    .pricing-context-banner {
-        padding: 1.5rem 0;
-    }
-    
-    .context-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .context-text {
-        min-width: 100%;
-    }
-    
-    .context-link {
-        width: 100%;
-        justify-content: center;
-    }
-    
     /* Section titles móvil */
     .section-title {
         font-size: 1.8rem;
@@ -2573,17 +2270,6 @@ footer:last-child {
         padding: 1.5rem;
     }
     
-    /* Process - ocultar desktop, mostrar carrusel */
-    .process-steps {
-        display: none;
-    }
-    
-    .process-carousel-container {
-        display: block;
-        position: relative;
-        overflow: visible;
-    }
-    
     /* Plans - ocultar desktop, mostrar carrusel */
     .plans-container {
         display: none;
@@ -2596,8 +2282,7 @@ footer:last-child {
     }
     
     /* Flechas posicionadas ABSOLUTAMENTE y al límite */
-    .carousel-arrow,
-    .process-carousel-arrow {
+    .carousel-arrow {
         position: absolute !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
@@ -2612,34 +2297,31 @@ footer:last-child {
     }
     
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
-    .carousel-arrow.prev-arrow,
-    .process-carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow {
         left: -25px !important;
         right: auto !important;
     }
     
-    .carousel-arrow.next-arrow,
-    .process-carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow {
         right: -25px !important;
         left: auto !important;
     }
     
     /* Asegurar que el contenedor no corte las flechas */
-    .carousel-container,
-    .process-carousel-container {
+    .carousel-container {
         overflow: visible !important;
         padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
     .plan-card-mobile {
-        min-height: 520px;
+        min-height: 560px;
         padding: 1.2rem;
     }
     
     .plan-features-mobile {
-        min-height: 180px;
-        max-height: 200px;
+        min-height: 220px;
+        max-height: 240px;
     }
     
     /* Footer móvil - COMPACTADO AL MÁXIMO */
@@ -2683,8 +2365,7 @@ footer:last-child {
     /* Desactivar hover en móvil para mejor rendimiento */
     .service-card:hover,
     .plan-card:hover,
-    .floating-card:hover,
-    .step:hover {
+    .floating-card:hover {
         transform: none;
     }
     
@@ -2701,14 +2382,12 @@ footer:last-child {
     
     /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN AMBOS CARRUSELES ===== */
     /* Eliminar todas las transiciones CSS que interfieran con el scroll */
-    .plan-card-mobile,
-    .step-mobile {
+    .plan-card-mobile {
         transition: none !important;
     }
     
     /* Igualar el scroll behavior de ambos carruseles */
-    .plans-carousel,
-    .process-carousel {
+    .plans-carousel {
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
@@ -2740,7 +2419,6 @@ footer:last-child {
         
         /* Mejorar scrolling en iOS */
         .plans-carousel,
-        .process-carousel,
         .plan-features-mobile {
             -webkit-overflow-scrolling: touch;
         }
@@ -2798,34 +2476,22 @@ footer:last-child {
         min-width: 90%;
         max-width: 90%;
         margin: 0 5%;
-        min-height: 500px;
+        min-height: 540px;
         padding: 1rem;
     }
     
-    .step-mobile {
-        flex: 0 0 90%;
-        width: 90%;
-        min-width: 90%;
-        max-width: 90%;
-        margin: 0 5%;
-        padding: 1.2rem;
-    }
-    
-    .carousel-arrow,
-    .process-carousel-arrow {
+    .carousel-arrow {
         width: 36px;
         height: 36px;
         font-size: 1rem;
     }
     
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
-    .carousel-arrow.prev-arrow,
-    .process-carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow {
         left: -20px;
     }
     
-    .carousel-arrow.next-arrow,
-    .process-carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow {
         right: -20px;
     }
 }
@@ -2833,18 +2499,12 @@ footer:last-child {
 /* Escritorio - ocultar carruseles */
 @media (min-width: 769px) {
     .carousel-container,
-    .process-carousel-container,
-    .carousel-arrow,
-    .process-carousel-arrow {
+    .carousel-arrow {
         display: none;
     }
     
     .plans-container {
         display: grid;
-    }
-    
-    .process-steps {
-        display: flex;
     }
 }
 
