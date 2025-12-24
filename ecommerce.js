@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box, .comparison-highlight');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
