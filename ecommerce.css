@@ -666,7 +666,7 @@ section {
     font-size: 0.8rem;
 }
 
-/* ===== SECCIÓN COMPARATIVA - CORREGIDA ===== */
+/* ===== SECCIÓN COMPARATIVA CORREGIDA - PANEL DE VENTAJAS ABAJO ===== */
 .comparison {
     padding: 100px 0;
     background: linear-gradient(135deg, rgba(15, 52, 96, 0.1) 0%, rgba(26, 26, 46, 0.9) 100%);
@@ -691,9 +691,10 @@ section {
     z-index: -1;
 }
 
+/* ===== CORRECCIÓN CRÍTICA: PANEL DE VENTAJAS ABAJO, NO A LA DERECHA ===== */
 .comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
     margin-bottom: 3rem;
 }
@@ -710,6 +711,8 @@ section {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 1 !important;
     visibility: visible !important;
+    width: 100%;
+    order: 1; /* PRIMERO LA TABLA */
 }
 
 .comparison-table:hover {
@@ -834,7 +837,7 @@ section {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* Caja de Ventajas */
+/* ===== CORRECCIÓN CRÍTICA: PANEL DE VENTAJAS ABAJO DE LA TABLA ===== */
 .advantages-box {
     background: linear-gradient(135deg, rgba(83, 52, 131, 0.2) 0%, rgba(15, 52, 96, 0.3) 100%);
     backdrop-filter: blur(20px);
@@ -848,6 +851,9 @@ section {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 1 !important;
     visibility: visible !important;
+    width: 100%;
+    order: 2; /* DESPUÉS DE LA TABLA */
+    margin-top: 0;
 }
 
 .advantages-box:hover {
@@ -966,6 +972,7 @@ section {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 215, 0, 0.2);
+    order: 3; /* DESPUÉS DE LAS VENTAJAS */
 }
 
 .note-icon {
@@ -2037,14 +2044,6 @@ a.footer-logo:hover h3 {
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-    
-    /* ===== RESPONSIVE PARA COMPARATIVA - CORREGIDO ===== */
-    @media (min-width: 992px) {
-        .comparison-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-    }
 }
 
 /* ===== FOOTER ESCRITORIO - MEJORAS ESPECÍFICAS PARA PC ===== */
@@ -2630,22 +2629,13 @@ footer:last-child {
         padding: 1.5rem;
     }
     
-    /* ===== COMPARATIVA MÓVIL CORREGIDA - PRIMERO TABLA, LUEGO VENTAJAS ===== */
+    /* ===== COMPARATIVA MÓVIL - VENTAJAS ABAJO (YA ESTÁ ASÍ EN CSS GENERAL) ===== */
     .comparison {
         padding: 60px 0;
     }
     
     .comparison-grid {
-        grid-template-columns: 1fr;
         gap: 2rem;
-    }
-    
-    .comparison-table {
-        order: 1 !important; /* PRIMERO LA TABLA */
-    }
-    
-    .advantages-box {
-        order: 2 !important; /* LUEGO LAS VENTAJAS */
     }
     
     .comparison-header,
