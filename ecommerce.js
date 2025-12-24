@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -443,7 +443,7 @@ document.addEventListener('dragstart', function(e) {
 
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .note-link, .disclaimer-link');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
