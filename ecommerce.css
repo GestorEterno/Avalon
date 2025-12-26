@@ -2542,7 +2542,7 @@ footer:last-child {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* Hero móvil */
+    /* Hero móvil - SIN CAMBIOS ADICIONALES */
     .hero {
         flex-direction: column;
         min-height: auto;
@@ -2604,31 +2604,34 @@ footer:last-child {
         display: none;
     }
     
+    /* === CORRECCIÓN: COLUMNAS MEJOR DISTRIBUIDAS - MENOS ESPACIO VACÍO === */
     .comparison-header {
-        grid-template-columns: 40% 20% 20% 20%;
+        grid-template-columns: 25% 25% 25% 25%; /* Proporciones más equilibradas */
         padding: 0.8rem 0.5rem;
         font-size: 0.75rem;
-        gap: 0.3rem;
-        min-width: 600px;
+        gap: 0.2rem;
+        min-width: 550px;
     }
     
     .comparison-row {
-        grid-template-columns: 40% 20% 20% 20%;
+        grid-template-columns: 25% 25% 25% 25%; /* Mismas proporciones */
         padding: 0.7rem 0.5rem;
         font-size: 0.72rem;
-        gap: 0.3rem;
+        gap: 0.2rem;
         min-height: 50px;
         align-items: center;
-        min-width: 600px;
+        min-width: 550px;
     }
     
     /* Asegurar que el texto nunca desaparezca */
     .comparison-feature {
-        gap: 0.5rem;
+        gap: 0.4rem;
         font-size: 0.75rem;
         line-height: 1.2;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
+        padding: 0 0.3rem;
     }
     
     .comparison-feature span {
@@ -2636,11 +2639,13 @@ footer:last-child {
         white-space: normal;
         word-wrap: break-word;
         overflow: visible;
+        font-size: 0.75rem;
     }
     
     .comparison-feature i {
         font-size: 0.8rem;
         flex-shrink: 0;
+        min-width: 16px;
     }
     
     .comparison-avalon,
@@ -2651,6 +2656,7 @@ footer:last-child {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 0.2rem;
         padding: 0.2rem;
     }
@@ -2895,29 +2901,33 @@ footer:last-child {
 
 /* ===== CORRECCIÓN ESPECÍFICA PARA ANDROID TABLETS (entre 481px-768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
-    /* Tabla comparativa optimizada para tablets Android */
+    /* Tabla comparativa optimizada para tablets Android - PROPORCIONES EQUILIBRADAS */
     .comparison-header {
-        grid-template-columns: 35% 22% 22% 21%;
+        grid-template-columns: 25% 25% 25% 25%;
         padding: 0.9rem 0.7rem;
         font-size: 0.8rem;
+        gap: 0.3rem;
     }
     
     .comparison-row {
-        grid-template-columns: 35% 22% 22% 21%;
+        grid-template-columns: 25% 25% 25% 25%;
         padding: 0.8rem 0.7rem;
         font-size: 0.78rem;
         min-height: 55px;
+        gap: 0.3rem;
     }
     
     .comparison-feature {
         font-size: 0.82rem;
-        gap: 0.6rem;
+        gap: 0.5rem;
+        justify-content: flex-start;
     }
     
     .comparison-feature span {
         display: inline !important;
         white-space: normal;
         line-height: 1.3;
+        font-size: 0.8rem;
     }
     
     /* Asegurar que todo el contenido sea visible */
@@ -2933,7 +2943,7 @@ footer:last-child {
         line-height: 1.2;
     }
     
-    /* Mejorar las cards del hero en tablets */
+    /* Mejorar las cards del hero en tablets - SIN CAMBIOS ADICIONALES */
     .hero-image {
         flex-direction: row;
         gap: 1.5rem;
@@ -3021,27 +3031,31 @@ footer:last-child {
         font-size: 1.6rem;
     }
     
-    /* Tabla comparativa optimizada para pantallas muy pequeñas */
+    /* Tabla comparativa optimizada para pantallas muy pequeñas - PROPORCIONES COMPACTAS */
     .comparison-header {
-        grid-template-columns: 45% 18% 18% 19%;
+        grid-template-columns: 30% 23% 23% 24%;
         padding: 0.7rem 0.4rem;
         font-size: 0.7rem;
+        gap: 0.2rem;
     }
     
     .comparison-row {
-        grid-template-columns: 45% 18% 18% 19%;
+        grid-template-columns: 30% 23% 23% 24%;
         padding: 0.6rem 0.4rem;
         font-size: 0.68rem;
         min-height: 45px;
+        gap: 0.2rem;
     }
     
     .comparison-feature {
         font-size: 0.7rem;
-        gap: 0.4rem;
+        gap: 0.3rem;
+        justify-content: flex-start;
     }
     
     .comparison-feature i {
         font-size: 0.7rem;
+        min-width: 14px;
     }
     
     .comparison-avalon,
@@ -3052,6 +3066,7 @@ footer:last-child {
     .feature-highlight {
         font-size: 0.6rem;
         padding: 0.1rem 0.3rem;
+        line-height: 1.1;
     }
     
     /* Mantener todo el texto visible - NUNCA usar display: none */
@@ -3061,6 +3076,7 @@ footer:last-child {
         display: block !important;
         font-size: 0.65rem;
         line-height: 1.1;
+        word-break: break-word;
     }
     
     .plan-card-mobile {
@@ -3088,7 +3104,7 @@ footer:last-child {
         right: -20px;
     }
     
-    /* Ajustar hero en pantallas muy pequeñas */
+    /* Ajustar hero en pantallas muy pequeñas - SIN CAMBIOS ADICIONALES */
     .hero-stats {
         flex-wrap: wrap;
         justify-content: center;
