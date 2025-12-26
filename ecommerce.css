@@ -1,4 +1,5 @@
-/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TABLA COMPARATIVA PERFECTA PARA ANDROID */
+/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS APLICADAS */
+/* ESPECÍFICO PARA PÁGINA ECOMMERCE */
 
 :root {
     --primary: #0f3460;
@@ -197,6 +198,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
+    all: unset;
     display: flex !important;
     align-items: center !important;
     gap: 0.8rem !important;
@@ -664,7 +666,7 @@ section {
     font-size: 0.8rem;
 }
 
-/* ===== SECCIÓN COMPARATIVA PERFECTA PARA ANDROID ===== */
+/* ===== SECCIÓN COMPARATIVA CORREGIDA - PANEL DE VENTAJAS ABAJO ===== */
 .comparison {
     padding: 100px 0;
     background: linear-gradient(135deg, rgba(15, 52, 96, 0.1) 0%, rgba(26, 26, 46, 0.9) 100%);
@@ -689,7 +691,7 @@ section {
     z-index: -1;
 }
 
-/* ===== TABLA COMPARATIVA PERFECTA - CORREGIDA PARA ANDROID ===== */
+/* ===== CORRECCIÓN CRÍTICA: PANEL DE VENTAJAS ABAJO, NO A LA DERECHA ===== */
 .comparison-grid {
     display: flex;
     flex-direction: column;
@@ -697,7 +699,7 @@ section {
     margin-bottom: 3rem;
 }
 
-/* Tabla de Comparación - ESTRUCTURA PERFECTA */
+/* Tabla de Comparación CORREGIDA - ORDEN: AVALON, TIENDANUBE, SHOPIFY */
 .comparison-table {
     background: rgba(15, 52, 96, 0.15);
     backdrop-filter: blur(20px);
@@ -710,9 +712,7 @@ section {
     opacity: 1 !important;
     visibility: visible !important;
     width: 100%;
-    order: 1;
-    min-width: 100%;
-    table-layout: fixed;
+    order: 1; /* PRIMERO LA TABLA */
 }
 
 .comparison-table:hover {
@@ -723,28 +723,21 @@ section {
 
 .comparison-header {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     background: linear-gradient(90deg, var(--primary) 0%, var(--darker) 100%);
-    padding: 1.2rem 1.5rem;
+    padding: 1.5rem 2rem;
     border-bottom: 2px solid var(--accent);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
+    letter-spacing: 1px;
 }
 
 .comparison-header > div {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.8rem;
-    flex-direction: column;
-    padding: 5px;
-    word-break: break-word;
-    overflow: hidden;
+    gap: 1rem;
 }
 
 .comparison-avalon {
@@ -762,8 +755,7 @@ section {
 .comparison-logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .comparison-logo-img {
@@ -772,26 +764,14 @@ section {
     filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
 }
 
-.platform-name {
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-top: 3px;
-    line-height: 1.2;
-    word-break: keep-all;
-    display: block;
-}
-
 .comparison-row {
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr 1fr;
-    padding: 1rem 1.5rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 1.3rem 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.3s ease;
     align-items: center;
     background: rgba(255, 255, 255, 0.02);
-    text-align: center;
-    gap: 10px;
-    min-height: 70px;
 }
 
 .comparison-row:nth-child(even) {
@@ -806,15 +786,10 @@ section {
 .comparison-feature {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--light);
-    text-align: left;
-    padding: 5px 0;
-    word-break: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
 }
 
 .comparison-feature i {
@@ -822,15 +797,6 @@ section {
     width: 24px;
     text-align: center;
     font-size: 1.2rem;
-    flex-shrink: 0;
-}
-
-.feature-text {
-    flex: 1;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.3;
-    font-size: 0.95rem;
 }
 
 .comparison-avalon,
@@ -841,12 +807,6 @@ section {
     text-align: center;
     gap: 0.5rem;
     font-size: 0.9rem;
-    padding: 8px 5px;
-    min-height: 60px;
-    justify-content: center;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    hyphens: auto;
 }
 
 .comparison-avalon .success {
@@ -867,18 +827,17 @@ section {
     filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.3));
 }
 
-.feature-value {
+.feature-highlight {
+    color: var(--accent-light);
+    font-weight: 700;
     font-size: 0.85rem;
-    line-height: 1.3;
-    margin-top: 5px;
-    word-break: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    color: var(--light);
-    display: block;
+    background: rgba(255, 215, 0, 0.15);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-/* ===== PANEL DE VENTAJAS ===== */
+/* ===== CORRECCIÓN CRÍTICA: PANEL DE VENTAJAS ABAJO DE LA TABLA ===== */
 .advantages-box {
     background: linear-gradient(135deg, rgba(83, 52, 131, 0.2) 0%, rgba(15, 52, 96, 0.3) 100%);
     backdrop-filter: blur(20px);
@@ -893,7 +852,7 @@ section {
     opacity: 1 !important;
     visibility: visible !important;
     width: 100%;
-    order: 2;
+    order: 2; /* DESPUÉS DE LA TABLA */
     margin-top: 0;
 }
 
@@ -1013,7 +972,7 @@ section {
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 215, 0, 0.2);
-    order: 3;
+    order: 3; /* DESPUÉS DE LAS VENTAJAS */
 }
 
 .note-icon {
@@ -1075,6 +1034,7 @@ section {
     align-items: stretch;
 }
 
+/* === CORRECCIÓN CRÍTICA: PLANES - MISMA ANIMACIÓN PARA TODOS === */
 .plan-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -1092,11 +1052,13 @@ section {
     user-select: none;
 }
 
+/* ELIMINAR ESCALA POR DEFECTO DEL PLAN DEL MEDIO */
 .plan-card.featured {
     border-color: var(--accent);
     background: rgba(255, 255, 255, 0.08);
 }
 
+/* ANIMACIÓN HOVER IDÉNTICA PARA LOS 3 PLANES */
 .plan-card:hover,
 .plan-card.featured:hover {
     transform: translateY(-8px) scale(1.02);
@@ -1365,6 +1327,7 @@ footer {
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
+    all: unset;
     display: flex !important;
     align-items: center !important;
     gap: 0.8rem !important;
@@ -1537,6 +1500,7 @@ a.footer-logo {
     -webkit-touch-callout: none !important;
     user-select: none !important;
     outline: none !important;
+    all: unset;
     display: flex !important;
     align-items: center !important;
     gap: 0.8rem !important;
@@ -1544,6 +1508,7 @@ a.footer-logo {
     transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
 }
 
+/* Eliminar cualquier efecto de focus no deseado */
 a.logo:focus,
 a.footer-logo:focus,
 a.logo:active,
@@ -1552,6 +1517,7 @@ a.footer-logo:active {
     box-shadow: none !important;
 }
 
+/* Mantener el efecto hover existente */
 a.logo:hover,
 a.footer-logo:hover {
     transform: translateY(-2px) !important;
@@ -1599,6 +1565,7 @@ a.footer-logo:hover h3 {
     display: none;
 }
 
+/* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -1624,6 +1591,7 @@ a.footer-logo:hover h3 {
     border: none;
 }
 
+/* CORRECCIÓN: Iconos de flechas sin oscurecerse */
 .carousel-arrow i {
     color: var(--accent);
     transition: none !important;
@@ -1676,6 +1644,7 @@ a.footer-logo:hover h3 {
     pointer-events: auto;
 }
 
+/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
 .plan-card-mobile {
     transition: none !important;
 }
@@ -1870,6 +1839,7 @@ a.footer-logo:hover h3 {
 
 /* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
 @media (min-width: 769px) {
+    /* Animación escalonada para elementos del hero */
     .hero-content h1 {
         opacity: 0;
         transform: translateY(30px) scale(0.95);
@@ -1900,6 +1870,7 @@ a.footer-logo:hover h3 {
         animation: heroStatLoad 0.6s ease-out 1.4s forwards;
     }
     
+    /* CORRECCIÓN: Botones del hero perfectamente equilibrados */
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
@@ -1909,6 +1880,7 @@ a.footer-logo:hover h3 {
         flex-wrap: nowrap;
     }
     
+    /* BOTONES PERFECTAMENTE EQUILIBRADOS - SIN APLASTARSE */
     .btn-primary, .btn-secondary {
         flex: none;
         min-width: auto;
@@ -1917,10 +1889,12 @@ a.footer-logo:hover h3 {
         padding: 0.9rem 2.2rem;
     }
     
+    /* Botón primario con espacio adecuado */
     .btn-primary {
         min-width: 280px;
     }
     
+    /* Botón secundario con espacio adecuado */
     .btn-secondary {
         min-width: 200px;
     }
@@ -1940,12 +1914,14 @@ a.footer-logo:hover h3 {
 
 /* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
 @media (min-width: 769px) {
+    /* 1. CORRECCIÓN CRÍTICA: ELIMINAR PARPADEO NEGRO EN TODOS LOS BOTONES */
     .btn-primary::before,
     .btn-plan::before,
     .btn-plan.featured::before {
         content: none;
     }
     
+    /* Botón "Descubre Planes Escalables" */
     .btn-primary {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         background: var(--accent);
@@ -1961,6 +1937,7 @@ a.footer-logo:hover h3 {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
+    /* 2. CORRECCIÓN CRÍTICA: "Quiero mi Ecommerce" */
     .btn-plan.featured {
         background: var(--accent);
         color: var(--dark);
@@ -1976,6 +1953,7 @@ a.footer-logo:hover h3 {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
+    /* 3. CORRECCIÓN CRÍTICA: Botones de planes normales */
     .btn-plan {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         position: relative;
@@ -1989,6 +1967,7 @@ a.footer-logo:hover h3 {
         border-color: rgba(255, 215, 0, 0.4);
     }
     
+    /* 4. Servicios - ICONOS CON EFECTO FLUIDO MEJORADO */
     .service-card .service-icon {
         transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
@@ -2002,6 +1981,7 @@ a.footer-logo:hover h3 {
         text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
     
+    /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO CON EFECTO FLUIDO */
     .floating-card .card-icon {
         transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         display: inline-block;
@@ -2035,6 +2015,7 @@ a.footer-logo:hover h3 {
         transition: all 0.3s ease;
     }
     
+    /* 6. CORRECCIÓN: Planes */
     .plan-card:hover .price-amount {
         transform: scale(1.05);
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -2042,6 +2023,7 @@ a.footer-logo:hover h3 {
         text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
     }
     
+    /* 7. Servicios - hover ajustado */
     .service-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -2055,6 +2037,7 @@ a.footer-logo:hover h3 {
         background: rgba(255, 255, 255, 0.08);
     }
     
+    /* 8. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
         background: rgba(255, 215, 0, 0.08);
@@ -2065,11 +2048,13 @@ a.footer-logo:hover h3 {
 
 /* ===== FOOTER ESCRITORIO - MEJORAS ESPECÍFICAS PARA PC ===== */
 @media (min-width: 992px) {
+    /* 1. REDUCIR ESPACIO INNECESARIO EN EL FOOTER */
     footer {
         padding: 0.1rem 0;
         margin-top: -5px;
     }
     
+    /* 2. MEJORAR ESPACIADO Y ALINEACIÓN */
     .footer-content {
         display: flex;
         flex-direction: row;
@@ -2081,10 +2066,12 @@ a.footer-logo:hover h3 {
         min-height: 40px;
     }
     
+    /* 3. OCULTAR FOOTER MÓVIL EN PC */
     .footer-mobile {
         display: none;
     }
     
+    /* 4. MOSTRAR LAS TRES COLUMNAS EN PC */
     .footer-left,
     .footer-center,
     .footer-right {
@@ -2110,6 +2097,7 @@ a.footer-logo:hover h3 {
         flex: 1;
     }
     
+    /* 5. LOGO MÁS GRANDE Y CON EFECTO FLUIDO IDÉNTICO AL MENÚ */
     .footer-logo {
         margin: 0;
         padding: 0;
@@ -2136,6 +2124,7 @@ a.footer-logo:hover h3 {
         transition: color 0.2s ease, text-shadow 0.2s ease;
     }
     
+    /* EFECTO HOVER IDÉNTICO AL MENÚ - ULTRA FLUIDO */
     .footer-logo:hover {
         transform: translateY(-2px);
         background: transparent;
@@ -2150,6 +2139,7 @@ a.footer-logo:hover h3 {
         text-shadow: 0 2px 4px rgba(255, 215, 0, 0.2);
     }
     
+    /* 6. CENTRO: FRASE SIN LÍNEAS LATERALES Y QUE NO BAJE DE LÍNEA */
     .footer-center .footer-tagline {
         opacity: 0.9;
         line-height: 1.3;
@@ -2167,6 +2157,7 @@ a.footer-logo:hover h3 {
         flex-shrink: 1;
     }
     
+    /* 7. REDES SOCIALES CON EFECTO FLUIDO IDÉNTICO */
     .social-links {
         margin: 0;
         padding: 0;
@@ -2195,6 +2186,7 @@ a.footer-logo:hover h3 {
         transform: translateY(-2px);
     }
     
+    /* 8. FOOTER BOTTON MÁS COMPACTO */
     .footer-bottom {
         padding: 0.4rem 0 0.2rem;
         margin-top: 0.1rem;
@@ -2203,6 +2195,7 @@ a.footer-logo:hover h3 {
         line-height: 1.2;
     }
     
+    /* 9. CONTENEDOR */
     footer .container {
         padding: 0 20px;
         margin: 0 auto;
@@ -2232,7 +2225,7 @@ footer:last-child {
     will-change: transform, box-shadow;
 }
 
-/* ===== MEJORAS CRÍTICAS PARA MÓVIL - TABLA COMPARATIVA PERFECTA PARA ANDROID ===== */
+/* ===== MEJORAS CRÍTICAS PARA MÓVIL - ELIMINAR EFECTOS AZULES Y MEJORAR SENSACIÓN APP ===== */
 @media (max-width: 768px) {
     /* 1. DESACTIVAR COMPLETAMENTE LA SELECCIÓN DE TEXTO EN ELEMENTOS INTERACTIVOS */
     .btn-primary,
@@ -2390,171 +2383,92 @@ footer:last-child {
         text-align: center;
     }
     
-    /* ===== CORRECCIÓN CRÍTICA: TABLA COMPARATIVA PERFECTA PARA ANDROID ===== */
-    .comparison-header,
-    .comparison-row {
-        grid-template-columns: 1.8fr 1fr 1fr 1fr;
-        padding: 12px 10px;
-        font-size: 0.8rem;
-        gap: 8px;
-        min-height: 60px;
+    /* ===== ANIMACIONES DEL HERO PARA MÓVIL - CARGAR IGUAL DE FACHERO QUE EN PC ===== */
+    .hero-content h1 {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
     }
     
-    .comparison-feature {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-        padding: 8px 4px;
-        align-items: center;
-        font-size: 0.85rem;
-        justify-content: center;
+    .hero-content p {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
     }
     
-    .comparison-feature i {
-        width: 20px;
-        font-size: 1rem;
-        margin-bottom: 0;
-        display: block;
+    .hero-stats .stat:nth-child(1) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1s forwards;
     }
     
-    .feature-text {
-        font-size: 0.75rem;
-        line-height: 1.2;
-        max-width: 100%;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 2.4em;
-        text-align: center;
-        margin-top: 2px;
+    .hero-stats .stat:nth-child(2) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
     }
     
-    .platform-name {
-        font-size: 0.75rem;
-        line-height: 1.2;
-        margin-top: 3px;
-        display: block;
-        text-align: center;
+    .hero-stats .stat:nth-child(3) {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
     }
     
-    .feature-value {
-        font-size: 0.7rem;
-        line-height: 1.1;
-        margin-top: 3px;
-        padding: 0 2px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 2.2em;
-        text-align: center;
+    .hero-buttons {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
     }
     
-    .comparison-avalon,
-    .comparison-other {
-        padding: 6px 3px;
-        min-height: 50px;
-        justify-content: flex-start;
-        text-align: center;
+    .floating-card:nth-child(1) {
+        opacity: 0;
+        transform: translateX(30px) rotate(2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
     }
     
-    .success,
-    .error,
-    .warning {
-        font-size: 1.2rem !important;
-        margin-bottom: 3px;
-        display: block;
+    .floating-card:nth-child(2) {
+        opacity: 0;
+        transform: translateX(30px) rotate(-2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
     
-    /* Asegurar que la tabla no se desborde */
-    .comparison-table {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        border-radius: 12px;
-        margin: 0 -10px;
-        padding: 0 10px;
-        display: block;
-        width: calc(100% + 20px);
+    /* Asegurar que los hover effects no se activen en móvil */
+    .service-card:hover,
+    .plan-card:hover,
+    .floating-card:hover,
+    .btn-plan:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none !important;
+        box-shadow: var(--shadow) !important;
     }
     
-    .comparison-table::-webkit-scrollbar {
-        display: none;
+    .floating-card {
+        animation: none !important;
     }
     
-    .comparison-logo-img {
-        height: 24px;
-        margin-bottom: 2px;
+    .floating-card:hover {
+        transform: none !important;
     }
     
-    /* Ajustes para la sección comparativa completa */
-    .comparison {
-        padding: 60px 0;
+    /* Para móvil - eliminar efectos hover en logos */
+    a.logo:hover,
+    a.footer-logo:hover {
+        transform: none !important;
     }
     
-    .comparison-grid {
-        gap: 2rem;
+    a.logo:hover .logo-img,
+    a.footer-logo:hover .logo-img {
+        filter: none !important;
     }
     
-    .advantages-box {
-        padding: 1.8rem;
+    a.logo:hover h2,
+    a.footer-logo:hover h3 {
+        color: var(--light) !important;
+        text-shadow: none !important;
     }
     
-    .advantages-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.8rem;
-    }
-    
-    .advantages-header h3 {
-        font-size: 1.5rem;
-    }
-    
-    .advantage-item {
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .advantage-icon {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .advantage-icon i {
-        font-size: 1.3rem;
-    }
-    
-    .advantage-content h4 {
-        font-size: 1.1rem;
-    }
-    
-    .advantage-content p {
-        font-size: 0.9rem;
-    }
-    
-    .comparison-note {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-    
-    .note-icon {
-        width: 50px;
-        height: 50px;
-        margin: 0 auto;
-    }
-    
-    .note-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .note-content p {
-        font-size: 0.95rem;
-    }
-    
-    /* Fondo unificado para toda la página */
+    /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
     .animated-background {
         background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
         position: fixed;
@@ -2669,30 +2583,110 @@ footer:last-child {
         font-size: 0.8rem;
     }
     
-    .hero-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
+    /* === CORRECCIÓN CRÍTICA: TABLA COMPARATIVA PARA ANDROID === */
+    .comparison {
+        padding: 60px 0;
     }
     
-    .btn-primary, .btn-secondary {
-        width: 100%;
+    .comparison-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 12px;
+        margin: 0 -10px;
+        padding: 0 10px;
+        width: calc(100% + 20px);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .comparison-table::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .comparison-header {
+        grid-template-columns: 40% 20% 20% 20%;
+        padding: 0.8rem 0.5rem;
+        font-size: 0.75rem;
+        gap: 0.3rem;
+        min-width: 600px;
+    }
+    
+    .comparison-row {
+        grid-template-columns: 40% 20% 20% 20%;
+        padding: 0.7rem 0.5rem;
+        font-size: 0.72rem;
+        gap: 0.3rem;
+        min-height: 50px;
+        align-items: center;
+        min-width: 600px;
+    }
+    
+    /* Asegurar que el texto nunca desaparezca */
+    .comparison-feature {
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+    }
+    
+    .comparison-feature span {
+        display: inline-block !important;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow: visible;
+    }
+    
+    .comparison-feature i {
+        font-size: 0.8rem;
+        flex-shrink: 0;
+    }
+    
+    .comparison-avalon,
+    .comparison-other {
+        font-size: 0.7rem;
+        text-align: center;
+        line-height: 1.1;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
+        gap: 0.2rem;
+        padding: 0.2rem;
     }
     
-    .hero-image {
-        order: 2;
-        flex-direction: column;
-        height: auto;
-        gap: 1rem;
-        margin-top: 1rem;
+    /* Los iconos de check/error más pequeños */
+    .comparison-avalon .success,
+    .comparison-other .error,
+    .comparison-other .warning {
+        font-size: 1rem;
     }
     
-    .floating-card {
-        width: 100%;
+    /* Texto destacado siempre visible */
+    .feature-highlight {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.4rem;
+        white-space: normal;
+        line-height: 1.1;
+        margin-top: 0.1rem;
+        display: inline-block;
         max-width: 100%;
-        height: auto;
-        min-height: 180px;
-        margin: 0;
+        word-break: break-word;
+    }
+    
+    /* Logos más pequeños */
+    .comparison-logo-img {
+        height: 20px;
+        width: auto;
+    }
+    
+    /* Eliminar cualquier display: none que afecte texto */
+    .comparison-feature span,
+    .comparison-avalon span,
+    .comparison-other span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* Section titles móvil */
@@ -2713,6 +2707,66 @@ footer:last-child {
     
     .service-card {
         padding: 1.5rem;
+    }
+    
+    .comparison-grid {
+        gap: 2rem;
+    }
+    
+    .advantages-box {
+        padding: 1.8rem;
+    }
+    
+    .advantages-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .advantages-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .advantage-item {
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .advantage-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .advantage-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .advantage-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .advantage-content p {
+        font-size: 0.9rem;
+    }
+    
+    .comparison-note {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .note-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    
+    .note-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .note-content p {
+        font-size: 0.95rem;
     }
     
     /* Plans - ocultar desktop, mostrar carrusel */
@@ -2826,103 +2880,76 @@ footer:last-child {
     }
     
     /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN AMBOS CARRUSELES ===== */
+    /* Eliminar todas las transiciones CSS que interfieran con el scroll */
     .plan-card-mobile {
         transition: none !important;
     }
     
+    /* Igualar el scroll behavior de ambos carruseles */
     .plans-carousel {
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
     }
-    
-    /* ===== ANIMACIONES DEL HERO PARA MÓVIL ===== */
-    .hero-content h1 {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        animation: heroTitleLoad 0.9s cubic-bezier(0.215, 0.610, 0.355, 1) 0.2s forwards;
+}
+
+/* ===== CORRECCIÓN ESPECÍFICA PARA ANDROID TABLETS (entre 481px-768px) ===== */
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Tabla comparativa optimizada para tablets Android */
+    .comparison-header {
+        grid-template-columns: 35% 22% 22% 21%;
+        padding: 0.9rem 0.7rem;
+        font-size: 0.8rem;
     }
     
-    .hero-content p {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroTextLoad 0.8s ease-out 0.6s forwards;
+    .comparison-row {
+        grid-template-columns: 35% 22% 22% 21%;
+        padding: 0.8rem 0.7rem;
+        font-size: 0.78rem;
+        min-height: 55px;
     }
     
-    .hero-stats .stat:nth-child(1) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1s forwards;
+    .comparison-feature {
+        font-size: 0.82rem;
+        gap: 0.6rem;
     }
     
-    .hero-stats .stat:nth-child(2) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.2s forwards;
+    .comparison-feature span {
+        display: inline !important;
+        white-space: normal;
+        line-height: 1.3;
     }
     
-    .hero-stats .stat:nth-child(3) {
-        opacity: 0;
-        transform: translateY(15px);
-        animation: heroStatLoad 0.6s ease-out 1.4s forwards;
+    /* Asegurar que todo el contenido sea visible */
+    .comparison-avalon span,
+    .comparison-other span {
+        font-size: 0.75rem;
+        word-break: break-word;
     }
     
-    .hero-buttons {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
+    .feature-highlight {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+        line-height: 1.2;
     }
     
-    .floating-card:nth-child(1) {
-        opacity: 0;
-        transform: translateX(30px) rotate(2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
-    }
-    
-    .floating-card:nth-child(2) {
-        opacity: 0;
-        transform: translateX(30px) rotate(-2deg);
-        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
-    }
-    
-    .service-card:hover,
-    .plan-card:hover,
-    .floating-card:hover,
-    .btn-plan:hover,
-    .btn-primary:hover,
-    .btn-secondary:hover {
-        transform: none !important;
-        box-shadow: var(--shadow) !important;
+    /* Mejorar las cards del hero en tablets */
+    .hero-image {
+        flex-direction: row;
+        gap: 1.5rem;
     }
     
     .floating-card {
-        animation: none !important;
-    }
-    
-    .floating-card:hover {
-        transform: none !important;
-    }
-    
-    a.logo:hover,
-    a.footer-logo:hover {
-        transform: none !important;
-    }
-    
-    a.logo:hover .logo-img,
-    a.footer-logo:hover .logo-img {
-        filter: none !important;
-    }
-    
-    a.logo:hover h2,
-    a.footer-logo:hover h3 {
-        color: var(--light) !important;
-        text-shadow: none !important;
+        width: 48%;
+        height: 200px;
     }
 }
 
 /* ===== AJUSTES ESPECÍFICOS PARA iOS ===== */
 @supports (-webkit-touch-callout: none) {
+    /* iOS-specific styles */
     @media (max-width: 768px) {
+        /* Remover estilos nativos de iOS */
         input,
         textarea,
         button,
@@ -2932,24 +2959,28 @@ footer:last-child {
             border-radius: 0;
         }
         
+        /* Evitar zoom en inputs */
         input[type="text"],
         input[type="email"],
         input[type="tel"],
         input[type="number"],
         textarea {
-            font-size: 16px;
+            font-size: 16px; /* Evita zoom automático en iOS */
         }
         
+        /* Mejorar scrolling en iOS */
         .plans-carousel,
         .plan-features-mobile {
             -webkit-overflow-scrolling: touch;
         }
         
+        /* Prevenir bounce en iOS */
         body {
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
         }
         
+        /* Fix para botones en iOS */
         button,
         .btn-primary,
         .btn-secondary,
@@ -2964,11 +2995,13 @@ footer:last-child {
 
 /* ===== AJUSTES PARA ANDROID ===== */
 @media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
+    /* Remover highlights en Chrome Android */
     *:focus {
         outline: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
     
+    /* Mejorar renderizado en Android */
     .btn-primary,
     .btn-secondary,
     .btn-plan,
@@ -2988,62 +3021,46 @@ footer:last-child {
         font-size: 1.6rem;
     }
     
-    /* Tabla comparativa ultra compacta */
-    .comparison-header,
-    .comparison-row {
-        grid-template-columns: 1.8fr 0.9fr 0.9fr 0.9fr;
-        padding: 10px 8px;
+    /* Tabla comparativa optimizada para pantallas muy pequeñas */
+    .comparison-header {
+        grid-template-columns: 45% 18% 18% 19%;
+        padding: 0.7rem 0.4rem;
         font-size: 0.7rem;
-        gap: 6px;
-        min-height: 50px;
+    }
+    
+    .comparison-row {
+        grid-template-columns: 45% 18% 18% 19%;
+        padding: 0.6rem 0.4rem;
+        font-size: 0.68rem;
+        min-height: 45px;
     }
     
     .comparison-feature {
-        padding: 6px 2px;
-        gap: 3px;
-    }
-    
-    .comparison-feature .feature-text {
         font-size: 0.7rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 2.1em;
+        gap: 0.4rem;
     }
     
-    .platform-name {
+    .comparison-feature i {
+        font-size: 0.7rem;
+    }
+    
+    .comparison-avalon,
+    .comparison-other {
         font-size: 0.65rem;
-        display: none;
     }
     
-    .feature-value {
+    .feature-highlight {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.3rem;
+    }
+    
+    /* Mantener todo el texto visible - NUNCA usar display: none */
+    .comparison-feature span,
+    .comparison-avalon span,
+    .comparison-other span {
+        display: block !important;
         font-size: 0.65rem;
-        line-height: 1;
-        padding: 0 1px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 2.0em;
-    }
-    
-    .comparison-avalon .platform-name,
-    .comparison-other .platform-name {
-        display: none;
-    }
-    
-    .comparison-logo-img {
-        height: 20px;
-        width: auto;
-    }
-    
-    .comparison-avalon i,
-    .comparison-other i {
-        font-size: 1rem;
-        margin-bottom: 2px;
+        line-height: 1.1;
     }
     
     .plan-card-mobile {
@@ -3062,12 +3079,32 @@ footer:last-child {
         font-size: 1rem;
     }
     
+    /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
     .carousel-arrow.prev-arrow {
         left: -20px;
     }
     
     .carousel-arrow.next-arrow {
         right: -20px;
+    }
+    
+    /* Ajustar hero en pantallas muy pequeñas */
+    .hero-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .stat {
+        flex: 0 0 45%;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.7rem;
     }
 }
 
