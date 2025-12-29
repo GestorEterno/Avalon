@@ -1,24 +1,33 @@
-// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA MÓVIL
-// MODIFICACIÓN ESPECÍFICA: Notificación de mantenimiento al tocar botones de planes
+// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON TODAS LAS MEJORAS CRÍTICAS
+// MODIFICACIONES CRÍTICAS IMPLEMENTADAS:
+// 1. Comparativa en móvil reemplazada por tarjetas verticales
+// 2. Botón "Calcula tu ahorro" cambiado por CTA directo a planes
+// 3. Sistema para mostrar/ocultar versión móvil vs escritorio
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
-});
+}
+
+if (navLinks.length > 0) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+}
 
 // ===== SCROLL SUAVE AL INICIO =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,28 +74,34 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== NAVEGACIÓN ACTIVA SUAVE =====
 const sections = document.querySelectorAll('section');
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
+if (sections.length > 0) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                if (navLinks.length > 0) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
                 }
-            });
-        }
-    });
-}, { threshold: 0.3 });
+            }
+        });
+    }, { threshold: 0.3 });
 
-sections.forEach(section => {
-    sectionObserver.observe(section);
-});
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+}
 
 // ===== EFECTO SCROLL NAVBAR =====
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
@@ -105,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box, .comparison-highlight');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box, .comparison-mobile-card');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -119,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('reveal');
         revealObserver.observe(el);
     });
+    
+    // Inicializar comparativa (muestra/oculta versión móvil vs escritorio)
+    initComparisonTable();
     
     // Inicializar carruseles solo en móvil
     if (window.innerWidth <= 768) {
@@ -136,18 +154,50 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMaintenanceNotification();
 });
 
+// ===== FUNCIÓN PARA MANEJAR LA COMPARATIVA (MÓVIL vs ESCRITORIO) =====
+function initComparisonTable() {
+    const comparisonTable = document.querySelector('.comparison-table');
+    const comparisonMobile = document.querySelector('.comparison-mobile-version');
+    
+    if (!comparisonTable || !comparisonMobile) {
+        console.log('❌ No se encontraron elementos de comparativa');
+        return;
+    }
+    
+    // Función para actualizar la vista según el tamaño de pantalla
+    function updateComparisonView() {
+        if (window.innerWidth <= 768) {
+            // Móvil: mostrar tarjetas verticales, ocultar tabla
+            comparisonTable.style.display = 'none';
+            comparisonMobile.style.display = 'block';
+        } else {
+            // Escritorio: mostrar tabla, ocultar tarjetas móviles
+            comparisonTable.style.display = 'block';
+            comparisonMobile.style.display = 'none';
+        }
+    }
+    
+    // Inicializar según el tamaño actual
+    updateComparisonView();
+    
+    // Actualizar en resize
+    window.addEventListener('resize', updateComparisonView);
+    
+    console.log('✅ Sistema de comparativa móvil/escritorio inicializado');
+}
+
 // ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
 function initMobileCarousels() {
     initPlansCarousel();
 }
 
-// MODIFICACIÓN CRÍTICA: Configuración idéntica para ambos carruseles
+// Configuración idéntica para ambos carruseles
 const CAROUSEL_CONFIG = {
-    scrollDuration: 300, // MISMA DURACIÓN PARA AMBOS
-    scrollBehavior: 'smooth', // MISMO COMPORTAMIENTO
-    scrollSnapType: 'x mandatory', // MISMO SNAP
-    arrowTransition: 0.15, // MISMA TRANSICIÓN DE FLECHAS
-    indicatorTransition: 0.2 // MISMA TRANSICIÓN DE INDICADORES
+    scrollDuration: 300,
+    scrollBehavior: 'smooth',
+    scrollSnapType: 'x mandatory',
+    arrowTransition: 0.15,
+    indicatorTransition: 0.2
 };
 
 // Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
@@ -175,9 +225,11 @@ function initPlansCarousel() {
         isAnimating = true;
         
         // Actualizar indicadores
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentIndex);
-        });
+        if (indicators.length > 0) {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
         
         // Actualizar cards
         planCards.forEach((card, index) => {
@@ -226,14 +278,16 @@ function initPlansCarousel() {
     }
     
     // Indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            if (!isAnimating) {
-                currentIndex = index;
-                updateCarousel();
-            }
+    if (indicators.length > 0) {
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                if (!isAnimating) {
+                    currentIndex = index;
+                    updateCarousel();
+                }
+            });
         });
-    });
+    }
     
     // Scroll automático con debounce mejorado
     let scrollTimeout;
@@ -277,6 +331,8 @@ function initPlansCarousel() {
 // ===== CONTADORES ANIMADOS =====
 function initCounters() {
     const stats = document.querySelectorAll('.stat');
+    
+    if (stats.length === 0) return;
     
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -377,6 +433,9 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
         
+        // Re-inicializar comparativa al cambiar tamaño
+        initComparisonTable();
+        
         // Re-inicializar carruseles si cambiamos a móvil
         if (window.innerWidth <= 768) {
             const carouselsExist = document.querySelector('.plans-carousel');
@@ -443,7 +502,7 @@ document.addEventListener('dragstart', function(e) {
 
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .note-link, .disclaimer-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .note-cta .btn-primary, .disclaimer-link');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -478,3 +537,6 @@ document.addEventListener('readystatechange', () => {
         document.body.classList.add('loaded');
     }
 });
+
+// ===== INICIALIZACIÓN FINAL =====
+console.log('🚀 AVALON CREATORS ECOMMERCE - JavaScript cargado correctamente');
