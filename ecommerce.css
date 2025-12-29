@@ -1,4 +1,4 @@
-/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS APLICADAS */
+/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - TODAS LAS MEJORAS CRÍTICAS APLICADAS */
 /* ESPECÍFICO PARA PÁGINA ECOMMERCE */
 
 :root {
@@ -699,7 +699,7 @@ section {
     margin-bottom: 3rem;
 }
 
-/* Tabla de Comparación CORREGIDA - ORDEN: AVALON, TIENDANUBE, SHOPIFY */
+/* Tabla de Comparación CORREGIDA - SOLO PARA ESCRITORIO */
 .comparison-table {
     background: rgba(15, 52, 96, 0.15);
     backdrop-filter: blur(20px);
@@ -837,6 +837,134 @@ section {
     border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
+/* ===== NUEVO DISEÑO PARA MÓVIL - TARJETAS VERTICALES ===== */
+.comparison-mobile-version {
+    display: none;
+    width: 100%;
+}
+
+/* Tarjeta por característica en móvil */
+.comparison-mobile-card {
+    background: rgba(15, 52, 96, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+.comparison-mobile-header i {
+    color: var(--accent);
+    font-size: 1.3rem;
+    background: rgba(255, 215, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-mobile-header h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--light);
+    flex: 1;
+}
+
+/* Plataformas en columna */
+.comparison-mobile-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.comparison-mobile-platform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparison-mobile-platform.avalon {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    order: -1; /* Avalon primero */
+}
+
+.comparison-mobile-platform .platform-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.comparison-mobile-platform .platform-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparison-mobile-platform .platform-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.comparison-mobile-platform .platform-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comparison-mobile-platform .status-icon {
+    font-size: 1.1rem;
+}
+
+.comparison-mobile-platform .status-text {
+    font-size: 0.85rem;
+    max-width: 120px;
+    text-align: right;
+    line-height: 1.2;
+}
+
+/* Iconos de estado */
+.status-icon.success {
+    color: #00ff88;
+}
+
+.status-icon.error {
+    color: #ff4444;
+}
+
+.status-icon.warning {
+    color: #ffaa00;
+}
+
+.feature-highlight-mobile {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--accent-light);
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+
 /* ===== CORRECCIÓN CRÍTICA: PANEL DE VENTAJAS ABAJO DE LA TABLA ===== */
 .advantages-box {
     background: linear-gradient(135deg, rgba(83, 52, 131, 0.2) 0%, rgba(15, 52, 96, 0.3) 100%);
@@ -961,18 +1089,20 @@ section {
     box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
 }
 
-/* Nota Comparativa */
+/* Nota Comparativa MEJORADA */
 .comparison-note {
     background: linear-gradient(90deg, rgba(15, 52, 96, 0.4) 0%, rgba(26, 26, 46, 0.6) 100%);
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     border-left: 5px solid var(--accent);
     display: flex;
+    flex-direction: column;
     gap: 1.5rem;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 215, 0, 0.2);
-    order: 3; /* DESPUÉS DE LAS VENTAJAS */
+    text-align: center;
+    order: 3;
 }
 
 .note-icon {
@@ -994,35 +1124,78 @@ section {
 
 .note-content {
     flex: 1;
+    width: 100%;
+}
+
+.note-content h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
 }
 
 .note-content p {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.7;
     font-size: 1.05rem;
     color: var(--light);
 }
 
-.note-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    padding: 0.8rem 1.5rem;
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+.note-content .comparison-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 1.5rem 0;
 }
 
-.note-link:hover {
-    background: rgba(255, 215, 0, 0.2);
-    transform: translateX(10px);
-    text-decoration: none;
-    border-color: var(--accent);
+.note-content .comparison-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+.note-content .comparison-number .platform {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+}
+
+.note-content .comparison-number .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.note-content .comparison-number .bad {
+    color: #ff6b6b;
+}
+
+.note-content .comparison-number .good {
+    color: #51cf66;
+}
+
+.note-cta {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.note-cta .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+}
+
+.note-cta .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
 }
 
 /* === PLANS DESKTOP === */
@@ -1910,6 +2083,16 @@ a.footer-logo:hover h3 {
         transform: translateX(30px) rotate(-2deg);
         animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
     }
+    
+    /* En escritorio ocultar la versión móvil de comparación */
+    .comparison-mobile-version {
+        display: none !important;
+    }
+    
+    /* Mostrar tabla en escritorio */
+    .comparison-table {
+        display: block !important;
+    }
 }
 
 /* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
@@ -2583,116 +2766,19 @@ footer:last-child {
         font-size: 0.8rem;
     }
     
-    /* === CORRECCIÓN CRÍTICA: TABLA COMPARATIVA PARA ANDROID === */
+    /* === CORRECCIÓN CRÍTICA: TABLA COMPARATIVA PARA MÓVIL - REEMPLAZAR POR TARJETAS ===== */
     .comparison {
         padding: 60px 0;
     }
     
+    /* En móvil ocultar tabla y mostrar versión móvil */
     .comparison-table {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        border-radius: 12px;
-        margin: 0 -10px;
-        padding: 0 10px;
-        width: calc(100% + 20px);
-        transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
+        display: none !important;
     }
     
-    .comparison-table::-webkit-scrollbar {
-        display: none;
-    }
-    
-    /* === CORRECCIÓN: COLUMNAS MEJOR DISTRIBUIDAS - MENOS ESPACIO VACÍO === */
-    .comparison-header {
-        grid-template-columns: 25% 25% 25% 25%; /* Proporciones más equilibradas */
-        padding: 0.8rem 0.5rem;
-        font-size: 0.75rem;
-        gap: 0.2rem;
-        min-width: 550px;
-    }
-    
-    .comparison-row {
-        grid-template-columns: 25% 25% 25% 25%; /* Mismas proporciones */
-        padding: 0.7rem 0.5rem;
-        font-size: 0.72rem;
-        gap: 0.2rem;
-        min-height: 50px;
-        align-items: center;
-        min-width: 550px;
-    }
-    
-    /* Asegurar que el texto nunca desaparezca */
-    .comparison-feature {
-        gap: 0.4rem;
-        font-size: 0.75rem;
-        line-height: 1.2;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 0 0.3rem;
-    }
-    
-    .comparison-feature span {
-        display: inline-block !important;
-        white-space: normal;
-        word-wrap: break-word;
-        overflow: visible;
-        font-size: 0.75rem;
-    }
-    
-    .comparison-feature i {
-        font-size: 0.8rem;
-        flex-shrink: 0;
-        min-width: 16px;
-    }
-    
-    .comparison-avalon,
-    .comparison-other {
-        font-size: 0.7rem;
-        text-align: center;
-        line-height: 1.1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.2rem;
-        padding: 0.2rem;
-    }
-    
-    /* Los iconos de check/error más pequeños */
-    .comparison-avalon .success,
-    .comparison-other .error,
-    .comparison-other .warning {
-        font-size: 1rem;
-    }
-    
-    /* Texto destacado siempre visible */
-    .feature-highlight {
-        font-size: 0.65rem;
-        padding: 0.15rem 0.4rem;
-        white-space: normal;
-        line-height: 1.1;
-        margin-top: 0.1rem;
-        display: inline-block;
-        max-width: 100%;
-        word-break: break-word;
-    }
-    
-    /* Logos más pequeños */
-    .comparison-logo-img {
-        height: 20px;
-        width: auto;
-    }
-    
-    /* Eliminar cualquier display: none que afecte texto */
-    .comparison-feature span,
-    .comparison-avalon span,
-    .comparison-other span {
+    .comparison-mobile-version {
         display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        margin-top: 2rem;
     }
     
     /* Section titles móvil */
@@ -2773,6 +2859,15 @@ footer:last-child {
     
     .note-content p {
         font-size: 0.95rem;
+    }
+    
+    .note-content .comparison-numbers {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .note-content .comparison-number {
+        min-width: 100%;
     }
     
     /* Plans - ocultar desktop, mostrar carrusel */
@@ -2901,48 +2996,6 @@ footer:last-child {
 
 /* ===== CORRECCIÓN ESPECÍFICA PARA ANDROID TABLETS (entre 481px-768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
-    /* Tabla comparativa optimizada para tablets Android - PROPORCIONES EQUILIBRADAS */
-    .comparison-header {
-        grid-template-columns: 25% 25% 25% 25%;
-        padding: 0.9rem 0.7rem;
-        font-size: 0.8rem;
-        gap: 0.3rem;
-    }
-    
-    .comparison-row {
-        grid-template-columns: 25% 25% 25% 25%;
-        padding: 0.8rem 0.7rem;
-        font-size: 0.78rem;
-        min-height: 55px;
-        gap: 0.3rem;
-    }
-    
-    .comparison-feature {
-        font-size: 0.82rem;
-        gap: 0.5rem;
-        justify-content: flex-start;
-    }
-    
-    .comparison-feature span {
-        display: inline !important;
-        white-space: normal;
-        line-height: 1.3;
-        font-size: 0.8rem;
-    }
-    
-    /* Asegurar que todo el contenido sea visible */
-    .comparison-avalon span,
-    .comparison-other span {
-        font-size: 0.75rem;
-        word-break: break-word;
-    }
-    
-    .feature-highlight {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-        line-height: 1.2;
-    }
-    
     /* Mejorar las cards del hero en tablets - SIN CAMBIOS ADICIONALES */
     .hero-image {
         flex-direction: row;
@@ -3031,54 +3084,6 @@ footer:last-child {
         font-size: 1.6rem;
     }
     
-    /* Tabla comparativa optimizada para pantallas muy pequeñas - PROPORCIONES COMPACTAS */
-    .comparison-header {
-        grid-template-columns: 30% 23% 23% 24%;
-        padding: 0.7rem 0.4rem;
-        font-size: 0.7rem;
-        gap: 0.2rem;
-    }
-    
-    .comparison-row {
-        grid-template-columns: 30% 23% 23% 24%;
-        padding: 0.6rem 0.4rem;
-        font-size: 0.68rem;
-        min-height: 45px;
-        gap: 0.2rem;
-    }
-    
-    .comparison-feature {
-        font-size: 0.7rem;
-        gap: 0.3rem;
-        justify-content: flex-start;
-    }
-    
-    .comparison-feature i {
-        font-size: 0.7rem;
-        min-width: 14px;
-    }
-    
-    .comparison-avalon,
-    .comparison-other {
-        font-size: 0.65rem;
-    }
-    
-    .feature-highlight {
-        font-size: 0.6rem;
-        padding: 0.1rem 0.3rem;
-        line-height: 1.1;
-    }
-    
-    /* Mantener todo el texto visible - NUNCA usar display: none */
-    .comparison-feature span,
-    .comparison-avalon span,
-    .comparison-other span {
-        display: block !important;
-        font-size: 0.65rem;
-        line-height: 1.1;
-        word-break: break-word;
-    }
-    
     .plan-card-mobile {
         flex: 0 0 90%;
         width: 90%;
@@ -3133,6 +3138,15 @@ footer:last-child {
     
     .plans-container {
         display: grid;
+    }
+    
+    /* Mostrar tabla en escritorio, ocultar versión móvil */
+    .comparison-table {
+        display: block !important;
+    }
+    
+    .comparison-mobile-version {
+        display: none !important;
     }
 }
 
