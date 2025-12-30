@@ -1,5 +1,7 @@
-// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA MÓVIL
-// MODIFICACIÓN ESPECÍFICA: Experiencia fluida en carrusel y mejoras táctiles
+[file name]: ecommerce.js
+[file content begin]
+// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE
+// BASADO EN INDEX.JS CON MODIFICACIONES ESPECÍFICAS PARA ECCOMERCE
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
@@ -27,11 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logos.forEach(logo => {
         logo.addEventListener('click', function(e) {
-            // Permitir navegación normal a index.html
-            if (this.getAttribute('href') === 'index.html') {
-                return;
-            }
-            
             e.preventDefault();
             
             // Cerrar menú móvil si está abierto
@@ -43,17 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Scroll suave al inicio de la página actual
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Redirigir a index.html
+            window.location.href = 'index.html';
         });
     });
 });
 
 // ===== NAVEGACIÓN ACTIVA SUAVE =====
-const sections = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section');
 
 const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -61,7 +55,8 @@ const sectionObserver = new IntersectionObserver((entries) => {
             const id = entry.target.getAttribute('id');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
+                if (link.getAttribute('href') === `#${id}` || 
+                    (id === 'ecommerce-hero' && link.getAttribute('href') === 'ecommerce.html')) {
                     link.classList.add('active');
                 }
             });
@@ -92,10 +87,10 @@ window.addEventListener('scroll', () => {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
+    console.log('🛒 AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.plan-card, .comparison-section');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .step, .floating-card, .contact-card');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -110,21 +105,39 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // Inicializar carrusel solo en móvil
+    // Inicializar carruseles solo en móvil
     if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando carrusel ecommerce móvil...');
-        initMobileCarousel();
+        console.log('📱 Inicializando carruseles móviles para ecommerce...');
+        initMobileCarousels();
     }
     
     // Setup social notifications
     setupSocialNotifications();
     
+    // Setup modal de contacto
+    setupContactModal();
+    
     // Contadores animados
     initCounters();
 });
 
-// ===== CARRUSEL MÓVIL OPTIMIZADO Y FLUIDO =====
-function initMobileCarousel() {
+// ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
+function initMobileCarousels() {
+    initPlansCarousel();
+    initProcessCarousel();
+}
+
+// MODIFICACIÓN CRÍTICA: Configuración idéntica para ambos carruseles
+const CAROUSEL_CONFIG = {
+    scrollDuration: 300, // MISMA DURACIÓN PARA AMBOS
+    scrollBehavior: 'smooth', // MISMO COMPORTAMIENTO
+    scrollSnapType: 'x mandatory', // MISMO SNAP
+    arrowTransition: 0.15, // MISMA TRANSICIÓN DE FLECHAS
+    indicatorTransition: 0.2 // MISMA TRANSICIÓN DE INDICADORES
+};
+
+// Carrusel de Planes Ecommerce - VERSIÓN MEJORADA Y FLUIDA
+function initPlansCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
@@ -141,7 +154,7 @@ function initMobileCarousel() {
     let isScrolling = false;
     let isAnimating = false;
     
-    console.log(`📊 Carrusel ecommerce: ${totalSlides} slides encontrados`);
+    console.log(`📊 Carrusel de planes ecommerce: ${totalSlides} slides encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
@@ -157,20 +170,21 @@ function initMobileCarousel() {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave
+        // Scroll suave con MISMA DURACIÓN
         const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: 'smooth'
+                behavior: CAROUSEL_CONFIG.scrollBehavior,
+                duration: CAROUSEL_CONFIG.scrollDuration
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, 300);
+            }, CAROUSEL_CONFIG.scrollDuration);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -219,7 +233,7 @@ function initMobileCarousel() {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
             
-            // Cálculo de índice
+            // MISMO CÁLCULO DE ÍNDICE
             let newIndex = Math.round(scrollLeft / cardWidth);
             
             // Validar y ajustar índice
@@ -233,13 +247,134 @@ function initMobileCarousel() {
             }
             
             isScrolling = false;
-        }, 100);
+        }, 100); // MISMO DEBOUNCE TIME
     });
     
     // Inicializar
     updateCarousel(false);
     
     // Asegurar que las flechas sean visibles
+    if (prevArrow && nextArrow) {
+        prevArrow.style.display = 'flex';
+        nextArrow.style.display = 'flex';
+    }
+}
+
+// Carrusel de Proceso - VERSIÓN MEJORADA Y FLUIDA (IDÉNTICA A PLANS)
+function initProcessCarousel() {
+    const carousel = document.querySelector('.process-carousel');
+    const steps = document.querySelectorAll('.step-mobile');
+    const indicators = document.querySelectorAll('.process-indicator');
+    const prevArrow = document.querySelector('.process-carousel-arrow.prev-arrow');
+    const nextArrow = document.querySelector('.process-carousel-arrow.next-arrow');
+    
+    if (!carousel || steps.length === 0) {
+        console.log('❌ No se encontró carrusel de proceso ecommerce');
+        return;
+    }
+    
+    let currentIndex = 0;
+    const totalSlides = steps.length;
+    let isScrolling = false;
+    let isAnimating = false;
+    
+    console.log(`📊 Carrusel de proceso ecommerce: ${totalSlides} steps encontrados`);
+    
+    function updateCarousel(smooth = true) {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Actualizar steps
+        steps.forEach((step, index) => {
+            step.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Scroll suave con MISMA DURACIÓN
+        const stepWidth = steps[0].offsetWidth;
+        const scrollPosition = currentIndex * stepWidth;
+        
+        if (smooth) {
+            carousel.scrollTo({
+                left: scrollPosition,
+                behavior: CAROUSEL_CONFIG.scrollBehavior,
+                duration: CAROUSEL_CONFIG.scrollDuration
+            });
+            
+            setTimeout(() => {
+                isAnimating = false;
+                isScrolling = false;
+            }, CAROUSEL_CONFIG.scrollDuration);
+        } else {
+            carousel.scrollLeft = scrollPosition;
+            isAnimating = false;
+            isScrolling = false;
+        }
+    }
+    
+    // Flechas IDÉNTICAS al carrusel de planes
+    if (prevArrow) {
+        prevArrow.addEventListener('click', () => {
+            if (currentIndex > 0 && !isAnimating) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+    
+    if (nextArrow) {
+        nextArrow.addEventListener('click', () => {
+            if (currentIndex < totalSlides - 1 && !isAnimating) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+    
+    // Indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (!isAnimating) {
+                currentIndex = index;
+                updateCarousel();
+            }
+        });
+    });
+    
+    // Scroll automático IDÉNTICO al carrusel de planes
+    let scrollTimeout;
+    carousel.addEventListener('scroll', () => {
+        if (isAnimating) return;
+        
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        
+        scrollTimeout = setTimeout(() => {
+            const stepWidth = steps[0].offsetWidth;
+            const scrollLeft = carousel.scrollLeft;
+            
+            // MISMO CÁLCULO DE ÍNDICE
+            let newIndex = Math.round(scrollLeft / stepWidth);
+            
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex >= totalSlides) newIndex = totalSlides - 1;
+            
+            if (newIndex !== currentIndex && !isAnimating) {
+                currentIndex = newIndex;
+                updateCarousel(false);
+            }
+            
+            isScrolling = false;
+        }, 100); // MISMO DEBOUNCE TIME
+    });
+    
+    updateCarousel(false);
+    
+    // Asegurar visibilidad de flechas
     if (prevArrow && nextArrow) {
         prevArrow.style.display = 'flex';
         nextArrow.style.display = 'flex';
@@ -297,30 +432,16 @@ function animateCounter(element) {
 
 // ===== NOTIFICACIONES SOCIALES =====
 function setupSocialNotifications() {
+    const socialNotification = document.getElementById('social-notification');
     const underConstructionLinks = document.querySelectorAll('.social-under-construction');
     
-    if (underConstructionLinks.length === 0) return;
+    if (!socialNotification || underConstructionLinks.length === 0) return;
     
     function showNotification() {
-        // Crear notificación si no existe
-        let notification = document.getElementById('social-notification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'social-notification';
-            notification.className = 'social-notification';
-            notification.innerHTML = `
-                <div class="notification-content">
-                    <i class="fas fa-tools"></i>
-                    <p>Estamos trabajando en las redes, pronto estarán disponibles</p>
-                </div>
-            `;
-            document.body.appendChild(notification);
-        }
-        
-        notification.classList.add('active');
+        socialNotification.classList.add('active');
         
         setTimeout(() => {
-            notification.classList.remove('active');
+            socialNotification.classList.remove('active');
         }, 3000);
     }
     
@@ -332,6 +453,89 @@ function setupSocialNotifications() {
     });
 }
 
+// ===== MODAL DE CONTACTO =====
+function setupContactModal() {
+    const contactModal = document.getElementById('contact-modal');
+    const closeModalBtn = document.querySelector('.close-modal');
+    const planButtons = document.querySelectorAll('.btn-plan, .btn-plan-mobile');
+    const modalPlanOptions = document.querySelectorAll('.modal-plan-option');
+    
+    if (!contactModal) return;
+    
+    // Abrir modal al hacer clic en botones de planes
+    planButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Solo si el href es #contacto-ecommerce (no WhatsApp directo)
+            if (this.getAttribute('href') === '#contacto-ecommerce') {
+                e.preventDefault();
+                contactModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // Cerrar modal
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Cerrar modal al hacer clic fuera
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Seleccionar plan en modal
+    modalPlanOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remover selección anterior
+            modalPlanOptions.forEach(opt => {
+                opt.style.background = '';
+                opt.style.borderColor = '';
+            });
+            
+            // Seleccionar esta opción
+            this.style.background = 'rgba(255, 215, 0, 0.1)';
+            this.style.borderColor = 'var(--accent)';
+            
+            // Actualizar enlace de WhatsApp con plan seleccionado
+            const plan = this.getAttribute('data-plan');
+            const whatsappBtn = document.querySelector('.modal-content .btn-plan');
+            let message = '';
+            
+            switch(plan) {
+                case 'base':
+                    message = 'Hola, estoy interesado en el Plan Ecommerce Base ($10/mes)';
+                    break;
+                case 'pro':
+                    message = 'Hola, estoy interesado en el Plan Ecommerce Pro ($50/mes)';
+                    break;
+                case 'elite':
+                    message = 'Hola, estoy interesado en el Plan Ecommerce Elite ($100/mes)';
+                    break;
+            }
+            
+            if (whatsappBtn) {
+                const encodedMessage = encodeURIComponent(message);
+                whatsappBtn.href = `https://wa.me/541132863814?text=${encodedMessage}`;
+            }
+        });
+    });
+    
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 // ===== RESPONSIVE JS =====
 let resizeTimeout;
 window.addEventListener('resize', () => {
@@ -340,12 +544,12 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
         
-        // Re-inicializar carrusel si cambiamos a móvil
+        // Re-inicializar carruseles si cambiamos a móvil
         if (window.innerWidth <= 768) {
             const carouselsExist = document.querySelector('.plans-carousel');
             if (carouselsExist && !carouselsExist.dataset.initialized) {
-                console.log('📱 Re-inicializando carrusel para móvil...');
-                initMobileCarousel();
+                console.log('📱 Re-inicializando carruseles para móvil...');
+                initMobileCarousels();
                 carouselsExist.dataset.initialized = true;
             }
         }
@@ -406,7 +610,7 @@ document.addEventListener('dragstart', function(e) {
 
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link, .modal-plan-option');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -431,7 +635,7 @@ if (!('scrollBehavior' in document.documentElement.style)) {
 
 // ===== ERROR HANDLING =====
 window.addEventListener('error', function(e) {
-    console.error('❌ Error en la aplicación:', e.error);
+    console.error('❌ Error en la aplicación ecommerce:', e.error);
 });
 
 // ===== LOADING STATES =====
@@ -439,52 +643,34 @@ document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
         console.log('🎉 Página ecommerce completamente cargada y lista');
         document.body.classList.add('loaded');
-        
-        // Remover la clase loading después de la animación inicial
-        setTimeout(() => {
-            document.body.classList.remove('loading');
-        }, 500);
     }
 });
 
-// ===== MEJORA: Scroll suave para enlaces internos =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            
-            // Actualizar URL
-            history.pushState(null, null, targetId);
-        }
-    });
-});
-
-// ===== MEJORA: Cargar imágenes de forma diferida =====
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                const src = img.getAttribute('data-src');
-                if (src) {
-                    img.src = src;
-                    img.removeAttribute('data-src');
-                }
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+// ===== MEJORAS ESPECÍFICAS PARA ECCOMERCE =====
+// Pre-cargar imágenes importantes
+function preloadImportantImages() {
+    const importantImages = [
+        'Logo Avalon.png'
+    ];
     
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+    importantImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
     });
 }
+
+// Inicializar pre-carga
+document.addEventListener('DOMContentLoaded', preloadImportantImages);
+
+// ===== TRACKING DE INTERACCIÓN CON PLANES =====
+document.addEventListener('DOMContentLoaded', () => {
+    const planElements = document.querySelectorAll('.plan-card, .plan-card-mobile');
+    
+    planElements.forEach(plan => {
+        plan.addEventListener('click', function() {
+            const planName = this.querySelector('h3')?.textContent || 'Plan Desconocido';
+            console.log(`🛒 Usuario interactuó con: ${planName}`);
+        });
+    });
+});
+[file content end]
