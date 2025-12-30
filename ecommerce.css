@@ -117,6 +117,22 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     }
 }
 
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes particlesMove {
+    0% { transform: translateY(0px) translateX(0px); }
+    100% { transform: translateY(-30px) translateX(20px); }
+}
+
 /* === BACKGROUND OPTIMIZADO === */
 .animated-background {
     position: fixed;
@@ -141,11 +157,6 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     animation: particlesMove 40s linear infinite alternate;
     opacity: 0.3;
     z-index: -9;
-}
-
-@keyframes particlesMove {
-    0% { transform: translateY(0px) translateX(0px); }
-    100% { transform: translateY(-30px) translateX(20px); }
 }
 
 /* === NAVBAR === */
@@ -726,17 +737,6 @@ footer:last-child {
     animation-delay: 1s;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(0.8);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-}
-
 .maintenance-content h1 {
     font-size: 2.8rem;
     font-weight: 800;
@@ -772,6 +772,10 @@ footer:last-child {
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .status-card:hover {
@@ -797,7 +801,7 @@ footer:last-child {
     font-size: 0.95rem;
 }
 
-/* Temporizador */
+/* Temporizador mejorado */
 .maintenance-timer {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
@@ -855,18 +859,20 @@ footer:last-child {
 }
 
 .time-value {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
     margin-bottom: 0.5rem;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: gentleGlow 3s ease-in-out infinite;
 }
 
 .time-label {
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 1.2rem;
+    opacity: 0.9;
     font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .time-separator {
@@ -934,13 +940,13 @@ footer:last-child {
     border-color: var(--accent);
 }
 
-/* Aviso */
+/* Aviso de WhatsApp mejorado */
 .maintenance-notice {
     background: rgba(15, 52, 96, 0.3);
     border-radius: var(--border-radius);
     padding: 2rem;
     margin-top: 3rem;
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid #25D366;
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
@@ -948,10 +954,11 @@ footer:last-child {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    min-height: 200px;
 }
 
 .notice-icon {
-    color: var(--accent);
+    color: #25D366;
     font-size: 1.8rem;
     flex-shrink: 0;
     margin-top: 0.2rem;
@@ -966,6 +973,55 @@ footer:last-child {
 .notice-content p {
     opacity: 0.9;
     line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Enlace WhatsApp en texto */
+.whatsapp-link-inline {
+    color: #25D366;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    position: relative;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background: rgba(37, 211, 102, 0.1);
+}
+
+.whatsapp-link-inline:hover {
+    color: #128C7E;
+    background: rgba(37, 211, 102, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Botón WhatsApp específico para el cuadro */
+.btn-whatsapp-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    border: 2px solid transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.btn-whatsapp-notice:hover {
+    background: #128C7E;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    border-color: white;
+}
+
+.btn-whatsapp-notice:active {
+    transform: scale(0.98);
 }
 
 /* ===== MEJORAS DE FLUIDEZ ===== */
@@ -991,7 +1047,9 @@ footer:last-child {
     .nav-link,
     .logo,
     .footer-logo,
-    .social-links a {
+    .social-links a,
+    .btn-whatsapp-notice,
+    .whatsapp-link-inline {
         -webkit-user-select: none !important;
         -moz-user-select: none !important;
         -ms-user-select: none !important;
@@ -1011,7 +1069,9 @@ footer:last-child {
     /* 3. REMOVER OUTLINES EN FOCUS PARA MÓVIL */
     .btn-primary:focus,
     .btn-secondary:focus,
-    .nav-link:focus {
+    .nav-link:focus,
+    .btn-whatsapp-notice:focus,
+    .whatsapp-link-inline:focus {
         outline: none !important;
         box-shadow: none !important;
     }
@@ -1020,7 +1080,9 @@ footer:last-child {
     .btn-primary:active,
     .btn-secondary:active,
     .nav-link:active,
-    .social-links a:active {
+    .social-links a:active,
+    .btn-whatsapp-notice:active,
+    .whatsapp-link-inline:active {
         transform: scale(0.96) !important;
         transition: transform 0.1s ease !important;
         opacity: 0.9 !important;
@@ -1029,11 +1091,14 @@ footer:last-child {
     /* 5. QUITAR EFECTOS HOVER EN MÓVIL */
     .btn-primary:hover,
     .btn-secondary:hover,
-    .status-card:hover {
+    .status-card:hover,
+    .btn-whatsapp-notice:hover,
+    .whatsapp-link-inline:hover {
         transform: none !important;
         box-shadow: none !important;
     }
     
+    /* 6. AJUSTES GENERALES DE MANTENIMIENTO */
     .maintenance-hero {
         padding: 120px 0 40px;
         min-height: auto;
@@ -1058,16 +1123,34 @@ footer:last-child {
         font-size: 3.5rem;
     }
     
+    /* 7. AJUSTAR ALTURA DE CARDS EN MÓVIL */
+    .status-card {
+        min-height: 220px;
+        padding: 1.2rem;
+    }
+    
+    .status-icon {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .status-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .status-card p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
     .maintenance-status {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 1rem;
     }
     
-    .status-card {
-        padding: 1.5rem;
-    }
-    
+    /* 8. TEMPORIZADOR MÓVIL */
     .maintenance-timer {
         padding: 1.5rem;
         margin: 2rem 1rem;
@@ -1085,7 +1168,11 @@ footer:last-child {
     }
     
     .time-value {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    
+    .time-label {
+        font-size: 1rem;
     }
     
     .time-separator {
@@ -1093,6 +1180,7 @@ footer:last-child {
         margin-bottom: 0.8rem;
     }
     
+    /* 9. BOTONES MÓVIL */
     .maintenance-actions {
         flex-direction: column;
         gap: 1rem;
@@ -1104,14 +1192,28 @@ footer:last-child {
         justify-content: center;
     }
     
+    /* 10. AVISO WHATSAPP MÓVIL */
     .maintenance-notice {
         flex-direction: column;
         text-align: center;
         padding: 1.5rem;
         margin: 2rem 1rem;
+        min-height: auto;
     }
     
-    /* Navbar móvil */
+    .btn-whatsapp-notice {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .whatsapp-link-inline {
+        padding: 1px 3px;
+        font-size: 1.05rem;
+    }
+    
+    /* 11. Navbar móvil */
     .navbar {
         background: rgba(15, 52, 96, 0.98);
         backdrop-filter: blur(5px);
@@ -1155,7 +1257,7 @@ footer:last-child {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* Footer móvil */
+    /* 12. Footer móvil */
     footer {
         padding: 0.2rem 0 0.1rem;
     }
@@ -1217,16 +1319,34 @@ footer:last-child {
         font-size: 1.8rem;
     }
     
+    .status-card {
+        min-height: 200px;
+        padding: 1rem;
+    }
+    
     .timer-display {
         gap: 0.5rem;
     }
     
     .time-value {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+    
+    .time-label {
+        font-size: 0.9rem;
     }
     
     .time-separator {
         font-size: 1.5rem;
+    }
+    
+    .maintenance-notice {
+        padding: 1.2rem;
+    }
+    
+    .btn-whatsapp-notice {
+        padding: 12px 16px;
+        font-size: 0.85rem;
     }
 }
 
