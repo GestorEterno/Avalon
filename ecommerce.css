@@ -1,6 +1,7 @@
-/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - ESPECIALIZADO EN ECOMMERCE */
-/* MEJORA CRÍTICA: Eliminar efectos azules de tap en móvil y sensación tipo app */
-/* MEJORA ESPECÍFICA: Diseño premium para comparación AVALON vs TIENDA NUBE */
+[file name]: ecommerce.css
+[file content begin]
+/* ecommerce.css - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE */
+/* BASADO EN INDEX.CSS CON MODIFICACIONES ESPECÍFICAS PARA ECCOMERCE */
 
 :root {
     --primary: #0f3460;
@@ -18,6 +19,7 @@
     --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
     --border-radius: 12px;
     --border-radius-lg: 20px;
+    --ecommerce-primary: #2a4365; /* Azul más comercial para ecommerce */
 }
 
 * {
@@ -51,7 +53,7 @@ body {
 }
 
 /* Permitir selección solo en contenido de texto real */
-p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .step-content p, .comparison-feature {
+p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-description, .step-content p {
     -webkit-user-select: text;
     user-select: text;
 }
@@ -60,6 +62,40 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes gentleGlow {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.05);
+    }
+}
+
+@keyframes levitate {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-12px); 
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% { 
+        text-shadow: 0 0 0px rgba(255, 215, 0, 0);
+    }
+    50% { 
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
 }
 
 @keyframes heroTitleLoad {
@@ -84,7 +120,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     }
 }
 
-@keyframes heroButtonsLoad {
+@keyframes heroButtonsLoadCorrected {
     0% {
         opacity: 0;
         transform: translateY(20px);
@@ -95,14 +131,10 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     }
 }
 
-@keyframes gentleGlow {
-    0%, 100% { 
-        opacity: 0.4; 
-        transform: scale(1);
-    }
-    50% { 
-        opacity: 0.7; 
-        transform: scale(1.05);
+@keyframes heroCardLoad {
+    to {
+        opacity: 1;
+        transform: translateX(0) rotate(0);
     }
 }
 
@@ -113,7 +145,7 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
+    background: linear-gradient(135deg, var(--dark) 0%, var(--ecommerce-primary) 50%, var(--darker) 100%);
     z-index: -10;
 }
 
@@ -125,8 +157,9 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     height: 100vh;
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 2px, transparent 0),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 0);
-    background-size: 400px 400px, 300px 300px;
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.03) 1px, transparent 0),
+        radial-gradient(circle at 40% 80%, rgba(72, 187, 120, 0.03) 1px, transparent 0); /* Verde para ecommerce */
+    background-size: 400px 400px, 300px 300px, 350px 350px;
     animation: particlesMove 40s linear infinite alternate;
     opacity: 0.3;
     z-index: -9;
@@ -285,14 +318,13 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* === HERO SECTION ECOMMERCE === */
-.ecommerce-hero {
-    min-height: 80vh;
+/* === HERO SECTION === */
+.hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 0 50px;
+    padding: 100px 0 50px;
     position: relative;
-    text-align: center;
 }
 
 .container {
@@ -302,9 +334,17 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     padding: 0 20px;
 }
 
+.hero-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+}
+
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
+    flex: 1;
+    max-width: 600px;
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -337,22 +377,16 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     margin-bottom: 2rem;
     opacity: 0.9;
     line-height: 1.6;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.ecommerce-stats {
+.hero-stats {
     display: flex;
     gap: 2rem;
     margin-bottom: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 .stat {
     text-align: center;
-    min-width: 120px;
 }
 
 .stat-number {
@@ -366,18 +400,16 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
 .stat-label {
     font-size: 0.9rem;
     opacity: 0.8;
-    margin-top: 0.3rem;
 }
 
-/* ===== BOTONES DEL HERO ===== */
+/* ===== BOTONES DEL HERO PERFECTAMENTE EQUILIBRADOS ===== */
 .hero-buttons {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
+/* Botones flexibles que se adaptan al contenido sin presionarse */
 .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -401,6 +433,8 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     background: var(--accent);
     color: var(--dark);
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
 }
 
 .btn-primary:hover {
@@ -435,11 +469,152 @@ p, h1, h2, h3, h4, h5, h6, span, .section-subtitle, .hero-content p, .plan-descr
     background: transparent;
     color: var(--light);
     border: 2px solid rgba(255, 255, 255, 0.3);
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    min-width: 160px;
+    justify-content: center;
 }
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+/* === HERO IMAGE === */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 400px;
+}
+
+.floating-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    width: 260px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: var(--transition);
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.floating-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* === MEJORAS DE FLUIDEZ PARA ICONOS === */
+.service-card .service-icon,
+.floating-card .card-icon {
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center center;
+    will-change: transform;
+    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
+    display: inline-block;
+}
+
+.service-card:hover .service-icon,
+.floating-card:hover .card-icon {
+    transform: scale(1.18);
+    color: var(--accent-light);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.floating-card h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.floating-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+/* === BANNER DE CONTEXTO === */
+.pricing-context-banner {
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.1) 0%, 
+        rgba(42, 67, 101, 0.2) 100%); /* Azul ecommerce */
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0;
+}
+
+.context-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.context-content i.fa-shopping-cart {
+    font-size: 2.5rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.context-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.context-text h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.context-text p {
+    opacity: 0.9;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+.context-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 30px;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    outline: none;
+}
+
+.context-link:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateX(5px);
     border-color: var(--accent);
 }
 
@@ -484,139 +659,158 @@ section {
     line-height: 1.6;
 }
 
-/* === COMPARISON SECTION - AVALON vs TIENDA NUBE === */
-.comparison-section {
-    background: rgba(255, 255, 255, 0.03);
+/* === SERVICES === */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
     border-radius: var(--border-radius-lg);
-    padding: 3rem;
-    margin-top: 2rem;
+    padding: 2rem;
+    transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow-lg);
-}
-
-.comparison-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.comparison-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    position: relative;
     overflow: hidden;
-    border-radius: var(--border-radius);
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
-.comparison-header {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 215, 0, 0.2);
 }
 
-.comparison-category {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--accent-light);
-}
-
-.comparison-company {
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    border-radius: 8px;
-}
-
-.comparison-company.avalon {
-    color: var(--accent);
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.comparison-company.other {
-    color: var(--gray);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.comparison-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 1.5rem;
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    align-items: center;
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--ecommerce-primary));
+    transform: scaleX(0);
     transition: var(--transition);
 }
 
-.comparison-row:nth-child(even) {
-    background: rgba(255, 255, 255, 0.02);
+.service-card:hover::before {
+    transform: scaleX(1);
 }
 
-.comparison-row:hover {
-    background: rgba(255, 255, 255, 0.03);
-    transform: translateX(5px);
+.service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
 }
 
-.comparison-feature {
+.service-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--gray-light);
 }
 
-.comparison-value {
-    text-align: center;
+.service-card p {
+    margin-bottom: 1.2rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.service-features {
+    list-style: none;
+}
+
+.service-features li {
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.9rem;
-    padding: 0.3rem 0;
+    -webkit-touch-callout: none;
+    user-select: none;
 }
 
-.price-amount {
+.service-features i {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+/* === PROCESS === */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 0 15px;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--accent);
+    margin-bottom: 1.5rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    position: relative;
 }
 
-.check-icon {
-    color: var(--accent);
-    font-size: 1.1rem;
-    background: rgba(255, 215, 0, 0.1);
-    padding: 0.3rem;
+.step-number::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
     border-radius: 50%;
+    animation: gentleGlow 4s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(5px);
 }
 
-.cross-icon {
-    color: #ff6b6b;
-    font-size: 1.1rem;
-    background: rgba(255, 107, 107, 0.1);
-    padding: 0.3rem;
-    border-radius: 50%;
+.step-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--light);
 }
 
-.comparison-note {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
-    font-style: italic;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: var(--border-radius);
+.step-content p {
+    opacity: 0.85;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 220px;
+    margin: 0 auto;
 }
 
-.comparison-cta {
-    text-align: center;
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* === PLANS ECOMMERCE === */
+/* === PLANS DESKTOP === */
 .plans-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -637,7 +831,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 650px;
+    min-height: 650px; /* Más alto para más características */
     transform-origin: center center;
     -webkit-touch-callout: none;
     user-select: none;
@@ -824,11 +1018,68 @@ section {
     background: var(--accent-light);
 }
 
+/* === CONTACT SECTION === */
+.contact {
+    padding: 60px 0;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.contact-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.contact-card p {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.contact-card .btn-plan {
+    width: 100%;
+    margin-top: auto;
+}
+
 /* === DISCLAIMER MEJORADO === */
 .plan-disclaimer {
     margin-top: 3rem;
     padding: 1.5rem;
-    background: rgba(15, 52, 96, 0.3);
+    background: rgba(42, 67, 101, 0.3); /* Azul ecommerce */
     border-radius: var(--border-radius);
     border-left: 4px solid var(--accent);
 }
@@ -1033,6 +1284,118 @@ footer {
     line-height: 1.3;
 }
 
+/* === MODAL DE CONTACTO === */
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--darker);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent);
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.modal-content > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.modal-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.modal-plan-option {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.modal-plan-option:hover {
+    border-color: var(--accent);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.modal-plan-option h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.modal-content .btn-plan {
+    width: 100%;
+}
+
 /* ===== LOGOS COMO ENLACES - ESTILOS UNIFICADOS ===== */
 a.logo,
 a.footer-logo {
@@ -1082,7 +1445,8 @@ a.footer-logo:hover h3 {
 }
 
 /* ===== CARRUSELES MÓVIL ===== */
-.carousel-container {
+.carousel-container,
+.process-carousel-container {
     display: none;
     position: relative;
     width: 100%;
@@ -1092,7 +1456,8 @@ a.footer-logo:hover h3 {
     padding-bottom: 40px;
 }
 
-.plans-carousel {
+.plans-carousel,
+.process-carousel {
     display: flex;
     width: 100%;
     transition: transform 0.3s ease;
@@ -1106,12 +1471,14 @@ a.footer-logo:hover h3 {
     touch-action: pan-x pan-y;
 }
 
-.plans-carousel::-webkit-scrollbar {
+.plans-carousel::-webkit-scrollbar,
+.process-carousel::-webkit-scrollbar {
     display: none;
 }
 
 /* CORRECCIÓN CRÍTICA: Flechas posicionadas ABSOLUTAMENTE */
-.carousel-arrow {
+.carousel-arrow,
+.process-carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1137,27 +1504,32 @@ a.footer-logo:hover h3 {
 }
 
 /* CORRECCIÓN: Iconos de flechas sin oscurecerse */
-.carousel-arrow i {
+.carousel-arrow i,
+.process-carousel-arrow i {
     color: var(--accent);
     transition: none !important;
 }
 
-.carousel-arrow:hover {
+.carousel-arrow:hover,
+.process-carousel-arrow:hover {
     background: rgba(15, 52, 96, 0.98);
     opacity: 1;
     transform: translateY(-50%) scale(1.05);
 }
 
-.carousel-arrow:hover i {
+.carousel-arrow:hover i,
+.process-carousel-arrow:hover i {
     color: var(--accent-light);
 }
 
-.carousel-arrow.prev-arrow {
+.carousel-arrow.prev-arrow,
+.process-carousel-arrow.prev-arrow {
     left: 10px;
     right: auto;
 }
 
-.carousel-arrow.next-arrow {
+.carousel-arrow.next-arrow,
+.process-carousel-arrow.next-arrow {
     right: 10px;
     left: auto;
 }
@@ -1174,7 +1546,7 @@ a.footer-logo:hover h3 {
     box-shadow: var(--shadow);
     border: 1px solid rgba(255, 255, 255, 0.1);
     height: auto;
-    min-height: 600px;
+    min-height: 620px; /* Más alto para características */
     transition: all 0.3s ease;
     padding: 25px 20px;
     position: relative;
@@ -1200,7 +1572,7 @@ a.footer-logo:hover h3 {
 }
 
 .plan-card-mobile.featured-mobile {
-    background: var(--primary);
+    background: var(--ecommerce-primary); /* Azul ecommerce */
     border-color: var(--accent);
 }
 
@@ -1285,8 +1657,8 @@ a.footer-logo:hover h3 {
     list-style: none;
     margin: 0.5rem 0;
     flex-grow: 1;
-    min-height: 200px;
-    max-height: 230px;
+    min-height: 240px; /* Más alto para más características */
+    max-height: 260px;
     overflow-y: auto;
     padding-right: 5px;
     -webkit-overflow-scrolling: touch;
@@ -1357,7 +1729,8 @@ a.footer-logo:hover h3 {
     background: var(--accent-light);
 }
 
-.carousel-indicators {
+.carousel-indicators,
+.process-carousel-indicators {
     display: flex;
     justify-content: center;
     gap: 12px;
@@ -1366,7 +1739,8 @@ a.footer-logo:hover h3 {
     z-index: 5;
 }
 
-.indicator {
+.indicator,
+.process-indicator {
     width: 12px;
     height: 12px;
     background: rgba(255, 255, 255, 0.3);
@@ -1377,9 +1751,94 @@ a.footer-logo:hover h3 {
     user-select: none;
 }
 
-.indicator.active {
+.indicator.active,
+.process-indicator.active {
     background: var(--accent);
     transform: scale(1.3);
+}
+
+/* Step móvil */
+.step-mobile {
+    flex: 0 0 85%;
+    width: 85%;
+    min-width: 85%;
+    max-width: 85%;
+    margin: 0 7.5%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 25px 20px;
+    background: var(--darker);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    -webkit-touch-callout: none;
+    user-select: none;
+    touch-action: pan-y;
+    pointer-events: auto;
+}
+
+/* MODIFICACIÓN CRÍTICA: ELIMINAR TRANSICIÓN EN MÓVIL PARA CAMBIO DE PANEL */
+.step-mobile {
+    transition: none !important;
+}
+
+.step-mobile.active {
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.step-number-mobile {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    transition: var(--transition);
+}
+
+.step-number-mobile::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.25) 0%, rgba(255, 215, 0, 0.15) 30%, transparent 70%);
+    border-radius: 50%;
+    animation: gentleGlow 4s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+.step-content-mobile {
+    padding: 0 10px;
+}
+
+.step-content-mobile h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--light);
+}
+
+.step-content-mobile p {
+    opacity: 0.85;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    max-width: 100%;
 }
 
 /* ===== MEJORAS DE CARGA PARA HERO - SOLO PC ===== */
@@ -1397,19 +1856,19 @@ a.footer-logo:hover h3 {
         animation: heroTextLoad 0.8s ease-out 0.6s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(1) {
+    .hero-stats .stat:nth-child(1) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(2) {
+    .hero-stats .stat:nth-child(2) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1.2s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(3) {
+    .hero-stats .stat:nth-child(3) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1.4s forwards;
@@ -1419,7 +1878,7 @@ a.footer-logo:hover h3 {
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
-        animation: heroButtonsLoad 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
+        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
         display: flex;
         gap: 1rem;
         flex-wrap: nowrap;
@@ -1443,6 +1902,18 @@ a.footer-logo:hover h3 {
     .btn-secondary {
         min-width: 200px;
     }
+    
+    .floating-card:nth-child(1) {
+        opacity: 0;
+        transform: translateX(30px) rotate(2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
+    }
+    
+    .floating-card:nth-child(2) {
+        opacity: 0;
+        transform: translateX(30px) rotate(-2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
+    }
 }
 
 /* ===== CORRECCIONES CRÍTICAS PARA PC ===== */
@@ -1454,7 +1925,7 @@ a.footer-logo:hover h3 {
         content: none;
     }
     
-    /* Botón "Descubre Planes Escalables" */
+    /* Botón "Ver Planes Ecommerce" */
     .btn-primary {
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         background: var(--accent);
@@ -1470,7 +1941,7 @@ a.footer-logo:hover h3 {
         box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
     }
     
-    /* 2. CORRECCIÓN CRÍTICA: Botones de planes */
+    /* 2. CORRECCIÓN CRÍTICA: "Contratar Plan Pro" */
     .btn-plan.featured {
         background: var(--accent);
         color: var(--dark);
@@ -1500,12 +1971,68 @@ a.footer-logo:hover h3 {
         border-color: rgba(255, 215, 0, 0.4);
     }
     
-    /* 4. Planes - hover ajustado */
-    .plan-card {
+    /* 4. Servicios - ICONOS CON EFECTO FLUIDO MEJORADO */
+    .service-card .service-icon {
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: inline-block;
+        transform-origin: center center;
+    }
+    
+    .service-card:hover .service-icon {
+        transform: scale(1.18);
+        color: var(--accent-light);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    }
+    
+    /* 5. CORRECCIÓN: Paneles flotantes del hero - ICONO CON EFECTO FLUIDO */
+    .floating-card .card-icon {
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: inline-block;
+        transform-origin: center center;
+    }
+    
+    .floating-card:hover .card-icon {
+        transform: scale(1.18);
+        color: var(--accent-light);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+    }
+    
+    .floating-card {
         transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .plan-card:hover {
+    .floating-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.25),
+            0 0 20px rgba(255, 215, 0, 0.2);
+        border-color: rgba(255, 215, 0, 0.4);
+        background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .floating-card:hover h3 {
+        color: var(--accent-light);
+        text-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    
+    /* 6. CORRECCIÓN: Planes */
+    .plan-card:hover .price-amount {
+        transform: scale(1.05);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        color: var(--accent-light);
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    }
+    
+    /* 7. Servicios - hover ajustado */
+    .service-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .service-card:hover {
         transform: translateY(-12px) scale(1.02);
         box-shadow: 
             0 20px 40px rgba(0, 0, 0, 0.2),
@@ -1514,24 +2041,67 @@ a.footer-logo:hover h3 {
         background: rgba(255, 255, 255, 0.08);
     }
     
-    .plan-card:hover .price-amount {
-        transform: scale(1.05);
-        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* 8. Pasos del proceso - hover ajustado */
+    .step {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .step:hover {
+        transform: translateY(-12px) scale(1.03);
+    }
+    
+    .step:hover .step-number {
+        transform: translateY(-8px) scale(1.15);
+        animation: levitate 2s ease-in-out infinite;
+        border-color: var(--accent-light);
+        box-shadow: 
+            0 0 25px rgba(255, 215, 0, 0.35),
+            0 10px 30px rgba(255, 215, 0, 0.15),
+            inset 0 0 15px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.12), 
+            rgba(255, 255, 255, 0.05));
+    }
+    
+    .step:hover .step-content h3 {
         color: var(--accent-light);
-        text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+        animation: textGlow 2s ease-in-out infinite;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
     }
     
-    /* 5. Comparison - hover ajustado */
-    .comparison-row:hover .comparison-feature {
+    .step:hover .step-content p {
+        opacity: 1;
         color: var(--light);
+        transform: translateY(-1px);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease 0.1s;
     }
     
-    /* 6. Botón secundario del hero - hover ajustado */
+    .step:hover .step-number::before {
+        animation: gentleGlow 2s ease-in-out infinite;
+        background: radial-gradient(
+            circle at 50% 50%, 
+            rgba(255, 215, 0, 0.35) 0%, 
+            rgba(255, 215, 0, 0.2) 40%, 
+            transparent 70%
+        );
+        filter: blur(6px);
+    }
+    
+    /* 9. Botón secundario del hero - hover ajustado */
     .btn-secondary:hover {
         border-color: var(--accent);
         background: rgba(255, 215, 0, 0.08);
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* 10. Contact cards - hover */
+    .contact-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
 }
 
@@ -1698,11 +2268,14 @@ footer:last-child {
 }
 
 /* === OPTIMIZACIÓN GENERAL DE FLUIDEZ === */
+.service-card,
 .plan-card,
+.floating-card,
+.step,
 .btn-primary,
 .btn-secondary,
 .btn-plan,
-.comparison-row {
+.contact-card {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     perspective: 1000px;
@@ -1724,12 +2297,21 @@ footer:last-child {
     .footer-logo,
     .social-links a,
     .carousel-arrow,
+    .process-carousel-arrow,
     .context-link,
     .disclaimer-link,
     .plan-card,
     .plan-card-mobile,
+    .service-card,
+    .step,
+    .step-mobile,
+    .floating-card,
     .hamburger,
-    .indicator {
+    .indicator,
+    .process-indicator,
+    .contact-card,
+    .close-modal,
+    .modal-plan-option {
         -webkit-user-select: none !important;
         -moz-user-select: none !important;
         -ms-user-select: none !important;
@@ -1754,7 +2336,10 @@ footer:last-child {
     .nav-link:focus,
     .context-link:focus,
     .disclaimer-link:focus,
-    .carousel-arrow:focus {
+    .carousel-arrow:focus,
+    .process-carousel-arrow:focus,
+    .close-modal:focus,
+    .modal-plan-option:focus {
         outline: none !important;
         box-shadow: none !important;
     }
@@ -1767,21 +2352,27 @@ footer:last-child {
     .nav-link:active,
     .social-links a:active,
     .carousel-arrow:active,
+    .process-carousel-arrow:active,
     .context-link:active,
     .disclaimer-link:active,
-    .indicator:active {
+    .indicator:active,
+    .process-indicator:active,
+    .contact-card:active,
+    .modal-plan-option:active {
         transform: scale(0.96) !important;
         transition: transform 0.1s ease !important;
         opacity: 0.9 !important;
     }
     
     /* CORRECCIÓN ESPECÍFICA: Flechas sin animación de bajar/subir */
-    .carousel-arrow:active {
+    .carousel-arrow:active,
+    .process-carousel-arrow:active {
         transform: translateY(-50%) scale(0.96) !important;
         background: rgba(15, 52, 96, 0.95) !important;
     }
     
-    .carousel-arrow:active i {
+    .carousel-arrow:active i,
+    .process-carousel-arrow:active i {
         color: var(--accent-light) !important;
     }
     
@@ -1790,24 +2381,34 @@ footer:last-child {
     .btn-secondary:hover,
     .btn-plan:hover,
     .btn-plan-mobile:hover,
+    .service-card:hover,
     .plan-card:hover,
     .plan-card-mobile:hover,
-    .comparison-row:hover {
+    .floating-card:hover,
+    .step:hover,
+    .step-mobile:hover,
+    .contact-card:hover {
         transform: none !important;
         box-shadow: none !important;
     }
     
     /* 6. QUITAR ANIMACIONES DE HOVER EN MÓVIL PARA MEJOR RENDIMIENTO */
+    .service-card .service-icon,
+    .floating-card .card-icon,
     .plan-features li,
-    .comparison-row {
+    .step-number,
+    .step-number-mobile,
+    .contact-icon {
         transition: none !important;
         animation: none !important;
     }
     
+    .service-card:hover .service-icon,
+    .floating-card:hover .card-icon,
     .plan-features li:hover,
-    .comparison-row:hover {
+    .contact-card:hover .contact-icon {
         transform: none !important;
-        background: none !important;
+        filter: none !important;
     }
     
     /* 7. DESACTIVAR MENÚ CONTEXTUAL LARGO PRESS EN IMÁGENES */
@@ -1818,7 +2419,9 @@ footer:last-child {
     /* 8. PERMITIR SOLO SCROLL NATIVO, NO ZOOM NO DESEADO */
     .hero-content,
     .section-header,
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile,
+    .contact-card {
         touch-action: pan-y;
     }
     
@@ -1829,12 +2432,14 @@ footer:last-child {
     }
     
     /* 10. MEJORAR RENDIMIENTO TÁCTIL */
-    .plans-carousel {
+    .plans-carousel,
+    .process-carousel {
         touch-action: pan-x pan-y;
     }
     
     /* CORRECCIÓN CRÍTICA: Permitir scroll vertical sobre paneles de carrusel */
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile {
         touch-action: pan-y;
         pointer-events: auto;
     }
@@ -1878,19 +2483,19 @@ footer:last-child {
         animation: heroTextLoad 0.8s ease-out 0.6s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(1) {
+    .hero-stats .stat:nth-child(1) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(2) {
+    .hero-stats .stat:nth-child(2) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1.2s forwards;
     }
     
-    .ecommerce-stats .stat:nth-child(3) {
+    .hero-stats .stat:nth-child(3) {
         opacity: 0;
         transform: translateY(15px);
         animation: heroStatLoad 0.6s ease-out 1.4s forwards;
@@ -1899,12 +2504,89 @@ footer:last-child {
     .hero-buttons {
         opacity: 0;
         transform: translateY(20px);
-        animation: heroButtonsLoad 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
+        animation: heroButtonsLoadCorrected 0.8s cubic-bezier(0.23, 1, 0.32, 1) 1.6s forwards;
+    }
+    
+    .floating-card:nth-child(1) {
+        opacity: 0;
+        transform: translateX(30px) rotate(2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
+    }
+    
+    .floating-card:nth-child(2) {
+        opacity: 0;
+        transform: translateX(30px) rotate(-2deg);
+        animation: heroCardLoad 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.1s forwards;
+    }
+    
+    /* CORRECCIÓN CRÍTICA: Eliminar la aureola rara en móvil */
+    .step-number::before,
+    .step-number-mobile::before {
+        display: none !important;
+    }
+    
+    /* Desactivar animaciones de hover en móvil */
+    .step:hover .step-number {
+        transform: none !important;
+        box-shadow: none !important;
+        border-color: rgba(255, 215, 0, 0.3) !important;
+        animation: none !important;
+    }
+    
+    .step:hover .step-content h3,
+    .step:hover .step-content p {
+        transform: none !important;
+        text-shadow: none !important;
+        color: inherit !important;
+        opacity: inherit !important;
+        animation: none !important;
+    }
+    
+    .step:hover {
+        transform: none !important;
+    }
+    
+    /* Asegurar que los hover effects no se activen en móvil */
+    .service-card:hover,
+    .plan-card:hover,
+    .step:hover,
+    .floating-card:hover,
+    .btn-plan:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .contact-card:hover {
+        transform: none !important;
+        box-shadow: var(--shadow) !important;
+    }
+    
+    .floating-card {
+        animation: none !important;
+    }
+    
+    .floating-card:hover {
+        transform: none !important;
+    }
+    
+    /* Para móvil - eliminar efectos hover en logos */
+    a.logo:hover,
+    a.footer-logo:hover {
+        transform: none !important;
+    }
+    
+    a.logo:hover .logo-img,
+    a.footer-logo:hover .logo-img {
+        filter: none !important;
+    }
+    
+    a.logo:hover h2,
+    a.footer-logo:hover h3 {
+        color: var(--light) !important;
+        text-shadow: none !important;
     }
     
     /* CORRECCIÓN CRÍTICA: Fondo unificado para toda la página */
     .animated-background {
-        background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--darker) 100%);
+        background: linear-gradient(135deg, var(--dark) 0%, var(--ecommerce-primary) 50%, var(--darker) 100%);
         position: fixed;
         height: 100vh;
         z-index: -10;
@@ -1919,10 +2601,10 @@ footer:last-child {
     }
     
     /* Hero con el mismo fondo que el resto */
-    .ecommerce-hero {
+    .hero {
         background: transparent !important;
         min-height: auto;
-        padding: 100px 0 30px;
+        padding: 90px 0 40px;
     }
     
     /* Asegurar que todas las secciones tengan fondo transparente */
@@ -1977,8 +2659,21 @@ footer:last-child {
     }
     
     /* Hero móvil */
-    .ecommerce-hero {
+    .hero {
+        flex-direction: column;
+        min-height: auto;
+        padding: 90px 0 40px;
         text-align: center;
+    }
+    
+    .hero-content-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .hero-content {
+        order: 1;
+        max-width: 100%;
     }
     
     .hero-content h1 {
@@ -1991,7 +2686,7 @@ footer:last-child {
         margin-bottom: 1.5rem;
     }
     
-    .ecommerce-stats {
+    .hero-stats {
         gap: 1.5rem;
         justify-content: center;
     }
@@ -2014,26 +2709,40 @@ footer:last-child {
         justify-content: center;
     }
     
-    /* Comparison section en móvil */
-    .comparison-section {
-        padding: 1.5rem;
-        overflow-x: auto;
-    }
-    
-    .comparison-header {
-        grid-template-columns: 200px 100px 100px;
+    .hero-image {
+        order: 2;
+        flex-direction: column;
+        height: auto;
         gap: 1rem;
-        min-width: 450px;
+        margin-top: 1rem;
     }
     
-    .comparison-row {
-        grid-template-columns: 200px 100px 100px;
+    .floating-card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 180px;
+        margin: 0;
+    }
+    
+    /* Banner de contexto en móvil */
+    .pricing-context-banner {
+        padding: 1.5rem 0;
+    }
+    
+    .context-content {
+        flex-direction: column;
+        text-align: center;
         gap: 1rem;
-        min-width: 450px;
     }
     
-    .comparison-title {
-        font-size: 1.5rem;
+    .context-text {
+        min-width: 100%;
+    }
+    
+    .context-link {
+        width: 100%;
+        justify-content: center;
     }
     
     /* Section titles móvil */
@@ -2044,6 +2753,27 @@ footer:last-child {
     .section-subtitle {
         font-size: 0.95rem;
         padding: 0 1rem;
+    }
+    
+    /* Services móvil */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    /* Process - ocultar desktop, mostrar carrusel */
+    .process-steps {
+        display: none;
+    }
+    
+    .process-carousel-container {
+        display: block;
+        position: relative;
+        overflow: visible;
     }
     
     /* Plans - ocultar desktop, mostrar carrusel */
@@ -2057,8 +2787,19 @@ footer:last-child {
         overflow: visible;
     }
     
+    /* Contact section móvil */
+    .contact-options {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-card {
+        padding: 1.5rem;
+    }
+    
     /* Flechas posicionadas ABSOLUTAMENTE y al límite */
-    .carousel-arrow {
+    .carousel-arrow,
+    .process-carousel-arrow {
         position: absolute !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
@@ -2073,31 +2814,34 @@ footer:last-child {
     }
     
     /* FLECHAS CORREGIDAS: Mover fuera del contenedor para que no tapen */
-    .carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
         left: -25px !important;
         right: auto !important;
     }
     
-    .carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
         right: -25px !important;
         left: auto !important;
     }
     
     /* Asegurar que el contenedor no corte las flechas */
-    .carousel-container {
+    .carousel-container,
+    .process-carousel-container {
         overflow: visible !important;
         padding: 0 5px !important;
     }
     
     /* Ajustes de altura en móvil */
     .plan-card-mobile {
-        min-height: 550px;
+        min-height: 580px;
         padding: 1.2rem;
     }
     
     .plan-features-mobile {
-        min-height: 180px;
-        max-height: 200px;
+        min-height: 220px;
+        max-height: 240px;
     }
     
     /* Footer móvil - COMPACTADO AL MÁXIMO */
@@ -2139,8 +2883,11 @@ footer:last-child {
     }
     
     /* Desactivar hover en móvil para mejor rendimiento */
+    .service-card:hover,
     .plan-card:hover,
-    .comparison-row:hover {
+    .floating-card:hover,
+    .step:hover,
+    .contact-card:hover {
         transform: none;
     }
     
@@ -2155,17 +2902,29 @@ footer:last-child {
         position: relative;
     }
     
-    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN CARRUSEL ===== */
+    /* ===== MODIFICACIÓN ESPECÍFICA: IGUALAR ANIMACIÓN DE CAMBIO DE PANEL EN AMBOS CARRUSELES ===== */
     /* Eliminar todas las transiciones CSS que interfieran con el scroll */
-    .plan-card-mobile {
+    .plan-card-mobile,
+    .step-mobile {
         transition: none !important;
     }
     
-    /* Igualar el scroll behavior del carrusel */
-    .plans-carousel {
+    /* Igualar el scroll behavior de ambos carruseles */
+    .plans-carousel,
+    .process-carousel {
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
+    }
+    
+    /* Modal móvil */
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .modal-plan-option {
+        padding: 1rem;
     }
 }
 
@@ -2194,6 +2953,7 @@ footer:last-child {
         
         /* Mejorar scrolling en iOS */
         .plans-carousel,
+        .process-carousel,
         .plan-features-mobile {
             -webkit-overflow-scrolling: touch;
         }
@@ -2251,35 +3011,57 @@ footer:last-child {
         min-width: 90%;
         max-width: 90%;
         margin: 0 5%;
-        min-height: 520px;
+        min-height: 560px;
         padding: 1rem;
     }
     
-    .carousel-arrow {
+    .step-mobile {
+        flex: 0 0 90%;
+        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        margin: 0 5%;
+        padding: 1.2rem;
+    }
+    
+    .carousel-arrow,
+    .process-carousel-arrow {
         width: 36px;
         height: 36px;
         font-size: 1rem;
     }
     
     /* FLECHAS CORREGIDAS: Ajuste para pantallas muy pequeñas */
-    .carousel-arrow.prev-arrow {
+    .carousel-arrow.prev-arrow,
+    .process-carousel-arrow.prev-arrow {
         left: -20px;
     }
     
-    .carousel-arrow.next-arrow {
+    .carousel-arrow.next-arrow,
+    .process-carousel-arrow.next-arrow {
         right: -20px;
+    }
+    
+    .contact-card {
+        padding: 1.2rem;
     }
 }
 
 /* Escritorio - ocultar carruseles */
 @media (min-width: 769px) {
     .carousel-container,
-    .carousel-arrow {
+    .process-carousel-container,
+    .carousel-arrow,
+    .process-carousel-arrow {
         display: none;
     }
     
     .plans-container {
         display: grid;
+    }
+    
+    .process-steps {
+        display: flex;
     }
 }
 
@@ -2293,6 +3075,10 @@ section:last-of-type {
     padding-bottom: 40px;
 }
 
+.contact {
+    padding-bottom: 60px;
+}
+
 /* Animaciones de entrada */
 .reveal {
     opacity: 0;
@@ -2304,3 +3090,4 @@ section:last-of-type {
     opacity: 1;
     transform: translateY(0);
 }
+[file content end]
