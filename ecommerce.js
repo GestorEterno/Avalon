@@ -1,7 +1,4 @@
-[file name]: ecommerce.js
-[file content begin]
 // ecommerce.js - Versión Ultra Optimizada para Móvil y PC - ESPECÍFICO PARA ECOMMERCE
-// BASADO EN INDEX.JS CON MODIFICACIONES ESPECÍFICAS PARA ECCOMERCE
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
@@ -673,4 +670,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-[file content end]
