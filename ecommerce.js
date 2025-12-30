@@ -116,7 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Contadores animados
     initCounters();
+    
+    // Inicializar seguimiento de WhatsApp
+    setupWhatsAppTracking();
 });
+
+// ===== MEJORAR INTERACCIÓN CON WHATSAPP =====
+function setupWhatsAppTracking() {
+    // Trackear clics en enlaces de WhatsApp
+    const whatsappLinks = document.querySelectorAll('.btn-whatsapp-notice, .whatsapp-link-inline');
+    
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            console.log('📱 Usuario clickeó en WhatsApp desde ecommerce');
+            
+            // Para mobile, prevenir efectos no deseados
+            if (window.innerWidth <= 768) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            }
+        });
+    });
+}
 
 // ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
 function initMobileCarousels() {
@@ -607,7 +630,7 @@ document.addEventListener('dragstart', function(e) {
 
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link, .modal-plan-option');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .context-link, .disclaimer-link, .modal-plan-option, .btn-whatsapp-notice, .whatsapp-link-inline');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
