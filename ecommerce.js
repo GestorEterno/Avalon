@@ -1,33 +1,24 @@
-// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON TODAS LAS MEJORAS CRÍTICAS
-// MODIFICACIONES CRÍTICAS IMPLEMENTADAS:
-// 1. Comparativa en móvil reemplazada por tarjetas verticales
-// 2. Botón "Calcula tu ahorro" cambiado por CTA directo a planes
-// 3. Sistema para mostrar/ocultar versión móvil vs escritorio
+// ecommerce.js - Versión Ultra Optimizada para Móvil y PC - CON MEJORAS PARA MÓVIL
+// MODIFICACIÓN ESPECÍFICA: Experiencia fluida en carrusel y mejoras táctiles
 
 // ===== NAVEGACIÓN MÓVIL =====
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
-}
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+});
 
-if (navLinks.length > 0) {
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (hamburger && navMenu) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     });
-}
+});
 
 // ===== SCROLL SUAVE AL INICIO =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logos.forEach(logo => {
         logo.addEventListener('click', function(e) {
+            // Permitir navegación normal a index.html
+            if (this.getAttribute('href') === 'index.html') {
+                return;
+            }
+            
             e.preventDefault();
             
             // Cerrar menú móvil si está abierto
@@ -47,61 +43,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // Scroll suave al inicio (sección con id="inicio")
-            const inicioSection = document.getElementById('inicio');
-            if (inicioSection) {
-                inicioSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // También actualizar URL sin recargar
-                history.replaceState(null, null, '#inicio');
-                
-                // Actualizar navegación activa
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#inicio' || 
-                        link.getAttribute('href') === 'ecommerce.html') {
-                        link.classList.add('active');
-                    }
-                });
-            }
+            // Scroll suave al inicio de la página actual
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     });
 });
 
 // ===== NAVEGACIÓN ACTIVA SUAVE =====
-const sections = document.querySelectorAll('section');
+const sections = document.querySelectorAll('section[id]');
 
-if (sections.length > 0) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                if (navLinks.length > 0) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${id}`) {
-                            link.classList.add('active');
-                        }
-                    });
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
                 }
-            }
-        });
-    }, { threshold: 0.3 });
-
-    sections.forEach(section => {
-        sectionObserver.observe(section);
+            });
+        }
     });
-}
+}, { threshold: 0.3 });
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
 
 // ===== EFECTO SCROLL NAVBAR =====
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
-    
     const currentScroll = window.scrollY;
     
     if (currentScroll > 50) {
@@ -120,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ AVALON CREATORS ECOMMERCE - Sitio optimizado para móvil y PC');
     
     // Animar elementos al cargar
-    const elementsToAnimate = document.querySelectorAll('.service-card, .plan-card, .floating-card, .comparison-table, .advantages-box, .comparison-mobile-card');
+    const elementsToAnimate = document.querySelectorAll('.plan-card, .comparison-section');
     
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -135,13 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
     
-    // Inicializar comparativa (muestra/oculta versión móvil vs escritorio)
-    initComparisonTable();
-    
-    // Inicializar carruseles solo en móvil
+    // Inicializar carrusel solo en móvil
     if (window.innerWidth <= 768) {
-        console.log('📱 Inicializando carruseles móviles...');
-        initMobileCarousels();
+        console.log('📱 Inicializando carrusel ecommerce móvil...');
+        initMobileCarousel();
     }
     
     // Setup social notifications
@@ -149,59 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Contadores animados
     initCounters();
-    
-    // Setup maintenance notification
-    setupMaintenanceNotification();
 });
 
-// ===== FUNCIÓN PARA MANEJAR LA COMPARATIVA (MÓVIL vs ESCRITORIO) =====
-function initComparisonTable() {
-    const comparisonTable = document.querySelector('.comparison-table');
-    const comparisonMobile = document.querySelector('.comparison-mobile-version');
-    
-    if (!comparisonTable || !comparisonMobile) {
-        console.log('❌ No se encontraron elementos de comparativa');
-        return;
-    }
-    
-    // Función para actualizar la vista según el tamaño de pantalla
-    function updateComparisonView() {
-        if (window.innerWidth <= 768) {
-            // Móvil: mostrar tarjetas verticales, ocultar tabla
-            comparisonTable.style.display = 'none';
-            comparisonMobile.style.display = 'block';
-        } else {
-            // Escritorio: mostrar tabla, ocultar tarjetas móviles
-            comparisonTable.style.display = 'block';
-            comparisonMobile.style.display = 'none';
-        }
-    }
-    
-    // Inicializar según el tamaño actual
-    updateComparisonView();
-    
-    // Actualizar en resize
-    window.addEventListener('resize', updateComparisonView);
-    
-    console.log('✅ Sistema de comparativa móvil/escritorio inicializado');
-}
-
-// ===== CARRUSELES MÓVIL OPTIMIZADOS Y FLUIDOS =====
-function initMobileCarousels() {
-    initPlansCarousel();
-}
-
-// Configuración idéntica para ambos carruseles
-const CAROUSEL_CONFIG = {
-    scrollDuration: 300,
-    scrollBehavior: 'smooth',
-    scrollSnapType: 'x mandatory',
-    arrowTransition: 0.15,
-    indicatorTransition: 0.2
-};
-
-// Carrusel de Planes - VERSIÓN MEJORADA Y FLUIDA
-function initPlansCarousel() {
+// ===== CARRUSEL MÓVIL OPTIMIZADO Y FLUIDO =====
+function initMobileCarousel() {
     const carousel = document.querySelector('.plans-carousel');
     const planCards = document.querySelectorAll('.plan-card-mobile');
     const indicators = document.querySelectorAll('.carousel-indicators .indicator');
@@ -209,7 +132,7 @@ function initPlansCarousel() {
     const nextArrow = document.querySelector('.carousel-arrow.next-arrow');
     
     if (!carousel || planCards.length === 0) {
-        console.log('❌ No se encontró carrusel de planes');
+        console.log('❌ No se encontró carrusel de planes ecommerce');
         return;
     }
     
@@ -218,39 +141,36 @@ function initPlansCarousel() {
     let isScrolling = false;
     let isAnimating = false;
     
-    console.log(`📊 Carrusel de planes: ${totalSlides} slides encontrados`);
+    console.log(`📊 Carrusel ecommerce: ${totalSlides} slides encontrados`);
     
     function updateCarousel(smooth = true) {
         if (isAnimating) return;
         isAnimating = true;
         
         // Actualizar indicadores
-        if (indicators.length > 0) {
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
-            });
-        }
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
         
         // Actualizar cards
         planCards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
         });
         
-        // Scroll suave con MISMA DURACIÓN
+        // Scroll suave
         const cardWidth = planCards[0].offsetWidth;
         const scrollPosition = currentIndex * cardWidth;
         
         if (smooth) {
             carousel.scrollTo({
                 left: scrollPosition,
-                behavior: CAROUSEL_CONFIG.scrollBehavior,
-                duration: CAROUSEL_CONFIG.scrollDuration
+                behavior: 'smooth'
             });
             
             setTimeout(() => {
                 isAnimating = false;
                 isScrolling = false;
-            }, CAROUSEL_CONFIG.scrollDuration);
+            }, 300);
         } else {
             carousel.scrollLeft = scrollPosition;
             isAnimating = false;
@@ -278,16 +198,14 @@ function initPlansCarousel() {
     }
     
     // Indicadores
-    if (indicators.length > 0) {
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                if (!isAnimating) {
-                    currentIndex = index;
-                    updateCarousel();
-                }
-            });
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            if (!isAnimating) {
+                currentIndex = index;
+                updateCarousel();
+            }
         });
-    }
+    });
     
     // Scroll automático con debounce mejorado
     let scrollTimeout;
@@ -301,7 +219,7 @@ function initPlansCarousel() {
             const cardWidth = planCards[0].offsetWidth;
             const scrollLeft = carousel.scrollLeft;
             
-            // MISMO CÁLCULO DE ÍNDICE
+            // Cálculo de índice
             let newIndex = Math.round(scrollLeft / cardWidth);
             
             // Validar y ajustar índice
@@ -315,7 +233,7 @@ function initPlansCarousel() {
             }
             
             isScrolling = false;
-        }, 100); // MISMO DEBOUNCE TIME
+        }, 100);
     });
     
     // Inicializar
@@ -331,8 +249,6 @@ function initPlansCarousel() {
 // ===== CONTADORES ANIMADOS =====
 function initCounters() {
     const stats = document.querySelectorAll('.stat');
-    
-    if (stats.length === 0) return;
     
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -381,16 +297,30 @@ function animateCounter(element) {
 
 // ===== NOTIFICACIONES SOCIALES =====
 function setupSocialNotifications() {
-    const socialNotification = document.getElementById('social-notification');
     const underConstructionLinks = document.querySelectorAll('.social-under-construction');
     
-    if (!socialNotification || underConstructionLinks.length === 0) return;
+    if (underConstructionLinks.length === 0) return;
     
     function showNotification() {
-        socialNotification.classList.add('active');
+        // Crear notificación si no existe
+        let notification = document.getElementById('social-notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'social-notification';
+            notification.className = 'social-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-tools"></i>
+                    <p>Estamos trabajando en las redes, pronto estarán disponibles</p>
+                </div>
+            `;
+            document.body.appendChild(notification);
+        }
+        
+        notification.classList.add('active');
         
         setTimeout(() => {
-            socialNotification.classList.remove('active');
+            notification.classList.remove('active');
         }, 3000);
     }
     
@@ -398,29 +328,6 @@ function setupSocialNotifications() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             showNotification();
-        });
-    });
-}
-
-// ===== NOTIFICACIÓN DE MANTENIMIENTO =====
-function setupMaintenanceNotification() {
-    const maintenanceNotification = document.getElementById('maintenance-notification');
-    const planButtons = document.querySelectorAll('.btn-ecommerce, .btn-ecommerce-mobile');
-    
-    if (!maintenanceNotification || planButtons.length === 0) return;
-    
-    function showMaintenanceNotification() {
-        maintenanceNotification.classList.add('active');
-        
-        setTimeout(() => {
-            maintenanceNotification.classList.remove('active');
-        }, 8000); // 8 segundos
-    }
-    
-    planButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            showMaintenanceNotification();
         });
     });
 }
@@ -433,15 +340,12 @@ window.addEventListener('resize', () => {
     resizeTimeout = setTimeout(() => {
         console.log(`🔄 Redimensionando a: ${window.innerWidth}px`);
         
-        // Re-inicializar comparativa al cambiar tamaño
-        initComparisonTable();
-        
-        // Re-inicializar carruseles si cambiamos a móvil
+        // Re-inicializar carrusel si cambiamos a móvil
         if (window.innerWidth <= 768) {
             const carouselsExist = document.querySelector('.plans-carousel');
             if (carouselsExist && !carouselsExist.dataset.initialized) {
-                console.log('📱 Re-inicializando carruseles para móvil...');
-                initMobileCarousels();
+                console.log('📱 Re-inicializando carrusel para móvil...');
+                initMobileCarousel();
                 carouselsExist.dataset.initialized = true;
             }
         }
@@ -502,7 +406,7 @@ document.addEventListener('dragstart', function(e) {
 
 // Mejorar feedback táctil en botones
 if (isTouchDevice) {
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link, .note-cta .btn-primary, .disclaimer-link');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-plan, .btn-plan-mobile, .nav-link');
     
     buttons.forEach(button => {
         button.addEventListener('touchstart', function() {
@@ -533,10 +437,54 @@ window.addEventListener('error', function(e) {
 // ===== LOADING STATES =====
 document.addEventListener('readystatechange', () => {
     if (document.readyState === 'complete') {
-        console.log('🎉 Página completamente cargada y lista');
+        console.log('🎉 Página ecommerce completamente cargada y lista');
         document.body.classList.add('loaded');
+        
+        // Remover la clase loading después de la animación inicial
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+        }, 500);
     }
 });
 
-// ===== INICIALIZACIÓN FINAL =====
-console.log('🚀 AVALON CREATORS ECOMMERCE - JavaScript cargado correctamente');
+// ===== MEJORA: Scroll suave para enlaces internos =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            // Actualizar URL
+            history.pushState(null, null, targetId);
+        }
+    });
+});
+
+// ===== MEJORA: Cargar imágenes de forma diferida =====
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                const src = img.getAttribute('data-src');
+                if (src) {
+                    img.src = src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
