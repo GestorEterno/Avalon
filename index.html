@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>NiniTarivers | Streamer Profesional</title>
+    <link rel="icon" type="image/jpeg" href="icono.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,7 +17,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-placeholder" style="display: flex;">
+                <img src="icono.jpg" alt="NiniTarivers" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-placeholder" style="display: none;">
                     <i class="fas fa-crown"></i>
                 </div>
                 <div class="logo-text-container">
@@ -41,7 +43,7 @@
         </div>
     </nav>
     
-    <!-- Sección Hero -->
+    <!-- Sección Hero con stream EN VIVO de Twitch -->
     <section class="hero" id="inicio">
         <div class="container">
             <div class="hero-content">
@@ -57,7 +59,7 @@
                     </p>
                     <div class="hero-buttons">
                         <a href="https://www.twitch.tv/ninitarivers" target="_blank" class="cta-button">
-                            <span>VER EN TWITCH</span>
+                            <span>SIGUE EN TWITCH</span>
                             <i class="fab fa-twitch"></i>
                         </a>
                         <a href="#clips" class="cta-button portfolio-btn">
@@ -70,14 +72,14 @@
                 <div class="hero-video">
                     <div class="video-container">
                         <div class="video-label">
-                            <span class="video-badge">EN DIRECTO PRONTO</span>
-                            <h3 class="video-title"></h3>
+                            <span class="video-badge"><i class="fas fa-circle" style="font-size: 0.7rem; margin-right: 6px; color: #ff0000;"></i> EN DIRECTO</span>
+                            <h3 class="video-title">Twitch.tv/ninitarivers</h3>
                         </div>
                         <div class="video-wrapper">
                             <iframe 
-                                src="https://clips.twitch.tv/embed?clip=ImpartialObliqueRaisinPogChamp-1k0lQq-7ZnKrfWNz&parent=localhost" 
-                                allow="autoplay; encrypted-media; fullscreen"
-                                title="Clip destacado de NiniTarivers">
+                                src="https://player.twitch.tv/?channel=ninitarivers&parent=localhost&parent=127.0.0.1&autoplay=false"
+                                allow="fullscreen"
+                                title="Stream en vivo de NiniTarivers">
                             </iframe>
                         </div>
                     </div>
@@ -86,7 +88,7 @@
         </div>
     </section>
     
-    <!-- Sección de características -->
+    <!-- Sección de características / Biografía -->
     <section class="features" id="biografia">
         <div class="container">
             <h2 class="section-title">SOBRE <span class="gradient-text">NINI</span></h2>
@@ -165,52 +167,66 @@
         </div>
     </section>
     
-    <!-- Sección Clips destacados (sin carrusel, grid normal) -->
+    <!-- Sección Clips destacados de Twitch (4 clips reales) -->
     <section class="clips" id="clips">
         <div class="container">
             <h2 class="section-title">CLIPS <span class="gradient-text">DESTACADOS</span></h2>
             <p class="section-subtitle">Los mejores momentos de sus directos, sin filtros</p>
             
             <div class="clips-grid">
-                <!-- Clip 1: Valorant ace -->
+                <!-- Clip 1: HungrySuccessfulWaspWow -->
                 <div class="clip-item">
                     <div class="video-wrapper">
                         <iframe 
-                            src="https://www.youtube.com/embed/btM50k8fD9A" 
-                            allow="autoplay; encrypted-media; fullscreen"
-                            title="Ace en Valorant">
+                            src="https://clips.twitch.tv/embed?clip=HungrySuccessfulWaspWow-2hVI07qRkaWHMAiD&parent=localhost&parent=127.0.0.1"
+                            allow="fullscreen"
+                            title="Clip de Twitch 1">
                         </iframe>
                     </div>
                     <div class="clip-info">
-                        <h3>ACE ESPECTACULAR</h3>
-                        <p>Reyna imparable en Ascent.</p>
+                        <h3>🔥 JUGADA BRUTAL</h3>
+                        <p>Un momento épico que no te puedes perder.</p>
                     </div>
                 </div>
-                <!-- Clip 2: momento troll -->
+                <!-- Clip 2: ComfortableRoundKiwiHassaanChop -->
                 <div class="clip-item">
                     <div class="video-wrapper">
                         <iframe 
-                            src="https://www.youtube.com/embed/htLvUZWnyPk" 
-                            allow="autoplay; encrypted-media; fullscreen"
-                            title="Momento troll">
+                            src="https://clips.twitch.tv/embed?clip=ComfortableRoundKiwiHassaanChop-KWWCVCndccy6dyb-&parent=localhost&parent=127.0.0.1"
+                            allow="fullscreen"
+                            title="Clip de Twitch 2">
                         </iframe>
                     </div>
                     <div class="clip-info">
-                        <h3>MOMENTO TROLL</h3>
-                        <p>Cuando el juego te trollea de vuelta.</p>
+                        <h3>🎯 PRECISIÓN QUIRÚRGICA</h3>
+                        <p>Headshots que duelen solo de verlos.</p>
                     </div>
                 </div>
-                <!-- Clip 3: clutch épico -->
+                <!-- Clip 3: PowerfulTentativeAyeayeM4xHeh -->
                 <div class="clip-item">
                     <div class="video-wrapper">
                         <iframe 
-                            src="https://www.youtube.com/embed/_xOWLZ4b7AU" 
-                            allow="autoplay; encrypted-media; fullscreen"
-                            title="Clutch épico">
+                            src="https://clips.twitch.tv/embed?clip=PowerfulTentativeAyeayeM4xHeh-i_CG1kCsQ8QYgh8F&parent=localhost&parent=127.0.0.1"
+                            allow="fullscreen"
+                            title="Clip de Twitch 3">
                         </iframe>
                     </div>
                     <div class="clip-info">
-                        <h3>CLUTCH 1V4</h3>
+                        <h3>😱 REACCIÓN IMPOSIBLE</h3>
+                        <p>Los reflejos de una jugadora de élite.</p>
+                    </div>
+                </div>
+                <!-- Clip 4: CorrectSingleStingraySpicyBoy -->
+                <div class="clip-item">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://clips.twitch.tv/embed?clip=CorrectSingleStingraySpicyBoy-wyY1K1daMxvKXReT&parent=localhost&parent=127.0.0.1"
+                            allow="fullscreen"
+                            title="Clip de Twitch 4">
+                        </iframe>
+                    </div>
+                    <div class="clip-info">
+                        <h3>💀 CLUTCH 1V4</h3>
                         <p>Nervios de acero y puntería letal.</p>
                     </div>
                 </div>
@@ -268,7 +284,7 @@
             
             <div class="footer-bottom">
                 <p class="copyright">© 2025 NINITARIVERS · TODOS LOS DERECHOS RESERVADOS</p>
-                <!-- BOTÓN TROLL: al hacer clic, abre el Rickroll -->
+                <!-- BOTÓN TROLL: al hacer clic, abre el Rickroll en nueva pestaña -->
                 <div class="troll-area">
                     <button id="trollButton" class="troll-btn">
                         <i class="fas fa-skull"></i> SORPRESA OCULTA <i class="fas fa-skull"></i>
