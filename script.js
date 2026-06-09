@@ -1,4 +1,4 @@
-// Fondo tecnológico animado (adaptado)
+// Fondo tecnológico animado (violeta/negro)
 class TechBackground {
     constructor() {
         this.canvas = document.getElementById('techBackground');
@@ -112,7 +112,7 @@ class Navigation {
     }
 }
 
-// Scroll effects: navbar oculta al bajar
+// Scroll effects: navbar oculta al bajar, muestra al subir
 class ScrollEffects {
     constructor() {
         this.navbar = document.querySelector('.navbar');
@@ -177,15 +177,20 @@ function initScrollAnimations() {
     sections.forEach(section => observer.observe(section));
 }
 
-// Fallback de imágenes (no crítico)
+// Fallback de imágenes del logo
 function initImageFallbacks() {
-    const channelImages = document.querySelectorAll('.channel-image');
-    channelImages.forEach(img => {
-        img.onerror = function() {
-            const fallback = this.parentElement?.querySelector('.channel-fallback');
-            if (fallback) fallback.style.display = 'flex';
+    const logoImg = document.querySelector('.logo-image');
+    const logoPlaceholder = document.querySelector('.logo-placeholder');
+    if (logoImg && logoPlaceholder) {
+        logoImg.onerror = function() {
+            this.style.display = 'none';
+            logoPlaceholder.style.display = 'flex';
         };
-    });
+        if (!logoImg.src || logoImg.src.includes('undefined')) {
+            logoImg.style.display = 'none';
+            logoPlaceholder.style.display = 'flex';
+        }
+    }
 }
 
 // Inicialización principal
@@ -209,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyright.textContent = copyright.textContent.replace('2025', year);
     }
 
-    // Cargar iframes con lazy
+    // Cargar iframes con lazy (mejora rendimiento)
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => iframe.setAttribute('loading', 'lazy'));
 });
