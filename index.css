@@ -13,9 +13,9 @@
     --accent-tertiary: #7c3aed;
     --accent-blue: #00a2ff;
     --accent-twitter: #1DA1F2;
-    --accent-gradient: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
-    --accent-gradient-full: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
-    --gradient-blue: linear-gradient(90deg, var(--accent-blue) 0%, #00d4ff 100%);
+    --accent-gradient: linear-gradient(90deg, #9b4dff 0%, #b77eff 100%);
+    --accent-gradient-full: linear-gradient(90deg, #9b4dff 0%, #b77eff 50%, #7c3aed 100%);
+    --gradient-blue: linear-gradient(90deg, #00a2ff 0%, #00d4ff 100%);
     --gradient-twitch: linear-gradient(90deg, #9146FF 0%, #b77eff 100%);
     --text-color: #f0f0f0;
     --text-muted: #b0b0c0;
@@ -114,8 +114,17 @@ body {
     transition: transform 0.4s var(--ease-smooth);
 }
 
+.logo-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(155, 77, 255, 0.3);
+    flex-shrink: 0;
+}
+
 .logo-placeholder {
-    display: flex;
     width: 48px;
     height: 48px;
     background: var(--accent-gradient);
@@ -154,6 +163,12 @@ body {
 
 .logo:hover {
     transform: translateY(-3px);
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 8px 20px rgba(155, 77, 255, 0.4);
+    border-color: rgba(155, 77, 255, 0.6);
 }
 
 .logo:hover .logo-placeholder {
@@ -353,6 +368,12 @@ body {
     font-weight: 600;
 }
 
+.video-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
 .video-wrapper {
     position: relative;
     padding-bottom: 56.25%;
@@ -509,7 +530,7 @@ body {
 
 .clips-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
 }
 
@@ -669,7 +690,10 @@ body {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .valorant-grid, .clips-grid {
+    .valorant-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .clips-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
