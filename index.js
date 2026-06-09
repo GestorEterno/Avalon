@@ -1,4 +1,4 @@
-// Fondo tecnológico animado (adaptado)A
+// Fondo tecnológico animado (adaptado)
 class TechBackground {
     constructor() {
         this.canvas = document.getElementById('techBackground');
